@@ -2,23 +2,27 @@ import { initLenis }         from './lenis.js';
 import { initLoader }        from './loader.js';
 import { initCursor }        from './animations/cursor.js';
 import { initHero }          from './animations/hero.js';
+import { initMarquee }       from './animations/marquee.js';
 import { initScrollTriggers } from './animations/scroll-triggers.js';
 import { initCounters }      from './animations/counters.js';
 import { initMagnetic }      from './animations/magnetic.js';
 import { initProdutosTabs }  from './animations/produtos-tabs.js';
 
-initLenis();
+document.addEventListener('DOMContentLoaded', () => {
+  initLenis();
 
-initLoader().then(() => {
-  initCursor();
-  initHero();
-  initScrollTriggers();
-  initCounters();
-  initMagnetic();
-  initProdutosTabs();
-  initNavbar();
-  initContactForm();
-  initDepoimentos();
+  initLoader().then(() => {
+    initCursor();
+    initHero();
+    initMarquee();
+    initScrollTriggers();
+    initCounters();
+    initMagnetic();
+    initProdutosTabs();
+    initNavbar();
+    initContactForm();
+    initDepoimentos();
+  });
 });
 
 function initNavbar() {
@@ -26,6 +30,32 @@ function initNavbar() {
   if (!navbar) return;
 
   const SCROLL_THRESHOLD = 80;
+  const toggle = document.querySelector('.navbar-toggle');
+  const toggleLabel = toggle?.querySelector('.navbar-toggle__label');
+  const panel = document.getElementById('navbar-panel');
+  const panelInner = panel?.querySelector('.navbar-panel__inner');
+  const lightSections = document.querySelectorAll('.section--light');
+
+  if (!toggle || !toggleLabel || !panel || !panelInner) return;
+
+  let menuOpen = false;
+
+  function syncNavbarTheme() {
+    if (menuOpen) return;
+
+    const navProbe = navbar.getBoundingClientRect().bottom + 24;
+    let shouldUseLightTheme = false;
+
+    lightSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const overlapsNavbarBand = rect.top <= navProbe && rect.bottom >= 0;
+      if (overlapsNavbarBand) {
+        shouldUseLightTheme = true;
+      }
+    });
+
+    navbar.classList.toggle('navbar--light', shouldUseLightTheme);
+  }
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > SCROLL_THRESHOLD) {
@@ -33,48 +63,88 @@ function initNavbar() {
     } else {
       navbar.classList.remove('navbar--scrolled');
     }
+
+    syncNavbarTheme();
   }, { passive: true });
 
-  // Mobile menu
-  const toggle = document.querySelector('.navbar-toggle');
-  const menu   = document.querySelector('.navbar-mobile');
-  if (!toggle || !menu) return;
+  window.addEventListener('resize', syncNavbarTheme, { passive: true });
 
-  let menuOpen = false;
+  function openMenu() {
+    menuOpen = true;
+    navbar.classList.add('is-open');
+    navbar.classList.remove('navbar--light');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-label', 'Fechar menu');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggleLabel.textContent = 'Close';
+    panel.setAttribute('aria-hidden', 'false');
+    panel.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    gsap.fromTo(panelInner,
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.28, ease: 'machado' }
+    );
+
+    const revealItems = panel.querySelectorAll('.navbar-panel__nav a, .navbar-panel__meta > *, .navbar-card');
+    gsap.fromTo(revealItems,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: 'machado', delay: 0.04 }
+    );
+  }
+
+  function closeMenu() {
+    if (!menuOpen) return;
+
+    menuOpen = false;
+    navbar.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-label', 'Abrir menu');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggleLabel.textContent = 'Menu';
+    document.body.style.overflow = '';
+    gsap.to(panelInner, {
+      opacity: 0,
+      y: 12,
+      duration: 0.18,
+      ease: 'power2.inOut',
+      onComplete() {
+        panel.setAttribute('aria-hidden', 'true');
+        panel.classList.remove('is-open');
+        syncNavbarTheme();
+      },
+    });
+  }
 
   toggle.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    toggle.classList.toggle('is-open', menuOpen);
-    menu.classList.toggle('is-open', menuOpen);
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-
     if (menuOpen) {
-      gsap.fromTo(menu,
-        { opacity: 0, yPercent: -4 },
-        { opacity: 1, yPercent: 0, duration: 0.5, ease: 'machado' }
-      );
-
-      const links = menu.querySelectorAll('a');
-      gsap.fromTo(links,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'machado', delay: 0.1 }
-      );
-    } else {
-      gsap.to(menu, { opacity: 0, yPercent: -4, duration: 0.3, ease: 'power2.in' });
+      closeMenu();
+      return;
     }
+
+    openMenu();
   });
 
-  // Fechar ao clicar em link do menu mobile
-  menu.querySelectorAll('a').forEach((link) => {
+  panel.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       if (!menuOpen) return;
-      menuOpen = false;
-      toggle.classList.remove('is-open');
-      menu.classList.remove('is-open');
-      document.body.style.overflow = '';
-      gsap.to(menu, { opacity: 0, yPercent: -4, duration: 0.3, ease: 'power2.in' });
+      closeMenu();
     });
   });
+
+  panel.addEventListener('click', (event) => {
+    if (!menuOpen) return;
+    if (panelInner.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (!menuOpen) return;
+    closeMenu();
+  });
+
+  syncNavbarTheme();
 }
 
 function initContactForm() {

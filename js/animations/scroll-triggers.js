@@ -1,3 +1,5 @@
+import { splitTextByLines } from './text-split.js';
+
 export function initScrollTriggers() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reducedMotion) return;
@@ -101,16 +103,11 @@ export function initScrollTriggers() {
   // ── lines — SplitText por linhas ──
   document.querySelectorAll('[data-animate="lines"]').forEach((el) => {
     const delay = parseFloat(el.dataset.delay) || 0;
-    const split = new SplitText(el, { type: 'lines', linesClass: 'line-wrap' });
-
-    split.lines.forEach((line) => {
-      line.style.overflow = 'hidden';
-    });
-
-    const inner = new SplitText(el, { type: 'lines' });
+    const split = splitTextByLines(el);
+    if (!split) return;
 
     gsap.set(el, { opacity: 1 });
-    gsap.fromTo(inner.lines,
+    gsap.fromTo(split.lines,
       { yPercent: 110 },
       {
         yPercent: 0,

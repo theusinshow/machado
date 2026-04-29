@@ -106,7 +106,7 @@
   inset: 0;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.4s ease;
+  transition: transform var(--dur-normal) ease;
   z-index: -1;
 }
 
@@ -119,6 +119,15 @@
   position: relative;
   z-index: 1;
   pointer-events: none;
+}
+
+.btn__label,
+.btn__plus {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Filled — Azul primário */
@@ -151,7 +160,7 @@
 }
 
 .btn--whatsapp::before {
-  background-color: rgba(37, 211, 102, 0.8);
+  background-color: var(--color-whatsapp-soft);
 }
 
 /* Outline */
@@ -167,6 +176,67 @@
 
 .btn--outline:hover {
   color: var(--color-white);
+}
+
+/* Split CTA — bloco principal + quadrado do + */
+.btn--split {
+  gap: var(--space-2);
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background-color: transparent;
+}
+
+.btn--split::before {
+  content: none;
+}
+
+.btn--split .btn__label,
+.btn--split .btn__plus {
+  min-height: 2.35rem;
+  transition:
+    background-color var(--dur-normal) ease,
+    color var(--dur-normal) ease,
+    opacity var(--dur-normal) ease;
+}
+
+.btn--split .btn__label {
+  padding-inline: 0.9rem;
+  font-family: var(--font-ui-mono);
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.btn--split .btn__plus {
+  min-width: 2.35rem;
+  padding-inline: 0.55rem;
+  font-family: var(--font-ui-mono);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.btn--split-primary .btn__label {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn--split-primary .btn__plus {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.btn--split-primary:hover .btn__label {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.btn--split-primary:hover .btn__plus {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  opacity: 0.92;
 }
 
 /* Ícone interno */

@@ -1,0 +1,172 @@
+/* ===========================
+   ANIMATIONS — Estados iniciais GSAP + Reduced Motion
+   Machado Plataformas
+   Depende de: variables.css
+=========================== */
+
+/* ── Estados iniciais para data-animate ── */
+[data-animate] {
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"] {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+[data-animate="fade-in"] {
+  opacity: 0;
+}
+
+[data-animate="slide-left"] {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+[data-animate="slide-right"] {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+[data-animate="scale-in"] {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+/* lines — gerenciado por SplitText + overflow hidden no wrapper */
+[data-animate="lines"] {
+  opacity: 0;
+}
+
+/* ── Loading Screen ── */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.loader__brand {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.loader__bar-track {
+  width: 240px;
+  height: 2px;
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+
+.loader__bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-primary-light);
+  transform-origin: left;
+}
+
+.loader__count {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ── Cursor Customizado ── */
+#cursor,
+#cursor-follower {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: normal;
+}
+
+#cursor {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-primary-light);
+  transform: translate(-50%, -50%);
+}
+
+#cursor-follower {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--color-primary-light);
+  background-color: transparent;
+  transform: translate(-50%, -50%);
+  transition: opacity var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+
+#cursor.cursor--hover {
+  transform: translate(-50%, -50%) scale(2.5);
+  background-color: var(--color-primary-light);
+  opacity: 0.4;
+}
+
+#cursor-follower.cursor--hover {
+  opacity: 0;
+}
+
+/* Cursor oculto em touch */
+@media (hover: none) {
+  #cursor, #cursor-follower { display: none; }
+}
+
+/* ── WhatsApp Flutuante ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-whatsapp);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: transform var(--dur-normal) ease, box-shadow var(--dur-normal) ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.6);
+}
+
+/* ── Prefers Reduced Motion — desabilita TODAS as animações ── */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  [data-animate="fade-up"],
+  [data-animate="fade-in"],
+  [data-animate="slide-left"],
+  [data-animate="slide-right"],
+  [data-animate="scale-in"],
+  [data-animate="lines"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

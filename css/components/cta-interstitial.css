@@ -1,0 +1,59 @@
+/* ===========================
+   COMPONENTE: CTA Intermediário
+   Depende de: variables.css
+=========================== */
+
+.cta-mid {
+  background: linear-gradient(135deg,
+    var(--color-bg) 0%,
+    var(--color-navy) 50%,
+    var(--color-bg) 100%
+  );
+  padding-block: var(--space-32);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-mid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(91, 155, 213, 0.08) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.cta-mid-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-8);
+  position: relative;
+  z-index: 1;
+}
+
+.cta-mid__headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: var(--color-white);
+}
+
+.cta-mid__sub {
+  max-width: 480px;
+  color: var(--color-text-muted);
+}
+
+.cta-mid__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+}

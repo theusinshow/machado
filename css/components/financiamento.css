@@ -1,0 +1,56 @@
+/* ===========================
+   COMPONENTE: Financiamento
+   Depende de: variables.css
+=========================== */
+
+.financiamento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6) var(--space-4);
+  margin-block: var(--space-12);
+}
+
+.financiamento-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  text-align: center;
+  border: 1px solid rgba(28, 36, 48, 0.12);
+  transition: border-color var(--dur-normal) ease, background-color var(--dur-normal) ease;
+}
+
+.financiamento-item:hover {
+  background-color: rgba(26, 75, 130, 0.06);
+  border-color: var(--color-primary);
+}
+
+.financiamento-item__icon {
+  color: var(--color-primary);
+  transition: color var(--dur-normal) ease, transform var(--dur-normal) ease;
+}
+
+.financiamento-item:hover .financiamento-item__icon {
+  color: var(--color-navy-dark);
+  transform: scale(1.1);
+}
+
+.financiamento-item__label {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dark);
+}
+
+.financiamento-cta {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .financiamento-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

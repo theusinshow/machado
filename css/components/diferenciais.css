@@ -1,0 +1,67 @@
+/* ===========================
+   COMPONENTE: Diferenciais
+   Depende de: variables.css
+=========================== */
+
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.diferencial-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-6);
+  border-top: 2px solid var(--color-border);
+  transition: border-color var(--dur-normal) ease;
+}
+
+.diferencial-card:hover {
+  border-color: var(--color-primary-light);
+}
+
+.diferencial-card__num {
+  font-size: var(--text-sm);
+  color: var(--color-primary-light);
+  letter-spacing: 0.1em;
+}
+
+.diferencial-card__icon {
+  color: var(--color-primary-light);
+  width: 32px;
+  height: 32px;
+  transition: color var(--dur-normal) ease;
+}
+
+.diferencial-card:hover .diferencial-card__icon {
+  color: var(--color-white);
+}
+
+.diferencial-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.diferencial-card__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .diferenciais-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .diferenciais-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

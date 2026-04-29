@@ -1,0 +1,18 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.suo
+*.user
+
+# Claude Code interno
+.claude/
+
+# Pasta de trabalho temporária
+imgs/
+
+# Logs
+*.log

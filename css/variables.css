@@ -56,6 +56,13 @@
   --color-navbar-panel-card: rgba(255, 255, 255, 0.04);
   --color-navbar-shadow: rgba(0, 0, 0, 0.18);
   --color-navbar-overlay-light: rgba(15, 24, 35, 0.18);
+  --color-stats-bg:      #EEEEEE;
+  --color-stats-card:    #F7F7F7;
+  --color-stats-text:    #111111;
+  --color-stats-border:  rgba(28, 36, 48, 0.1);
+  --color-stats-shadow:  rgba(28, 36, 48, 0.08);
+  --color-stats-shadow-hover: rgba(26, 75, 130, 0.16);
+  --color-stats-divider: rgba(28, 36, 48, 0.12);
 
   /* ── TIPOGRAFIA — Famílias ── */
   --font-display:  'Machado', 'Arial Narrow', sans-serif;

@@ -12,6 +12,17 @@
 **Sessão:** Refinamento de navbar/menu aberto seguindo referência good-fella.com
 
 ### Alterado
+- `index.html` — seção logo abaixo da hero reestruturada para três métricas institucionais da Machado com markup novo (`stats-section`, `stats-container`, `stat-card`, `stat-number`, `stat-label`).
+- `css/variables.css` — adicionados tokens específicos da nova seção clara de resultados (`#EEEEEE` no fundo da seção e `#F7F7F7` nos cards), além de bordas e sombras dedicadas.
+- `css/components/social-proof.css` — componente recriado com visual premium claro, três cards responsivos, hover sutil, separadores desktop e números em destaque com detalhe azul.
+- `css/components/social-proof.css` — seção recalibrada para layout editorial em quatro painéis, com imagem na primeira coluna e três blocos numéricos altos seguindo a composição da referência.
+- `index.html` — adicionada coluna visual com imagem da plataforma antes das métricas, alinhando a seção ao layout de referência.
+- `css/components/social-proof.css` — painéis refinados para ficar mais fiéis à referência: quatro containers bem definidos, números maiores, labels menores no rodapé e proporções mais altas no desktop.
+- `css/components/social-proof.css` — proporção dos quatro painéis reduzida para um formato menos vertical e mais próximo de um bloco horizontal premium.
+- `index.html` — legendas dos cards de resultado reestruturadas com wrapper, square azul e texto em linha única.
+- `css/components/social-proof.css` — labels dos cards travadas em uma linha, com square azul fixo e espaçamento alinhado à referência.
+- `js/animations/stats.js` — microanimação adicionada ao rodapé dos cards: square azul entra girando junto com a legenda, em sequência e apenas uma vez.
+- `js/main.js` — integração da animação dedicada da seção de resultados na ordem de inicialização pós-loader.
 - `css/variables.css` — adicionados tokens de largura máxima, colunas e gaps do menu aberto para evitar medidas soltas no componente.
 - `css/components/navbar.css` — seção inferior do menu aberto reconstruída com grid estável de três áreas, limitando a navegação à esquerda, o bloco de texto ao centro e o bloco de imagens à direita.
 - `css/components/navbar.css` — cards da direita convertidos para `flex` contido com `min-width: 0`, `max-width: 100%` e imagens com `width: 100%`/`height: auto`, eliminando a sobreposição sobre o texto central.
@@ -112,6 +123,7 @@
 ### Criado
 - `js/animations/text-split.js` — utilitário central para splits por chars e linhas com guard clauses.
 - `js/animations/marquee.js` — módulo opcional de marquee horizontal, pronto para uso futuro.
+- `js/animations/stats.js` — animação sequencial da nova seção de números/resultados com entrada única ao entrar na viewport.
 
 ## [2026-04-29] CHORE — Setup inicial completo do projeto
 

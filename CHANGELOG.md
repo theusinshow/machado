@@ -6,6 +6,22 @@
 
 ---
 
+## [2026-04-29] STYLE — Navbar refinada com animações good-fella.com
+
+**Agente:** Claude Code
+**Sessão:** Refinamento de navbar/menu aberto seguindo referência good-fella.com
+
+### Alterado
+- `css/components/navbar.css` — navbar fechada mantém fundo transparente para se mesclar com o background do site; cartão cinza escuro (`--color-menu-bg`) reservado exclusivamente para o estado de menu aberto.
+- `css/components/navbar.css` — tema claro da navbar fechada ajustado para cartão cinza claro (`--color-surface`) sobre seções claras, como nas referências 4 e 5.
+- `css/components/navbar.css` — indicador ativo dos links do menu com quadrado sólido à esquerda, animação de `scale` + `opacity` no hover/ativo, posicionado verticalmente ao centro (`translateY(-50%)`).
+- `css/components/navbar.css` — hover nos links grandes do menu exibe o quadrado indicador e aplica deslize suave do texto para a direita (`translateX(0.35rem)`).
+- `css/components/navbar.css` — layout do painel aberto revertido para proporções anteriores (`1.02fr / 0.56fr / 1.22fr`, `aspect-ratio: 0.72`, gap padrão) após teste visual.
+- `js/main.js` — animações de abertura/fechamento do menu expandido refatoradas para timeline GSAP com `clip-path` (revelação de cima para baixo), stagger refinado em três grupos (nav links, meta blocks, cards) e easing `machado`.
+- `js/main.js` — fechamento do menu agora usa timeline GSAP com `clearProps: 'all'` para limpeza segura após a animação.
+
+---
+
 ## [2026-04-29] STYLE — Hero redesenhada com composição editorial premium
 
 **Agente:** Codex

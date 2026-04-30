@@ -48,7 +48,10 @@
   -webkit-backdrop-filter: none;
 }
 
+/* Tema claro — navbar fechada sobre seções claras (ref good-fella claro) */
 .navbar--light .navbar-inner {
+  background-color: var(--color-surface);
+  border-color: var(--color-surface);
   color: var(--color-text-dark);
 }
 
@@ -217,24 +220,34 @@
   letter-spacing: -0.035em;
   text-transform: none;
   color: var(--color-white);
-  transition: color var(--dur-fast) ease, transform var(--dur-fast) ease;
+  transition: color var(--dur-fast) ease, transform var(--dur-fast) ease, padding-left var(--dur-fast) ease;
+}
+
+/* Quadrado indicador — estado ativo e hover (ref good-fella) */
+.navbar-panel__nav a::before {
+  content: '';
+  position: absolute;
+  left: -2.2rem;
+  top: 50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  background-color: var(--color-primary);
+  transform: translateY(-50%) scale(0);
+  opacity: 0;
+  transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease;
 }
 
 .navbar-panel__nav a.is-active,
 .navbar-panel__nav a:hover {
   color: var(--color-primary);
-  transform: translateX(0.25rem);
+  transform: translateX(0.35rem);
+  padding-left: 0.15rem;
 }
 
-.navbar-panel__nav a.is-active::before {
-  content: '';
-  position: absolute;
-  left: -2.2rem;
-  top: 0.26em;
-  width: 1.2rem;
-  height: 1.2rem;
-  background-color: var(--color-primary);
-  transform: none;
+.navbar-panel__nav a.is-active::before,
+.navbar-panel__nav a:hover::before {
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
 }
 
 .navbar-panel__meta {
@@ -362,10 +375,10 @@
     line-height: 1.04;
   }
 
-  .navbar-panel__nav a.is-active::before {
+  .navbar-panel__nav a::before {
     left: -1.45rem;
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 0.75rem;
+    height: 0.75rem;
   }
 }
 
@@ -377,12 +390,13 @@
 
 @media (min-width: 1024px) {
   .navbar-inner {
-    padding-inline: 1.75rem;
+    padding-inline: 60px;
   }
 
   .navbar-panel__inner {
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.56fr) minmax(0, 1.22fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.42fr) minmax(0, 1.48fr);
     align-items: start;
+    gap: clamp(3.5rem, 7vw, 8rem);
   }
 
   .navbar-panel__nav a {
@@ -391,10 +405,14 @@
     font-weight: 500;
   }
 
+  .navbar-panel__nav {
+    margin-left: 50px;
+  }
+
   .navbar-panel__meta {
     align-content: start;
     padding-top: 0.5rem;
-    margin-left: -1.5rem;
+    margin-left: -50px;
     gap: var(--navbar-panel-meta-gap-desktop);
   }
 

@@ -81,15 +81,32 @@ function initNavbar() {
     panel.classList.add('is-open');
     document.body.style.overflow = 'hidden';
 
-    gsap.fromTo(panelInner,
-      { opacity: 0, y: 12 },
-      { opacity: 1, y: 0, duration: 0.28, ease: 'machado' }
+    const tl = gsap.timeline({ defaults: { ease: 'machado' } });
+
+    tl.fromTo(panelInner,
+      { opacity: 0, y: 20, clipPath: 'inset(0% 0% 100% 0%)' },
+      { opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.45 }
     );
 
-    const revealItems = panel.querySelectorAll('.navbar-panel__nav a, .navbar-panel__meta > *, .navbar-card');
-    gsap.fromTo(revealItems,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.45, stagger: 0.05, ease: 'machado', delay: 0.04 }
+    const navLinks = panel.querySelectorAll('.navbar-panel__nav a');
+    tl.fromTo(navLinks,
+      { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 0.5, stagger: 0.06 },
+      '-=0.25'
+    );
+
+    const metaBlocks = panel.querySelectorAll('.navbar-panel__meta > *');
+    tl.fromTo(metaBlocks,
+      { opacity: 0, y: 18 },
+      { opacity: 1, y: 0, duration: 0.4, stagger: 0.08 },
+      '-=0.35'
+    );
+
+    const cards = panel.querySelectorAll('.navbar-card');
+    tl.fromTo(cards,
+      { opacity: 0, y: 30, scale: 0.96 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1 },
+      '-=0.35'
     );
   }
 
@@ -103,16 +120,22 @@ function initNavbar() {
     toggle.setAttribute('aria-expanded', 'false');
     toggleLabel.textContent = 'Menu';
     document.body.style.overflow = '';
-    gsap.to(panelInner, {
-      opacity: 0,
-      y: 12,
-      duration: 0.18,
-      ease: 'power2.inOut',
+
+    const tl = gsap.timeline({
+      defaults: { ease: 'power2.inOut' },
       onComplete() {
         panel.setAttribute('aria-hidden', 'true');
         panel.classList.remove('is-open');
+        gsap.set(panelInner, { clearProps: 'all' });
         syncNavbarTheme();
       },
+    });
+
+    tl.to(panelInner, {
+      opacity: 0,
+      y: 16,
+      clipPath: 'inset(0% 0% 100% 0%)',
+      duration: 0.28,
     });
   }
 

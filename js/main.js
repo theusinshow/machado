@@ -88,8 +88,8 @@ function initNavbar() {
       { opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.45 }
     );
 
-    const navLinks = panel.querySelectorAll('.navbar-panel__nav a');
-    tl.fromTo(navLinks,
+    const panelNavLinks = panel.querySelectorAll('.navbar-panel__nav a');
+    tl.fromTo(panelNavLinks,
       { opacity: 0, x: -30 },
       { opacity: 1, x: 0, duration: 0.5, stagger: 0.06 },
       '-=0.25'
@@ -108,6 +108,8 @@ function initNavbar() {
       { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1 },
       '-=0.35'
     );
+
+    tl.call(() => moveIndicatorToActive());
   }
 
   function closeMenu() {
@@ -166,6 +168,36 @@ function initNavbar() {
     if (!menuOpen) return;
     closeMenu();
   });
+
+  /* ── Indicador animado ── */
+  const indicator = panel.querySelector('.nav-indicator');
+  const navLinks = panel.querySelectorAll('.navbar-panel__nav a');
+
+  function positionIndicator(target) {
+    if (!indicator || !target) return;
+    const iconH = indicator.offsetHeight;
+    const linkCenter = target.offsetTop + target.offsetHeight / 2;
+    indicator.style.transform = `translateY(${linkCenter - iconH / 2}px)`;
+  }
+
+  function moveIndicatorToActive() {
+    const active = panel.querySelector('.navbar-panel__nav a.is-active');
+    if (active) positionIndicator(active);
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener('mouseenter', () => positionIndicator(link));
+  });
+
+  const nav = panel.querySelector('.navbar-panel__nav');
+  if (nav) {
+    nav.addEventListener('mouseleave', moveIndicatorToActive);
+  }
+
+  // Reposiciona ao redimensionar
+  window.addEventListener('resize', () => {
+    if (menuOpen) moveIndicatorToActive();
+  }, { passive: true });
 
   syncNavbarTheme();
 }

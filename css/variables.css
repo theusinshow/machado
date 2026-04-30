@@ -129,4 +129,9 @@
   --navbar-panel-top-gap: 0.35rem;
   --navbar-panel-bottom-gap: 100px;
   --navbar-panel-meta-gap-desktop: 200px;
+  --navbar-panel-max: 1400px;
+  --navbar-panel-grid-gap: 40px;
+  --navbar-panel-card-gap: 20px;
+  --navbar-panel-nav-width: 280px;
+  --navbar-panel-meta-max: 400px;
 }

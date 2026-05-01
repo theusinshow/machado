@@ -6,6 +6,67 @@
 
 ---
 
+## [2026-04-30] STYLE — Social-proof desktop: layout 4 colunas flat estilo good-fella.com
+
+**Agente:** Claude Code
+**Sessão:** Rewrite do layout desktop da seção de prova social
+
+### Alterado
+- `css/components/social-proof.css` — `@media 1024px`: grid trocado de `repeat(2, 1fr)` para `repeat(4, minmax(0, 1fr))` com `gap: 0`; cards recebem `background-color: transparent; border: none; border-right: 1px solid var(--color-stats-divider)` para efeito de colunas planas separadas por linha fina; último card sem `border-right` via `:last-child`; adicionado override `@media (hover: hover) and (min-width: 1024px)` para suprimir feedback de borda no hover em desktop (a animação do `stat-square` já provê o feedback)
+
+---
+
+## [2026-05-01] STYLE — Cards 590×440px, 50px margem lateral, texto ancorado à esquerda
+
+**Agente:** Claude Code
+**Sessão:** Ajuste de dimensões e layout da seção social-proof
+
+### Alterado
+- `css/components/social-proof.css` — `.stat-label-wrapper` trocado de `inline-flex` para `flex` com `width: 100%` (texto fica anchored à esquerda do card inteiro); `@media 1024px`: container override com `max-width: 1300px; padding-inline: 50px` (resulta em inner-width 1200px → cards ~592px com gap 16px); grid trocado de `repeat(4, 1fr)` para `repeat(2, 1fr)` criando layout 2×2; cards com `height: 440px`; removido pseudo-element `::after` de separador que não se aplica ao novo layout 2 colunas
+
+---
+
+## [2026-05-01] FIX — Refinamentos de UX: hover, square, scroll top, label speed
+
+**Agente:** Claude Code
+**Sessão:** Ajustes pós-revisão da seção social-proof
+
+### Alterado
+- `css/components/social-proof.css` — removido `translateY` do hover do card (sem lift); removido `transition: transform` da regra base pois não é mais necessário; rotação inicial do `stat-square` reduzida de `-135deg` para `-45deg` (mais sutil); duração de entrada encurtada para `0.32s/0.42s`; trigger do square permanece `.stat-card:hover` (card inteiro, não só o texto)
+- `index.html` — adicionado script inline no `<head>` com `history.scrollRestoration = 'manual'` e `window.scrollTo(0,0)` — garante scroll para o topo em F5 e navegação back/forward, antes de qualquer CDN carregar
+- `js/animations/stats.js` — label: deslocamento inicial reduzido de `y:16` para `y:10`, duração de `0.65s` para `0.38s`, ease trocado para `power3.out` (mais fluido para deslocamentos curtos), position na timeline adiantado de `0.32` para `0.28`
+
+---
+
+## [2026-05-01] FEAT — Animações da seção Social Proof redesenhadas
+
+**Agente:** Claude Code
+**Sessão:** Refinamento de social-proof — hover, stat-square, scroll animations, contagem de números
+
+### Alterado
+- `css/variables.css` — adicionados tokens `--ease-machado` e `--ease-snap` para uso em transições CSS (evita cubic-bezier solto fora dos tokens)
+- `css/components/social-proof.css` — hover do card reduzido de `translateY(-4px)` para `translateY(-2px)`, transição de transform encurtada para `--dur-fast`; borda no hover trocada para `--color-border-light` (mais sutil); `stat-square` agora oculto por padrão (`opacity:0; scale(0) rotate(-135deg)`), reaparece no hover do card com transição `machado` suave (0.55s) e retorna rapidamente (0.22s) — CSS puro sem GSAP; adicionado bloco `prefers-reduced-motion` desativando a transição do square
+- `js/animations/stats.js` — reescrito com três layers independentes: (1) card entra de baixo (y:36→0), (2) `.stat-label` sobe separado (y:16→0) durante a entrada do card, (3) números contam de 0 até o valor via `data-count` / `data-count-suffix`; estado inicial dos labels pré-definido com `gsap.set` antes dos ScrollTriggers; bloco `prefers-reduced-motion` reseta labels também
+- `index.html` — adicionados `data-count` e `data-count-suffix` nos três `.stat-number__value` (22; 4mil; 2mil)
+
+---
+
+## [2026-05-01] FIX — Bugs de CSS e reduced-motion + galeria com imagens reais
+
+**Agente:** Claude Code
+**Sessão:** Retomada de projeto — diagnóstico e correções
+
+### Alterado
+- `css/variables.css` — adicionado token `--space-14: 3.5rem` (corrige padding quebrado em tablet: hero.css linha 207 usava variável inexistente)
+- `css/components/financiamento.css` — 2 rgba hardcoded substituídos por `--color-border-soft` e `--color-primary-surface`
+- `css/components/sobre.css` — rgba hardcoded `rgba(255,255,255,0.7)` substituído por `--color-white-muted`
+- `css/components/cta-interstitial.css` — rgba hardcoded substituído por `--color-primary-soft`
+- `css/components/contato.css` — 2 rgba hardcoded substituídos por `--color-primary-ring` e `--color-error-ring`; adicionada classe `.form-field--full` (usada no HTML mas não definida)
+- `js/animations/scroll-triggers.js` — corrigido bug de `prefers-reduced-motion`: footer headline ficava `opacity:0` porque a função retornava cedo sem resetar o estado inicial do CSS
+- `index.html` — galeria substituída: 8 imagens reais de `assets/images/galeria/` no lugar de placeholders `picsum.photos`
+
+---
+
 ## [2026-04-29] STYLE — Navbar refinada com animações good-fella.com
 
 **Agente:** Claude Code

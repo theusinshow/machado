@@ -2,7 +2,13 @@ import { splitTextByLines } from './text-split.js';
 
 export function initScrollTriggers() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reducedMotion) return;
+
+  if (reducedMotion) {
+    const footerHeadline = document.querySelector('.footer-headline');
+    if (footerHeadline) gsap.set(footerHeadline, { opacity: 1 });
+    return;
+  }
+
   if (!document.querySelector('[data-animate]')) return;
 
   // ── fade-up ──

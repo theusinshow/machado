@@ -13,6 +13,12 @@
 
   <title>Machado Plataformas — Implementos Rodoviários</title>
 
+  <!-- Força scroll para o topo em qualquer recarga (F5, navegação back/forward) -->
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  </script>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -225,7 +231,7 @@
 
         <article class="social-proof-stat stat-card" data-stats-card data-delay="0.08">
           <span class="stat-number">
-            <span class="stat-number__value">22</span>
+            <span class="stat-number__value" data-count="22">22</span>
             <span class="stat-number__suffix">+</span>
           </span>
           <div class="stat-label-wrapper">
@@ -236,7 +242,7 @@
 
         <article class="social-proof-stat stat-card" data-stats-card data-delay="0.16">
           <span class="stat-number">
-            <span class="stat-number__value">4mil</span>
+            <span class="stat-number__value" data-count="4" data-count-suffix="mil">4mil</span>
             <span class="stat-number__suffix">+</span>
           </span>
           <div class="stat-label-wrapper">
@@ -247,7 +253,7 @@
 
         <article class="social-proof-stat stat-card" data-stats-card data-delay="0.24">
           <span class="stat-number">
-            <span class="stat-number__value">2mil</span>
+            <span class="stat-number__value" data-count="2" data-count-suffix="mil">2mil</span>
             <span class="stat-number__suffix">+</span>
           </span>
           <div class="stat-label-wrapper">
@@ -462,56 +468,56 @@
 
       <div class="galeria-grid">
         <figure class="galeria-item galeria-item--large" data-animate="scale-in" data-delay="0">
-          <img src="https://picsum.photos/seed/gal1/800/600" alt="Plataforma em operação — aplicação real" loading="lazy" width="800" height="600" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="Plataforma Machado em operação" loading="lazy" width="800" height="600" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>
         </figure>
 
         <figure class="galeria-item galeria-item--large" data-animate="scale-in" data-delay="0.07">
-          <img src="https://picsum.photos/seed/gal2/800/600" alt="Plataforma Machado em campo" loading="lazy" width="800" height="600" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg" alt="Plataforma Machado em campo" loading="lazy" width="800" height="600" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>
         </figure>
 
         <figure class="galeria-item" data-animate="scale-in" data-delay="0.14">
-          <img src="https://picsum.photos/seed/gal3/600/450" alt="Detalhe de fabricação" loading="lazy" width="600" height="450" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg" alt="Detalhe de fabricação Machado" loading="lazy" width="600" height="450" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>
         </figure>
 
         <figure class="galeria-item" data-animate="scale-in" data-delay="0.21">
-          <img src="https://picsum.photos/seed/gal4/600/450" alt="Plataforma guincho pesado" loading="lazy" width="600" height="450" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg" alt="Plataforma guincho pesado em aplicação" loading="lazy" width="600" height="450" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>
         </figure>
 
         <figure class="galeria-item" data-animate="scale-in" data-delay="0.28">
-          <img src="https://picsum.photos/seed/gal5/600/450" alt="Entrega de implemento" loading="lazy" width="600" height="450" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg" alt="Entrega de implemento rodoviário" loading="lazy" width="600" height="450" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>
         </figure>
 
         <figure class="galeria-item" data-animate="scale-in" data-delay="0.35">
-          <img src="https://picsum.photos/seed/gal6/600/450" alt="Plataforma linha leve" loading="lazy" width="600" height="450" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg" alt="Plataforma linha em operação" loading="lazy" width="600" height="450" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>
         </figure>
 
         <figure class="galeria-item" data-animate="scale-in" data-delay="0.42">
-          <img src="https://picsum.photos/seed/gal7/600/450" alt="Guincho urbano em obra" loading="lazy" width="600" height="450" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg" alt="Implemento Machado em campo" loading="lazy" width="600" height="450" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>
         </figure>
 
         <figure class="galeria-item" data-animate="scale-in" data-delay="0.49">
-          <img src="https://picsum.photos/seed/gal8/600/450" alt="Fábrica Machado" loading="lazy" width="600" height="450" />
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg" alt="Plataforma para guincho — aplicação real" loading="lazy" width="600" height="450" />
           <div class="galeria-item__overlay" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
           </div>

@@ -95,6 +95,7 @@
   --space-8:  2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
+  --space-14: 3.5rem;
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
@@ -110,6 +111,10 @@
   --section-sm: clamp(3rem, 6vw, 6rem);
   --section-md: clamp(5rem, 9vw, 10rem);
   --section-lg: clamp(7rem, 12vw, 14rem);
+
+  /* ── ANIMAÇÕES — Easings CSS ── */
+  --ease-machado: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap:    cubic-bezier(0.87, 0, 0.13, 1);
 
   /* ── ANIMAÇÕES — Durações ── */
   --dur-fast:   200ms;

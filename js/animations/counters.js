@@ -1,5 +1,6 @@
 export function initCounters() {
-  const counters = document.querySelectorAll('[data-count]');
+  const counters = Array.from(document.querySelectorAll('[data-count]'))
+    .filter((el) => !el.closest('[data-stats-card]'));
   if (!counters.length) return;
 
   counters.forEach((el) => {

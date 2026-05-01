@@ -166,16 +166,16 @@
     <div class="hero-inner">
 
         <div class="hero-content">
-          <span class="hero-kicker mono">
+          <span class="hero-kicker mono" data-hero-reveal>
             Plataformas de auto socorro
           </span>
 
           <h1 class="hero-title">
-            <span class="hero-title__line">MACHADO</span>
-            <span class="hero-title__line">PLATAFORMAS</span>
+            <span class="hero-title__line" data-hero-reveal>MACHADO</span>
+            <span class="hero-title__line" data-hero-reveal>PLATAFORMAS</span>
           </h1>
 
-          <p class="hero-subtitle">
+          <p class="hero-subtitle" data-hero-reveal>
             Fabricação própria, estrutura reforçada e acabamento industrial
             para quem precisa de confiança real na estrada.
           </p>
@@ -242,7 +242,7 @@
 
         <article class="social-proof-stat stat-card" data-stats-card data-delay="0.16">
           <span class="stat-number">
-            <span class="stat-number__value" data-count="4" data-count-suffix="mil">4mil</span>
+            <span class="stat-number__value" data-count="4000">4000</span>
             <span class="stat-number__suffix">+</span>
           </span>
           <div class="stat-label-wrapper">
@@ -253,7 +253,7 @@
 
         <article class="social-proof-stat stat-card" data-stats-card data-delay="0.24">
           <span class="stat-number">
-            <span class="stat-number__value" data-count="2" data-count-suffix="mil">2mil</span>
+            <span class="stat-number__value" data-count="2000">2000</span>
             <span class="stat-number__suffix">+</span>
           </span>
           <div class="stat-label-wrapper">
@@ -269,73 +269,71 @@
   <!-- ══════════════════════════════════════
        04 — DIFERENCIAIS
   ══════════════════════════════════════ -->
-  <section id="diferenciais" class="section section--dark diferenciais" aria-labelledby="diferenciais-heading">
-    <div class="container">
+  <section id="diferenciais" class="section section--light diferenciais" aria-labelledby="diferenciais-heading" data-diferenciais>
+    <div class="container container--wide">
 
-      <div class="section-header" data-animate="fade-up">
-        <span class="eyebrow">Por que Machado?</span>
-        <h2 id="diferenciais-heading" class="section-title" data-animate="lines">
-          Nossos Diferenciais
+      <div class="diferenciais-header">
+        <h2 id="diferenciais-heading" class="diferenciais-title">
+          Por que Machado?
         </h2>
+        <span class="diferenciais-kicker mono">// Pilares</span>
       </div>
 
-      <div class="diferenciais-grid">
+      <div class="diferenciais-layout">
+        <div class="diferenciais-timeline" aria-label="Pilares da Machado Plataformas">
+          <span class="diferenciais-indicator" aria-hidden="true"></span>
 
-        <div class="diferencial-card" data-animate="fade-up" data-delay="0">
-          <span class="diferencial-card__num mono">01</span>
-          <div class="diferencial-card__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <h3 class="diferencial-card__title">Aço de Alta Resistência</h3>
-          <p class="diferencial-card__text">Utilizamos apenas aço estrutural certificado, garantindo durabilidade em condições extremas de trabalho.</p>
+          <article class="diferencial-step is-active" data-diferencial-step="0">
+            <span class="diferencial-step__num mono">01</span>
+            <div class="diferencial-step__content">
+              <h3 class="diferencial-step__title">Aço de Alta Resistência</h3>
+              <p class="diferencial-step__text">Estrutura em aço certificado para suportar rotina pesada, torção, carga e estrada sem perder rigidez.</p>
+            </div>
+          </article>
+
+          <article class="diferencial-step" data-diferencial-step="1">
+            <span class="diferencial-step__num mono">02</span>
+            <div class="diferencial-step__content">
+              <h3 class="diferencial-step__title">Fabricação Própria</h3>
+              <p class="diferencial-step__text">Controle completo do corte, solda, montagem e acabamento para manter padrão industrial em cada unidade.</p>
+            </div>
+          </article>
+
+          <article class="diferencial-step" data-diferencial-step="2">
+            <span class="diferencial-step__num mono">03</span>
+            <div class="diferencial-step__content">
+              <h3 class="diferencial-step__title">Garantia de Fábrica</h3>
+              <p class="diferencial-step__text">Respaldo direto de quem fabrica, com assistência clara e sem intermediários quando o cliente precisa.</p>
+            </div>
+          </article>
+
+          <article class="diferencial-step" data-diferencial-step="3">
+            <span class="diferencial-step__num mono">04</span>
+            <div class="diferencial-step__content">
+              <h3 class="diferencial-step__title">Entrega em Todo o Brasil</h3>
+              <p class="diferencial-step__text">Planejamento logístico para levar a plataforma até o cliente com segurança, previsibilidade e agilidade.</p>
+            </div>
+          </article>
+
+          <article class="diferencial-step" data-diferencial-step="4">
+            <span class="diferencial-step__num mono">05</span>
+            <div class="diferencial-step__content">
+              <h3 class="diferencial-step__title">Suporte Técnico Especializado</h3>
+              <p class="diferencial-step__text">Orientação técnica na escolha, instalação e pós-venda para manter sua operação rodando sem improviso.</p>
+            </div>
+          </article>
+
         </div>
 
-        <div class="diferencial-card" data-animate="fade-up" data-delay="0.1">
-          <span class="diferencial-card__num mono">02</span>
-          <div class="diferencial-card__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/>
-            </svg>
+        <div class="diferenciais-visual" aria-hidden="true">
+          <div class="diferenciais-visual__sticky">
+            <img class="diferenciais-visual__image is-active" data-diferencial-image="0" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg" alt="" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="1" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="2" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg" alt="" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="3" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg" alt="" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="4" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg" alt="" loading="lazy" />
           </div>
-          <h3 class="diferencial-card__title">Fabricação Própria</h3>
-          <p class="diferencial-card__text">Controlamos todo o processo, do corte à pintura, garantindo padrão de qualidade em cada unidade produzida.</p>
         </div>
-
-        <div class="diferencial-card" data-animate="fade-up" data-delay="0.2">
-          <span class="diferencial-card__num mono">03</span>
-          <div class="diferencial-card__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3 class="diferencial-card__title">Garantia de Fábrica</h3>
-          <p class="diferencial-card__text">Todos os produtos saem com garantia direta do fabricante. Você tem respaldo real, sem intermediários.</p>
-        </div>
-
-        <div class="diferencial-card" data-animate="fade-up" data-delay="0.3">
-          <span class="diferencial-card__num mono">04</span>
-          <div class="diferencial-card__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
-            </svg>
-          </div>
-          <h3 class="diferencial-card__title">Entrega em Todo o Brasil</h3>
-          <p class="diferencial-card__text">Logística própria e parcerias transportadoras para atender clientes em qualquer região do país.</p>
-        </div>
-
-        <div class="diferencial-card" data-animate="fade-up" data-delay="0.4">
-          <span class="diferencial-card__num mono">05</span>
-          <div class="diferencial-card__icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
-            </svg>
-          </div>
-          <h3 class="diferencial-card__title">Suporte Técnico Especializado</h3>
-          <p class="diferencial-card__text">Equipe técnica disponível para consultoria, instalação e pós-venda. Você nunca fica desamparado.</p>
-        </div>
-
       </div>
     </div>
   </section>

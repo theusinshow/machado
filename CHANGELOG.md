@@ -6,6 +6,210 @@
 
 ---
 
+## [2026-05-01] STYLE — Scroll virtual nos diferenciais sem alterar layout
+
+**Agente:** Codex
+**Sessão:** Ajuste de ritmo da timeline de diferenciais
+
+### Alterado
+- `css/components/diferenciais.css` — removida a altura mínima dos itens no desktop, mantendo o layout compacto anterior da timeline.
+- `js/animations/diferenciais.js` — troca dos pilares no desktop passou a usar `ScrollTrigger` com pin e duração virtual maior, exigindo mais rolagem entre itens sem aumentar o tamanho visual dos textos.
+
+---
+
+## [2026-05-01] STYLE — Scroll dos diferenciais mais longo entre pilares
+
+**Agente:** Codex
+**Sessão:** Ajuste de ritmo da timeline de diferenciais
+
+### Alterado
+- `css/components/diferenciais.css` — no desktop, cada `.diferencial-step` ganhou altura mínima responsiva e o gap da timeline foi zerado, aumentando a distância de scroll entre trocas.
+- `js/animations/diferenciais.js` — ponto de foco do cálculo do item ativo ajustado para `46%` da viewport, deixando a troca mais estável com a imagem sticky.
+
+---
+
+## [2026-05-01] REFACTOR — Hero troca block reveal por clip reveal editorial
+
+**Agente:** Codex
+**Sessão:** Substituição da animação principal do hero
+
+### Alterado
+- `index.html` — atributos do hero trocados de `data-block-reveal` para `data-hero-reveal`.
+- `css/components/hero.css` — removida estrutura de máscara/bloco e adicionados estados iniciais de clip reveal com `clip-path`, `opacity` e `translateY`.
+- `js/animations/hero.js` — animação do hero reescrita para revelar os textos por `clip-path` com stagger suave, mantendo CTA, imagem e scroll indicator.
+- `js/gsap-setup.js` — removido `blockReveal`, pois a animação voltou a usar o easing `machado`.
+
+---
+
+## [2026-05-01] FIX — Máscara do block reveal não fica sobre o hero
+
+**Agente:** Codex
+**Sessão:** Correção do reveal do hero
+
+### Alterado
+- `css/components/hero.css` — conteúdo do block reveal agora mantém camada, cor e tipografia herdadas; máscara recebeu dimensões explícitas.
+- `js/animations/hero.js` — máscara do block reveal agora é ocultada com `autoAlpha: 0` ao final da passagem, evitando barras visíveis sobre o texto.
+
+---
+
+## [2026-05-01] FEAT — Hero com block reveal animation
+
+**Agente:** Codex
+**Sessão:** Animação premium de reveal no hero
+
+### Alterado
+- `index.html` — textos do hero receberam `data-block-reveal` e temas de máscara nos dois versos do título.
+- `css/components/hero.css` — adicionada estrutura reutilizável de block reveal com container mascarado, conteúdo e bloco absoluto, incluindo fallback para `prefers-reduced-motion`.
+- `js/animations/hero.js` — animação de caracteres substituída por block reveal reutilizável que cria camadas de conteúdo/máscara, faz o bloco atravessar o texto e revela o conteúdo com fade + translateY.
+- `js/gsap-setup.js` — adicionado CustomEase `blockReveal` com curva `0.22, 1, 0.36, 1`.
+
+---
+
+## [2026-05-01] STYLE — Square gira apenas na troca de pilar
+
+**Agente:** Codex
+**Sessão:** Ajuste da rotação do indicador da timeline
+
+### Alterado
+- `css/components/diferenciais.css` — removida rotação contínua do square e adicionada variável `--indicator-rotation` aplicada no `::before`.
+- `js/animations/diferenciais.js` — indicador agora incrementa a rotação via GSAP somente quando o item ativo muda durante o scroll.
+
+---
+
+## [2026-05-01] FIX — Square dos diferenciais gira sem sair do eixo
+
+**Agente:** Codex
+**Sessão:** Correção da rotação do indicador da timeline
+
+### Alterado
+- `css/components/diferenciais.css` — rotação do indicador movida para `.diferenciais-indicator::before`, mantendo o elemento pai responsável apenas pelo deslocamento vertical e evitando o efeito de órbita.
+
+---
+
+## [2026-05-01] STYLE — Step ativo desloca inteiro e indicador gira
+
+**Agente:** Codex
+**Sessão:** Ajuste de microinteração da timeline de diferenciais
+
+### Alterado
+- `css/components/diferenciais.css` — deslocamento de 40px movido do conteúdo para o `.diferencial-step.is-active` inteiro, incluindo número e texto; indicador ampliado para `1rem` e animado com rotação contínua no próprio eixo via `@keyframes`.
+- `js/animations/diferenciais.js` — removido controle de rotação do tween do indicador para evitar conflito com a animação CSS.
+
+---
+
+## [2026-05-01] STYLE — Texto ativo dos diferenciais desloca à direita
+
+**Agente:** Codex
+**Sessão:** Ajuste de microinteração da timeline de diferenciais
+
+### Alterado
+- `css/components/diferenciais.css` — conteúdo textual do `.diferencial-step.is-active` agora desloca `--space-10` (40px) para a direita com transição suave, respeitando `prefers-reduced-motion`.
+
+---
+
+## [2026-05-01] STYLE — Timeline de diferenciais mais fluida
+
+**Agente:** Codex
+**Sessão:** Suavização da animação da seção diferenciais
+
+### Alterado
+- `js/animations/diferenciais.js` — movimento do indicador agora cancela o tween anterior antes de iniciar o próximo, usa `duration: 0.72`, `power3.out` e `overwrite: auto` para evitar travadas.
+- `css/components/diferenciais.css` — transições de passos e imagens alongadas para suavizar opacidade, escala e crossfade.
+
+---
+
+## [2026-05-01] STYLE — Detalhes dos pilares no azul padrão
+
+**Agente:** Codex
+**Sessão:** Ajuste de cor da timeline de diferenciais
+
+### Alterado
+- `css/variables.css` — `--color-process-accent` agora aponta para `--color-primary`, deixando kicker e indicador da seção `#diferenciais` no azul padrão Machado.
+
+---
+
+## [2026-05-01] STYLE — Refinos visuais da timeline de diferenciais
+
+**Agente:** Codex
+**Sessão:** Ajustes pós-implementação da seção diferenciais
+
+### Alterado
+- `index.html` — seção `#diferenciais` trocada de `section--dark` para `section--light` e timeline passou a usar um único `.diferenciais-indicator` móvel em vez de um indicador por item.
+- `css/components/diferenciais.css` — fundo da seção alterado para `--color-white`, textos em tons escuros, heading menor em linha única, título dos passos fixado em `32px`, números em `--font-ui-mono`, imagem com card arredondado e lista compactada para caber visualmente dentro da altura da imagem.
+- `js/animations/diferenciais.js` — indicador laranja agora se desloca verticalmente com `gsap.to()` para acompanhar o item ativo, seguindo o comportamento do indicador da navbar.
+
+---
+
+## [2026-05-01] FEAT — Diferenciais como timeline interativa por scroll
+
+**Agente:** Codex
+**Sessão:** Recriação da seção Por que Machado?
+
+### Alterado
+- `index.html` — seção `#diferenciais` reestruturada de cards estáticos para timeline de cinco pilares com passos numerados, indicador ativo e painel visual com cinco imagens reais da galeria.
+- `css/variables.css` — adicionado token `--color-process-accent` para o indicador laranja da timeline sem hardcode no componente.
+- `css/components/diferenciais.css` — componente recriado com layout editorial em duas colunas, imagem sticky no desktop, estados ativo/inativo, crossfade suave de imagens e responsivo mobile sem sticky.
+- `js/main.js` — importado e inicializado `initDiferenciais()` junto às animações principais.
+
+### Criado
+- `js/animations/diferenciais.js` — módulo isolado para ativar pilares conforme o scroll, alternar imagens, animar entrada inicial e respeitar `prefers-reduced-motion`.
+
+---
+
+## [2026-05-01] STYLE — Hover suave no label dos stats
+
+**Agente:** Codex
+**Sessão:** Microinteração dos textos inferiores da social-proof
+
+### Alterado
+- `css/components/social-proof.css` — `.stat-label-wrapper` agora recebe transição de transform e desloca `--space-2` para a direita no hover do `.stat-card`, evitando conflito com o transform inline que o GSAP aplica no `.stat-label`; fallback mantido em `prefers-reduced-motion`.
+
+---
+
+## [2026-05-01] STYLE — Label e square dos stats maiores
+
+**Agente:** Codex
+**Sessão:** Ajuste visual dos textos inferiores da social-proof
+
+### Alterado
+- `css/components/social-proof.css` — `.stat-label` aumentado para `clamp(1.15rem, 1.25vw, 1.35rem)`, `.stat-square` ampliado para `0.8rem` e espaçamento entre square/texto ajustado para `--space-3`.
+
+---
+
+## [2026-05-01] FIX — Contadores social-proof em valores absolutos
+
+**Agente:** Codex
+**Sessão:** Ajuste de texto dos contadores da social-proof
+
+### Alterado
+- `index.html` — contadores da social-proof alterados de 4mil+/2mil+ para 4000+/2000+, com `data-count` usando os valores absolutos para preservar a animação.
+- `css/components/social-proof.css` — removida a classe `.stat-number__unit`, que não é mais usada após a troca para 4000+/2000+.
+- `js/animations/stats.js` — contagem da social-proof permanece formatando apenas números inteiros, agora com alvos 4000 e 2000; os valores são inicializados em `0` e animados por um gatilho dedicado na seção inteira com `IntersectionObserver`, separado da timeline visual dos cards e independente da posição horizontal de cada card.
+- `js/main.js` — `initStats()` passou a rodar logo no `DOMContentLoaded`, antes do loader, para preparar o contador sem depender do fim da animação inicial.
+- `js/animations/counters.js` — contadores genéricos agora ignoram elementos dentro de `[data-stats-card]`, evitando sobrescrever `4mil` e `2mil` depois da animação específica da social-proof.
+
+---
+
+## [2026-05-01] STYLE — Social-proof em linha horizontal com cards 440x600
+
+**Agente:** Codex
+**Sessão:** Ajuste de dimensões da seção social-proof
+
+### Alterado
+- `css/components/social-proof.css` — seção social-proof ajustada para grid horizontal fixo com quatro colunas de 440px, cards e imagem com 440px x 600px, gap de `--space-5` (20px) e container centralizado na página, mantendo todos os itens lado a lado com rolagem horizontal quando necessário.
+
+---
+
+## [2026-05-01] STYLE — Hero image ancorada no canto inferior direito
+
+**Agente:** Codex
+**Sessão:** Ajuste de posicionamento da imagem principal do hero
+
+### Alterado
+- `css/components/hero.css` — `.hero-media` virou camada absoluta com largura de viewport e `.hero-img` agora fica ancorada em `right: 0; bottom: 0`, removendo os offsets negativos por breakpoint que prendiam a imagem à coluna em vez do canto inferior direito da tela.
+
+---
+
 ## [2026-04-30] STYLE — Social-proof desktop: layout 4 colunas flat estilo good-fella.com
 
 **Agente:** Claude Code

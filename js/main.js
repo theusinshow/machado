@@ -4,6 +4,7 @@ import { initCursor }        from './animations/cursor.js';
 import { initHero }          from './animations/hero.js';
 import { initMarquee }       from './animations/marquee.js';
 import { initScrollTriggers } from './animations/scroll-triggers.js';
+import { initDiferenciais }  from './animations/diferenciais.js';
 import { initStats }         from './animations/stats.js';
 import { initCounters }      from './animations/counters.js';
 import { initMagnetic }      from './animations/magnetic.js';
@@ -11,12 +12,13 @@ import { initProdutosTabs }  from './animations/produtos-tabs.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initLenis();
+  initStats();
 
   initLoader().then(() => {
     initCursor();
     initHero();
     initMarquee();
-    initStats();
+    initDiferenciais();
     initScrollTriggers();
     initCounters();
     initMagnetic();

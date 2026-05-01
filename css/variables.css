@@ -33,6 +33,7 @@
   --color-whatsapp:      #25D366;
   --color-star:          #FFB800;
   --color-error:         #E05A5A;
+  --color-process-accent:var(--color-primary);
   --color-footer-bg:     #0F1823;
   --color-black:         #000000;
   --color-primary-soft:  rgba(91, 155, 213, 0.08);

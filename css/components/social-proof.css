@@ -4,25 +4,36 @@
 =========================== */
 
 .stats-section {
+  --stats-card-width: 440px;
+  --stats-card-height: 600px;
+
   background-color: var(--color-stats-bg);
-  overflow: clip;
+  overflow-x: auto;
+  overflow-y: clip;
 }
 
 .stats-container {
   position: relative;
+  width: max-content;
+  max-width: none;
+  margin-block: var(--space-5);
+  margin-inline: auto;
+  padding-inline: 0;
 }
 
 .social-proof-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
+  grid-template-columns: repeat(4, var(--stats-card-width));
+  gap: var(--space-5);
 }
 
 .stat-media-card,
 .stat-card {
   position: relative;
   display: grid;
-  min-height: 20rem;
+  width: var(--stats-card-width);
+  height: var(--stats-card-height);
+  min-height: unset;
   background-color: var(--color-stats-card);
   border: 1px solid var(--color-stats-border);
   transition: border-color var(--dur-normal) ease;
@@ -41,8 +52,8 @@
 
 .stat-media-card__image {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: var(--stats-card-width);
+  height: var(--stats-card-height);
   object-fit: cover;
 }
 
@@ -55,7 +66,6 @@
 .stat-number {
   display: inline-flex;
   align-items: flex-start;
-  gap: 0.08em;
   font-family: var(--font-body);
   font-size: clamp(4.5rem, 17vw, 6.25rem);
   font-weight: 300;
@@ -69,12 +79,13 @@
 }
 
 .stat-number__suffix {
+  margin-left: 0.08em;
   color: var(--color-primary);
 }
 
 .stat-label {
   font-family: var(--font-ui-mono);
-  font-size: clamp(0.88rem, 1vw, 1rem);
+  font-size: clamp(1.15rem, 1.25vw, 1.35rem);
   font-weight: 300;
   line-height: 1.4;
   letter-spacing: 0.04em;
@@ -87,13 +98,15 @@
   display: flex;
   align-items: center;
   align-self: end;
-  gap: 0.55rem;
+  gap: var(--space-3);
   width: 100%;
+  transition: transform var(--dur-normal) var(--ease-machado);
+  will-change: transform;
 }
 
 .stat-square {
-  width: 0.5rem;
-  height: 0.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
   border-radius: 2px;
   background-color: var(--color-primary);
   flex-shrink: 0;
@@ -120,6 +133,10 @@
   will-change: opacity, transform;
 }
 
+.stat-card:hover .stat-label-wrapper {
+  transform: translateX(var(--space-2));
+}
+
 @media (hover: hover) {
   /* Mobile/tablet — cards com borda visível recebem feedback */
   .stat-media-card:hover,
@@ -130,19 +147,24 @@
 
 @media (prefers-reduced-motion: reduce) {
   .stat-square,
+  .stat-label,
+  .stat-label-wrapper,
+  .stat-card:hover .stat-label-wrapper,
   .stat-card:hover .stat-square {
     transition: none;
+    transform: none;
   }
 }
 
 @media (min-width: 768px) {
   .social-proof-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, var(--stats-card-width));
   }
 
   .stat-media-card,
   .stat-card {
-    min-height: 24rem;
+    height: var(--stats-card-height);
+    min-height: unset;
   }
 }
 
@@ -152,18 +174,19 @@
   }
 
   .stats-section .stats-container {
-    max-width: 1300px;
-    padding-inline: 50px;
+    max-width: none;
+    padding-inline: 0;
   }
 
   .social-proof-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, var(--stats-card-width));
+    gap: var(--space-5);
   }
 
   .stat-media-card,
   .stat-card {
-    height: 440px;
+    width: var(--stats-card-width);
+    height: var(--stats-card-height);
     min-height: unset;
     background-color: var(--color-stats-card);
     border: 1px solid var(--color-stats-border);

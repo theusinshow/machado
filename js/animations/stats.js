@@ -3,6 +3,8 @@ export function initStats() {
   if (!cards.length) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const formatStatValue = (value) => `${Math.round(value)}`;
+  const valueElements = document.querySelectorAll('[data-stats-card] .stat-number__value[data-count]');
 
   if (reducedMotion) {
     gsap.set(cards, { opacity: 1, clearProps: 'transform' });
@@ -10,8 +12,17 @@ export function initStats() {
       opacity: 1,
       clearProps: 'transform',
     });
+    valueElements.forEach((valueEl) => {
+      const target = parseFloat(valueEl.dataset.count);
+
+      valueEl.textContent = formatStatValue(target);
+    });
     return;
   }
+
+  valueElements.forEach((valueEl) => {
+    valueEl.textContent = formatStatValue(0);
+  });
 
   // Pré-define estado inicial dos labels antes dos ScrollTriggers dispararem
   gsap.set(document.querySelectorAll('[data-stats-card] .stat-label'), {
@@ -19,9 +30,30 @@ export function initStats() {
     y: 10,
   });
 
+  function animateValue(valueEl) {
+    if (valueEl.dataset.counted === 'true') return;
+
+    const target = parseFloat(valueEl.dataset.count);
+    const obj = { val: 0 };
+
+    valueEl.dataset.counted = 'true';
+    valueEl.textContent = formatStatValue(0);
+
+    gsap.to(obj, {
+      val: target,
+      duration: 1.8,
+      ease: 'power2.out',
+      onUpdate() {
+        valueEl.textContent = formatStatValue(obj.val);
+      },
+      onComplete() {
+        valueEl.textContent = formatStatValue(target);
+      },
+    });
+  }
+
   cards.forEach((card) => {
     const delay   = parseFloat(card.dataset.delay) || 0;
-    const valueEl = card.querySelector('.stat-number__value');
     const labelEl = card.querySelector('.stat-label');
 
     const tl = gsap.timeline({
@@ -49,21 +81,27 @@ export function initStats() {
         0.28
       );
     }
-
-    // 3 — Números contam a partir de zero
-    if (valueEl && valueEl.dataset.count !== undefined) {
-      const target = parseFloat(valueEl.dataset.count);
-      const suffix = valueEl.dataset.countSuffix || '';
-      const obj    = { val: 0 };
-
-      tl.to(obj, {
-        val: target,
-        duration: 1.6,
-        ease: 'power2.out',
-        onUpdate() {
-          valueEl.textContent = Math.round(obj.val) + suffix;
-        },
-      }, 0.45);
-    }
   });
+
+  // Contagem separada da timeline visual: a seção dispara todos os números juntos.
+  const statsSection = document.querySelector('.stats-section');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        valueElements.forEach(animateValue);
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.18,
+      rootMargin: '0px 0px -15% 0px',
+    });
+
+    observer.observe(statsSection || cards[0]);
+    return;
+  }
+
+  valueElements.forEach(animateValue);
 }

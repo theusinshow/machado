@@ -260,6 +260,7 @@
   overflow: visible;
   border: 0;
   background-color: transparent;
+  transition: transform 220ms var(--ease-machado);
 }
 
 .btn--split::before {
@@ -272,7 +273,8 @@
   transition:
     background-color var(--dur-normal) ease,
     color var(--dur-normal) ease,
-    opacity var(--dur-normal) ease;
+    opacity var(--dur-normal) ease,
+    transform 220ms var(--ease-machado);
 }
 
 .btn--split .btn__label {
@@ -312,6 +314,11 @@
   background-color: var(--color-primary);
   color: var(--color-white);
   opacity: 0.92;
+  transform: translateX(0.12rem);
+}
+
+.hero-ctas .btn--split:hover {
+  transform: translateY(-0.12rem);
 }
 
 /* Ícone interno */

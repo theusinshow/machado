@@ -196,6 +196,8 @@
             class="hero-img"
             width="800"
             height="600"
+            loading="eager"
+            decoding="async"
             fetchpriority="high"
           />
           <div class="hero-media__glow" aria-hidden="true"></div>
@@ -381,10 +383,30 @@
         <div class="produto-slide" data-slide="0">
           <div class="produto-slide__img-col">
             <div class="produto-slide__img-wrap">
-              <img class="produto-slide__img"
-                   src="./assets/images/produtos/leve/linhaleve-pequena.jpg"
+              <div class="produto-gallery" data-product-gallery>
+                <figure class="produto-gallery__item is-active">
+                  <img class="produto-slide__img produto-gallery__media"
+                   src="./assets/images/produtos/leve/linhaleve-1.jpg"
                    alt="Linha Leve — Plataforma Machado"
                    loading="lazy" />
+                </figure>
+                <figure class="produto-gallery__item">
+                  <img class="produto-slide__img produto-gallery__media"
+                       src="./assets/images/produtos/leve/linhaleve-2.jpg.jpeg"
+                       alt="Detalhe da plataforma Linha Leve"
+                       loading="lazy" />
+                </figure>
+                <figure class="produto-gallery__item">
+                  <img class="produto-slide__img produto-gallery__media"
+                       src="./assets/images/produtos/leve/linhaleve-3.jpg.jpeg"
+                       alt="Plataforma Linha Leve em acabamento"
+                       loading="lazy" />
+                </figure>
+                <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Leve">
+                  <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior">&larr;</button>
+                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Proxima imagem">&rarr;</button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="produto-slide__text-col">
@@ -419,10 +441,34 @@
           </div>
           <div class="produto-slide__img-col">
             <div class="produto-slide__img-wrap">
-              <img class="produto-slide__img"
-                   src="./assets/images/produtos/media/linhamedia-pequena.jpg"
+              <div class="produto-gallery" data-product-gallery>
+                <figure class="produto-gallery__item is-active">
+                  <img class="produto-slide__img produto-gallery__media"
+                       src="./assets/images/produtos/media/linhamedia-1.jpg"
                    alt="Linha Média — Plataforma Machado"
                    loading="lazy" />
+                </figure>
+                <figure class="produto-gallery__item">
+                  <img class="produto-slide__img produto-gallery__media"
+                       src="./assets/images/produtos/media/linhamedia-2.jpg.jpeg"
+                       alt="Detalhe da plataforma Linha Media"
+                       loading="lazy" />
+                </figure>
+                <figure class="produto-gallery__item">
+                  <video class="produto-slide__img produto-gallery__media"
+                         muted
+                         playsinline
+                         loop
+                         preload="metadata"
+                         aria-label="Video da plataforma Linha Media">
+                    <source src="./assets/images/produtos/media/linhamedia-3.jpg.mp4" type="video/mp4" />
+                  </video>
+                </figure>
+                <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Media">
+                  <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior">&larr;</button>
+                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Proxima imagem">&rarr;</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -431,10 +477,36 @@
         <div class="produto-slide produto-slide--immersive" data-slide="2">
           <div class="produto-slide__img-col">
             <div class="produto-slide__img-wrap">
-              <img class="produto-slide__img"
-                   src="./assets/images/produtos/pesada/linhapesada-pequena.jpg"
+              <div class="produto-gallery" data-product-gallery>
+                <figure class="produto-gallery__item is-active">
+                  <img class="produto-slide__img produto-gallery__media"
+                   src="./assets/images/produtos/pesada/linhapesada-1.jpg"
                    alt="Linha Pesada — Plataforma Machado"
                    loading="lazy" />
+                </figure>
+                <figure class="produto-gallery__item">
+                  <img class="produto-slide__img produto-gallery__media"
+                       src="./assets/images/produtos/pesada/linhapesada-2.jpg.jpeg"
+                       alt="Detalhe da plataforma Linha Pesada"
+                       loading="lazy" />
+                </figure>
+                <figure class="produto-gallery__item">
+                  <img class="produto-slide__img produto-gallery__media"
+                       src="./assets/images/produtos/pesada/linhapesada-3.jpg.jpeg"
+                       alt="Plataforma Linha Pesada em acabamento"
+                       loading="lazy" />
+                </figure>
+                <figure class="produto-gallery__item">
+                  <img class="produto-slide__img produto-gallery__media"
+                       src="./assets/images/produtos/pesada/linhapesada-4.jpg.jpeg"
+                       alt="Plataforma Linha Pesada em operacao"
+                       loading="lazy" />
+                </figure>
+                <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Pesada">
+                  <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior">&larr;</button>
+                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Proxima imagem">&rarr;</button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="produto-slide__text-col">

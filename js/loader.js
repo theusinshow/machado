@@ -6,11 +6,18 @@ export function initLoader() {
     const squares = loader.querySelectorAll('.loader__square');
     const label = loader.querySelector('.loader__label');
     const hasSquares = Boolean(squares.length);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const safetyTimer = setTimeout(() => {
-      loader.style.display = 'none';
+    function finish() {
+      loader.remove();
       resolve();
-    }, 5000);
+    }
+
+    if (reducedMotion) {
+      gsap.set(loader, { autoAlpha: 0, pointerEvents: 'none' });
+      finish();
+      return;
+    }
 
     if (hasSquares) {
       gsap.set(squares, {
@@ -28,11 +35,7 @@ export function initLoader() {
 
     const timeline = gsap.timeline({
       defaults: { ease: 'machado' },
-      onComplete() {
-        loader.style.display = 'none';
-        clearTimeout(safetyTimer);
-        resolve();
-      },
+      onComplete: finish,
     });
 
     if (hasSquares) {
@@ -64,10 +67,11 @@ export function initLoader() {
     }
 
     timeline.to(loader, {
-      yPercent: -100,
-      duration: 0.9,
+      clipPath: 'polygon(115% 0, 100% 0, -15% 100%, 0 100%)',
+      duration: 0.72,
       delay: 0.75,
-      ease: 'machado',
+      ease: 'wipe',
+      pointerEvents: 'none',
     });
   });
 }

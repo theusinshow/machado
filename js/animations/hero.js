@@ -8,10 +8,9 @@ export function initHero() {
   if (!hero) return;
 
   const revealItems = Array.from(hero.querySelectorAll('[data-hero-reveal]'));
-  if (!revealItems.length) return;
-
   const heroCtas = document.querySelector('.hero-ctas');
   const heroMedia = document.querySelector('.hero-media');
+  const heroStage = document.querySelector('.hero-stage');
   const heroScroll = document.querySelector('.hero-scroll');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -27,29 +26,52 @@ export function initHero() {
     return;
   }
 
-  const tl = gsap.timeline({ defaults: { ease: 'machado' } });
+  const revealBlocks = revealItems.map((item) => {
+    const block = document.createElement('span');
+    block.className = 'hero-reveal__block';
+    block.setAttribute('aria-hidden', 'true');
+    item.appendChild(block);
+    return block;
+  });
 
-  tl.to(revealItems, {
-    opacity: 1,
-    y: 0,
-    clipPath: 'inset(0% 0% 0% 0%)',
-    duration: 1.05,
-    stagger: 0.12,
-  }, 0);
+  const tl = gsap.timeline({
+    defaults: { ease: 'machado' },
+    onComplete() {
+      hero.classList.add('is-ready');
+      revealBlocks.forEach((block) => block.remove());
+    },
+  });
+
+  if (revealItems.length) {
+    tl.to(revealBlocks, {
+      xPercent: 210,
+      duration: 0.72,
+      stagger: 0.1,
+      ease: 'wipe',
+    }, 0);
+
+    tl.to(revealItems, {
+      opacity: 1,
+      y: 0,
+      clipPath: 'inset(0% 0% 0% 0%)',
+      duration: 0.84,
+      stagger: 0.1,
+    }, 0.12);
+  }
 
   if (heroCtas) {
     tl.fromTo(heroCtas,
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.72 },
-      '-=0.42'
+      { opacity: 1, y: 0, duration: 0.62 },
+      0.58
     );
   }
 
   if (heroMedia) {
     tl.fromTo(heroMedia,
-      { opacity: 0, scale: 1.06, x: 40 },
-      { opacity: 1, scale: 1, x: 0, duration: 1.2 },
-      0.18
+      { opacity: 0, scale: 1.04 },
+      { opacity: 1, scale: 1, duration: 1.2, ease: 'machado' },
+      0.16
     );
   }
 
@@ -68,5 +90,24 @@ export function initHero() {
       repeat: -1,
       yoyo: true,
     });
+  }
+
+  if (heroStage && window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 768px)').matches) {
+    let frame = null;
+    let x = 50;
+    let y = 50;
+
+    function renderSpotlight() {
+      frame = null;
+      heroStage.style.setProperty('--mouse-x', `${x}%`);
+      heroStage.style.setProperty('--mouse-y', `${y}%`);
+    }
+
+    heroStage.addEventListener('pointermove', (event) => {
+      const rect = heroStage.getBoundingClientRect();
+      x = ((event.clientX - rect.left) / rect.width) * 100;
+      y = ((event.clientY - rect.top) / rect.height) * 100;
+      if (!frame) frame = requestAnimationFrame(renderSpotlight);
+    }, { passive: true });
   }
 }

@@ -6,6 +6,77 @@
 
 ---
 
+## [2026-05-05] CONTENT — Produtos: mídias numeradas por linha
+
+**Agente:** Codex
+**Sessão:** Classificação das imagens da galeria de produtos
+
+### Alterado
+- `index.html` — galerias de Linha Leve, Média e Pesada agora usam arquivos numerados por ordem, removendo referências antigas de WhatsApp e imagens pequenas
+
+---
+
+## [2026-05-05] FIX — Produtos: galeria sem corte
+
+**Agente:** Codex
+**Sessão:** Ajuste de enquadramento das mídias de produtos
+
+### Alterado
+- `css/components/produtos.css` — galeria recebeu respiro interno, itens passaram a respeitar inset responsivo e mídias usam limites de largura/altura para preservar o enquadramento
+- `js/animations/produtos-tabs.js` — removido scale ativo da galeria para evitar corte visual em imagens e vídeos
+
+---
+
+## [2026-05-05] STYLE — Loader antigo com wipe diagonal
+
+**Agente:** Codex
+**Sessão:** Ajuste final da transicao do loader
+
+### Alterado
+- `css/animations.css` — loader antigo manteve visual original e recebeu `clip-path` inicial para wipe
+- `js/loader.js` — saida vertical substituida por wipe diagonal com easing `wipe`, preservando quadrados e label antigos
+
+---
+
+## [2026-05-05] FIX — Loader visual antigo restaurado
+
+**Agente:** Codex
+**Sessão:** Reversao parcial do loader mantendo hero premium
+
+### Alterado
+- `css/animations.css` — loader voltou ao visual antigo com quadrados maiores e label visivel
+- `js/loader.js` — animacao antiga dos quadrados e saida vertical restauradas, mantendo remocao do DOM no final e suporte a reduced motion
+
+---
+
+## [2026-05-05] FEAT — Produtos: galeria interna automatica
+
+**Agente:** Codex
+**Sessão:** Galeria com imagens, video e mini setas nos produtos
+
+### Alterado
+- `index.html` — areas de imagem de Linha Leve, Media e Pesada convertidas para galerias internas com ate 4 midias, incluindo video na Linha Media e mini setas por galeria
+- `css/components/produtos.css` — adicionados estilos de `.produto-gallery`, itens empilhados, transicoes de fade/scale e mini controles responsivos
+- `js/animations/produtos-tabs.js` — adicionada logica de estado por galeria, autoplay via `gsap.delayedCall`, reset ao trocar produto, mini setas internas e pausa/play de videos apenas na midia ativa
+
+---
+
+## [2026-05-05] FEAT — Hero premium reveal
+
+**Agente:** Codex
+**Sessão:** Loader curto, wipe diagonal e entrada editorial da hero
+
+### Alterado
+- `index.html` — imagem principal da hero marcada como `loading="eager"` e `decoding="async"` para priorizar LCP sem shift
+- `css/animations.css` — loader convertido para tela fullscreen minimalista com fundo da marca, mini mark central e suporte a wipe diagonal por `clip-path`
+- `css/components/hero.css` — adicionados masked text reveal, blocos de revelacao, fade/scale da imagem, textura discreta, spotlight via CSS variables e microinteracoes nos links da hero
+- `css/layout.css` — hover dos botoes split ganhou deslocamento sutil e movimento horizontal no bloco de `+`
+- `js/gsap-setup.js` — criado easing `wipe` com curva `0.76, 0, 0.24, 1`
+- `js/loader.js` — loader refeito para durar aproximadamente 1.1s, remover o DOM ao concluir e respeitar `prefers-reduced-motion` sem `setTimeout`
+- `js/animations/hero.js` — entrada da hero reescrita com block reveal, mascara por linha, imagem com fade/scale, cleanup de `will-change` e spotlight controlado por `--mouse-x`/`--mouse-y` em desktop
+
+---
+
 ## [2026-05-05] FIX — Produtos: heading acompanha texto
 
 **Agente:** Codex

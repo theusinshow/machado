@@ -6,6 +6,95 @@
 
 ---
 
+## [2026-05-05] FIX — Produtos: espaçamento, tipografia e scroll-driven pin
+
+**Agente:** Claude Code
+**Sessão:** Ajuste de layout, tipografia e comportamento scroll na seção Produtos
+
+### Alterado
+- `index.html` — kicker trocado de `.eyebrow` para `.produtos-kicker` (evita `::before '— '` do eyebrow)
+- `css/components/produtos.css` — espaçamento revisado (trigger padding-block space-6, body gap space-5, body padding-bottom space-10); tipografia padronizada (títulos em --font-body 32px igual ao diferenciais, nums em --font-ui-mono, specs em --font-body text-base); `.produtos-kicker` adicionado igual ao diferenciais-kicker; `.produto-item__name` sem hover ativo (só scroll/click)
+- `js/animations/produtos-tabs.js` — adicionado GSAP ScrollTrigger pin no `.produtos-split` (espelho exato do diferenciais); animação de entrada do header e itens; scroll avança os produtos automaticamente
+
+---
+
+## [2026-05-05] FEAT — Seção Produtos repaginada: layout split-screen interativo
+
+**Agente:** Claude Code
+**Sessão:** Redesign Produtos — split-screen com imagem sticky e lista expansível
+
+### Alterado
+- `index.html` — seção #produtos completamente reescrita: grid de cards removido, substituído por split-screen (lista esquerda + imagem sticky direita); ordem Leve → Média → Pesada; textos reais do cliente
+- `css/components/produtos.css` — CSS reescrito do zero para o novo layout
+- `js/animations/produtos-tabs.js` — JS reescrito: hover (desktop) / click ativa item, expande specs e troca imagem com transição suave
+
+---
+
+## [2026-05-05] FIX — Proporção corrigida: steps 60% / imagem 40%
+
+**Agente:** Claude Code
+**Sessão:** Correção da proporção invertida na seção Diferenciais
+
+### Alterado
+- `css/components/diferenciais.css` — `grid-template-columns` corrigido de `1fr / 1.5fr` para `1.5fr / 1fr`; imagem ficava em 60% causando altura absurda com aspect-ratio 4:5; agora steps=60%, imagem=40%, resultado visual aprovado
+
+---
+
+## [2026-05-05] STYLE — Tipografia e container de imagem Diferenciais ajustados à referência
+
+**Agente:** Claude Code
+**Sessão:** Font sizes fixos + aspect-ratio retrato na imagem
+
+### Alterado
+- `css/components/diferenciais.css`:
+  - `.diferenciais-title` → `font-size: 64px` (era clamp)
+  - `.diferencial-step__title` → `font-size: 32px`
+  - `.diferencial-step__text` → `font-size: 16px`
+  - Desktop: `.diferenciais-visual__sticky` → `aspect-ratio: 4/5` substituindo `flex: 1 / min-height` — proporção retrato igual à referência (526×658px)
+  - Desktop: `.diferenciais-layout` → `align-items: start` (imagem tem altura própria via aspect-ratio, não precisa de stretch)
+
+---
+
+## [2026-05-05] STYLE — Proporção de colunas Diferenciais ajustada para referência good-fella
+
+**Agente:** Claude Code
+**Sessão:** Alinhamento da seção Diferenciais à referência (grid overlay good-fella.com)
+
+### Alterado
+- `css/components/diferenciais.css` — grid-template-columns alterado para `1fr / 1.5fr` (40%/60%), espelhando o split de 5/7 colunas da referência; `align-self: start` no timeline para a imagem preencher exatamente a altura dos steps sem ultrapassar
+
+---
+
+## [2026-05-05] STYLE — Redução proporcional da seção Diferenciais
+
+**Agente:** Claude Code
+**Sessão:** Redução de escala da seção Diferenciais mantendo proporções
+
+### Alterado
+- `css/components/diferenciais.css` — redução uniforme ~25-30% em todos os tamanhos:
+  - Título: `clamp(2.4rem→1.75rem, 4→3vw, 4rem→2.75rem)`
+  - Margin header: `--space-12 → --space-8`; gap header: `--space-4 → --space-3`
+  - Gap entre steps (mobile): `--space-8 → --space-6`; (768px): `--space-9 → --space-6`; (1024px): `clamp(space-7,3vh,space-9) → clamp(space-5,2vh,space-6)`
+  - Título do step: `32px → 22px`; texto do step: `text-base → text-sm`
+  - Imagem mobile: `min-height clamp(28rem,78vw,38rem) → clamp(18rem,55vw,26rem)`
+  - Imagem desktop: `min-height clamp(32rem,60vh,44rem) → clamp(22rem,45vh,32rem)`
+  - Padding da seção desktop: `clamp(space-20,8vw,space-32) → clamp(space-12,5vw,space-20)`
+  - Gap do layout desktop: `clamp(space-12,6vw,space-24) → clamp(space-8,4vw,space-16)`
+  - Padding-left timeline: `--space-10 → --space-8`
+
+---
+
+## [2026-05-05] FIX — Background da página e layout da seção Diferenciais
+
+**Agente:** Claude Code
+**Sessão:** Correção background #EEEEEE e quebra de layout diferenciais no fim do scroll
+
+### Alterado
+- `css/typography.css` — `body { background-color }` alterado de `var(--color-bg)` (#1C2430) para `#EEEEEE`
+- `css/components/diferenciais.css` — removido `position: sticky` e `top:` de `.diferenciais-visual__sticky` em desktop (conflitava com o `ScrollTrigger.pin()` do JS, causando quebra visual no último passo); substituído por `position: relative` + `.diferenciais-visual { display: flex; flex-direction: column }` e `.diferenciais-visual__sticky { flex: 1 }` para preenchimento correto da imagem
+
+---
+
 ## [2026-05-01] STYLE — Scroll virtual nos diferenciais sem alterar layout
 
 **Agente:** Codex

@@ -11,14 +11,14 @@
 
 .diferenciais-header {
   display: grid;
-  gap: var(--space-4);
-  margin-bottom: var(--space-12);
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
 }
 
 .diferenciais-title {
   margin: 0;
   font-family: var(--font-body);
-  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-size: 64px;
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0;
@@ -41,7 +41,7 @@
 .diferenciais-timeline {
   position: relative;
   display: grid;
-  gap: var(--space-8);
+  gap: var(--space-6);
 }
 
 .diferenciais-indicator {
@@ -114,21 +114,21 @@
   max-width: 36rem;
   margin: 0;
   color: var(--color-bg-light);
-  font-size: var(--text-base);
+  font-size: 16px;
   line-height: 1.45;
 }
 
 .diferenciais-visual {
-  min-height: 24rem;
+  min-height: 16rem;
 }
 
 .diferenciais-visual__sticky {
   position: relative;
-  min-height: clamp(28rem, 78vw, 38rem);
+  min-height: clamp(18rem, 55vw, 26rem);
   overflow: hidden;
   background-color: var(--color-stats-card);
   border: 1px solid var(--color-stats-border);
-  border-radius: var(--radius-md);
+  border-radius: 0;
 }
 
 .diferenciais-visual__image {
@@ -160,34 +160,35 @@
   }
 
   .diferenciais-timeline {
-    gap: var(--space-9, var(--space-8));
+    gap: var(--space-6);
   }
 }
 
 @media (min-width: 1024px) {
   .diferenciais {
-    padding-block: clamp(var(--space-20), 8vw, var(--space-32));
+    padding-block: clamp(var(--space-12), 5vw, var(--space-20));
   }
 
   .diferenciais-layout {
-    grid-template-columns: minmax(0, 0.84fr) minmax(28rem, 0.96fr);
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
     align-items: start;
-    gap: clamp(var(--space-12), 6vw, var(--space-24));
+    gap: clamp(var(--space-8), 4vw, var(--space-14));
   }
 
   .diferenciais-timeline {
-    gap: clamp(var(--space-7), 3vh, var(--space-9));
-    padding-left: var(--space-10);
+    gap: clamp(var(--space-5), 2vh, var(--space-6));
+    padding-left: var(--space-8);
   }
 
+  /* Imagem retrato 4:5 — steps ficam em 60%, imagem em 40% (igual à referência) */
   .diferenciais-visual {
-    min-height: calc(100svh - var(--navbar-height));
+    width: 100%;
   }
 
   .diferenciais-visual__sticky {
-    position: sticky;
-    top: calc(var(--navbar-height) + var(--space-8));
-    min-height: clamp(34rem, 68vh, 42rem);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
   }
 }
 

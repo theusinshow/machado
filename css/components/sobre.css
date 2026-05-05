@@ -82,7 +82,7 @@
 .sobre-badge__year {
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
-  font-weight: 900;
+  font-weight: var(--weight-medium);
   line-height: 1;
 }
 

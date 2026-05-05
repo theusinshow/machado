@@ -1,118 +1,145 @@
 /**
- * Produtos — Split Screen com scroll-driven pin
- * Espelha o padrão do diferenciais: GSAP ScrollTrigger pina o layout
- * e avança os produtos conforme o progresso do scroll.
+ * Produtos — vitrine horizontal com ScrollTrigger
  */
 
 export function initProdutosTabs() {
   const section = document.querySelector('#produtos');
   if (!section) return;
 
-  const items = Array.from(section.querySelectorAll('[data-produto]'));
-  const imgs  = Array.from(section.querySelectorAll('[data-produto-img]'));
-  if (!items.length) return;
+  const track = section.querySelector('.produtos-track');
+  const panels = gsap.utils.toArray(section.querySelectorAll('.produto-slide'));
+  const progressItems = gsap.utils.toArray(section.querySelectorAll('[data-go]'));
+  const prevButton = section.querySelector('[data-produtos-prev]');
+  const nextButton = section.querySelector('[data-produtos-next]');
+  if (!track || !panels.length) return;
 
+  const mm = gsap.matchMedia();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const prefersDesktop = window.matchMedia('(min-width: 1024px)');
   let activeIndex = -1;
-  let pinTrigger = null;
+
+  function animatePanel(panel) {
+    const image = panel.querySelector('.produto-slide__img');
+    const textItems = [
+      panel.querySelector('.produto-slide__kicker'),
+      panel.querySelector('.produto-slide__title'),
+      ...panel.querySelectorAll('.produto-slide__specs p'),
+      panel.querySelector('.produto-slide__extra'),
+      panel.querySelector('.produto-slide__cta'),
+    ].filter(Boolean);
+
+    if (!textItems.length) return;
+    if (reducedMotion) {
+      gsap.set(textItems, { autoAlpha: 1, x: 0, y: 0 });
+      if (image) gsap.set(image, { autoAlpha: 1, y: 0 });
+      return;
+    }
+
+    const tl = gsap.timeline({ defaults: { ease: 'machado', overwrite: true } });
+
+    if (image) {
+      tl.fromTo(image,
+        { autoAlpha: 0.78, y: 18, scale: 0.985 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 },
+        0
+      );
+    }
+
+    tl.fromTo(textItems,
+      { autoAlpha: 0, x: 28 },
+      { autoAlpha: 1, x: 0, duration: 0.7, stagger: 0.1 },
+      0.08
+    );
+  }
 
   function setActive(index) {
     if (index === activeIndex) return;
     activeIndex = index;
-    items.forEach((item, i) => item.classList.toggle('is-active', i === index));
-    imgs.forEach((img,  i) => img.classList.toggle('is-active',  i === index));
-  }
 
-  // Click e teclado sempre funcionam
-  items.forEach((item, i) => {
-    item.addEventListener('click', () => setActive(i));
-    item.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        setActive(i);
-      }
-    });
-  });
+    panels.forEach((panel, i) => panel.classList.toggle('is-active', i === index));
+    progressItems.forEach((item, i) => item.classList.toggle('is-active', i === index));
 
-  if (reducedMotion) {
-    setActive(0);
-    return;
-  }
+    if (prevButton) prevButton.disabled = index === 0;
+    if (nextButton) nextButton.disabled = index === panels.length - 1;
 
-  // Animação de entrada do header
-  const header = section.querySelector('.produtos-list__header');
-  if (header) {
-    gsap.fromTo(header,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1, y: 0,
-        duration: 0.7,
+    const images = panels.map((panel) => panel.querySelector('.produto-slide__img')).filter(Boolean);
+
+    if (reducedMotion) {
+      gsap.set(images, { scale: 1 });
+    } else {
+      gsap.to(images, {
+        scale: (i) => (i === index ? 1.025 : 1),
+        duration: 1,
         ease: 'machado',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 78%',
-          once: true,
-        },
-      }
-    );
-  }
-
-  // Animação de entrada dos itens
-  gsap.fromTo(items,
-    { opacity: 0, y: 24 },
-    {
-      opacity: (i) => (i === 0 ? 1 : 0.42),
-      y: 0,
-      duration: 0.65,
-      ease: 'machado',
-      stagger: 0.08,
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 68%',
-        once: true,
-      },
-      onComplete() {
-        gsap.set(items, { clearProps: 'opacity,transform' });
-        setActive(0);
-      },
-    }
-  );
-
-  function initPin() {
-    if (!prefersDesktop.matches || typeof ScrollTrigger === 'undefined') return;
-
-    if (pinTrigger) {
-      pinTrigger.kill();
-      pinTrigger = null;
+        overwrite: true,
+      });
     }
 
-    pinTrigger = ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: () => `+=${window.innerHeight * (items.length - 1) * 0.85}`,
-      pin: section.querySelector('.produtos-split'),
-      pinSpacing: true,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      markers: false,
-      onUpdate(self) {
-        const raw = Math.round(self.progress * (items.length - 1));
-        setActive(Math.min(items.length - 1, Math.max(0, raw)));
-      },
-    });
+    animatePanel(panels[index]);
   }
 
-  setActive(0);
-  initPin();
+  mm.add('(min-width: 1024px)', () => {
+    const handlers = [];
+    let targetIndex = 0;
 
-  prefersDesktop.addEventListener('change', () => {
-    if (pinTrigger) { pinTrigger.kill(); pinTrigger = null; }
-    initPin();
-    setActive(0);
+    function goToPanel(index, instant = false) {
+      targetIndex = Math.min(panels.length - 1, Math.max(0, index));
+      setActive(targetIndex);
+
+      gsap.to(track, {
+        x: -window.innerWidth * targetIndex,
+        duration: instant || reducedMotion ? 0 : 0.85,
+        ease: 'machado',
+        overwrite: true,
+      });
+    }
+
+    function addControl(el, callback) {
+      if (!el) return;
+      el.addEventListener('click', callback);
+      handlers.push([el, callback]);
+    }
+
+    progressItems.forEach((item, i) => addControl(item, () => goToPanel(i)));
+    addControl(prevButton, () => goToPanel(targetIndex - 1));
+    addControl(nextButton, () => goToPanel(targetIndex + 1));
+
+    const onResize = () => goToPanel(targetIndex, true);
+    window.addEventListener('resize', onResize, { passive: true });
+
+    goToPanel(0, true);
+
+    return () => {
+      handlers.forEach(([item, onClick]) => item.removeEventListener('click', onClick));
+      window.removeEventListener('resize', onResize);
+      gsap.set(track, { clearProps: 'transform' });
+    };
   });
 
-  window.addEventListener('resize', () => {
-    if (pinTrigger) pinTrigger.refresh();
-  }, { passive: true });
+  mm.add('(max-width: 1023px)', () => {
+    if (reducedMotion) {
+      gsap.set(section.querySelectorAll('.produto-slide__text-inner > *'), { autoAlpha: 1, y: 0 });
+      setActive(0);
+      return;
+    }
+
+    panels.forEach((panel, i) => {
+      gsap.fromTo(panel.querySelectorAll('.produto-slide__text-inner > *'),
+        { autoAlpha: 0, y: 24 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.65,
+          ease: 'machado',
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: panel,
+            start: 'top 75%',
+            onEnter: () => setActive(i),
+          },
+        }
+      );
+    });
+
+    setActive(0);
+  });
 }

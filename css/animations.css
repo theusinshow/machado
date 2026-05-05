@@ -75,7 +75,7 @@
 .loader__label {
   font-family: var(--font-body);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;

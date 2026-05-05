@@ -1,6 +1,5 @@
 import { initLenis }         from './lenis.js';
 import { initLoader }        from './loader.js';
-import { initCursor }        from './animations/cursor.js';
 import { initHero }          from './animations/hero.js';
 import { initMarquee }       from './animations/marquee.js';
 import { initScrollTriggers } from './animations/scroll-triggers.js';
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initStats();
 
   initLoader().then(() => {
-    initCursor();
     initHero();
     initMarquee();
     initDiferenciais();

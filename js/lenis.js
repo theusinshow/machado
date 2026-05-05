@@ -13,5 +13,7 @@ export function initLenis() {
 
   gsap.ticker.lagSmoothing(0);
 
+  window.lenis = lenis;
+
   return lenis;
 }

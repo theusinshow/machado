@@ -39,7 +39,7 @@
 .financiamento-item__label {
   font-family: var(--font-heading);
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: var(--weight-medium);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-text-dark);

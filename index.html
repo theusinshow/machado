@@ -22,7 +22,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=JetBrains+Mono:wght@100;200;300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <!-- CSS Base -->
   <link rel="stylesheet" href="./css/reset.css" />
@@ -59,10 +59,6 @@
       <span class="loader__label">Loading</span>
     </div>
   </div>
-
-  <!-- ── Cursor Customizado ── -->
-  <div id="cursor" aria-hidden="true"></div>
-  <div id="cursor-follower" aria-hidden="true"></div>
 
   <!-- ── WhatsApp Flutuante ── -->
   <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20de%20plataforma."
@@ -342,7 +338,12 @@
        05 — PRODUTOS
   ══════════════════════════════════════ -->
   <section id="produtos" class="produtos" aria-labelledby="produtos-heading">
-    <h2 id="produtos-heading" class="sr-only">Nossas Linhas</h2>
+    <div class="produtos-header">
+      <span class="produtos-header__label mono">Categorias</span>
+      <h2 id="produtos-heading" class="produtos-header__title">
+        Encontre a plataforma certa para sua operação
+      </h2>
+    </div>
 
     <!-- Indicador de progresso -->
     <nav class="produtos-progress" aria-label="Navegação de produtos">
@@ -359,6 +360,11 @@
         <span class="produtos-progress__bar" aria-hidden="true"></span>
       </button>
     </nav>
+
+    <div class="produtos-arrows" aria-label="Controles de produtos">
+      <button class="produtos-arrow" type="button" data-produtos-prev aria-label="Produto anterior">&larr;</button>
+      <button class="produtos-arrow" type="button" data-produtos-next aria-label="Proximo produto">&rarr;</button>
+    </div>
 
     <!-- Track horizontal -->
     <div class="produtos-track-wrap">
@@ -378,13 +384,13 @@
             <div class="produto-slide__text-inner">
               <span class="produto-slide__kicker mono">// 01 — Catálogo</span>
               <h3 class="produto-slide__title">Linha<br>Leve</h3>
-              <ul class="produto-slide__specs">
-                <li>Até 9.500kg de capacidade</li>
-                <li>Caminhões 3/4</li>
-                <li>Até 9 metros de comprimento</li>
-              </ul>
+              <div class="produto-slide__specs">
+                <p>Até 9.500kg de capacidade</p>
+                <p>Caminhões 3/4</p>
+                <p>Até 9 metros de comprimento</p>
+              </div>
               <p class="produto-slide__extra">Adicionais: alongamento de chassi, rampas, asa delta, remonte, controles remotos sem fio.</p>
-              <a href="#contato" class="produto-slide__cta btn btn--primary">Solicitar Orçamento</a>
+              <a href="#contato" class="produto-slide__cta btn btn--primary">Ver mais</a>
             </div>
           </div>
         </div>
@@ -395,13 +401,13 @@
             <div class="produto-slide__text-inner">
               <span class="produto-slide__kicker mono">// 02 — Catálogo</span>
               <h3 class="produto-slide__title">Linha<br>Média</h3>
-              <ul class="produto-slide__specs">
-                <li>Até 12.000kg de capacidade</li>
-                <li>Caminhões 3/4 e TOCO</li>
-                <li>Até 9 metros de comprimento</li>
-              </ul>
+              <div class="produto-slide__specs">
+                <p>Até 12.000kg de capacidade</p>
+                <p>Caminhões 3/4 e TOCO</p>
+                <p>Até 9 metros de comprimento</p>
+              </div>
               <p class="produto-slide__extra">Adicionais: alongamento de chassi, rampas, asa delta, remonte, controles remotos sem fio.</p>
-              <a href="#contato" class="produto-slide__cta btn btn--primary">Solicitar Orçamento</a>
+              <a href="#contato" class="produto-slide__cta btn btn--primary">Ver mais</a>
             </div>
           </div>
           <div class="produto-slide__img-col">
@@ -428,13 +434,13 @@
             <div class="produto-slide__text-inner">
               <span class="produto-slide__kicker mono">// 03 — Catálogo</span>
               <h3 class="produto-slide__title">Linha<br>Pesada</h3>
-              <ul class="produto-slide__specs">
-                <li>Até 17.000kg de capacidade</li>
-                <li>Caminhões TOCO e TRUCK</li>
-                <li>Até 11 metros de comprimento</li>
-              </ul>
+              <div class="produto-slide__specs">
+                <p>Até 17.000kg de capacidade</p>
+                <p>Caminhões TOCO e TRUCK</p>
+                <p>Até 11 metros de comprimento</p>
+              </div>
               <p class="produto-slide__extra">Adicionais: alongamento de chassi, sapatas traseiras, cocho, cambão, controles remotos sem fio.</p>
-              <a href="#contato" class="produto-slide__cta btn btn--primary">Solicitar Orçamento</a>
+              <a href="#contato" class="produto-slide__cta btn btn--primary">Ver mais</a>
             </div>
           </div>
         </div>

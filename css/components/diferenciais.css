@@ -4,7 +4,7 @@
 =========================== */
 
 .diferenciais {
-  background-color: var(--color-white);
+  background-color: var(--color-stats-bg);
   color: var(--color-stats-text);
   overflow: visible;
 }
@@ -19,7 +19,7 @@
   margin: 0;
   font-family: var(--font-body);
   font-size: 64px;
-  font-weight: 400;
+  font-weight: var(--weight-regular);
   line-height: 1;
   letter-spacing: 0;
   white-space: nowrap;
@@ -104,7 +104,7 @@
   margin: 0;
   font-family: var(--font-body);
   font-size: 32px;
-  font-weight: 400;
+  font-weight: var(--weight-regular);
   line-height: 1;
   letter-spacing: 0;
   color: var(--color-stats-text);

@@ -6,6 +6,236 @@
 
 ---
 
+## [2026-05-05] STYLE — Pesos tipograficos sistematizados
+
+**Agente:** Codex
+**Sessão:** Aplicacao do plano de weight inspirado na referencia
+
+### Alterado
+- `css/variables.css` — adicionados tokens `--weight-light`, `--weight-regular` e `--weight-medium`
+- `css/typography.css` — base de leitura ajustada para regular, hero da marca preservada em Machado e classes globais passaram a usar tokens de peso
+- `css/layout.css`, `css/animations.css` e componentes — pesos tipograficos migrados para tokens semanticos, com light em numeros grandes, regular em textos/titulos e medium em CTAs/labels/estados ativos
+
+---
+
+## [2026-05-05] FIX — Hero: fonte da marca preservada
+
+**Agente:** Codex
+**Sessão:** Restauracao da tipografia proprietaria no titulo da hero
+
+### Alterado
+- `css/variables.css` — `--font-display` voltou a priorizar a fonte `Machado` apenas para display
+- `css/typography.css` — `@font-face` da fonte proprietaria restaurado e `.hero-title` voltou para peso normal da marca
+
+---
+
+## [2026-05-05] STYLE — Tipografia global Aktiv Grotesk e Geist Mono
+
+**Agente:** Codex
+**Sessão:** Troca do sistema tipografico do site
+
+### Alterado
+- `index.html` — carregamento externo reduzido para `Geist Mono` nos pesos 400 e 500
+- `css/variables.css` — tokens globais de fonte migrados para `Aktiv Grotesk` em display/heading/body e `Geist Mono` em labels/numeros/microcopy
+- `css/typography.css` — declarados pesos locais da `Aktiv Grotesk` via `local()`, corpo em light, headlines em regular/light, fundos via variavel e letter-spacing zerado
+- `css/layout.css` e componentes tipograficos — pesos antigos `700/800/900` reduzidos para `500`, letter-spacing negativo removido e tamanhos baseados em `vw` substituidos por valores fixos em `rem`
+
+---
+
+## [2026-05-05] FIX — Produtos: deslocamento correto das setas
+
+**Agente:** Codex
+**Sessão:** Correcao do carrossel de Produtos
+
+### Alterado
+- `js/animations/produtos-tabs.js` — setas agora deslocam o track por largura de viewport (`100vw`) em vez de percentual da largura total, evitando salto para area branca; resize realinha o produto ativo
+
+---
+
+## [2026-05-05] FEAT — Produtos: navegacao por setas
+
+**Agente:** Codex
+**Sessão:** Troca do controle por scroll para controles direcionais
+
+### Alterado
+- `index.html` — adicionados botoes anterior/proximo na secao Produtos
+- `css/components/produtos.css` — criados estilos minimalistas para as setas, estados de hover/focus/disabled e wrapper com overflow controlado
+- `js/animations/produtos-tabs.js` — vitrine desktop deixou de depender do wheel/pin para trocar produtos; setas e indicadores agora animam o track diretamente com GSAP
+
+---
+
+## [2026-05-05] FIX — Produtos: scroll por gesto discreto
+
+**Agente:** Codex
+**Sessão:** Navegacao travada no centro do slide de Produtos
+
+### Alterado
+- `js/animations/produtos-tabs.js` — scroll horizontal encurtado e mais travado; cada gesto de wheel agora mira o proximo slide com animacao programatica mais rapida, mantendo o painel ativo centralizado e reduzindo estados intermediarios com conteudo cortado
+
+---
+
+## [2026-05-05] STYLE — Cursor customizado removido
+
+**Agente:** Codex
+**Sessão:** Remoção do efeito no cursor do mouse
+
+### Alterado
+- `index.html` — removidos os elementos `#cursor` e `#cursor-follower`
+- `js/main.js` — removida importação e chamada de `initCursor()`
+
+---
+
+## [2026-05-05] STYLE — Diferenciais: fundo claro padrão do site
+
+**Agente:** Codex
+**Sessão:** Alinhamento visual entre Diferenciais e Produtos
+
+### Alterado
+- `css/components/diferenciais.css` — background de `.diferenciais` alterado de `--color-white` para `--color-stats-bg`, mantendo o padrão claro `#EEEEEE` via variável do projeto
+
+---
+
+## [2026-05-05] FEAT — Produtos: square indicator animado no hover
+
+**Agente:** Codex
+**Sessão:** Refinamento interativo dos textos de Produtos
+
+### Alterado
+- `css/components/produtos.css` — square indicator do bloco de texto agora se move, reduz e rotaciona ao passar o mouse sobre título, specs, descrição ou CTA; textos ganham deslocamento e mudança de cor no hover, em padrão semelhante ao indicador da navbar
+
+---
+
+## [2026-05-05] FIX — Produtos: slide não volta após wheel
+
+**Agente:** Codex
+**Sessão:** Correção de navegação discreta da seção Produtos
+
+### Alterado
+- `js/animations/produtos-tabs.js` — removido `snap` do ScrollTrigger para evitar disputa com navegação por wheel; wheel agora usa `targetIndex` como fonte de verdade para impedir retorno ao slide anterior durante scroll suave
+- `css/components/produtos.css` — tipografia e contraste dos textos refinados com tokens/cores semânticas, largura de texto reduzida e estilos mobile ajustados para evitar cortes
+
+---
+
+## [2026-05-05] FIX — Produtos: scroll sem cortes visuais
+
+**Agente:** Codex
+**Sessão:** Refinamento do scroll horizontal de Produtos
+
+### Alterado
+- `css/components/produtos.css` — removido clipping interno da área de imagem para evitar cortes durante parallax/animação
+- `js/animations/produtos-tabs.js` — removido `clip-path` da entrada da imagem, parallax reduzido, distância de scroll ampliada e snap ajustado para reduzir estados intermediários com conteúdo parcialmente cortado
+
+---
+
+## [2026-05-05] FIX — Produtos: scroll menos sensível
+
+**Agente:** Codex
+**Sessão:** Ajuste de leitura no scroll horizontal de Produtos
+
+### Alterado
+- `js/animations/produtos-tabs.js` — distância vertical do pin horizontal aumentada em 55%, `scrub` suavizado para `1.25` e `snap` tornado mais paciente para dar mais tempo de leitura entre produtos
+
+---
+
+## [2026-05-05] FEAT — Produtos: square indicator e animações técnicas
+
+**Agente:** Codex
+**Sessão:** Camada de animação da seção Produtos
+
+### Alterado
+- `css/components/produtos.css` — adicionados square indicators no bloco de texto e na linha técnica da imagem; progress indicator ganhou quadrado ativo; estados ativos com rotação e transições alinhadas ao padrão visual das seções existentes
+- `js/animations/produtos-tabs.js` — entrada ativa dos produtos agora anima imagem com `clip-path`, texto com stagger lateral refinado, scale mais sutil e parallax leve via `containerAnimation` durante o scroll horizontal
+
+---
+
+## [2026-05-05] FIX — Scroll entre Diferenciais e Produtos
+
+**Agente:** Codex
+**Sessão:** Correção de conflito de pins ScrollTrigger
+
+### Alterado
+- `js/animations/diferenciais.js` — adicionado `refreshPriority` alto no pin da seção Diferenciais para garantir cálculo antes da seção Produtos
+- `js/animations/produtos-tabs.js` — animação horizontal passou a mover o `.produtos-track` inteiro em vez de cada slide; pin ativado apenas em desktop (`min-width: 1024px`); `end` calculado por altura real da viewport; `refreshPriority` baixo e refresh via `requestAnimationFrame` para evitar início antecipado do pin/snap
+- `css/components/produtos.css` — breakpoints alinhados ao JS (`1024px`) para evitar layout horizontal sem pin em tablets
+
+---
+
+## [2026-05-05] STYLE — Produtos: imagem grande à esquerda sem moldura
+
+**Agente:** Codex
+**Sessão:** Alinhamento da seção Produtos ao padrão Diferenciais
+
+### Alterado
+- `css/components/produtos.css` — removidos grid decorativo, moldura/container da imagem e estilos de quadro; imagem ampliada e fixada à esquerda em todos os slides; textos realinhados à direita com tipografia e espaçamento próximos da seção Diferenciais; fundo mantido no padrão claro do site
+
+---
+
+## [2026-05-05] STYLE — Produtos: fundo claro, imagens maiores e CTA Ver mais
+
+**Agente:** Codex
+**Sessão:** Ajuste final de composição da seção Produtos
+
+### Alterado
+- `index.html` — CTAs dos produtos alterados de "Solicitar Orçamento" para "Ver mais"
+- `css/components/produtos.css` — seção Produtos voltou para o fundo claro padrão `--color-stats-bg`; grid sutil adaptado ao tema claro; imagens ampliadas e centralizadas; textos reposicionados ao lado da imagem com cores escuras e melhor contraste
+
+---
+
+## [2026-05-05] STYLE — Produtos: layout editorial compacto com texto lateral
+
+**Agente:** Codex
+**Sessão:** Aproximação visual da referência de cards compactos
+
+### Alterado
+- `index.html` — adicionado header visível na seção Produtos com label e headline editorial
+- `css/components/produtos.css` — seção convertida para palco escuro minimalista com grid sutil, quadro compacto de imagem e bloco de texto lateral por produto
+- `js/animations/produtos-tabs.js` — texto dos produtos passa a surgir lateralmente (`x`) ao ativar cada slide, mantendo scroll horizontal com pin/scrub/snap
+
+---
+
+## [2026-05-05] STYLE — Produtos: vitrine horizontal compacta e minimalista
+
+**Agente:** Codex
+**Sessão:** Compactação visual da seção Produtos
+
+### Alterado
+- `css/components/produtos.css` — mantida a lógica horizontal com painéis 100vw, mas conteúdo reduzido para cards menores centralizados; imagens com área visual compacta, textos menores, espaçamento mais contido e progress indicator reposicionado
+
+---
+
+## [2026-05-05] STYLE — Produtos: backgrounds semânticos e tipografia refinada
+
+**Agente:** Codex
+**Sessão:** Refinamento visual da seção Produtos
+
+### Alterado
+- `css/components/produtos.css` — adicionadas variáveis semânticas locais por slide para fundo, superfície de imagem, área de texto e cores de cópia; tipografia revisada com `--font-heading`, tamanhos por tokens/breakpoints, specs mais legíveis e contraste ajustado para slides claros e escuro
+
+---
+
+## [2026-05-05] FIX — Produtos: escala das imagens e sobreposição de texto
+
+**Agente:** Codex
+**Sessão:** Ajuste visual da vitrine horizontal de produtos
+
+### Alterado
+- `css/components/produtos.css` — imagens contidas com `object-fit: contain`, área visual com padding, indicador movido para o topo e slide pesado alterado para split sem texto absoluto sobre a imagem
+- `js/animations/produtos-tabs.js` — escala ativa das imagens reduzida para um efeito mais sutil
+
+---
+
+## [2026-05-05] FEAT — Produtos: vitrine horizontal premium com ScrollTrigger
+
+**Agente:** Codex
+**Sessão:** Product showcase horizontal scroll-driven
+
+### Alterado
+- `index.html` — specs dos produtos convertidas de lista para linhas limpas, mantendo 3 informações curtas por slide
+- `css/components/produtos.css` — seção Produtos reescrita como vitrine horizontal pinned, com painéis 100vw/100svh, layouts alternados, terceiro slide imersivo, indicador de progresso e fallback mobile vertical
+- `js/animations/produtos-tabs.js` — módulo GSAP refeito com `xPercent`, `pin`, `scrub`, `snap`, highlight ativo, animação staggered de texto, escala sutil nas imagens e comportamento mobile/reduced-motion
+
+---
+
 ## [2026-05-05] FIX — Produtos: espaçamento, tipografia e scroll-driven pin
 
 **Agente:** Claude Code

@@ -166,6 +166,7 @@ export function initDiferenciais() {
       pin: section.querySelector('.diferenciais-layout'),
       pinSpacing: true,
       anticipatePin: 1,
+      refreshPriority: 20,
       invalidateOnRefresh: true,
       markers: false,
       onUpdate(self) {

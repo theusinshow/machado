@@ -66,11 +66,15 @@
   --color-stats-divider: rgba(28, 36, 48, 0.12);
 
   /* ── TIPOGRAFIA — Famílias ── */
-  --font-display:  'Machado', 'Arial Narrow', sans-serif;
-  --font-heading:  'Barlow Condensed', 'Arial Narrow', sans-serif;
-  --font-body:     'Barlow', 'Helvetica Neue', sans-serif;
-  --font-mono:     'DM Mono', 'Courier New', monospace;
-  --font-ui-mono:  'JetBrains Mono', 'DM Mono', 'Courier New', monospace;
+  --font-display:  'Machado', 'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading:  'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:     'Geist Mono', 'Courier New', monospace;
+  --font-ui-mono:  'Geist Mono', 'Courier New', monospace;
+
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
 
   /* ── TIPOGRAFIA — Escala ── */
   --text-xs:      0.75rem;
@@ -83,8 +87,8 @@
   --text-4xl:     2.25rem;
   --text-5xl:     3rem;
   --text-6xl:     3.75rem;
-  --text-hero:    clamp(3.5rem, 8vw, 8rem);
-  --text-display: clamp(5rem, 12vw, 12rem);
+  --text-hero:    6rem;
+  --text-display: 8rem;
 
   /* ── ESPAÇAMENTO — Base 4px ── */
   --space-1:  0.25rem;

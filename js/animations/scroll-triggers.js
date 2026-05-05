@@ -11,6 +11,40 @@ export function initScrollTriggers() {
 
   if (!document.querySelector('[data-animate]')) return;
 
+  document.querySelectorAll('[data-animate="section-heading"]').forEach((el) => {
+    const meta = el.querySelector('.section-heading__meta');
+    const title = el.querySelector('.section-heading__title');
+    const rule = el.querySelector('.section-heading__rule');
+    const square = el.querySelector('.section-heading__square');
+    const parts = [meta, title].filter(Boolean);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 82%',
+        toggleActions: 'play none none reverse',
+        markers: false,
+      },
+    });
+
+    if (rule) tl.fromTo(rule, { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: 'machado' }, 0);
+    if (square && rule) {
+      tl.fromTo(square,
+        { x: 0, rotate: 0 },
+        { x: () => rule.offsetWidth - square.offsetWidth, rotate: 180, duration: 0.9, ease: 'machado' },
+        0
+      );
+    }
+
+    if (parts.length) {
+      tl.fromTo(parts,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.72, stagger: 0.08, ease: 'machado' },
+        0.08
+      );
+    }
+  });
+
   // ── fade-up ──
   document.querySelectorAll('[data-animate="fade-up"]').forEach((el) => {
     const delay = parseFloat(el.dataset.delay) || 0;

@@ -60,35 +60,37 @@
 .stat-card {
   align-content: space-between;
   gap: var(--space-8);
-  padding: clamp(1.8rem, 3vw, 2rem);
+  padding: var(--space-10) var(--space-8) var(--space-8);
 }
 
 .stat-number {
   display: inline-flex;
   align-items: flex-start;
   font-family: var(--font-body);
-  font-size: 5.6rem;
+  font-size: 6rem;
   font-weight: var(--weight-light);
-  line-height: 0.82;
+  line-height: 1;
   letter-spacing: 0;
   color: var(--color-stats-text);
+  font-kerning: normal;
 }
 
 .stat-number__value {
   color: var(--color-stats-text);
+  font-weight: var(--weight-light);
 }
 
 .stat-number__suffix {
-  margin-left: 0.08em;
+  margin-left: 0.06em;
   color: var(--color-primary);
 }
 
 .stat-label {
   font-family: var(--font-ui-mono);
-  font-size: 1.25rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-regular);
-  line-height: 1.4;
-  letter-spacing: 0.04em;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
   white-space: nowrap;
   text-transform: uppercase;
   color: var(--color-text-dark);
@@ -193,16 +195,16 @@
   }
 
   .stat-card {
-    padding: 2rem 1.95rem 1.8rem;
+    padding: var(--space-10) var(--space-8) var(--space-8);
     text-align: left;
   }
 
   .stat-number {
-    font-size: 5.4rem;
+    font-size: 6rem;
   }
 
   .stat-label {
-    font-size: 0.92rem;
+    font-size: var(--text-base);
   }
 }
 

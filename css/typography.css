@@ -13,30 +13,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: local('Aktiv Grotesk Light'), local('AktivGrotesk-Light');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: local('Aktiv Grotesk'), local('AktivGrotesk-Regular');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Aktiv Grotesk';
-  src: local('Aktiv Grotesk Medium'), local('AktivGrotesk-Medium');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ── Tags Base ── */
 body {
   font-family: var(--font-body);

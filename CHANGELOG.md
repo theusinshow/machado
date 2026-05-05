@@ -6,6 +6,158 @@
 
 ---
 
+## [2026-05-05] FIX — Produtos: heading acompanha texto
+
+**Agente:** Codex
+**Sessão:** Correcao da largura do titulo Equipamentos
+
+### Alterado
+- `css/components/produtos.css` — heading de Produtos agora usa `fit-content`, largura minima e titulo menor para acompanhar o texto sem vazar da caixa
+- `css/layout.css` — `.section-heading` recebeu `box-sizing: border-box` para preservar borda/padding no calculo visual
+
+---
+
+## [2026-05-05] CONTENT — Headings tecnicos sem numeracao
+
+**Agente:** Codex
+**Sessão:** Ajuste de textos dos titulos de Produtos e Diferenciais
+
+### Alterado
+- `index.html` — meta de Diferenciais alterado para `// Pilares`, meta de Produtos para `// Categorias` e h2 de Produtos para `Equipamentos`
+
+---
+
+## [2026-05-05] FIX — Diferenciais: scroll sem travamento de pin
+
+**Agente:** Codex
+**Sessão:** Suavizacao da entrada na secao de pilares
+
+### Alterado
+- `js/animations/diferenciais.js` — removido pin virtual da `.diferenciais-layout`; pilares e imagem agora sincronizam pelo scroll natural da pagina, evitando a pausa/encaixe ao entrar na secao
+
+---
+
+## [2026-05-05] FIX — Produtos: titulo sem quebra
+
+**Agente:** Codex
+**Sessão:** Correcao do heading compacto de Produtos
+
+### Alterado
+- `css/components/produtos.css` — heading de Produtos ficou um pouco mais largo, com gap menor e titulo sem quebra de linha
+- `css/layout.css` — titulo global de `section-heading` passou a preservar palavras sem quebra forcada
+
+---
+
+## [2026-05-05] STYLE — Produtos: heading compacto
+
+**Agente:** Codex
+**Sessão:** Ajuste do titulo da secao Produtos
+
+### Alterado
+- `index.html` — titulo da secao Produtos resumido para "Produtos"
+- `css/components/produtos.css` — largura do heading de Produtos reduzida para evitar sobreposicao com a area de imagem e titulo local ajustado para `--text-3xl`
+
+---
+
+## [2026-05-05] STYLE — Section heading claro restaurado
+
+**Agente:** Codex
+**Sessão:** Reversao da variacao navy dos titulos
+
+### Alterado
+- `index.html` — removida classe `section-heading--navy` dos headings de Diferenciais e Produtos
+- `css/layout.css` — removida variacao navy, mantendo o componente claro/cinza em tamanho compacto
+
+---
+
+## [2026-05-05] STYLE — Section heading navy
+
+**Agente:** Codex
+**Sessão:** Ajuste de cor do componente de titulos
+
+### Alterado
+- `css/layout.css` — adicionada variacao `.section-heading--navy` com fundo azul escuro, borda cinza/translucida, texto branco e meta em azul claro
+- `index.html` — headings de Diferenciais e Produtos passaram a usar a variacao navy
+
+---
+
+## [2026-05-05] STYLE — Section heading mais compacto
+
+**Agente:** Codex
+**Sessão:** Reducao visual do componente de titulo tecnico
+
+### Alterado
+- `css/layout.css` — componente `.section-heading` compactado com menor padding, largura maxima reduzida, linha mais curta e titulo em `--text-4xl`
+- `css/components/diferenciais.css` e `css/components/produtos.css` — titulos locais reduzidos para `--text-4xl` para evitar presenca exagerada
+
+---
+
+## [2026-05-05] FEAT — Section heading tecnico animado
+
+**Agente:** Codex
+**Sessão:** Componente visual para titulos de secao
+
+### Alterado
+- `index.html` — headings de Diferenciais e Produtos passaram a usar `section-heading` com meta mono, linha tecnica e square azul
+- `css/layout.css` — criado componente global `.section-heading` com variacoes compactas, superficie cinza, borda sutil, regra horizontal e square
+- `css/components/diferenciais.css` e `css/components/produtos.css` — estilos locais dos headers ajustados para herdar o novo componente sem conflito
+- `js/animations/scroll-triggers.js` — adicionada animacao GSAP para headings: linha expande, square percorre a regra e meta/titulo entram com fade
+- `js/animations/diferenciais.js` — animacao antiga do titulo e kicker e ignorada quando o novo heading animado esta presente, evitando timeline duplicada
+
+---
+
+## [2026-05-05] STYLE — Diferenciais: titulo dentro da timeline
+
+**Agente:** Codex
+**Sessão:** Ajuste estrutural do header de Diferenciais
+
+### Alterado
+- `index.html` — `h2#diferenciais-heading` e kicker movidos para dentro de `.diferenciais-timeline`, mantendo o `aria-labelledby` da section
+- `css/components/diferenciais.css` — header da timeline teve espaçamento ajustado e timeline passou a alinhar conteudo pelo topo
+
+---
+
+## [2026-05-05] STYLE — Social proof: escala dos stats alinhada a referencia
+
+**Agente:** Codex
+**Sessão:** Refinamento visual dos numeros de social proof
+
+### Alterado
+- `css/components/social-proof.css` — `stat-number` ajustado para `6rem` com `line-height: 1`, peso light e kerning normal; labels mono reduzidos para `--text-base`, line-height mais seco e menor letter-spacing
+
+---
+
+## [2026-05-05] FIX — Fonts: familia Adobe aplicada
+
+**Agente:** Codex
+**Sessão:** Correcao do fallback para Arial
+
+### Alterado
+- `css/variables.css` — tokens tipograficos agora priorizam os nomes de familia servidos pelo Adobe Fonts (`aktiv-grotesk` e `geist-mono`), mantendo nomes locais como fallback
+
+---
+
+## [2026-05-05] FIX — Fonts: Aktiv via Typekit
+
+**Agente:** Codex
+**Sessão:** Carregamento real da Aktiv Grotesk
+
+### Alterado
+- `index.html` — adicionado stylesheet Adobe Typekit `https://use.typekit.net/wfu4nak.css` e preconnects para Typekit
+- `css/typography.css` — removidos `@font-face` locais da Aktiv baseados em `local()`, evitando fallback para Arial quando a fonte nao existe instalada no sistema
+
+---
+
+## [2026-05-05] STYLE — Social proof: numeros mais leves
+
+**Agente:** Codex
+**Sessão:** Refinamento do peso dos stats
+
+### Alterado
+- `css/components/social-proof.css` — `.stat-number__value` passou a usar `--weight-light` para reduzir o peso visual dos numeros principais
+
+---
+
 ## [2026-05-05] STYLE — Pesos tipograficos sistematizados
 
 **Agente:** Codex

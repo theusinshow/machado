@@ -66,11 +66,11 @@
   --color-stats-divider: rgba(28, 36, 48, 0.12);
 
   /* ── TIPOGRAFIA — Famílias ── */
-  --font-display:  'Machado', 'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
-  --font-heading:  'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
-  --font-body:     'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono:     'Geist Mono', 'Courier New', monospace;
-  --font-ui-mono:  'Geist Mono', 'Courier New', monospace;
+  --font-display:  'Machado', 'aktiv-grotesk', 'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-heading:  'aktiv-grotesk', 'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     'aktiv-grotesk', 'Aktiv Grotesk', 'AktivGrotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:     'geist-mono', 'Geist Mono', 'Courier New', monospace;
+  --font-ui-mono:  'geist-mono', 'Geist Mono', 'Courier New', monospace;
 
   --weight-light:   300;
   --weight-regular: 400;

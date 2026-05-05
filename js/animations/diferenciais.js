@@ -13,12 +13,10 @@ export function initDiferenciais() {
   if (!steps.length || !images.length) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const prefersVirtualScroll = window.matchMedia('(min-width: 1024px)');
   let activeIndex = -1;
   let ticking = false;
   let indicatorTween = null;
   let indicatorRotation = 0;
-  let progressTrigger = null;
 
   function moveIndicatorTo(step) {
     if (!indicator || !step) return;
@@ -73,8 +71,6 @@ export function initDiferenciais() {
   function syncActiveStep() {
     ticking = false;
 
-    if (progressTrigger && progressTrigger.isActive) return;
-
     const viewportFocus = window.innerHeight * 0.46;
     let nextIndex = activeIndex;
     let closestDistance = Number.POSITIVE_INFINITY;
@@ -111,7 +107,7 @@ export function initDiferenciais() {
   const title = section.querySelector('.diferenciais-title');
   const kicker = section.querySelector('.diferenciais-kicker');
 
-  if (title || kicker) {
+  if ((title || kicker) && !section.querySelector('[data-animate="section-heading"]')) {
     gsap.fromTo([title, kicker].filter(Boolean),
       { opacity: 0, y: 20 },
       {
@@ -151,48 +147,7 @@ export function initDiferenciais() {
     }
   );
 
-  function initProgressTrigger() {
-    if (!prefersVirtualScroll.matches || typeof ScrollTrigger === 'undefined') return;
-
-    if (progressTrigger) {
-      progressTrigger.kill();
-      progressTrigger = null;
-    }
-
-    progressTrigger = ScrollTrigger.create({
-      trigger: section,
-      start: 'top top',
-      end: () => `+=${window.innerHeight * (steps.length - 1) * 0.78}`,
-      pin: section.querySelector('.diferenciais-layout'),
-      pinSpacing: true,
-      anticipatePin: 1,
-      refreshPriority: 20,
-      invalidateOnRefresh: true,
-      markers: false,
-      onUpdate(self) {
-        const rawIndex = Math.round(self.progress * (steps.length - 1));
-        const nextIndex = Math.min(steps.length - 1, Math.max(0, rawIndex));
-        setActive(nextIndex);
-      },
-    });
-  }
-
   syncActiveStep();
-  initProgressTrigger();
-
-  if (!progressTrigger) {
-    window.addEventListener('scroll', requestSync, { passive: true });
-  }
-
+  window.addEventListener('scroll', requestSync, { passive: true });
   window.addEventListener('resize', requestSync, { passive: true });
-
-  prefersVirtualScroll.addEventListener('change', () => {
-    if (progressTrigger) {
-      progressTrigger.kill();
-      progressTrigger = null;
-    }
-
-    initProgressTrigger();
-    requestSync();
-  });
 }

@@ -895,6 +895,72 @@ Entregue arquivo por arquivo, em ordem. Comece pelo index.html.
 Após cada arquivo, aguarde minha confirmação para continuar com o próximo.
 ```
 
+## O PROMP PARA COMPONENT BOTAO
+
+Objetivo:
+Botões com microinterações sofisticadas, aparência editorial e animações extremamente suaves. Quero que todos os botões sigam o padrao do botão que está na hero.
+
+Estrutura:
+- Botão dividido em 2 partes:
+  - área principal com texto
+  - área lateral quadrada com ícone "+"
+- Layout rígido e geométrico
+- Visual industrial/minimalista
+
+Animações necessárias:
+
+1. Hover Lift
+- translateY(-2px)
+
+2. Smooth Background Transition
+- fundo muda levemente no hover
+
+3. Shadow Bloom
+- sombra suave aparece no hover
+
+4. Icon Animation
+- ícone "+" rotaciona 90deg
+- scale: 1 → 1.08
+
+5. Independent Icon Hover
+- quadrado lateral move levemente
+
+6. Text Tracking Animation
+- letter-spacing aumenta levemente
+
+7. Active Press
+- botão afunda levemente ao clicar
+
+8. Smooth Premium Easing
+- usar cubic-bezier(.22,1,.36,1)
+
+9. Magnetic Feel
+- opcional:
+  botão acompanha levemente a posição do mouse
+
+Tecnologia:
+- React
+- Framer Motion
+- TailwindCSS
+
+Importante:
+- usar apenas transform e opacity para performance
+- evitar animações pesadas
+- responsivo
+- acessível
+- respeitar prefers-reduced-motion
+
+Criar:
+- PrimaryButton
+- SecondaryButton
+- GhostButton
+- CTAButton
+
+Todos reutilizáveis.
+
+
+
+
 ---
 
 ---

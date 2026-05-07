@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initContactForm();
     initDepoimentos();
+    initButtonSwap();
   });
 });
 
@@ -221,17 +222,16 @@ function initContactForm() {
 
     if (!valid) return;
 
-    // Feedback visual de envio
     const btn = form.querySelector('[type="submit"]');
-    const original = btn.querySelector('span').textContent;
-    btn.querySelector('span').textContent = 'ENVIANDO...';
+    const label = btn.querySelector('.btn__label') || btn.querySelector('span');
+    const original = label.textContent;
+    label.textContent = 'ENVIANDO...';
     btn.disabled = true;
 
-    // Simulação — substituir por fetch real
     setTimeout(() => {
-      btn.querySelector('span').textContent = 'ENVIADO!';
+      label.textContent = 'ENVIADO!';
       setTimeout(() => {
-        btn.querySelector('span').textContent = original;
+        label.textContent = original;
         btn.disabled = false;
         form.reset();
       }, 2500);
@@ -266,4 +266,27 @@ function initDepoimentos() {
 
   if (btnPrev) btnPrev.addEventListener('click', () => goTo(current - 1));
   if (btnNext) btnNext.addEventListener('click', () => goTo(current + 1));
+}
+
+function initButtonSwap() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  document.querySelectorAll('.btn--split').forEach((btn) => {
+    const label = btn.querySelector('.btn__label');
+    const plus  = btn.querySelector('.btn__plus');
+    if (!label || !plus) return;
+
+    btn.addEventListener('mouseenter', () => {
+      const lw = label.offsetWidth;
+      const pw = plus.offsetWidth;
+      gsap.to(plus,  { x: -lw, duration: 0.34, ease: 'power2.inOut', overwrite: true });
+      gsap.to(label, { x: pw,  duration: 0.34, ease: 'power2.inOut', overwrite: true });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(plus,  { x: 0, duration: 0.34, ease: 'power2.inOut', overwrite: true });
+      gsap.to(label, { x: 0, duration: 0.34, ease: 'power2.inOut', overwrite: true });
+    });
+  });
 }

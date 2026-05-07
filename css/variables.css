@@ -120,6 +120,7 @@
   /* ── ANIMAÇÕES — Easings CSS ── */
   --ease-machado: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-snap:    cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ── ANIMAÇÕES — Durações ── */
   --dur-fast:   200ms;

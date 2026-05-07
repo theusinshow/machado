@@ -192,11 +192,23 @@
   .whatsapp-float,
   .btn,
   .btn::before,
+  .btn--split,
+  .btn--split .btn__label,
+  .btn--split .btn__plus,
   .loader__squares,
   .loader__square,
   .loader__label,
   .hero-scroll__line {
     animation: none;
     transition-duration: var(--dur-instant);
+  }
+
+  .btn--split:hover {
+    transform: none;
+    filter: none;
+  }
+
+  .btn--split:hover .btn__plus {
+    transform: none;
   }
 }

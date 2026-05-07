@@ -6,6 +6,23 @@
 
 ---
 
+## [2026-05-07] FEAT — Botões split com swap animado + remoção da galeria
+
+**Agente:** Claude Code
+**Sessão:** Padronização de botões e limpeza de seções
+
+### Alterado
+- `css/layout.css` — sistema de botões split completamente redesenhado: novas variantes (`btn--split-primary`, `btn--split-outline`, `btn--split-ghost`, `btn--split-whatsapp`) com `box-shadow: inset` para bordas, `overflow: hidden` no container para clip do swap; `btn__label` sobe para `z-index: 2` e `btn__plus` fica em `z-index: 1` para texto ficar visível durante o cruzamento; removido `letter-spacing` hover que desalinhava a medição no JS; removido `transform: rotate(45deg)` dos hovers de variantes
+- `css/variables.css` — adicionado `--ease-premium: cubic-bezier(0.22, 1, 0.36, 1)`
+- `css/animations.css` — bloco `prefers-reduced-motion` atualizado com `btn--split`, `btn--split .btn__label`, `btn--split .btn__plus`, `btn--split:hover`
+- `js/main.js` — adicionado `initButtonSwap()`: detecta `(hover: hover) e (pointer: fine)`, mede `offsetWidth` de label e plus no hover e anima ambos com GSAP (swap de posição — plus vai à esquerda, label vai à direita); `initContactForm` atualizado para buscar `.btn__label || span` no botão de submit; `initDepoimentos` usa ease `snap`
+- `index.html` — todos os botões convertidos para padrão split: hero (primary + outline), produtos 3× (primary + outline por slide), sobre (ghost), cta-mid (primary + whatsapp), financiamento (outline), form submit (primary); seção `#galeria` removida inteiramente (80 linhas de HTML)
+
+### Criado
+- `prompts.md` — prompt completo para reimplementação da seção `#sobre` por agente externo
+
+---
+
 ## [2026-05-07] FEAT — Produtos: scroll pin, specs dl/dt/dd, marker e dois CTAs
 
 **Agente:** Claude Code

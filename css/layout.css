@@ -253,32 +253,47 @@
   color: var(--color-white);
 }
 
-/* Split CTA — bloco principal + quadrado do + */
+/* ── Split CTA — bloco principal + quadrado com + ── */
 .btn--split {
-  gap: var(--space-2);
+  gap: 0;
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
   border: 0;
   background-color: transparent;
-  transition: transform 220ms var(--ease-machado);
+  transition:
+    transform 280ms var(--ease-premium),
+    filter 280ms var(--ease-premium);
 }
 
 .btn--split::before {
   content: none;
 }
 
+.btn--split:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.22));
+}
+
+.btn--split:active {
+  transform: translateY(1px) !important;
+  filter: none !important;
+}
+
 .btn--split .btn__label,
 .btn--split .btn__plus {
-  min-height: 2.35rem;
+  min-height: 2.5rem;
+  flex-shrink: 0;
   transition:
-    background-color var(--dur-normal) ease,
-    color var(--dur-normal) ease,
-    opacity var(--dur-normal) ease,
-    transform 220ms var(--ease-machado);
+    background-color 280ms var(--ease-premium),
+    color 280ms var(--ease-premium),
+    box-shadow 280ms var(--ease-premium),
+    letter-spacing 280ms var(--ease-premium);
 }
 
 .btn--split .btn__label {
-  padding-inline: 0.9rem;
+  position: relative;
+  z-index: 2;
+  padding-inline: 1rem;
   font-family: var(--font-ui-mono);
   font-size: 0.72rem;
   font-weight: var(--weight-medium);
@@ -286,8 +301,11 @@
   text-transform: uppercase;
 }
 
+
 .btn--split .btn__plus {
-  min-width: 2.35rem;
+  position: relative;
+  z-index: 1;
+  min-width: 2.5rem;
   padding-inline: 0.55rem;
   font-family: var(--font-ui-mono);
   font-size: 1rem;
@@ -295,6 +313,7 @@
   line-height: 1;
 }
 
+/* ── Variante: Primary ── */
 .btn--split-primary .btn__label {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -306,19 +325,79 @@
 }
 
 .btn--split-primary:hover .btn__label {
-  background-color: var(--color-navy);
-  color: var(--color-white);
+  background-color: var(--color-primary-light);
+  box-shadow: 0 8px 24px var(--color-primary-glow);
 }
 
 .btn--split-primary:hover .btn__plus {
   background-color: var(--color-primary);
-  color: var(--color-white);
-  opacity: 0.92;
-  transform: translateX(0.12rem);
 }
 
-.hero-ctas .btn--split:hover {
-  transform: translateY(-0.12rem);
+/* ── Variante: Outline ── */
+.btn--split-outline .btn__label {
+  background-color: transparent;
+  color: var(--color-primary-light);
+  box-shadow: inset 0 0 0 1px var(--color-primary-light);
+}
+
+.btn--split-outline .btn__plus {
+  background-color: transparent;
+  color: var(--color-primary-light);
+  box-shadow: inset 0 0 0 1px var(--color-primary-light);
+}
+
+.btn--split-outline:hover .btn__label {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: inset 0 0 0 1px var(--color-primary), 0 8px 24px var(--color-primary-glow);
+}
+
+.btn--split-outline:hover .btn__plus {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  box-shadow: inset 0 0 0 1px var(--color-navy);
+}
+
+/* ── Variante: Ghost ── */
+.btn--split-ghost .btn__label {
+  background-color: transparent;
+  color: var(--color-text);
+  box-shadow: inset 0 0 0 1px var(--color-border-light);
+}
+
+.btn--split-ghost .btn__plus {
+  background-color: transparent;
+  color: var(--color-text);
+  box-shadow: inset 0 0 0 1px var(--color-border-light);
+}
+
+.btn--split-ghost:hover .btn__label {
+  background-color: var(--color-bg-light);
+  box-shadow: inset 0 0 0 1px var(--color-border-light), 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btn--split-ghost:hover .btn__plus {
+  background-color: var(--color-bg-light);
+}
+
+/* ── Variante: WhatsApp ── */
+.btn--split-whatsapp .btn__label {
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+}
+
+.btn--split-whatsapp .btn__plus {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-white);
+}
+
+.btn--split-whatsapp:hover .btn__label {
+  background-color: var(--color-whatsapp-soft);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
+
+.btn--split-whatsapp:hover .btn__plus {
+  background-color: var(--color-whatsapp);
 }
 
 /* Ícone interno */

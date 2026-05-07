@@ -125,16 +125,16 @@ export function initProdutosTabs() {
 
     if (image) {
       tl.fromTo(image,
-        { autoAlpha: 0.78, y: 18, scale: 0.985 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 },
+        { autoAlpha: 0.86, y: 12, scale: 0.992 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 1.15 },
         0
       );
     }
 
     tl.fromTo(textItems,
-      { autoAlpha: 0, x: 28 },
-      { autoAlpha: 1, x: 0, duration: 0.7, stagger: 0.1 },
-      0.08
+      { autoAlpha: 0, x: 18 },
+      { autoAlpha: 1, x: 0, duration: 0.95, stagger: 0.08 },
+      0.12
     );
   }
 
@@ -191,7 +191,7 @@ export function initProdutosTabs() {
 
       gsap.to(track, {
         x: -window.innerWidth * targetIndex,
-        duration: instant || reducedMotion ? 0 : 0.85,
+        duration: instant || reducedMotion ? 0 : 1.2,
         ease: 'machado',
         overwrite: true,
       });
@@ -215,7 +215,7 @@ export function initProdutosTabs() {
     const st = ScrollTrigger.create({
       trigger: section,
       start: 'top top',
-      end: () => `+=${Math.round(window.innerHeight * 0.9) * (panels.length - 1)}`,
+      end: () => `+=${Math.round(window.innerHeight * 1.45) * (panels.length - 1)}`,
       pin: true,
       pinSpacing: true,
       onUpdate(self) {

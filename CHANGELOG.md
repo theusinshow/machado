@@ -6,6 +6,52 @@
 
 ---
 
+## [2026-05-07] STYLE — Cinza editorial em superfícies internas
+
+**Agente:** Codex
+**Sessão:** Aplicação pontual do cinza #333333
+
+### Alterado
+- `css/components/financiamento.css` — heading, painel e cards internos passam a usar `--color-menu-bg` como superfície de apoio sobre o fundo azul escuro
+- `css/components/produtos.css` — controles de galeria e setas principais passam a usar `--color-menu-bg`, aproximando os controles do menu aberto
+- `css/components/contato.css` — campos do formulário, opções do select e placeholder do mapa passam a usar `--color-menu-bg` para maior consistência nas seções escuras
+- `css/components/footer.css` — botões sociais recebem superfície `--color-menu-bg`
+
+## [2026-05-07] STYLE — Produtos com scroll mais suave
+
+**Agente:** Codex
+**Sessão:** Refinamento da animação dos slides de produtos
+
+### Alterado
+- `js/animations/produtos-tabs.js` — distância do ScrollTrigger desktop ampliada, transição horizontal do track desacelerada e entrada do slide ativo suavizada com menor deslocamento e duração maior
+
+## [2026-05-07] STYLE — Financiamento em seção industrial escura
+
+**Agente:** Codex
+**Sessão:** Redesign da seção Financiamento
+
+### Alterado
+- `index.html` — seção `#financiamento` convertida para fundo escuro, heading técnico reutilizável, copy consultiva, painel de negociação e métodos de pagamento compactos
+- `css/components/financiamento.css` — componente refeito com `--color-bg`, painel escuro, grid responsivo, microinterações de hover, square indicator e animação básica de linha no painel
+
+## [2026-05-07] FIX — Badge da seção Sobre acima do carrossel
+
+**Agente:** Codex
+**Sessão:** Correção de sobreposição do badge
+
+### Alterado
+- `css/components/sobre.css` — `sobre-badge` recebeu camada explícita acima dos slides da galeria para evitar que imagens cubram o selo `DESDE 2004`
+
+## [2026-05-07] FEAT — Sobre com carrossel e métricas atualizadas
+
+**Agente:** Codex
+**Sessão:** Ajustes da seção Quem Somos
+
+### Alterado
+- `index.html` — seção `#sobre` atualizada para 22 anos, badge `DESDE 2004`, métrica `4000+` unidades produzidas e galeria com imagens locais de `assets/images/sobre/`
+- `css/components/sobre.css` — estilos do carrossel, dots de navegação, transições básicas, hover sutil e manutenção do layout responsivo da seção
+- `js/main.js` — adicionada `initSobreGallery()` com autoplay via GSAP `delayedCall`, navegação por dots e animação inicial básica com `ScrollTrigger`
+
 ## [2026-05-07] FEAT — Botões split com swap animado + remoção da galeria
 
 **Agente:** Claude Code

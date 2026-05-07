@@ -43,7 +43,7 @@
 .form-input {
   width: 100%;
   padding: var(--space-4) var(--space-4);
-  background-color: var(--color-bg-mid);
+  background-color: var(--color-menu-bg);
   border: 1px solid var(--color-border);
   color: var(--color-text);
   font-family: var(--font-body);
@@ -76,7 +76,7 @@
 }
 
 .form-select option {
-  background-color: var(--color-bg-mid);
+  background-color: var(--color-menu-bg);
   color: var(--color-text);
 }
 
@@ -135,7 +135,7 @@
   justify-content: center;
   gap: var(--space-3);
   height: 200px;
-  background-color: var(--color-bg);
+  background-color: var(--color-menu-bg);
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
 }

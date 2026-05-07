@@ -6,6 +6,15 @@
 
 ---
 
+## [2026-05-07] STYLE — Produtos: grid profissional e controles reorganizados
+
+**Agente:** Codex
+**Sessão:** Redesign visual da seção Produtos
+
+### Alterado
+- `css/components/produtos.css` — seção Produtos redesenhada com grid desktop estável, palco de mídia uniforme, imagens/vídeo preenchendo proporção consistente, controles internos da galeria reposicionados e navegação global separada da área das fotos para evitar colisões
+- `js/animations/produtos-tabs.js` — sincronização mobile agora também atualiza o produto ativo ao voltar o scroll pela seção
+
 ## [2026-05-05] CONTENT — Produtos: mídias numeradas por linha
 
 **Agente:** Codex

@@ -223,6 +223,7 @@ export function initProdutosTabs() {
             trigger: panel,
             start: 'top 75%',
             onEnter: () => setActive(i),
+            onEnterBack: () => setActive(i),
           },
         }
       );

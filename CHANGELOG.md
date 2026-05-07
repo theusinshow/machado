@@ -6,6 +6,18 @@
 
 ---
 
+## [2026-05-07] FEAT — Produtos: scroll pin, specs dl/dt/dd, marker e dois CTAs
+
+**Agente:** Claude Code
+**Sessão:** Reaplicação das melhorias da seção Equipamentos (revertidas por engano junto com text-reveal)
+
+### Alterado
+- `js/animations/produtos-tabs.js` — desktop `mm.add` com `ScrollTrigger pin: true`; `onUpdate` avança slides pelo scroll (~90% vh por slide); cursor tracking do `.produto-slide__marker` via `gsap.quickTo`; `animatePanel` usa `.produto-slide__spec-row` (em vez de `specs p`); seletor mobile exclui `.produto-slide__marker`
+- `css/components/produtos.css` — `::before` de `.produto-slide__text-inner` substituído por `.produto-slide__marker` (elemento real, `position: absolute`, GSAP-controlled); `.produto-slide__spec-row` com grid `7.5rem 1fr`, `dt` mono xs, `dd` base medium; `.produto-slide__cta` vira flex com gap; seta `.btn__icon` com hover `translateX(5px)`; reduced-motion atualizado
+- `index.html` — 3 slides de produto: `<span class="produto-slide__marker">` adicionado; specs convertidas para `<dl>` + `<div class="produto-slide__spec-row">` com `<dt>/<dd>`; kickers `// 01 — Linha Leve / 02 — Linha Média / 03 — Linha Pesada`; CTA duplo "Solicitar Orçamento" (primary) + "Ver mais" (outline)
+
+---
+
 ## [2026-05-07] STYLE — Produtos: grid profissional e controles reorganizados
 
 **Agente:** Codex

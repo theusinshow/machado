@@ -1,6 +1,7 @@
 /**
  * Diferenciais / Pilares
- * Ativa cada pilar conforme o scroll e troca a imagem lateral.
+ * Desktop: seção pina enquanto o scroll avança por cada pilar.
+ * Mobile: troca de pilar por posição no scroll normal.
  */
 
 export function initDiferenciais() {
@@ -14,7 +15,6 @@ export function initDiferenciais() {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let activeIndex = -1;
-  let ticking = false;
   let indicatorTween = null;
   let indicatorRotation = 0;
 
@@ -68,33 +68,6 @@ export function initDiferenciais() {
     moveIndicatorTo(steps[index]);
   }
 
-  function syncActiveStep() {
-    ticking = false;
-
-    const viewportFocus = window.innerHeight * 0.46;
-    let nextIndex = activeIndex;
-    let closestDistance = Number.POSITIVE_INFINITY;
-
-    steps.forEach((step, index) => {
-      const rect = step.getBoundingClientRect();
-      const stepCenter = rect.top + rect.height * 0.5;
-      const distance = Math.abs(stepCenter - viewportFocus);
-
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        nextIndex = index;
-      }
-    });
-
-    setActive(nextIndex);
-  }
-
-  function requestSync() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(syncActiveStep);
-  }
-
   steps.forEach((step, i) => {
     step.setAttribute('aria-current', i === activeIndex ? 'step' : 'false');
   });
@@ -142,12 +115,85 @@ export function initDiferenciais() {
       },
       onComplete() {
         gsap.set(steps, { clearProps: 'opacity,transform' });
-        syncActiveStep();
+        setActive(activeIndex);
       },
     }
   );
 
-  syncActiveStep();
-  window.addEventListener('scroll', requestSync, { passive: true });
-  window.addEventListener('resize', requestSync, { passive: true });
+  const mm = gsap.matchMedia();
+
+  // ── Desktop: seção pina e scroll avança pelos pilares ──────────────────────
+  mm.add('(min-width: 1024px)', () => {
+    const stepDistance = Math.round(window.innerHeight * 0.7);
+
+    const st = ScrollTrigger.create({
+      trigger: section,
+      start: 'top top',
+      end: `+=${stepDistance * (steps.length - 1)}`,
+      pin: true,
+      pinSpacing: true,
+      onUpdate(self) {
+        const index = Math.max(0, Math.min(
+          steps.length - 1,
+          Math.round(self.progress * (steps.length - 1))
+        ));
+        setActive(index);
+      },
+    });
+
+    return () => st.kill();
+  });
+
+  // ── Mobile: troca por posição relativa no scroll normal ────────────────────
+  mm.add('(max-width: 1023px)', () => {
+    let ticking = false;
+
+    function syncActiveStep() {
+      ticking = false;
+
+      const HYSTERESIS = 90;
+      const viewportFocus = window.innerHeight * 0.46;
+      let closestIndex = activeIndex < 0 ? 0 : activeIndex;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      steps.forEach((step, index) => {
+        const rect = step.getBoundingClientRect();
+        const stepCenter = rect.top + rect.height * 0.5;
+        const distance = Math.abs(stepCenter - viewportFocus);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      if (closestIndex === activeIndex || activeIndex < 0) {
+        setActive(closestIndex);
+        return;
+      }
+
+      const currentRect = steps[activeIndex].getBoundingClientRect();
+      const currentCenter = currentRect.top + currentRect.height * 0.5;
+      const currentDistance = Math.abs(currentCenter - viewportFocus);
+
+      if (closestDistance + HYSTERESIS < currentDistance) {
+        setActive(closestIndex);
+      }
+    }
+
+    function requestSync() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(syncActiveStep);
+    }
+
+    syncActiveStep();
+    window.addEventListener('scroll', requestSync, { passive: true });
+    window.addEventListener('resize', requestSync, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', requestSync);
+      window.removeEventListener('resize', requestSync);
+    };
+  });
 }

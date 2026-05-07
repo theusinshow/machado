@@ -109,7 +109,7 @@ export function initProdutosTabs() {
     const textItems = [
       panel.querySelector('.produto-slide__kicker'),
       panel.querySelector('.produto-slide__title'),
-      ...panel.querySelectorAll('.produto-slide__specs p'),
+      ...panel.querySelectorAll('.produto-slide__spec-row'),
       panel.querySelector('.produto-slide__extra'),
       panel.querySelector('.produto-slide__cta'),
     ].filter(Boolean);
@@ -165,6 +165,22 @@ export function initProdutosTabs() {
     activateGallery(index);
   }
 
+  // Cursor tracking para .produto-slide__marker
+  if (!reducedMotion) {
+    panels.forEach((panel) => {
+      const marker = panel.querySelector('.produto-slide__marker');
+      const textInner = panel.querySelector('.produto-slide__text-inner');
+      if (!marker || !textInner) return;
+
+      const quickY = gsap.quickTo(marker, 'y', { duration: 0.38, ease: 'power2.out' });
+
+      textInner.addEventListener('mousemove', (e) => {
+        const rect = textInner.getBoundingClientRect();
+        quickY(e.clientY - rect.top - marker.offsetHeight / 2);
+      }, { passive: true });
+    });
+  }
+
   mm.add('(min-width: 1024px)', () => {
     const handlers = [];
     let targetIndex = 0;
@@ -196,10 +212,27 @@ export function initProdutosTabs() {
 
     goToPanel(0, true);
 
+    const st = ScrollTrigger.create({
+      trigger: section,
+      start: 'top top',
+      end: () => `+=${Math.round(window.innerHeight * 0.9) * (panels.length - 1)}`,
+      pin: true,
+      pinSpacing: true,
+      onUpdate(self) {
+        if (reducedMotion) return;
+        const newIndex = Math.max(0, Math.min(
+          panels.length - 1,
+          Math.round(self.progress * (panels.length - 1))
+        ));
+        if (newIndex !== targetIndex) goToPanel(newIndex);
+      },
+    });
+
     return () => {
       handlers.forEach(([item, onClick]) => item.removeEventListener('click', onClick));
       window.removeEventListener('resize', onResize);
       gsap.set(track, { clearProps: 'transform' });
+      st.kill();
     };
   });
 
@@ -211,7 +244,7 @@ export function initProdutosTabs() {
     }
 
     panels.forEach((panel, i) => {
-      gsap.fromTo(panel.querySelectorAll('.produto-slide__text-inner > *'),
+      gsap.fromTo(panel.querySelectorAll('.produto-slide__text-inner > :not(.produto-slide__marker)'),
         { autoAlpha: 0, y: 24 },
         {
           autoAlpha: 1,

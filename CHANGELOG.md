@@ -6,6 +6,14 @@
 
 ---
 
+## [2026-05-07] CHORE — Ícone da página
+
+**Agente:** Codex
+**Sessão:** Favicon da landing page
+
+### Alterado
+- `index.html` — adicionado favicon PNG usando `assets/images/logo/Icon.png`
+
 ## [2026-05-07] STYLE — Cinza editorial em superfícies internas
 
 **Agente:** Codex

@@ -75,7 +75,7 @@
   height: 3px;
   background-color: var(--color-primary);
   transform-origin: left;
-  animation: financiamento-panel-line 3.5s var(--ease-premium) infinite;
+  animation: financiamento-panel-line var(--dur-crawl) var(--ease-premium) both;
 }
 
 .financiamento-panel__media {
@@ -257,12 +257,11 @@
 }
 
 @keyframes financiamento-panel-line {
-  0%,
-  100% {
+  0% {
     transform: scaleX(0.28);
   }
 
-  50% {
+  100% {
     transform: scaleX(1);
   }
 }

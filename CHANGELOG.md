@@ -6,6 +6,36 @@
 
 ---
 
+## [2026-05-09] CHORE — Preservação do layout aprovado da prova social
+
+**Agente:** Codex
+**Sessão:** Ajuste pós-auditoria — prova social
+
+### Alterado
+- `CHANGELOG.md` — registrado que o ajuste proposto para `.stats-container` foi descartado e que o layout aprovado da prova social foi preservado sem alteração final no CSS
+
+## [2026-05-09] FIX — Auditoria geral de UI, estrutura e UX
+
+**Agente:** Codex
+**Sessão:** Implementação pós-auditoria — UI/UX Pro Max
+
+### Alterado
+- `index.html` — removido import morto de galeria, corrigido skip link para `#main`, adicionada região `<main>`, ajustados links mortos/âncoras, removidos links sociais vazios, corrigidos atributos inválidos de logo, adicionadas dimensões nas imagens de produto e refinados labels acessíveis
+- `css/variables.css` — adicionados tokens semânticos para transparências e sombras reutilizáveis, evitando valores soltos nos componentes
+- `css/layout.css` — removido `!important`, trocadas sombras/transparências por tokens, adicionados `scroll-margin-top` em seções e `text-wrap: balance` em headings
+- `css/components/produtos.css` — controles passaram a usar token de borda em vez de cor solta
+- `css/components/financiamento.css` — animação da linha superior do painel deixou de rodar infinitamente e passou a ser um reveal discreto
+- `js/main.js` — entry point simplificado para importar módulos específicos de navbar, galeria da seção Sobre e microinteração dos botões
+
+### Criado
+- `js/animations/navbar.js` — módulo da navbar com abertura/fechamento, indicador e leitura de tema agendada via `requestAnimationFrame`
+- `js/animations/sobre-gallery.js` — módulo dedicado ao carrossel da seção Sobre com guard clause e autoplay via GSAP `delayedCall`
+- `js/animations/button-swap.js` — módulo dedicado à microinteração dos botões split
+
+### Removido
+- `css/components/galeria.css` — arquivo morto após remoção da seção `#galeria` e do import correspondente
+- `css/components/contato.css` — arquivo morto após remoção prévia da seção de contato e do import correspondente
+
 ## [2026-05-09] STYLE — Refinamento premium do footer institucional
 
 **Agente:** Codex

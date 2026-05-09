@@ -43,7 +43,6 @@
   <link rel="stylesheet" href="./css/components/social-proof.css" />
   <link rel="stylesheet" href="./css/components/diferenciais.css" />
   <link rel="stylesheet" href="./css/components/produtos.css" />
-  <link rel="stylesheet" href="./css/components/galeria.css" />
   <link rel="stylesheet" href="./css/components/sobre.css" />
   <link rel="stylesheet" href="./css/components/cta-interstitial.css" />
   <link rel="stylesheet" href="./css/components/financiamento.css" />
@@ -53,7 +52,7 @@
 <body>
 
   <!-- ── Skip Link (acessibilidade teclado) ── -->
-  <a href="#hero" class="skip-link">Ir para o conteúdo</a>
+  <a href="#main" class="skip-link">Ir para o conteúdo</a>
 
   <!-- ── Loading Screen ── -->
   <div id="loader" role="status" aria-live="polite" aria-label="Carregando">
@@ -87,7 +86,7 @@
     <div class="container container--wide navbar-inner">
 
       <a href="#hero" class="navbar-logo" aria-label="Machado Plataformas — Início">
-        <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" width="130" height="auto" />
+        <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" width="130" height="32" />
       </a>
 
       <button class="navbar-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbar-panel">
@@ -113,7 +112,7 @@
           <span class="nav-indicator" aria-hidden="true"></span>
           <a href="#hero" class="is-active">Início</a>
           <a href="#produtos">Produtos</a>
-          <a href="#galeria">Galeria</a>
+          <a href="#depoimentos">Depoimentos</a>
           <a href="#sobre">Sobre</a>
         </nav>
 
@@ -121,7 +120,7 @@
           <div class="navbar-panel__contact">
             <span class="navbar-panel__label mono">Contato</span>
             <a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a>
-            <a href="tel:+5500000000000">(00) 00000-0000</a>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
             <span class="navbar-panel__note mono">Atendimento em todo o Brasil</span>
           </div>
 
@@ -166,6 +165,8 @@
       </div>
     </div>
   </header>
+
+  <main id="main">
 
   <!-- ══════════════════════════════════════
        02 — HERO
@@ -550,7 +551,7 @@
 
     <div class="produtos-arrows" aria-label="Controles de produtos">
       <button class="produtos-arrow" type="button" data-produtos-prev aria-label="Produto anterior">&larr;</button>
-      <button class="produtos-arrow" type="button" data-produtos-next aria-label="Proximo produto">&rarr;</button>
+      <button class="produtos-arrow" type="button" data-produtos-next aria-label="Próximo produto">&rarr;</button>
     </div>
 
     <!-- Track horizontal -->
@@ -563,38 +564,48 @@
             <div class="produto-slide__img-wrap">
               <div class="produto-gallery" data-product-gallery>
                 <figure class="produto-gallery__item is-active">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/leve/LEVE-1.png"
                        alt="Linha Leve — Plataforma Machado"
+                       width="1400"
+                       height="1750"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/leve/LEVE-2.jpg"
                        alt="Linha Leve — detalhe da plataforma"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/leve/LEVE-3.jpg"
                        alt="Linha Leve — acabamento"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/leve/LEVE-4.jpg"
                        alt="Linha Leve — em operação"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/leve/LEVE-5.jpg"
                        alt="Linha Leve — aplicação em campo"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Leve">
                   <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior">&larr;</button>
-                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Proxima imagem">&rarr;</button>
+                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Próxima imagem">&rarr;</button>
                 </div>
               </div>
             </div>
@@ -612,7 +623,7 @@
               <p class="produto-slide__extra">Adicionais: alongamento de chassi, rampas, asa delta, remonte, controles remotos sem fio.</p>
               <div class="produto-slide__cta">
                 <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." class="btn btn--split btn--split-primary" target="_blank" rel="noopener noreferrer" data-magnetic><span class="btn__label">Solicitar Orçamento</span><span class="btn__plus" aria-hidden="true">+</span></a>
-                <a href="#" class="btn btn--split btn--split-outline"><span class="btn__label">Ver mais</span><span class="btn__plus" aria-hidden="true">+</span></a>
+                <a href="#financiamento" class="btn btn--split btn--split-outline"><span class="btn__label">Ver condições</span><span class="btn__plus" aria-hidden="true">+</span></a>
               </div>
             </div>
           </div>
@@ -624,32 +635,40 @@
             <div class="produto-slide__img-wrap">
               <div class="produto-gallery" data-product-gallery>
                 <figure class="produto-gallery__item is-active">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/media/MEDIA-1.png"
                        alt="Linha Média — Plataforma Machado"
+                       width="1400"
+                       height="1750"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/media/MEDIA-2.jpg"
                        alt="Linha Média — detalhe da plataforma"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/media/MEDIA-3.jpg"
                        alt="Linha Média — acabamento"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/media/MEDIA-4.jpg"
                        alt="Linha Média — em operação"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Media">
                   <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior">&larr;</button>
-                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Proxima imagem">&rarr;</button>
+                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Próxima imagem">&rarr;</button>
                 </div>
               </div>
             </div>
@@ -667,7 +686,7 @@
               <p class="produto-slide__extra">Adicionais: alongamento de chassi, rampas, asa delta, remonte, controles remotos sem fio.</p>
               <div class="produto-slide__cta">
                 <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." class="btn btn--split btn--split-primary" target="_blank" rel="noopener noreferrer" data-magnetic><span class="btn__label">Solicitar Orçamento</span><span class="btn__plus" aria-hidden="true">+</span></a>
-                <a href="#" class="btn btn--split btn--split-outline"><span class="btn__label">Ver mais</span><span class="btn__plus" aria-hidden="true">+</span></a>
+                <a href="#financiamento" class="btn btn--split btn--split-outline"><span class="btn__label">Ver condições</span><span class="btn__plus" aria-hidden="true">+</span></a>
               </div>
             </div>
           </div>
@@ -679,38 +698,48 @@
             <div class="produto-slide__img-wrap">
               <div class="produto-gallery" data-product-gallery>
                 <figure class="produto-gallery__item is-active">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/pesada/PESADA-1.png"
                        alt="Linha Pesada — Plataforma Machado"
+                       width="1400"
+                       height="1750"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/pesada/PESADA-2.jpg"
                        alt="Linha Pesada — detalhe da plataforma"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/pesada/PESADA-3.jpg"
                        alt="Linha Pesada — acabamento"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/pesada/PESADA-4.jpg"
                        alt="Linha Pesada — em operação"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <figure class="produto-gallery__item">
-                  <img class="produto-slide__img produto-gallery__media"
+                 <img class="produto-slide__img produto-gallery__media"
                        src="./assets/images/produtos/pesada/PESADA-5.jpg"
                        alt="Linha Pesada — aplicação em campo"
+                       width="1200"
+                       height="1600"
                        loading="lazy" />
                 </figure>
                 <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Pesada">
                   <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior">&larr;</button>
-                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Proxima imagem">&rarr;</button>
+                  <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Próxima imagem">&rarr;</button>
                 </div>
               </div>
             </div>
@@ -728,7 +757,7 @@
               <p class="produto-slide__extra">Adicionais: alongamento de chassi, sapatas traseiras, cocho, cambão, controles remotos sem fio.</p>
               <div class="produto-slide__cta">
                 <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." class="btn btn--split btn--split-primary" target="_blank" rel="noopener noreferrer" data-magnetic><span class="btn__label">Solicitar Orçamento</span><span class="btn__plus" aria-hidden="true">+</span></a>
-                <a href="#" class="btn btn--split btn--split-outline"><span class="btn__label">Ver mais</span><span class="btn__plus" aria-hidden="true">+</span></a>
+                <a href="#financiamento" class="btn btn--split btn--split-outline"><span class="btn__label">Ver condições</span><span class="btn__plus" aria-hidden="true">+</span></a>
               </div>
             </div>
           </div>
@@ -955,6 +984,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ══════════════════════════════════════
        11 — FOOTER
   ══════════════════════════════════════ -->
@@ -968,22 +999,11 @@
       <div class="footer-grid" data-animate="fade-up">
 
         <div class="footer-col footer-col--brand">
-          <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" class="footer-logo" width="120" height="auto" loading="lazy" />
+          <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" class="footer-logo" width="120" height="30" loading="lazy" />
           <p class="footer-tagline">Soluções em plataformas veiculares com qualidade, segurança e confiança.</p>
           <div class="footer-status" aria-label="Resumo comercial">
             <span>Atendimento nacional</span>
             <span>Fabricação sob demanda</span>
-          </div>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram Machado Plataformas" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-            <a href="#" aria-label="Facebook Machado Plataformas" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-            </a>
-            <a href="#" aria-label="LinkedIn Machado Plataformas" target="_blank" rel="noopener noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
           </div>
         </div>
 
@@ -1005,7 +1025,7 @@
             <span aria-hidden="true">+</span>
           </a>
           <address class="footer-address">
-            <p><a href="tel:+5500000000000">(00) 00000-0000</a></p>
+            <p><a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a></p>
             <p><a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a></p>
             <p>Minas Gerais, Brasil</p>
           </address>

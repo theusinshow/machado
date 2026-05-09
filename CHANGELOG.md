@@ -6,6 +6,20 @@
 
 ---
 
+## [2026-05-09] CONTENT — Ajustes cirúrgicos: CTA reposicionado, copy compactado, header de contato removido
+
+**Agente:** Claude Code
+**Sessão:** Refinamentos pós-prévia — feedback do cliente
+
+### Alterado
+- `index.html` — Seção `#cta-mid` movida de entre `#sobre` e `#financiamento` para após `#depoimentos` (fluxo: Depoimentos → CTA → Contato)
+- `index.html` — `#contato`: removido o `section-header` com h2 "Fale com a Machado" e eyebrow "Orçamento"; `aria-labelledby` substituído por `aria-label="Formulário de orçamento"`
+- `index.html` — Hero: subtítulo compactado de frase longa para 2 frases curtas e diretas
+- `index.html` — Seção `#sobre`: segundo parágrafo de copy encurtado ("Fabricação 100% própria em MG. Controle de qualidade em cada unidade.")
+- `index.html` — Seção `#financiamento`: lead encurtado (entrada direta pelas opções de pagamento); parágrafo do panel encurtado para 2 frases curtas
+
+---
+
 ## [2026-05-09] FIX — Hero: título completo sem corte
 
 **Agente:** Claude Code

@@ -9,8 +9,7 @@
 }
 
 .financiamento .section-heading {
-  --heading-surface: var(--color-menu-bg);
-  --heading-border: var(--color-border-light);
+  --heading-rule: var(--color-border-light);
   --heading-title: var(--color-white);
   --heading-meta: var(--color-primary-light);
 }

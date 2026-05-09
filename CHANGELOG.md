@@ -6,6 +6,42 @@
 
 ---
 
+## [2026-05-09] STYLE — Refatoração do componente section-heading: visual premium sem caixa, animação refinada
+
+**Agente:** Claude Code
+**Sessão:** Revisão UI/UX — section-heading (ui-ux-pro-max)
+
+### Alterado
+- `css/layout.css` — `.section-heading`: removidos `background-color`, `border`, `padding` e `box-sizing` (não existe mais a caixa branca); removidos tokens `--heading-surface` e `--heading-border`; novo token `--heading-rule` (cor da linha); grid invertido de `minmax(0, 1fr) auto` para `auto 1fr` (meta auto, rule preenche o restante); `align-items: center` substitui `start`; `width: 100%` na rule (era `clamp(4rem, 8vw, 7rem)`) para animação da linha em largura total; `line-height: 1.05` e `letter-spacing: -0.01em` no title (era `1` e `0`); `white-space: nowrap` adicionado ao meta; `margin-top: 0.45rem` removido da rule (agora alinhada pelo grid)
+- `css/layout.css` — Novo elemento `.section-heading__subtitle`: `grid-column: 1 / -1`, `color: var(--color-text-muted)`, `font-size: var(--text-base)`, `line-height: 1.6` — suporte a subtítulos opcionais
+- `css/layout.css` — Removido bloco `@media (max-width: 767px)` com override do grid para `1fr` — não necessário com o novo layout `auto 1fr`
+- `css/components/financiamento.css` — `.financiamento .section-heading`: removidos `--heading-surface` e `--heading-border`; renomeado `--heading-border` para `--heading-rule`
+- `css/components/produtos.css` — Adicionado `.produtos-header .section-heading__rule { width: clamp(4rem, 8vw, 7rem) }` — restaura largura fixa da rule no contexto de grid `auto` da header absoluta dos produtos
+- `js/animations/scroll-triggers.js` — Animação `section-heading`: square agora anima de `opacity: 0` para `opacity: 1` durante o percurso; `subtitle` adicionado ao array `parts`; `y` ajustado de `18` para `14`; `stagger` ajustado de `0.08` para `0.1`
+
+---
+
+## [2026-05-09] STYLE — Refatoração do sistema de botões: qualidade premium, consistência e acessibilidade
+
+**Agente:** Claude Code
+**Sessão:** Revisão UI/UX — sistema de botões (ui-ux-pro-max)
+
+### Alterado
+- `css/layout.css` — `.btn`: adicionado `user-select: none`; transition atualizada para `--ease-premium` (era `ease` genérico); adicionada transição de `box-shadow`
+- `css/layout.css` — `.btn::before`: easing atualizado para `--ease-premium`
+- `css/layout.css` — Novo bloco `[disabled]` / `[aria-disabled="true"]`: `opacity: 0.42 + pointer-events: none` — estado universal para botões desabilitados
+- `css/layout.css` — `.btn--split .btn__label, .btn__plus`: `min-height` aumentado de `2.5rem` (40px) para `2.75rem` (44px) — atende requisito de touch target; adicionada `transform 180ms var(--ease-premium)` à lista de transições
+- `css/layout.css` — `.btn--split-primary .btn__label`: adicionado `box-shadow: inset 0 1px 0 rgba(255,255,255,0.1)` — profundidade sutil no resting state
+- `css/layout.css` — `.btn--split-primary:hover .btn__label`: box-shadow atualizado para incluir o inset highlight mais a sombra externa
+- `css/layout.css` — Novo bloco `.btn--split:hover .btn__plus { transform: scale(1.1) }` e `.btn--split:active .btn__plus { transform: scale(0.93) }` — microinteração compartilhada em todos os splits
+- `css/layout.css` — `.btn--whatsapp`: adicionado hover com `box-shadow` suave
+- `css/layout.css` — Novos modificadores de tamanho: `.btn--split--sm` e `.btn--split--lg`
+- `css/components/depoimentos.css` — `.dep-btn`: adicionado `background-color: transparent`; transitions atualizadas para `--ease-premium` e inclui agora `transform`; hover com `translateY(-2px)`; novo estado `:active`
+- `css/components/produtos.css` — `.produto-gallery__btn, .produtos-arrow`: transitions aceleradas (`--dur-normal` → `--dur-fast`) com `--ease-premium`; adicionado `user-select: none`; novo estado `:active`
+- `css/animations.css` — `prefers-reduced-motion`: adicionadas regras para suprimir transforms de `.dep-btn`, `.produto-gallery__btn` e `.produtos-arrow` no modo de movimento reduzido
+
+---
+
 ## [2026-05-09] CONTENT — Ajustes cirúrgicos: CTA reposicionado, copy compactado, header de contato removido
 
 **Agente:** Claude Code

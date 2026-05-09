@@ -50,20 +50,15 @@
 }
 
 .section-heading {
-  --heading-surface: var(--color-stats-card);
-  --heading-border: var(--color-stats-border);
+  --heading-rule: var(--color-stats-border);
   --heading-title: var(--color-stats-text);
   --heading-meta: var(--color-primary);
 
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: auto 1fr;
   gap: var(--space-3) var(--space-5);
-  align-items: start;
-  padding: var(--space-4);
-  background-color: var(--heading-surface);
-  border: 1px solid var(--heading-border);
-  box-sizing: border-box;
+  align-items: center;
 }
 
 .section-heading--compact {
@@ -77,16 +72,16 @@
   font-weight: var(--weight-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .section-heading__rule {
   position: relative;
   grid-column: 2;
-  width: clamp(4rem, 8vw, 7rem);
+  width: 100%;
   height: 1px;
-  margin-top: 0.45rem;
   overflow: visible;
-  background-color: var(--heading-border);
+  background-color: var(--heading-rule);
   transform-origin: left;
 }
 
@@ -109,19 +104,17 @@
   font-family: var(--font-heading);
   font-size: var(--text-4xl);
   font-weight: var(--weight-regular);
-  line-height: 1;
-  letter-spacing: 0;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 
-@media (max-width: 767px) {
-  .section-heading {
-    grid-template-columns: 1fr;
-  }
-
-  .section-heading__rule {
-    grid-column: 1;
-    width: 100%;
-  }
+.section-heading__subtitle {
+  grid-column: 1 / -1;
+  max-width: 40rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.6;
 }
 
 /* ── Grid ── */
@@ -170,7 +163,10 @@
   text-transform: uppercase;
   cursor: pointer;
   touch-action: manipulation;
-  transition: color var(--dur-normal) ease;
+  user-select: none;
+  transition:
+    color var(--dur-normal) var(--ease-premium),
+    box-shadow var(--dur-fast) var(--ease-premium);
   white-space: nowrap;
   border: 2px solid transparent;
   z-index: 0;
@@ -182,7 +178,7 @@
   inset: 0;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform var(--dur-normal) ease;
+  transition: transform var(--dur-normal) var(--ease-premium);
   z-index: -1;
 }
 
@@ -195,6 +191,14 @@
   position: relative;
   z-index: 1;
   pointer-events: none;
+}
+
+/* Disabled */
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: 0.42;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .btn__label,
@@ -237,6 +241,10 @@
 
 .btn--whatsapp::before {
   background-color: var(--color-whatsapp-soft);
+}
+
+.btn--whatsapp:hover {
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
 }
 
 /* Outline */
@@ -282,13 +290,14 @@
 
 .btn--split .btn__label,
 .btn--split .btn__plus {
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   flex-shrink: 0;
   transition:
     background-color 280ms var(--ease-premium),
     color 280ms var(--ease-premium),
     box-shadow 280ms var(--ease-premium),
-    letter-spacing 280ms var(--ease-premium);
+    letter-spacing 280ms var(--ease-premium),
+    transform 180ms var(--ease-premium);
 }
 
 .btn--split .btn__label {
@@ -318,6 +327,7 @@
 .btn--split-primary .btn__label {
   background-color: var(--color-primary);
   color: var(--color-white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn--split-primary .btn__plus {
@@ -327,7 +337,7 @@
 
 .btn--split-primary:hover .btn__label {
   background-color: var(--color-primary-light);
-  box-shadow: 0 8px 24px var(--color-primary-glow);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 24px var(--color-primary-glow);
 }
 
 .btn--split-primary:hover .btn__plus {
@@ -401,11 +411,53 @@
   background-color: var(--color-whatsapp);
 }
 
+/* ── btn__plus — microinteração compartilhada ── */
+.btn--split:hover .btn__plus {
+  transform: scale(1.1);
+}
+
+.btn--split:active .btn__plus {
+  transform: scale(0.93);
+}
+
 /* Ícone interno */
 .btn__icon {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+}
+
+/* ── Tamanhos do Split ── */
+.btn--split--sm .btn__label,
+.btn--split--sm .btn__plus {
+  min-height: 2.25rem;
+}
+
+.btn--split--sm .btn__label {
+  padding-inline: 0.85rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+}
+
+.btn--split--sm .btn__plus {
+  min-width: 2.25rem;
+  font-size: 0.9rem;
+}
+
+.btn--split--lg .btn__label,
+.btn--split--lg .btn__plus {
+  min-height: 3.25rem;
+}
+
+.btn--split--lg .btn__label {
+  padding-inline: 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.btn--split--lg .btn__plus {
+  min-width: 3.25rem;
+  font-size: 1.15rem;
 }
 
 /* ── Divider ── */

@@ -14,9 +14,10 @@ export function initScrollTriggers() {
   document.querySelectorAll('[data-animate="section-heading"]').forEach((el) => {
     const meta = el.querySelector('.section-heading__meta');
     const title = el.querySelector('.section-heading__title');
+    const subtitle = el.querySelector('.section-heading__subtitle');
     const rule = el.querySelector('.section-heading__rule');
     const square = el.querySelector('.section-heading__square');
-    const parts = [meta, title].filter(Boolean);
+    const parts = [meta, title, subtitle].filter(Boolean);
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -30,16 +31,16 @@ export function initScrollTriggers() {
     if (rule) tl.fromTo(rule, { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: 'machado' }, 0);
     if (square && rule) {
       tl.fromTo(square,
-        { x: 0, rotate: 0 },
-        { x: () => rule.offsetWidth - square.offsetWidth, rotate: 180, duration: 0.9, ease: 'machado' },
+        { x: 0, rotate: 0, opacity: 0 },
+        { x: () => rule.offsetWidth - square.offsetWidth, rotate: 180, opacity: 1, duration: 0.9, ease: 'machado' },
         0
       );
     }
 
     if (parts.length) {
       tl.fromTo(parts,
-        { opacity: 0, y: 18 },
-        { opacity: 1, y: 0, duration: 0.72, stagger: 0.08, ease: 'machado' },
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.72, stagger: 0.1, ease: 'machado' },
         0.08
       );
     }

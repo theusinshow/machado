@@ -208,7 +208,17 @@
     filter: none;
   }
 
-  .btn--split:hover .btn__plus {
+  .btn--split:hover .btn__plus,
+  .btn--split:active .btn__plus {
+    transform: none;
+  }
+
+  .dep-btn:hover,
+  .dep-btn:active,
+  .produto-gallery__btn:hover,
+  .produto-gallery__btn:active,
+  .produtos-arrow:hover,
+  .produtos-arrow:active {
     transform: none;
   }
 }

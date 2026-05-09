@@ -6,6 +6,22 @@
 
 ---
 
+## [2026-05-09] STYLE — Aproximação tipográfica da prova social
+
+**Agente:** Codex
+**Sessão:** Ajuste de stats inspirado na referência
+
+### Alterado
+- `css/components/social-proof.css` — números da prova social refinados com família heading, peso leve, tracking negativo, line-height mais justo, padding editorial e labels mono mais secos; o indicador azul foi reposicionado para não deslocar o texto
+
+## [2026-05-09] FIX — Hero com “PLATAFORMAS” sem corte
+
+**Agente:** Codex
+**Sessão:** Correção de clipping no título da hero
+
+### Alterado
+- `css/components/hero.css` — ajustada a escala desktop do título e a folga lateral das linhas display para evitar corte visual da palavra “PLATAFORMAS”, preservando o texto plural já existente no HTML
+
 ## [2026-05-09] CHORE — Preservação do layout aprovado da prova social
 
 **Agente:** Codex

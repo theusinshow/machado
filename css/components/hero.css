@@ -91,7 +91,7 @@
   display: block;
   overflow: hidden;
   white-space: nowrap;
-  padding-inline-end: 0.16em;
+  padding-inline-end: 0.34em;
   padding-block: 0.1em 0.06em;
 }
 
@@ -317,12 +317,12 @@
   .hero-content {
     order: 1;
     align-self: center;
-    max-width: 48rem;
+    max-width: 52rem;
     padding-bottom: var(--space-5);
   }
 
   .hero-title {
-    font-size: clamp(3rem, 4vw, 4.5rem);
+    font-size: clamp(3rem, 3.65vw, 4.25rem);
     gap: 1.1rem;
   }
 
@@ -363,11 +363,11 @@
   }
 
   .hero-content {
-    max-width: 51rem;
+    max-width: 54rem;
   }
 
   .hero-title {
-    font-size: clamp(3.5rem, 4vw, 5rem);
+    font-size: clamp(3.35rem, 3.55vw, 4.45rem);
   }
 
   .hero-media {

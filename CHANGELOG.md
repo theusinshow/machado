@@ -6,6 +6,137 @@
 
 ---
 
+## [2026-05-09] STYLE — Refinamento premium do footer institucional
+
+**Agente:** Codex
+**Sessão:** Footer premium — ui-ux-pro-max
+
+### Alterado
+- `index.html` — footer ajustado para estrutura institucional enxuta com marca/tagline, navegação central, contato clicável, copyright 2026 e assinatura “Machado Plataformas” em title case no fundo
+- `css/components/footer.css` — grid do footer refinado para três colunas, links de contato estilizados, marca d'água preservada com `--font-display`, respiro amplo e responsividade sem quebrar a assinatura gigante
+
+---
+
+## [2026-05-09] STYLE — Redesign editorial industrial do footer
+
+**Agente:** Codex
+**Sessão:** Footer referência Good Fella
+
+### Alterado
+- `index.html` — footer reorganizado sem bloco de inscrição, com navegação, linhas de produto, CTA de orçamento preservado, status comercial e assinatura `MACHADO PLATAFORMAS` como elemento visual de fundo
+- `css/components/footer.css` — rodapé reconstruído com layout editorial escuro, marca gigante translúcida usando a fonte display da HERO, grid técnico, hover/focus em links e CTA, e responsividade para mobile/tablet/desktop
+- `js/animations/scroll-triggers.js` — animação da headline do footer ajustada para revelar a assinatura como marca d'água translúcida em vez de texto opaco
+
+---
+
+## [2026-05-09] STYLE — Redesign visual e interativo da seção financiamento
+
+**Agente:** Codex
+**Sessão:** UI/UX financiamento — ui-ux-pro-max
+
+### Alterado
+- `index.html` — seção `#financiamento` reestruturada com copy reduzida, painel visual com imagem real de produto, etapas curtas de negociação e cards de condição/pagamento clicáveis para WhatsApp
+- `css/components/financiamento.css` — componente reconstruído com grid responsivo, painel visual, cards interativos com hover/focus, animação sutil, estados acessíveis e suporte a `prefers-reduced-motion`
+
+---
+
+## [2026-05-09] FIX — Correção de sobreposição dos botões da CTA
+
+**Agente:** Codex
+**Sessão:** Ajuste CTA buttons
+
+### Alterado
+- `css/components/cta-interstitial.css` — botões dentro de `.cta-mid__btns` passam a manter fluxo em coluna com largura estável, label flexível e `max-width: 100%`, evitando sobreposição em labels longos e no efeito split
+
+---
+
+## [2026-05-09] FIX — Retorno do enquadramento cover para imagens de produto
+
+**Agente:** Codex
+**Sessão:** Preferência por redimensionamento manual das imagens
+
+### Alterado
+- `css/components/produtos.css` — revertido o uso de `object-fit: contain` e frame `16 / 11`; produtos voltam ao enquadramento original com `object-fit: cover` e proporção `4 / 5`
+- `css/components/cta-interstitial.css` — removidos padding/fundo interno da imagem do CTA e restaurado `object-fit: cover`
+
+---
+
+## [2026-05-09] FIX — Ajuste profissional de enquadramento das imagens de produto
+
+**Agente:** Codex
+**Sessão:** Imagens de tamanhos diversos sem corte
+
+### Alterado
+- `css/components/produtos.css` — imagens da seção de produtos passam a usar frame horizontal estável `16 / 11` com `object-fit: contain`, padding interno e fundo controlado para evitar cortes em assets de proporções diferentes
+- `css/components/cta-interstitial.css` — imagem do CTA passa a usar `aspect-ratio: 16 / 11` e `object-fit: contain`, preservando a visualização completa do produto
+
+---
+
+## [2026-05-09] FIX — Correção de caminhos das imagens PNG de produtos
+
+**Agente:** Codex
+**Sessão:** Ajuste de assets atualizados
+
+### Alterado
+- `index.html` — atualizadas as referências de `LEVE-1`, `MEDIA-1` e `PESADA-1` de `.jpg` para `.png`, incluindo a imagem do CTA e os primeiros slides das linhas de produto
+
+---
+
+## [2026-05-09] STYLE — Reequilíbrio visual da CTA intermediária
+
+**Agente:** Codex
+**Sessão:** UI/UX CTA — revisão de composição
+
+### Alterado
+- `index.html` — `#cta-mid`: reorganizada a ordem do conteúdo para priorizar mensagem, botões e pontos de confiança antes da imagem em mobile; headline encurtada e sem pontuação final para melhorar leitura
+- `css/components/cta-interstitial.css` — CTA simplificada para layout split card: copy e ações integradas à esquerda, imagem de produto à direita sem sobreposição, tipografia reduzida, menos peso visual, trust points integrados e breakpoints ajustados para mobile/tablet/desktop
+
+---
+
+## [2026-05-09] STYLE — Redesign premium da seção CTA intermediária
+
+**Agente:** Codex
+**Sessão:** UI/UX CTA — ui-ux-pro-max
+
+### Alterado
+- `index.html` — seção `#cta-mid` refatorada com composição em três blocos: copy comercial direta, visual real de produto e área de ação com botão principal, botão secundário e linha de confiança; links de WhatsApp preservados
+- `css/components/cta-interstitial.css` — componente CTA reconstruído com layout responsivo, contraste industrial, moldura técnica, imagem integrada, hierarquia de botões, hover sutil em desktop e suporte a `prefers-reduced-motion`
+
+---
+
+## [2026-05-09] STYLE — Redesign premium da seção de depoimentos
+
+**Agente:** Codex
+**Sessão:** UI/UX testimonials — ui-ux-pro-max
+
+### Alterado
+- `index.html` — seção `#depoimentos` refatorada com header mais forte, subtítulo, resumo de confiança com números já existentes, três cards curtos com rating, tipo de projeto e metadados de cliente/localidade; removidos placeholders externos de foto e navegação de carrossel
+- `css/components/depoimentos.css` — componente `.depoimento-card` redesenhado como card reutilizável premium, com grid responsivo, hierarquia tipográfica, bordas/acento azul, avatars por iniciais, hover discreto em desktop e suporte a `prefers-reduced-motion`
+- `js/main.js` — removida a inicialização e a função do antigo carrossel de depoimentos, já sem uso no novo layout em grid
+
+---
+
+## [2026-05-09] CONTENT — Reordenação de depoimentos e CTA
+
+**Agente:** Codex
+**Sessão:** Feedback do cliente — reorganizar estrutura
+
+### Alterado
+- `index.html` — bloco `#depoimentos` seguido de `#cta-mid` movido para imediatamente após `#diferenciais`, sem alterar markup interno, estilos ou scripts
+
+---
+
+## [2026-05-09] CONTENT — Remoção da seção de contato
+
+**Agente:** Codex
+**Sessão:** Feedback do cliente — remover seção contato
+
+### Alterado
+- `index.html` — removida a seção `#contato` completa conforme feedback do cliente; removido o stylesheet `css/components/contato.css` da página; links de menu e rodapé para `#contato` removidos; CTAs de orçamento que apontavam para o formulário agora abrem o WhatsApp para evitar âncoras quebradas
+- `js/main.js` — removida a inicialização e a função do formulário de contato, já sem uso após a exclusão da seção
+
+---
+
 ## [2026-05-09] STYLE — Refatoração do componente section-heading: visual premium sem caixa, animação refinada
 
 **Agente:** Claude Code

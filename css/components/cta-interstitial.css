@@ -1,59 +1,286 @@
 /* ===========================
    COMPONENTE: CTA Intermediário
-   Depende de: variables.css
+   Depende de: variables.css, layout.css
 =========================== */
 
 .cta-mid {
-  background: linear-gradient(135deg,
-    var(--color-bg) 0%,
-    var(--color-navy) 50%,
-    var(--color-bg) 100%
-  );
-  padding-block: var(--space-32);
   position: relative;
+  padding-block: var(--section-sm);
   overflow: hidden;
+  background-color: var(--color-bg);
 }
 
 .cta-mid::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    var(--color-primary-soft) 0%,
-    transparent 65%
-  );
+  background:
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-navy-dark) 100%);
   pointer-events: none;
 }
 
 .cta-mid-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-8);
   position: relative;
   z-index: 1;
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background:
+    linear-gradient(135deg, var(--color-navbar-panel-card) 0%, transparent 58%),
+    var(--color-bg-mid);
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 24px 60px var(--color-navbar-shadow);
+}
+
+.cta-mid-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-6);
+  width: var(--space-20);
+  height: 3px;
+  background-color: var(--color-primary);
+}
+
+.cta-mid__copy {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.cta-mid__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-primary-muted);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cta-mid__eyebrow::before {
+  content: '';
+  width: var(--space-3);
+  height: var(--space-3);
+  background-color: var(--color-primary);
 }
 
 .cta-mid__headline {
-  font-family: var(--font-heading);
-  font-size: clamp(var(--text-4xl), 6vw, var(--text-hero));
-  font-weight: var(--weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0;
-  line-height: 1.05;
+  max-width: 700px;
+  margin: 0;
   color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-3xl), 4.4vw, var(--text-6xl));
+  font-weight: var(--weight-medium);
+  line-height: 1.04;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .cta-mid__sub {
-  max-width: 480px;
+  max-width: 520px;
+  margin: 0;
   color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.cta-mid__action {
+  display: grid;
+  gap: var(--space-5);
 }
 
 .cta-mid__btns {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.cta-mid__btns .btn {
+  width: 100%;
+}
+
+.cta-mid__btns .btn--split {
+  max-width: 100%;
+}
+
+.cta-mid__btns .btn__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+  white-space: normal;
+}
+
+.cta-mid__btns .btn__plus {
+  flex: 0 0 auto;
+}
+
+.cta-mid__trust {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-4) 0 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.cta-mid__trust li {
+  position: relative;
+  padding-left: var(--space-5);
+  color: var(--color-text-muted);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.cta-mid__trust li::before {
+  content: '';
+  position: absolute;
+  top: 0.42em;
+  left: 0;
+  width: var(--space-2);
+  height: var(--space-2);
+  background-color: var(--color-primary-light);
+}
+
+.cta-mid__visual {
+  position: relative;
+  min-height: 220px;
+  margin: 0;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-navbar-border-dark-strong);
+}
+
+.cta-mid__visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, transparent 42%, var(--color-overlay) 100%);
+  pointer-events: none;
+}
+
+.cta-mid__visual::after {
+  content: '';
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 2;
+  width: var(--space-12);
+  height: var(--space-12);
+  border-right: 2px solid var(--color-primary-light);
+  border-bottom: 2px solid var(--color-primary-light);
+  pointer-events: none;
+}
+
+.cta-mid__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cta-mid__visual img {
+    transition: transform var(--dur-slow) var(--ease-premium);
+  }
+
+  .cta-mid-content:hover .cta-mid__visual img {
+    transform: scale(1.025);
+  }
+}
+
+@media (min-width: 768px) {
+  .cta-mid-content {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+    gap: var(--space-8);
+    padding: var(--space-10);
+  }
+
+  .cta-mid__copy,
+  .cta-mid__action {
+    grid-column: 1;
+  }
+
+  .cta-mid__visual {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: stretch;
+    min-height: 100%;
+  }
+
+  .cta-mid__visual img {
+    min-height: 100%;
+  }
+
+  .cta-mid__btns {
+    max-width: 440px;
+  }
+
+  .cta-mid__trust {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-mid {
+    padding-block: var(--section-md);
+  }
+
+  .cta-mid-content {
+    grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.62fr);
+    padding: var(--space-12);
+  }
+
+  .cta-mid__headline {
+    max-width: 620px;
+  }
+
+  .cta-mid__sub {
+    font-size: var(--text-lg);
+  }
+
+  .cta-mid__btns .btn {
+    width: min(100%, 25rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .cta-mid-content {
+    padding: var(--space-14);
+  }
+
+  .cta-mid__visual {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-mid-content {
+    padding: var(--space-5);
+  }
+
+  .cta-mid__headline {
+    font-size: var(--text-3xl);
+    line-height: 1.08;
+  }
+
+  .cta-mid__btns .btn__label {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-mid__visual img,
+  .cta-mid-content:hover .cta-mid__visual img {
+    transition: none;
+    transform: none;
+  }
 }

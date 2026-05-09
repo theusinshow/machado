@@ -5,7 +5,7 @@ export function initScrollTriggers() {
 
   if (reducedMotion) {
     const footerHeadline = document.querySelector('.footer-headline');
-    if (footerHeadline) gsap.set(footerHeadline, { opacity: 1 });
+    if (footerHeadline) gsap.set(footerHeadline, { opacity: 0.08 });
     return;
   }
 
@@ -172,7 +172,7 @@ export function initScrollTriggers() {
     gsap.fromTo(footerHeadline,
       { scale: 0.95, opacity: 0 },
       {
-        scale: 1, opacity: 1,
+        scale: 1, opacity: 0.08,
         duration: 1.2,
         ease: 'machado',
         scrollTrigger: {

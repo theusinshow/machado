@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initProdutosTabs();
     initSobreGallery();
     initNavbar();
-    initContactForm();
-    initDepoimentos();
     initButtonSwap();
   });
 });
@@ -282,69 +280,6 @@ function initSobreGallery() {
   }
 
   queueAutoplay();
-}
-
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let valid = true;
-
-    const required = form.querySelectorAll('[required]');
-    required.forEach((field) => {
-      const isBlank = !field.value.trim();
-      field.classList.toggle('is-error', isBlank);
-      if (isBlank) valid = false;
-    });
-
-    if (!valid) return;
-
-    const btn = form.querySelector('[type="submit"]');
-    const label = btn.querySelector('.btn__label') || btn.querySelector('span');
-    const original = label.textContent;
-    label.textContent = 'ENVIANDO...';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      label.textContent = 'ENVIADO!';
-      setTimeout(() => {
-        label.textContent = original;
-        btn.disabled = false;
-        form.reset();
-      }, 2500);
-    }, 1200);
-  });
-
-  // Limpar erro ao digitar
-  form.querySelectorAll('input, select, textarea').forEach((field) => {
-    field.addEventListener('input', () => field.classList.remove('is-error'));
-  });
-}
-
-function initDepoimentos() {
-  const track   = document.querySelector('.depoimentos-track');
-  const cards   = document.querySelectorAll('.depoimento-card');
-  const btnPrev = document.querySelector('.dep-btn--prev');
-  const btnNext = document.querySelector('.dep-btn--next');
-
-  if (!track || !cards.length) return;
-
-  let current = 0;
-  const total = cards.length;
-
-  function goTo(index) {
-    current = (index + total) % total;
-    gsap.to(track, {
-      x: -current * 100 + '%',
-      duration: 0.6,
-      ease: 'snap',
-    });
-  }
-
-  if (btnPrev) btnPrev.addEventListener('click', () => goTo(current - 1));
-  if (btnNext) btnNext.addEventListener('click', () => goTo(current + 1));
 }
 
 function initButtonSwap() {

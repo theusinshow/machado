@@ -1,128 +1,288 @@
 /* ===========================
    COMPONENTE: Depoimentos
-   Depende de: variables.css
+   Depende de: variables.css, layout.css
 =========================== */
+
+.depoimentos {
+  background:
+    linear-gradient(180deg, var(--color-bg) 0%, var(--color-navy-dark) 100%);
+}
+
+.depoimentos-header {
+  display: grid;
+  gap: var(--space-6);
+  align-items: end;
+}
+
+.depoimentos-header .section-title {
+  max-width: 760px;
+}
+
+.depoimentos-header__text {
+  max-width: 440px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: 1.65;
+}
+
+.depoimentos-trust {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: var(--space-8);
+  border: 1px solid var(--color-border-light);
+  background-color: var(--color-primary-soft);
+}
+
+.depoimentos-trust__item {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.depoimentos-trust__item:last-child {
+  border-bottom: 0;
+}
+
+.depoimentos-trust__item strong {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+}
+
+.depoimentos-trust__item span {
+  color: var(--color-text-muted);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
 .depoimentos-wrapper {
   position: relative;
-  overflow: hidden;
 }
 
 .depoimentos-track {
-  display: flex;
-  width: 100%;
-  will-change: transform;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
 }
 
 .depoimento-card {
-  flex: 0 0 100%;
+  position: relative;
   display: flex;
+  min-height: 320px;
   flex-direction: column;
   gap: var(--space-6);
-  padding: var(--space-10) var(--space-8);
-  background-color: var(--color-bg-mid);
-  border: 1px solid var(--color-border);
+  padding: var(--space-6);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, var(--color-navbar-panel-card) 0%, transparent 100%),
+    var(--color-bg-mid);
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 24px 60px var(--color-navbar-shadow);
+  transition:
+    border-color var(--dur-normal) var(--ease-premium),
+    transform var(--dur-normal) var(--ease-premium),
+    box-shadow var(--dur-normal) var(--ease-premium);
+}
+
+.depoimento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background-color: var(--color-primary);
+  transform: scaleX(0.18);
+  transform-origin: left;
+  transition: transform var(--dur-normal) var(--ease-premium);
+}
+
+.depoimento-card::after {
+  content: '"';
+  position: absolute;
+  right: var(--space-6);
+  bottom: var(--space-4);
+  color: var(--color-primary-ring);
+  font-family: var(--font-display);
+  font-size: 8rem;
+  line-height: 0.75;
+  pointer-events: none;
+}
+
+.depoimento-card--featured {
+  background:
+    linear-gradient(180deg, var(--color-primary-surface) 0%, transparent 100%),
+    var(--color-bg-mid);
+  border-color: var(--color-primary-light);
+}
+
+.depoimento-card__top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.depoimento-card__tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding-inline: var(--space-3);
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-muted);
+  border: 1px solid var(--color-primary-ring);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .depoimento-card__stars {
   display: flex;
+  flex-shrink: 0;
   gap: var(--space-1);
+  color: var(--color-star);
+}
+
+.depoimento-card__stars svg {
+  display: block;
+  fill: currentColor;
 }
 
 .depoimento-card__text {
-  font-size: var(--text-lg);
-  color: var(--color-text);
-  line-height: 1.65;
-  font-style: italic;
   position: relative;
-  padding-left: var(--space-6);
-}
-
-.depoimento-card__text::before {
-  content: '"';
-  position: absolute;
-  left: 0;
-  top: -0.2em;
-  font-family: var(--font-heading);
-  font-size: var(--text-4xl);
-  color: var(--color-primary-light);
-  line-height: 1;
+  z-index: 1;
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--text-xl);
   font-style: normal;
+  font-weight: var(--weight-regular);
+  line-height: 1.45;
 }
 
 .depoimento-card__author {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-5);
   margin-top: auto;
+  border-top: 1px solid var(--color-border);
 }
 
-.depoimento-card__foto {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--color-primary-light);
+.depoimento-card__avatar {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border: 1px solid var(--color-primary-ring);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
 }
 
 .depoimento-card__nome {
   display: block;
+  color: var(--color-text);
   font-family: var(--font-heading);
   font-size: var(--text-base);
   font-weight: var(--weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-text);
+  line-height: 1.2;
 }
 
 .depoimento-card__empresa {
   display: block;
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
   margin-top: var(--space-1);
-}
-
-/* ── Navegação ── */
-.depoimentos-nav {
-  display: flex;
-  gap: var(--space-3);
-  margin-top: var(--space-6);
-  justify-content: center;
-}
-
-.dep-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background-color: transparent;
-  border: 1px solid var(--color-border-light);
   color: var(--color-text-muted);
-  cursor: pointer;
-  transition:
-    border-color var(--dur-fast) var(--ease-premium),
-    color var(--dur-fast) var(--ease-premium),
-    background-color var(--dur-fast) var(--ease-premium),
-    transform var(--dur-fast) var(--ease-premium);
+  font-size: var(--text-xs);
 }
 
-.dep-btn:hover {
-  border-color: var(--color-primary-light);
-  color: var(--color-white);
-  background-color: var(--color-primary);
-  transform: translateY(-2px);
-}
+@media (hover: hover) and (pointer: fine) {
+  .depoimento-card:hover {
+    border-color: var(--color-primary-muted);
+    box-shadow: 0 28px 70px var(--color-navbar-dark);
+    transform: translateY(-6px);
+  }
 
-.dep-btn:active {
-  transform: translateY(0);
+  .depoimento-card:hover::before {
+    transform: scaleX(1);
+  }
 }
 
 @media (min-width: 768px) {
+  .depoimentos-header {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  }
+
+  .depoimentos-trust {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .depoimentos-trust__item {
+    border-right: 1px solid var(--color-border);
+    border-bottom: 0;
+  }
+
+  .depoimentos-trust__item:last-child {
+    border-right: 0;
+  }
+
+  .depoimentos-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .depoimento-card {
-    padding: var(--space-12) var(--space-10);
+    padding: var(--space-8);
+  }
+
+  .depoimento-card--featured {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .depoimentos-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .depoimento-card--featured {
+    grid-column: auto;
+    transform: translateY(-12px);
+  }
+
+  .depoimento-card__text {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (min-width: 1280px) {
+  .depoimento-card {
+    min-height: 360px;
+    padding: var(--space-10);
+  }
+
+  .depoimento-card__text {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depoimento-card,
+  .depoimento-card::before,
+  .depoimento-card:hover,
+  .depoimento-card--featured {
+    transition: none;
+    transform: none;
   }
 }

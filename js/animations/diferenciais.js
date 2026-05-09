@@ -121,9 +121,11 @@ export function initDiferenciais() {
   );
 
   const mm = gsap.matchMedia();
+  const BP_DESKTOP = '(min-width: 1024px)';
+  const BP_MOBILE  = '(max-width: 1023px)';
 
   // ── Desktop: seção pina e scroll avança pelos pilares ──────────────────────
-  mm.add('(min-width: 1024px)', () => {
+  mm.add(BP_DESKTOP, () => {
     const stepDistance = Math.round(window.innerHeight * 0.7);
 
     const st = ScrollTrigger.create({
@@ -145,7 +147,7 @@ export function initDiferenciais() {
   });
 
   // ── Mobile: troca por posição relativa no scroll normal ────────────────────
-  mm.add('(max-width: 1023px)', () => {
+  mm.add(BP_MOBILE, () => {
     let ticking = false;
 
     function syncActiveStep() {

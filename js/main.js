@@ -10,6 +10,8 @@ import { initMagnetic }      from './animations/magnetic.js';
 import { initProdutosTabs }  from './animations/produtos-tabs.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.classList.add('js-ready');
+
   initLenis();
   initStats();
 

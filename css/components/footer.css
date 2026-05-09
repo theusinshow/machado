@@ -18,17 +18,21 @@
 
 .footer-headline {
   font-family: var(--font-heading);
-  font-size: 6rem;
+  font-size: var(--text-hero);
   font-weight: var(--weight-medium);
   text-transform: uppercase;
   letter-spacing: 0;
   line-height: 0.95;
   color: var(--color-text);
   text-align: center;
-  opacity: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Estado inicial para animação GSAP — JS aplica a transição para opacity:1 */
+.js-ready .footer-headline {
+  opacity: 0;
 }
 
 /* ── Divider ── */

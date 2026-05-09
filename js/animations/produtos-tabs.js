@@ -181,7 +181,10 @@ export function initProdutosTabs() {
     });
   }
 
-  mm.add('(min-width: 1024px)', () => {
+  const BP_DESKTOP = '(min-width: 1024px)';
+  const BP_MOBILE  = '(max-width: 1023px)';
+
+  mm.add(BP_DESKTOP, () => {
     const handlers = [];
     let targetIndex = 0;
 
@@ -236,7 +239,7 @@ export function initProdutosTabs() {
     };
   });
 
-  mm.add('(max-width: 1023px)', () => {
+  mm.add(BP_MOBILE, () => {
     if (reducedMotion) {
       gsap.set(section.querySelectorAll('.produto-slide__text-inner > *'), { autoAlpha: 1, y: 0 });
       setActive(0);

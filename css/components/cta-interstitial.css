@@ -38,7 +38,7 @@
 
 .cta-mid__headline {
   font-family: var(--font-heading);
-  font-size: 3.25rem;
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-hero));
   font-weight: var(--weight-medium);
   text-transform: uppercase;
   letter-spacing: 0;

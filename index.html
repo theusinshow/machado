@@ -21,6 +21,9 @@
     window.scrollTo(0, 0);
   </script>
 
+  <!-- Preload fonte display proprietária -->
+  <link rel="preload" href="./assets/fonts/METAG___.TTF" as="font" type="font/truetype" crossorigin />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
@@ -49,6 +52,9 @@
   <link rel="stylesheet" href="./css/components/footer.css" />
 </head>
 <body>
+
+  <!-- ── Skip Link (acessibilidade teclado) ── -->
+  <a href="#hero" class="skip-link">Ir para o conteúdo</a>
 
   <!-- ── Loading Screen ── -->
   <div id="loader" role="status" aria-live="polite" aria-label="Carregando">
@@ -137,6 +143,7 @@
               src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
               alt="Equipe e estrutura da Machado Plataformas"
               class="navbar-card__image"
+              width="320" height="224"
               loading="lazy"
             />
             <span class="navbar-card__eyebrow mono">Sobre a fábrica</span>
@@ -148,6 +155,7 @@
               src="./assets/images/hero/plataforma-hero.png"
               alt="Plataforma em destaque da Machado"
               class="navbar-card__image"
+              width="320" height="224"
               loading="lazy"
             />
             <span class="navbar-card__eyebrow mono">Linha em destaque</span>
@@ -226,6 +234,7 @@
             src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
             alt="Plataforma Machado em operação"
             class="stat-media-card__image"
+            width="440" height="600"
             loading="lazy"
           />
         </article>
@@ -331,11 +340,11 @@
 
         <div class="diferenciais-visual" aria-hidden="true">
           <div class="diferenciais-visual__sticky">
-            <img class="diferenciais-visual__image is-active" data-diferencial-image="0" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg" alt="" loading="lazy" />
-            <img class="diferenciais-visual__image" data-diferencial-image="1" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="" loading="lazy" />
-            <img class="diferenciais-visual__image" data-diferencial-image="2" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg" alt="" loading="lazy" />
-            <img class="diferenciais-visual__image" data-diferencial-image="3" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg" alt="" loading="lazy" />
-            <img class="diferenciais-visual__image" data-diferencial-image="4" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg" alt="" loading="lazy" />
+            <img class="diferenciais-visual__image is-active" data-diferencial-image="0" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg" alt="" width="640" height="800" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="1" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="" width="640" height="800" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="2" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg" alt="" width="640" height="800" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="3" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg" alt="" width="640" height="800" loading="lazy" />
+            <img class="diferenciais-visual__image" data-diferencial-image="4" src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg" alt="" width="640" height="800" loading="lazy" />
           </div>
         </div>
       </div>

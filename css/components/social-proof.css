@@ -67,12 +67,13 @@
   display: inline-flex;
   align-items: flex-start;
   font-family: var(--font-body);
-  font-size: 6rem;
+  font-size: var(--text-hero);
   font-weight: var(--weight-light);
   line-height: 1;
   letter-spacing: 0;
   color: var(--color-stats-text);
   font-kerning: normal;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-number__value {

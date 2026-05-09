@@ -284,8 +284,7 @@
   font-weight: var(--weight-medium);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-bg-light);
-  opacity: 0.65;
+  color: var(--color-primary);
 }
 
 .produto-slide__spec-row dd {
@@ -328,12 +327,7 @@
   transform: translateX(5px);
 }
 
-.produto-slide__title:hover,
-.produto-slide__specs:hover,
-.produto-slide__extra:hover {
-  color: var(--color-primary);
-  transform: translateX(var(--space-2));
-}
+/* hover em blocos de texto removido — comportamento confuso para o usuário */
 
 .produtos-arrows {
   position: absolute;

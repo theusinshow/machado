@@ -434,7 +434,7 @@
 
 @media (min-width: 1024px) {
   .navbar-inner {
-    padding-inline: 60px;
+    padding-inline: var(--container-padding);
   }
 
   .navbar-panel__inner {

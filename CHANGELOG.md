@@ -6,6 +6,56 @@
 
 ---
 
+## [2026-05-09] FIX — Hero: título completo sem corte
+
+**Agente:** Claude Code
+**Sessão:** Correção do overflow no título "PLATAFORMAS"
+
+### Alterado
+- `css/components/hero.css` — coluna esquerda do grid alargada de `0.86fr` para `1.1fr` (`.hero-media` é `position: absolute`, não ocupa grid); font-size do título em `1024px+` reduzido de `var(--text-hero)` (6rem fixo) para `clamp(3rem, 4vw, 4.5rem)`; font-size em `1280px+` ajustado de `clamp(6rem, 7vw, 7.5rem)` para `clamp(3.5rem, 4vw, 5rem)` — elimina o corte de "PLATAFORMAS" causado por `overflow: hidden` da animação de reveal
+
+---
+
+## [2026-05-09] STYLE — Cor cinza do menu restaurada
+
+**Agente:** Claude Code
+**Sessão:** Reversão da cor --color-menu-bg
+
+### Alterado
+- `css/variables.css` — `--color-menu-bg` revertido de `#252E3C` para `#333333` (cinza original que gerava bom contraste na navbar aberta, painéis e controles de produto)
+
+---
+
+## [2026-05-09] FIX — Auditoria UI/UX: acessibilidade, tokens e contraste
+
+**Agente:** Claude Code
+**Sessão:** Auditoria ui-ux-pro-max + web-design-guidelines + implementação
+
+### Alterado
+- `css/reset.css` — removido `outline: none` global; adicionado `focus-visible` seguro (2px solid primary-light) e componente `.skip-link` com posicionamento via `:focus-visible`
+- `index.html` — adicionado `<link rel="preload">` para a fonte Machado; `<a class="skip-link">` como primeiro filho do body; atributos `width`/`height` nas imagens `.navbar-card` (320×224), `.stat-media-card` (440×600) e `.diferenciais` (640×800)
+- `css/variables.css` — `--color-menu-bg` alterado de `#333333` (órfão) para `#252E3C` (paleta navy); adicionados `--weight-semibold: 600` e `--weight-bold: 700`
+- `css/layout.css` — adicionado `touch-action: manipulation` ao seletor `.btn` (elimina delay de 300ms no mobile)
+- `css/components/hero.css` — font-size do título revisado para `clamp()` em todos os breakpoints; usa token `var(--text-hero)` em vez de valor absoluto
+- `css/components/footer.css` — removido `opacity: 0` permanente de `.footer-headline`; adicionado padrão `.js-ready .footer-headline { opacity: 0 }` (seguro caso JS falhe); font-size usa `var(--text-hero)`
+- `css/components/social-proof.css` — adicionado `font-variant-numeric: tabular-nums` em `.stat-number`; font-size usa `var(--text-hero)`
+- `css/components/produtos.css` — removidos hovers em `.produto-slide__title/specs/extra` (anti-pattern UX); contraste de `.produto-slide__spec-row dt` corrigido de `var(--color-bg-light) opacity:0.65` (~2.77:1, WCAG fail) para `var(--color-primary)`
+- `css/components/navbar.css` — `padding-inline: 60px` substituído por `var(--container-padding)` no breakpoint 1024px
+- `css/components/cta-interstitial.css` — `.cta-mid__headline` font-size de `3.25rem` para `clamp(var(--text-4xl), 6vw, var(--text-hero))`
+- `js/main.js` — adicionado `document.documentElement.classList.add('js-ready')` no início de DOMContentLoaded
+- `js/animations/diferenciais.js` — breakpoints `1024px`/`1023px` extraídos para constantes `BP_DESKTOP`/`BP_MOBILE`
+- `js/animations/produtos-tabs.js` — breakpoints `1024px`/`1023px` extraídos para constantes `BP_DESKTOP`/`BP_MOBILE`
+
+---
+
+## [2026-05-07] CHORE — Plano de ajustes do feedback do cliente
+
+**Agente:** Codex
+**Sessão:** Planejamento sem implementação
+
+### Criado
+- `PLANO_FEEDBACK_CLIENTE.md` — documento com interpretação do feedback, nova estrutura sugerida, ajustes por seção, diretrizes de copy e prioridades de implementação
+
 ## [2026-05-07] CHORE — Ícone da página
 
 **Agente:** Codex

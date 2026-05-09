@@ -169,6 +169,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
+  touch-action: manipulation;
   transition: color var(--dur-normal) ease;
   white-space: nowrap;
   border: 2px solid transparent;

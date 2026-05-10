@@ -6,6 +6,63 @@
 
 ---
 
+## [2026-05-10] FIX — Grid estrutural da seção Produtos
+
+**Agente:** Codex
+**Sessão:** Auditoria de grid e alinhamento vertical
+
+### Alterado
+- `css/components/produtos.css` — seção Produtos passou a usar uma malha desktop única com três colunas compartilhadas entre header, trilho, imagem e conteúdo técnico, reduzindo desalinhamentos causados por grids independentes
+
+## [2026-05-10] STYLE — Refinamento dos controles e trilho de Produtos
+
+**Agente:** Codex
+**Sessão:** Ajuste de ícones e proporção do trilho lateral
+
+### Alterado
+- `index.html` — controles da galeria de Produtos trocaram setas textuais por SVGs acessíveis com `aria-label` e `title`
+- `css/components/produtos.css` — trilho lateral desktop passou a ocupar a mesma altura do palco/imagem, com cards elásticos e alinhamento visual mais consistente; painéis inativos deixaram de interceptar cliques na galeria ativa
+
+## [2026-05-10] FIX — Refinamento visual e pin da seção Produtos
+
+**Agente:** Codex
+**Sessão:** Auditoria crítica Playwright e UI UX Pro Max
+
+### Alterado
+- `index.html` — textos da seção Produtos foram encurtados para reduzir competição com a imagem e melhorar clareza comercial
+- `css/components/produtos.css` — ajustada escala tipográfica, proporção da imagem, altura do palco, alinhamento do trilho e densidade vertical do painel técnico no desktop; em tablet/mobile, a mídia recebeu largura máxima para não alongar demais os painéis
+- `js/animations/produtos-tabs.js` — reduzida a distância do pin por painel para tornar a troca mais natural e menos presa
+
+## [2026-05-10] FIX — Ajuste fullscreen da seção Produtos
+
+**Agente:** Codex
+**Sessão:** Auditoria Playwright em desktop 1920x1080
+
+### Alterado
+- `css/components/produtos.css` — reduzida a altura do palco/imagem no desktop, ampliada a largura útil dos títulos, centralizado o trilho de produtos e ajustado o grupo de CTAs para evitar aperto vertical em fullscreen
+- `index.html` — removido o preload manual da fonte display, mantendo o carregamento via `@font-face` e eliminando avisos do Chromium
+
+## [2026-05-10] FIX — Validação responsiva da seção Produtos
+
+**Agente:** Codex
+**Sessão:** Correção pós-auditoria Playwright
+
+### Alterado
+- `css/components/produtos.css` — trilho mobile/tablet deixou de ser sticky e painéis receberam margem de rolagem para evitar sobreposição com a navbar
+- `js/animations/produtos-tabs.js` — navegação mobile/tablet passou a calcular offset de scroll pela altura da navbar, evitando que o produto ativo fique coberto
+- `css/reset.css` — adicionado bloqueio de overflow horizontal no eixo X para conter elementos fixos/animados fora da viewport em mobile
+
+## [2026-05-10] STYLE — Redesign comercial premium da seção Produtos
+
+**Agente:** Codex
+**Sessão:** Vitrine de produtos com decisão por linha
+
+### Alterado
+- `index.html` — seção Produtos reconstruída como vitrine comercial com header vendedor, trilho de escolha por linha, painéis com capacidade dominante, specs objetivas e CTAs específicos por produto
+- `css/components/produtos.css` — layout da seção redesenhado para desktop pinado e mobile empilhado, com trilho sticky, moldura de imagem, specs em régua técnica e hierarquia visual mais forte
+- `js/animations/produtos-tabs.js` — interação refatorada para alternar painéis por scroll/nav, preservar galerias por produto, respeitar `prefers-reduced-motion` e bloquear foco nos painéis inativos no desktop
+- `js/gsap-setup.js` — registro de plugins GSAP ficou defensivo para evitar quebra caso o CDN do SplitText não carregue
+
 ## [2026-05-10] STYLE — Espaço entre retângulos do botão split
 
 **Agente:** Codex

@@ -1,22 +1,23 @@
 /**
- * Produtos — vitrine horizontal com ScrollTrigger
+ * Produtos — vitrine premium com decisão por linha.
+ * Desktop: seção pinada troca os painéis por scroll ou navegação.
+ * Mobile: painéis empilhados com navegação sticky e reveals leves.
  */
 
 export function initProdutosTabs() {
-  const section = document.querySelector('#produtos');
+  const section = document.querySelector('[data-produtos-showcase]');
   if (!section) return;
 
-  const track = section.querySelector('.produtos-track');
-  const panels = gsap.utils.toArray(section.querySelectorAll('.produto-slide'));
-  const progressItems = gsap.utils.toArray(section.querySelectorAll('[data-go]'));
-  const prevButton = section.querySelector('[data-produtos-prev]');
-  const nextButton = section.querySelector('[data-produtos-next]');
-  if (!track || !panels.length) return;
+  const panels = gsap.utils.toArray(section.querySelectorAll('.produto-panel'));
+  const navItems = gsap.utils.toArray(section.querySelectorAll('[data-go]'));
+  if (!panels.length) return;
 
   const mm = gsap.matchMedia();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const galleryDelay = 3.2;
+  const galleryDelay = 3.4;
+  const focusableSelector = 'a, button, input, select, textarea, [tabindex]';
   let activeIndex = -1;
+  let desktopMode = false;
 
   const galleries = panels.map((panel) => {
     const gallery = panel.querySelector('[data-product-gallery]');
@@ -33,44 +34,25 @@ export function initProdutosTabs() {
     };
   });
 
-  function pauseGalleryMedia(galleryState) {
-    galleryState.items.forEach((item) => {
-      const video = item.querySelector('video');
-      if (video) video.pause();
-    });
-  }
-
-  function playGalleryMedia(galleryState, shouldPlay) {
-    pauseGalleryMedia(galleryState);
-    if (!shouldPlay) return;
-
-    const activeVideo = galleryState.items[galleryState.index]?.querySelector('video');
-    if (activeVideo) activeVideo.play().catch(() => {});
-  }
-
   function stopGallery(galleryState) {
-    if (galleryState.timer) {
-      galleryState.timer.kill();
-      galleryState.timer = null;
-    }
-
-    pauseGalleryMedia(galleryState);
+    if (!galleryState.timer) return;
+    galleryState.timer.kill();
+    galleryState.timer = null;
   }
 
-  function showGalleryItem(galleryState, index, shouldPlay = false) {
+  function showGalleryItem(galleryState, index) {
     if (!galleryState.items.length) return;
 
     galleryState.index = (index + galleryState.items.length) % galleryState.items.length;
     galleryState.items.forEach((item, i) => item.classList.toggle('is-active', i === galleryState.index));
-    playGalleryMedia(galleryState, shouldPlay);
   }
 
   function scheduleGallery(galleryState) {
     if (reducedMotion || galleryState.items.length < 2) return;
 
-    if (galleryState.timer) galleryState.timer.kill();
+    stopGallery(galleryState);
     galleryState.timer = gsap.delayedCall(galleryDelay, () => {
-      showGalleryItem(galleryState, galleryState.index + 1, true);
+      showGalleryItem(galleryState, galleryState.index + 1);
       scheduleGallery(galleryState);
     });
   }
@@ -78,7 +60,7 @@ export function initProdutosTabs() {
   function activateGallery(index) {
     galleries.forEach((galleryState, i) => {
       stopGallery(galleryState);
-      showGalleryItem(galleryState, 0, i === index && !reducedMotion);
+      showGalleryItem(galleryState, 0);
 
       if (i === index) {
         scheduleGallery(galleryState);
@@ -86,185 +68,200 @@ export function initProdutosTabs() {
     });
   }
 
-  if (!reducedMotion) {
-    galleries.forEach((galleryState) => {
-      if (!galleryState.items.length) return;
+  galleries.forEach((galleryState) => {
+    if (!galleryState.items.length) return;
 
-      galleryState.prev?.addEventListener('click', () => {
-        stopGallery(galleryState);
-        showGalleryItem(galleryState, galleryState.index - 1, galleryState.panel.classList.contains('is-active'));
-        if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
-      });
+    galleryState.prev?.addEventListener('click', () => {
+      stopGallery(galleryState);
+      showGalleryItem(galleryState, galleryState.index - 1);
+      if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
+    });
 
-      galleryState.next?.addEventListener('click', () => {
-        stopGallery(galleryState);
-        showGalleryItem(galleryState, galleryState.index + 1, galleryState.panel.classList.contains('is-active'));
-        if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
+    galleryState.next?.addEventListener('click', () => {
+      stopGallery(galleryState);
+      showGalleryItem(galleryState, galleryState.index + 1);
+      if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
+    });
+  });
+
+  function syncPanelAccessibility(index) {
+    panels.forEach((panel, i) => {
+      const inactiveDesktopPanel = desktopMode && i !== index;
+      panel.setAttribute('aria-hidden', inactiveDesktopPanel ? 'true' : 'false');
+
+      panel.querySelectorAll(focusableSelector).forEach((el) => {
+        if (inactiveDesktopPanel) {
+          el.setAttribute('tabindex', '-1');
+          return;
+        }
+
+        if (el.getAttribute('tabindex') === '-1') {
+          el.removeAttribute('tabindex');
+        }
       });
     });
   }
 
   function animatePanel(panel) {
-    const image = panel.querySelector('.produto-gallery') || panel.querySelector('.produto-slide__img');
-    const textItems = [
-      panel.querySelector('.produto-slide__kicker'),
-      panel.querySelector('.produto-slide__title'),
-      ...panel.querySelectorAll('.produto-slide__spec-row'),
-      panel.querySelector('.produto-slide__extra'),
-      panel.querySelector('.produto-slide__cta'),
+    if (reducedMotion) return;
+
+    const items = [
+      panel.querySelector('.produto-panel__kicker'),
+      panel.querySelector('.produto-panel__title'),
+      panel.querySelector('.produto-panel__capacity'),
+      panel.querySelector('.produto-specs'),
+      panel.querySelector('.produto-panel__text'),
+      panel.querySelector('.produto-panel__cta'),
     ].filter(Boolean);
 
-    if (!textItems.length) return;
-    if (reducedMotion) {
-      gsap.set(textItems, { autoAlpha: 1, x: 0, y: 0 });
-      if (image) gsap.set(image, { autoAlpha: 1, y: 0 });
-      return;
-    }
-
+    const media = panel.querySelector('.produto-gallery');
     const tl = gsap.timeline({ defaults: { ease: 'machado', overwrite: true } });
 
-    if (image) {
-      tl.fromTo(image,
-        { autoAlpha: 0.86, y: 12, scale: 0.992 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 1.15 },
+    if (media) {
+      tl.fromTo(media,
+        { autoAlpha: 0.88, y: 14, scale: 0.992 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 },
         0
       );
     }
 
-    tl.fromTo(textItems,
+    tl.fromTo(items,
       { autoAlpha: 0, x: 18 },
-      { autoAlpha: 1, x: 0, duration: 0.95, stagger: 0.08 },
-      0.12
+      { autoAlpha: 1, x: 0, duration: 0.72, stagger: 0.06 },
+      0.08
     );
   }
 
-  function setActive(index) {
-    if (index === activeIndex) return;
-    activeIndex = index;
+  function setActive(index, shouldAnimate = true) {
+    const nextIndex = Math.max(0, Math.min(panels.length - 1, index));
+    if (nextIndex === activeIndex) return;
 
-    panels.forEach((panel, i) => panel.classList.toggle('is-active', i === index));
-    progressItems.forEach((item, i) => item.classList.toggle('is-active', i === index));
+    activeIndex = nextIndex;
 
-    if (prevButton) prevButton.disabled = index === 0;
-    if (nextButton) nextButton.disabled = index === panels.length - 1;
+    panels.forEach((panel, i) => panel.classList.toggle('is-active', i === nextIndex));
+    navItems.forEach((item, i) => {
+      const isActive = i === nextIndex;
+      item.classList.toggle('is-active', isActive);
+      item.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
 
-    const images = panels.map((panel) => panel.querySelector('.produto-gallery') || panel.querySelector('.produto-slide__img')).filter(Boolean);
+    syncPanelAccessibility(nextIndex);
+    activateGallery(nextIndex);
 
-    if (reducedMotion) {
-      gsap.set(images, { scale: 1 });
-    } else {
-      gsap.to(images, {
-        scale: 1,
-        duration: 1,
-        ease: 'machado',
-        overwrite: true,
+    if (shouldAnimate) {
+      animatePanel(panels[nextIndex]);
+    }
+  }
+
+  function scrollToPanel(index, scrollTrigger) {
+    const nextIndex = Math.max(0, Math.min(panels.length - 1, index));
+
+    if (!desktopMode || !scrollTrigger) {
+      const rootStyles = getComputedStyle(document.documentElement);
+      const targetTop = panels[nextIndex].getBoundingClientRect().top + window.scrollY;
+      const offset = window.innerWidth < 1024
+        ? parseFloat(rootStyles.getPropertyValue('--navbar-height-scrolled')) + parseFloat(rootStyles.getPropertyValue('--space-4'))
+        : 0;
+
+      window.scrollTo({
+        top: targetTop - offset,
+        behavior: reducedMotion ? 'auto' : 'smooth',
       });
+      setActive(nextIndex);
+      return;
     }
 
-    animatePanel(panels[index]);
-    activateGallery(index);
+    const progress = panels.length > 1 ? nextIndex / (panels.length - 1) : 0;
+    scrollTrigger.scroll(scrollTrigger.start + ((scrollTrigger.end - scrollTrigger.start) * progress));
+    setActive(nextIndex);
   }
 
-  // Cursor tracking para .produto-slide__marker
-  if (!reducedMotion) {
-    panels.forEach((panel) => {
-      const marker = panel.querySelector('.produto-slide__marker');
-      const textInner = panel.querySelector('.produto-slide__text-inner');
-      if (!marker || !textInner) return;
-
-      const quickY = gsap.quickTo(marker, 'y', { duration: 0.38, ease: 'power2.out' });
-
-      textInner.addEventListener('mousemove', (e) => {
-        const rect = textInner.getBoundingClientRect();
-        quickY(e.clientY - rect.top - marker.offsetHeight / 2);
-      }, { passive: true });
-    });
-  }
+  setActive(0, false);
 
   const BP_DESKTOP = '(min-width: 1024px)';
-  const BP_MOBILE  = '(max-width: 1023px)';
+  const BP_MOBILE = '(max-width: 1023px)';
 
   mm.add(BP_DESKTOP, () => {
-    const handlers = [];
-    let targetIndex = 0;
-
-    function goToPanel(index, instant = false) {
-      targetIndex = Math.min(panels.length - 1, Math.max(0, index));
-      setActive(targetIndex);
-
-      gsap.to(track, {
-        x: -window.innerWidth * targetIndex,
-        duration: instant || reducedMotion ? 0 : 1.2,
-        ease: 'machado',
-        overwrite: true,
-      });
-    }
-
-    function addControl(el, callback) {
-      if (!el) return;
-      el.addEventListener('click', callback);
-      handlers.push([el, callback]);
-    }
-
-    progressItems.forEach((item, i) => addControl(item, () => goToPanel(i)));
-    addControl(prevButton, () => goToPanel(targetIndex - 1));
-    addControl(nextButton, () => goToPanel(targetIndex + 1));
-
-    const onResize = () => goToPanel(targetIndex, true);
-    window.addEventListener('resize', onResize, { passive: true });
-
-    goToPanel(0, true);
+    desktopMode = true;
+    syncPanelAccessibility(activeIndex < 0 ? 0 : activeIndex);
 
     const st = ScrollTrigger.create({
       trigger: section,
       start: 'top top',
-      end: () => `+=${Math.round(window.innerHeight * 1.45) * (panels.length - 1)}`,
+      end: () => `+=${Math.round(window.innerHeight * 0.88) * (panels.length - 1)}`,
       pin: true,
       pinSpacing: true,
       onUpdate(self) {
         if (reducedMotion) return;
-        const newIndex = Math.max(0, Math.min(
+
+        const index = Math.max(0, Math.min(
           panels.length - 1,
           Math.round(self.progress * (panels.length - 1))
         ));
-        if (newIndex !== targetIndex) goToPanel(newIndex);
+
+        setActive(index);
       },
     });
 
+    const handlers = navItems.map((item, index) => {
+      const onClick = () => scrollToPanel(index, st);
+      item.addEventListener('click', onClick);
+      return [item, onClick];
+    });
+
+    setActive(activeIndex < 0 ? 0 : activeIndex, false);
+
     return () => {
       handlers.forEach(([item, onClick]) => item.removeEventListener('click', onClick));
-      window.removeEventListener('resize', onResize);
-      gsap.set(track, { clearProps: 'transform' });
+      desktopMode = false;
+      syncPanelAccessibility(activeIndex < 0 ? 0 : activeIndex);
       st.kill();
     };
   });
 
   mm.add(BP_MOBILE, () => {
-    if (reducedMotion) {
-      gsap.set(section.querySelectorAll('.produto-slide__text-inner > *'), { autoAlpha: 1, y: 0 });
-      setActive(0);
-      return;
-    }
+    desktopMode = false;
+    syncPanelAccessibility(activeIndex < 0 ? 0 : activeIndex);
 
-    panels.forEach((panel, i) => {
-      gsap.fromTo(panel.querySelectorAll('.produto-slide__text-inner > :not(.produto-slide__marker)'),
-        { autoAlpha: 0, y: 24 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.65,
-          ease: 'machado',
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: panel,
-            start: 'top 75%',
-            onEnter: () => setActive(i),
-            onEnterBack: () => setActive(i),
-          },
-        }
-      );
+    const handlers = navItems.map((item, index) => {
+      const onClick = () => scrollToPanel(index);
+      item.addEventListener('click', onClick);
+      return [item, onClick];
     });
 
-    setActive(0);
+    const triggers = panels.map((panel, index) => ScrollTrigger.create({
+      trigger: panel,
+      start: 'top 58%',
+      end: 'bottom 42%',
+      onEnter: () => setActive(index, false),
+      onEnterBack: () => setActive(index, false),
+    }));
+
+    if (!reducedMotion) {
+      panels.forEach((panel) => {
+        gsap.fromTo(panel.querySelectorAll('.produto-panel__content > *, .produto-panel__media'),
+          { autoAlpha: 0, y: 24 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.68,
+            ease: 'machado',
+            stagger: 0.08,
+            scrollTrigger: {
+              trigger: panel,
+              start: 'top 78%',
+              once: true,
+            },
+          }
+        );
+      });
+    }
+
+    setActive(0, false);
+
+    return () => {
+      handlers.forEach(([item, onClick]) => item.removeEventListener('click', onClick));
+      triggers.forEach((trigger) => trigger.kill());
+    };
   });
 }

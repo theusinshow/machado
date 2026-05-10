@@ -22,6 +22,45 @@ export function initProdutosTabs() {
   const galleries = panels.map((panel) => {
     const gallery = panel.querySelector('[data-product-gallery]');
     const items = gallery ? gsap.utils.toArray(gallery.querySelectorAll('.produto-gallery__item')) : [];
+    const thumbs = [];
+    let counter = null;
+
+    if (gallery && items.length) {
+      const counterEl = document.createElement('div');
+      counterEl.className = 'produto-gallery__count mono';
+      counterEl.setAttribute('aria-hidden', 'true');
+      counterEl.innerHTML = '<span data-gallery-current>01</span><span>/</span><span data-gallery-total></span>';
+      counterEl.querySelector('[data-gallery-total]').textContent = String(items.length).padStart(2, '0');
+
+      const thumbsEl = document.createElement('div');
+      thumbsEl.className = 'produto-gallery__thumbs';
+      thumbsEl.setAttribute('aria-label', 'Miniaturas da galeria');
+
+      items.forEach((item, index) => {
+        const image = item.querySelector('img');
+        const thumb = document.createElement('button');
+        thumb.className = 'produto-gallery__thumb';
+        thumb.type = 'button';
+        thumb.dataset.galleryThumb = String(index);
+        thumb.setAttribute('aria-label', `Ver imagem ${index + 1}`);
+        thumb.setAttribute('aria-current', index === 0 ? 'true' : 'false');
+
+        if (image) {
+          const thumbImage = document.createElement('img');
+          thumbImage.src = image.currentSrc || image.src;
+          thumbImage.alt = '';
+          thumbImage.loading = 'lazy';
+          thumbImage.decoding = 'async';
+          thumb.appendChild(thumbImage);
+        }
+
+        thumbsEl.appendChild(thumb);
+        thumbs.push(thumb);
+      });
+
+      gallery.append(counterEl, thumbsEl);
+      counter = counterEl.querySelector('[data-gallery-current]');
+    }
 
     return {
       panel,
@@ -29,6 +68,8 @@ export function initProdutosTabs() {
       items,
       prev: gallery?.querySelector('[data-gallery-prev]'),
       next: gallery?.querySelector('[data-gallery-next]'),
+      thumbs,
+      counter,
       index: 0,
       timer: null,
     };
@@ -45,6 +86,33 @@ export function initProdutosTabs() {
 
     galleryState.index = (index + galleryState.items.length) % galleryState.items.length;
     galleryState.items.forEach((item, i) => item.classList.toggle('is-active', i === galleryState.index));
+    galleryState.thumbs.forEach((thumb, i) => {
+      const isActive = i === galleryState.index;
+      thumb.classList.toggle('is-active', isActive);
+      thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+
+    if (galleryState.counter) {
+      galleryState.counter.textContent = String(galleryState.index + 1).padStart(2, '0');
+    }
+
+    if (!reducedMotion) {
+      const activeImage = galleryState.items[galleryState.index]?.querySelector('img');
+
+      if (activeImage) {
+        gsap.fromTo(
+          activeImage,
+          { scale: 1.018 },
+          { scale: 1, duration: 1.1, ease: 'machado', overwrite: true }
+        );
+      }
+
+      if (galleryState.gallery) {
+        galleryState.gallery.classList.remove('is-sweeping');
+        void galleryState.gallery.offsetWidth;
+        galleryState.gallery.classList.add('is-sweeping');
+      }
+    }
   }
 
   function scheduleGallery(galleryState) {
@@ -60,7 +128,7 @@ export function initProdutosTabs() {
   function activateGallery(index) {
     galleries.forEach((galleryState, i) => {
       stopGallery(galleryState);
-      showGalleryItem(galleryState, 0);
+      showGalleryItem(galleryState, galleryState.index);
 
       if (i === index) {
         scheduleGallery(galleryState);
@@ -81,6 +149,14 @@ export function initProdutosTabs() {
       stopGallery(galleryState);
       showGalleryItem(galleryState, galleryState.index + 1);
       if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
+    });
+
+    galleryState.thumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        stopGallery(galleryState);
+        showGalleryItem(galleryState, index);
+        if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
+      });
     });
   });
 
@@ -115,6 +191,7 @@ export function initProdutosTabs() {
     ].filter(Boolean);
 
     const media = panel.querySelector('.produto-gallery');
+    const thumbs = panel.querySelectorAll('.produto-gallery__thumb');
     const tl = gsap.timeline({ defaults: { ease: 'machado', overwrite: true } });
 
     if (media) {
@@ -130,6 +207,14 @@ export function initProdutosTabs() {
       { autoAlpha: 1, x: 0, duration: 0.72, stagger: 0.06 },
       0.08
     );
+
+    if (thumbs.length) {
+      tl.fromTo(thumbs,
+        { autoAlpha: 0, y: 10 },
+        { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.035 },
+        0.18
+      );
+    }
   }
 
   function setActive(index, shouldAnimate = true) {

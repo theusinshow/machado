@@ -6,6 +6,34 @@
 
 ---
 
+## [2026-05-10] STYLE — Grafite e microanimações em Produtos
+
+**Agente:** Codex
+**Sessão:** Acentos em #333333 e movimento leve
+
+### Alterado
+- `css/components/produtos.css` — seção Produtos passou a usar o token grafite `--color-menu-bg` em estados ativos, labels técnicos, número de capacidade, linha superior do painel e hover dos chips; adicionadas microanimações de varredura na galeria e acento superior do painel
+- `js/animations/produtos-tabs.js` — troca de imagem ganhou escala sutil na foto ativa e entrada leve das thumbnails durante a troca de painel
+
+## [2026-05-10] FIX — Ajuste de overflow no painel de Produtos
+
+**Agente:** Codex
+**Sessão:** Refinamento de container direito em Produtos
+
+### Alterado
+- `index.html` — título da seção Produtos foi simplificado para “Equipamentos”
+- `css/components/produtos.css` — painel técnico da direita recebeu limites de largura, quebra segura de texto, escala menor para capacidade e ajustes responsivos para evitar estouro do conteúdo
+
+## [2026-05-10] STYLE — Vitrine visual da seção Produtos
+
+**Agente:** Codex
+**Sessão:** Produtos com mais imagens e menos texto
+
+### Alterado
+- `index.html` — reduzida a carga textual da seção Produtos, removendo bullets repetitivos, parágrafos por linha e CTA secundário para deixar a decisão mais visual e direta
+- `css/components/produtos.css` — mídia da seção Produtos ganhou mais peso no desktop, specs passaram a funcionar como chips compactos e a galeria recebeu contador e thumbnails visíveis
+- `js/animations/produtos-tabs.js` — galerias agora geram thumbnails navegáveis, exibem contador de imagem e preservam a foto escolhida ao alternar entre linhas de produto
+
 ## [2026-05-10] FIX — Grid estrutural da seção Produtos
 
 **Agente:** Codex

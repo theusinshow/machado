@@ -266,14 +266,11 @@
 
 /* ── Split CTA — bloco principal + quadrado com + ── */
 .btn--split {
-  gap: 0;
+  gap: var(--button-split-gap);
   padding: 0;
   overflow: hidden;
   border: 0;
   background-color: transparent;
-  transition:
-    transform 280ms var(--ease-premium),
-    filter 280ms var(--ease-premium);
 }
 
 .btn--split::before {
@@ -281,12 +278,12 @@
 }
 
 .btn--split:hover {
-  transform: translateY(-2px);
-  filter: drop-shadow(var(--shadow-lift));
+  transform: none;
+  filter: none;
 }
 
 .btn--split:active {
-  transform: translateY(1px);
+  transform: none;
   filter: none;
 }
 
@@ -415,11 +412,11 @@
 
 /* ── btn__plus — microinteração compartilhada ── */
 .btn--split:hover .btn__plus {
-  transform: scale(1.1);
+  transform: none;
 }
 
 .btn--split:active .btn__plus {
-  transform: scale(0.93);
+  transform: none;
 }
 
 /* Ícone interno */

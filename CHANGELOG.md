@@ -6,6 +6,34 @@
 
 ---
 
+## [2026-05-10] STYLE — Espaço entre retângulos do botão split
+
+**Agente:** Codex
+**Sessão:** Ajuste de gap do componente button
+
+### Alterado
+- `css/variables.css` — adicionado token de gap para o botão split
+- `css/layout.css` — aplicado espaçamento de 6px entre o label e o retângulo do `+`
+- `js/animations/button-swap.js` — cálculo da troca horizontal passa a considerar o gap entre os retângulos
+
+## [2026-05-10] STYLE — Botão split sem movimento magnético
+
+**Agente:** Codex
+**Sessão:** Ajuste de hover do componente button
+
+### Alterado
+- `css/layout.css` — removido o deslocamento vertical e a escala do `+` no hover/active dos botões split, mantendo as trocas visuais e a animação horizontal dos retângulos
+- `js/animations/magnetic.js` — botões split deixam de participar da animação magnética por cursor, preservando o bloco fixo na tela
+
+## [2026-05-09] STYLE — Refinamento da seção de pilares
+
+**Agente:** Codex
+**Sessão:** Ajuste de hierarquia e pin dos diferenciais
+
+### Alterado
+- `index.html` — removido o pilar “Entrega em Todo o Brasil”, renumerado “Suporte Técnico Especializado” para o quarto item e ajustada a sequência de imagens dos pilares para quatro estados
+- `css/components/diferenciais.css` — refinada a hierarquia entre título da seção e tópicos, ampliado o espaçamento vertical dos itens e centralizado o bloco da seção durante o pin desktop
+
 ## [2026-05-09] STYLE — Aproximação tipográfica da prova social
 
 **Agente:** Codex

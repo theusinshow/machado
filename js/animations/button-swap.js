@@ -15,9 +15,10 @@ export function initButtonSwap() {
     btn.addEventListener('mouseenter', () => {
       const labelWidth = label.offsetWidth;
       const plusWidth = plus.offsetWidth;
+      const gap = parseFloat(getComputedStyle(btn).columnGap) || 0;
 
-      gsap.to(plus, { x: -labelWidth, duration: 0.34, ease: 'power2.inOut', overwrite: true });
-      gsap.to(label, { x: plusWidth, duration: 0.34, ease: 'power2.inOut', overwrite: true });
+      gsap.to(plus, { x: -(labelWidth + gap), duration: 0.34, ease: 'power2.inOut', overwrite: true });
+      gsap.to(label, { x: plusWidth + gap, duration: 0.34, ease: 'power2.inOut', overwrite: true });
     });
 
     btn.addEventListener('mouseleave', () => {

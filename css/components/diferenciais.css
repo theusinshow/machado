@@ -10,11 +10,12 @@
 }
 
 .diferenciais-header {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
 .diferenciais-title {
-  font-size: var(--text-4xl);
+  font-size: clamp(var(--text-4xl), 4vw, var(--text-5xl));
+  line-height: 0.95;
   white-space: nowrap;
 }
 
@@ -30,7 +31,7 @@
 .diferenciais-timeline {
   position: relative;
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-8);
   align-content: start;
 }
 
@@ -87,15 +88,15 @@
 
 .diferencial-step__content {
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .diferencial-step__title {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 32px;
+  font-size: clamp(var(--text-xl), 2vw, var(--text-3xl));
   font-weight: var(--weight-regular);
-  line-height: 1;
+  line-height: 1.08;
   letter-spacing: 0;
   color: var(--color-stats-text);
 }
@@ -104,7 +105,7 @@
   max-width: 36rem;
   margin: 0;
   color: var(--color-bg-light);
-  font-size: 16px;
+  font-size: var(--text-base);
   line-height: 1.45;
 }
 
@@ -145,23 +146,30 @@
   }
 
   .diferenciais-timeline {
-    gap: var(--space-6);
+    gap: var(--space-8);
   }
 }
 
 @media (min-width: 1024px) {
   .diferenciais {
-    padding-block: clamp(var(--space-12), 5vw, var(--space-20));
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding-block: clamp(var(--space-8), 4vw, var(--space-12));
+  }
+
+  .diferenciais > .container {
+    width: 100%;
   }
 
   .diferenciais-layout {
     grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    align-items: start;
+    align-items: center;
     gap: clamp(var(--space-8), 4vw, var(--space-14));
   }
 
   .diferenciais-timeline {
-    gap: clamp(var(--space-5), 2vh, var(--space-6));
+    gap: clamp(var(--space-6), 2.4vh, var(--space-8));
     padding-left: var(--space-8);
   }
 

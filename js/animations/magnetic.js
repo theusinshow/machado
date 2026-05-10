@@ -1,5 +1,5 @@
 export function initMagnetic() {
-  const magnets = document.querySelectorAll('[data-magnetic]');
+  const magnets = document.querySelectorAll('[data-magnetic]:not(.btn--split)');
   if (!magnets.length) return;
   if (window.matchMedia('(hover: none)').matches) return;
 

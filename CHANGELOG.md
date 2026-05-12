@@ -6,6 +6,17 @@
 
 ---
 
+## [2026-05-12] CONTENT — Pilares: corpo de texto substituído por keywords técnicas
+
+**Agente:** Claude Code
+**Sessão:** Refatoração section-by-section — Diferenciais
+
+### Alterado
+- `index.html` — Parágrafos `<p class="diferencial-step__text">` de cada pilar substituídos por `<p class="diferencial-step__chips">` com 3 keywords separadas por ponto médio (·): 01 Certificado·Rígido·Durável / 02 Corte·Solda·Acabamento / 03 Direta·Clara·Sem intermediários / 04 Escolha·Instalação·Pós-venda
+- `css/components/diferenciais.css` — `.diferencial-step__text` renomeado para `.diferencial-step__chips`; estilo alterado para mono uppercase xs com `letter-spacing: 0.09em` e cor muted; gap do `.diferencial-step__content` reduzido de `--space-3` para `--space-2`
+
+---
+
 ## [2026-05-12] CHORE — Seção #social-proof removida a pedido do cliente
 
 **Agente:** Claude Code

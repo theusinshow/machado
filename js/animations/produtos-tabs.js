@@ -25,6 +25,8 @@ export function initProdutosTabs() {
     const thumbs = [];
     let counter = null;
 
+    const mainEl = gallery ? gallery.querySelector('.produto-gallery__main') : null;
+
     if (gallery && items.length) {
       const counterEl = document.createElement('div');
       counterEl.className = 'produto-gallery__count mono';
@@ -58,13 +60,16 @@ export function initProdutosTabs() {
         thumbs.push(thumb);
       });
 
-      gallery.append(counterEl, thumbsEl);
+      // Counter fica sobre a imagem principal; thumbs na coluna lateral
+      (mainEl || gallery).append(counterEl);
+      gallery.append(thumbsEl);
       counter = counterEl.querySelector('[data-gallery-current]');
     }
 
     return {
       panel,
       gallery,
+      mainEl,
       items,
       prev: gallery?.querySelector('[data-gallery-prev]'),
       next: gallery?.querySelector('[data-gallery-next]'),
@@ -107,10 +112,11 @@ export function initProdutosTabs() {
         );
       }
 
-      if (galleryState.gallery) {
-        galleryState.gallery.classList.remove('is-sweeping');
-        void galleryState.gallery.offsetWidth;
-        galleryState.gallery.classList.add('is-sweeping');
+      const sweepTarget = galleryState.mainEl || galleryState.gallery;
+      if (sweepTarget) {
+        sweepTarget.classList.remove('is-sweeping');
+        void sweepTarget.offsetWidth;
+        sweepTarget.classList.add('is-sweeping');
       }
     }
   }
@@ -178,43 +184,42 @@ export function initProdutosTabs() {
     });
   }
 
+  function updateLineName(index) {
+    const nameEl = section.querySelector('.produtos-line-name__suffix');
+    const suffix = navItems[index]?.dataset.lineSuffix;
+    if (!nameEl || !suffix) return;
+
+    if (reducedMotion) {
+      nameEl.textContent = suffix;
+      return;
+    }
+
+    gsap.to(nameEl, {
+      opacity: 0,
+      y: 8,
+      duration: 0.18,
+      ease: 'power2.in',
+      overwrite: true,
+      onComplete() {
+        nameEl.textContent = suffix;
+        gsap.fromTo(nameEl,
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.38, ease: 'machado' }
+        );
+      },
+    });
+  }
+
   function animatePanel(panel) {
     if (reducedMotion) return;
 
-    const items = [
-      panel.querySelector('.produto-panel__kicker'),
-      panel.querySelector('.produto-panel__title'),
-      panel.querySelector('.produto-panel__capacity'),
-      panel.querySelector('.produto-specs'),
-      panel.querySelector('.produto-panel__text'),
-      panel.querySelector('.produto-panel__cta'),
-    ].filter(Boolean);
-
     const media = panel.querySelector('.produto-gallery');
-    const thumbs = panel.querySelectorAll('.produto-gallery__thumb');
-    const tl = gsap.timeline({ defaults: { ease: 'machado', overwrite: true } });
+    if (!media) return;
 
-    if (media) {
-      tl.fromTo(media,
-        { autoAlpha: 0.88, y: 14, scale: 0.992 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 },
-        0
-      );
-    }
-
-    tl.fromTo(items,
-      { autoAlpha: 0, x: 18 },
-      { autoAlpha: 1, x: 0, duration: 0.72, stagger: 0.06 },
-      0.08
+    gsap.fromTo(media,
+      { autoAlpha: 0.85, scale: 0.994 },
+      { autoAlpha: 1, scale: 1, duration: 0.9, ease: 'machado', overwrite: true }
     );
-
-    if (thumbs.length) {
-      tl.fromTo(thumbs,
-        { autoAlpha: 0, y: 10 },
-        { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.035 },
-        0.18
-      );
-    }
   }
 
   function setActive(index, shouldAnimate = true) {
@@ -232,6 +237,7 @@ export function initProdutosTabs() {
 
     syncPanelAccessibility(nextIndex);
     activateGallery(nextIndex);
+    updateLineName(nextIndex);
 
     if (shouldAnimate) {
       animatePanel(panels[nextIndex]);
@@ -324,7 +330,7 @@ export function initProdutosTabs() {
 
     if (!reducedMotion) {
       panels.forEach((panel) => {
-        gsap.fromTo(panel.querySelectorAll('.produto-panel__content > *, .produto-panel__media'),
+        gsap.fromTo(panel.querySelectorAll('.produto-gallery, .produto-panel__line-name'),
           { autoAlpha: 0, y: 24 },
           {
             autoAlpha: 1,

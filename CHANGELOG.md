@@ -6,6 +6,50 @@
 
 ---
 
+## [2026-05-12] CHORE — Seção #social-proof removida a pedido do cliente
+
+**Agente:** Claude Code
+**Sessão:** Refatoração section-by-section
+
+### Removido
+- `index.html` — Seção `#social-proof` (comentário + markup completo) removida; `<link>` para `social-proof.css` removido do `<head>`
+
+---
+
+## [2026-05-12] FEAT — Galeria de produtos com destaque + coluna de miniaturas
+
+**Agente:** Claude Code
+**Sessão:** Refatoração section-by-section — Produtos Visual Showcase
+
+### Alterado
+- `index.html` — Itens e controles de cada `.produto-gallery` envolvidos em `.produto-gallery__main`
+- `css/components/produtos.css` — Desktop: `.produto-gallery` vira grid `1fr 80px`; `.produto-gallery__main` ocupa coluna 1 (imagem destaque); `.produto-gallery__thumbs` viram coluna 2 vertical com `flex: 1` por thumb; thumbs estilizados com `border`, hover e `is-active` com `--color-primary`; sweep animation migrada de `.produto-gallery` para `.produto-gallery__main`
+- `js/animations/produtos-tabs.js` — Counter appended ao `gallery__main`; thumbs appended ao `gallery`; `sweepTarget` usa `galleryState.mainEl` quando disponível; `mainEl` adicionado ao estado de cada gallery
+
+---
+
+## [2026-05-12] STYLE — Refatoração proporcional do layout #Produtos com CSS Grid
+
+**Agente:** Claude Code
+**Sessão:** Refatoração section-by-section — Produtos Visual Showcase
+
+### Alterado
+- `css/components/produtos.css` — Layout reescrito com CSS Grid: `.produtos-shell` usa `grid-template-columns: minmax(260px, 340px) 1fr` no desktop (antes `flex: 34%/66%`); `.produtos-left` usa `grid-template-rows: auto 1fr` para rail no topo e nome ancorado no fundo; font-size do `.produtos-line-name` corrigido de `clamp(4rem, 20vw, 6rem)` para `clamp(var(--text-5xl), 3.5vw, var(--text-6xl))` no desktop e `clamp(var(--text-4xl), 9vw, var(--text-6xl))` no mobile; `.produto-panel__line-name` reduzido de `clamp(2.5rem, 14vw, 3.5rem)` para `clamp(var(--text-3xl), 7vw, var(--text-4xl))`; `.section` padding-block zerado via `padding-block: 0`; adicionado `border-right` sutil no painel esquerdo; padding do painel esquerdo racionalizado
+
+---
+
+## [2026-05-12] FEAT — Redesign visual da seção #Produtos
+
+**Agente:** Claude Code
+**Sessão:** Refatoração section-by-section — Produtos Visual Showcase
+
+### Alterado
+- `index.html` — Seção #produtos reescrita: removidos header, kicker, tagline, capacidade kg, specs (dl), CTA e tag; estrutura agora é split layout (`.produtos-left` + `.produtos-stage`); rail simplificado (só número + nome, sem meta/kg); adicionado `.produtos-line-name` com tipografia Machado no painel esquerdo; adicionado `data-line-suffix` nos botões do rail; inserido `.produto-panel__line-name` em cada painel para mobile
+- `css/components/produtos.css` — CSS completamente reescrito: fundo `--color-black`, split 34%/66% no desktop via flexbox, rail vertical com border-left ativo no desktop, nome da linha em Machado font `clamp(4.5rem, 5.5vw, 7.5rem)`, galeria full-bleed com `aspect-ratio: 4/5` mobile / `height: 100%` desktop, painéis sobrepostos via `position: absolute` apenas ≥1024px, thumbs ocultados via `display: none`, grid texture no painel esquerdo igual ao hero
+- `js/animations/produtos-tabs.js` — `animatePanel` simplificada (só galeria); adicionada `updateLineName()` com animação out/in do sufixo ao trocar linha; `setActive` chama `updateLineName`; mobile scroll animation atualizada para `.produto-gallery` e `.produto-panel__line-name`
+
+---
+
 ## [2026-05-10] STYLE — Grafite e microanimações em Produtos
 
 **Agente:** Codex

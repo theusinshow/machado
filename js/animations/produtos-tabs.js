@@ -1,7 +1,7 @@
 /**
  * Produtos — vitrine premium com decisão por linha.
  * Desktop: seção pinada troca os painéis por scroll ou navegação.
- * Mobile: painéis empilhados com navegação sticky e reveals leves.
+ * Mobile: painéis empilhados com reveals leves e navegação sticky.
  */
 
 export function initProdutosTabs() {
@@ -14,157 +14,9 @@ export function initProdutosTabs() {
 
   const mm = gsap.matchMedia();
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const galleryDelay = 3.4;
   const focusableSelector = 'a, button, input, select, textarea, [tabindex]';
   let activeIndex = -1;
   let desktopMode = false;
-
-  const galleries = panels.map((panel) => {
-    const gallery = panel.querySelector('[data-product-gallery]');
-    const items = gallery ? gsap.utils.toArray(gallery.querySelectorAll('.produto-gallery__item')) : [];
-    const thumbs = [];
-    let counter = null;
-
-    const mainEl = gallery ? gallery.querySelector('.produto-gallery__main') : null;
-
-    if (gallery && items.length) {
-      const counterEl = document.createElement('div');
-      counterEl.className = 'produto-gallery__count mono';
-      counterEl.setAttribute('aria-hidden', 'true');
-      counterEl.innerHTML = '<span data-gallery-current>01</span><span>/</span><span data-gallery-total></span>';
-      counterEl.querySelector('[data-gallery-total]').textContent = String(items.length).padStart(2, '0');
-
-      const thumbsEl = document.createElement('div');
-      thumbsEl.className = 'produto-gallery__thumbs';
-      thumbsEl.setAttribute('aria-label', 'Miniaturas da galeria');
-
-      items.forEach((item, index) => {
-        const image = item.querySelector('img');
-        const thumb = document.createElement('button');
-        thumb.className = 'produto-gallery__thumb';
-        thumb.type = 'button';
-        thumb.dataset.galleryThumb = String(index);
-        thumb.setAttribute('aria-label', `Ver imagem ${index + 1}`);
-        thumb.setAttribute('aria-current', index === 0 ? 'true' : 'false');
-
-        if (image) {
-          const thumbImage = document.createElement('img');
-          thumbImage.src = image.currentSrc || image.src;
-          thumbImage.alt = '';
-          thumbImage.loading = 'lazy';
-          thumbImage.decoding = 'async';
-          thumb.appendChild(thumbImage);
-        }
-
-        thumbsEl.appendChild(thumb);
-        thumbs.push(thumb);
-      });
-
-      // Counter fica sobre a imagem principal; thumbs na coluna lateral
-      (mainEl || gallery).append(counterEl);
-      gallery.append(thumbsEl);
-      counter = counterEl.querySelector('[data-gallery-current]');
-    }
-
-    return {
-      panel,
-      gallery,
-      mainEl,
-      items,
-      prev: gallery?.querySelector('[data-gallery-prev]'),
-      next: gallery?.querySelector('[data-gallery-next]'),
-      thumbs,
-      counter,
-      index: 0,
-      timer: null,
-    };
-  });
-
-  function stopGallery(galleryState) {
-    if (!galleryState.timer) return;
-    galleryState.timer.kill();
-    galleryState.timer = null;
-  }
-
-  function showGalleryItem(galleryState, index) {
-    if (!galleryState.items.length) return;
-
-    galleryState.index = (index + galleryState.items.length) % galleryState.items.length;
-    galleryState.items.forEach((item, i) => item.classList.toggle('is-active', i === galleryState.index));
-    galleryState.thumbs.forEach((thumb, i) => {
-      const isActive = i === galleryState.index;
-      thumb.classList.toggle('is-active', isActive);
-      thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
-    });
-
-    if (galleryState.counter) {
-      galleryState.counter.textContent = String(galleryState.index + 1).padStart(2, '0');
-    }
-
-    if (!reducedMotion) {
-      const activeImage = galleryState.items[galleryState.index]?.querySelector('img');
-
-      if (activeImage) {
-        gsap.fromTo(
-          activeImage,
-          { scale: 1.018 },
-          { scale: 1, duration: 1.1, ease: 'machado', overwrite: true }
-        );
-      }
-
-      const sweepTarget = galleryState.mainEl || galleryState.gallery;
-      if (sweepTarget) {
-        sweepTarget.classList.remove('is-sweeping');
-        void sweepTarget.offsetWidth;
-        sweepTarget.classList.add('is-sweeping');
-      }
-    }
-  }
-
-  function scheduleGallery(galleryState) {
-    if (reducedMotion || galleryState.items.length < 2) return;
-
-    stopGallery(galleryState);
-    galleryState.timer = gsap.delayedCall(galleryDelay, () => {
-      showGalleryItem(galleryState, galleryState.index + 1);
-      scheduleGallery(galleryState);
-    });
-  }
-
-  function activateGallery(index) {
-    galleries.forEach((galleryState, i) => {
-      stopGallery(galleryState);
-      showGalleryItem(galleryState, galleryState.index);
-
-      if (i === index) {
-        scheduleGallery(galleryState);
-      }
-    });
-  }
-
-  galleries.forEach((galleryState) => {
-    if (!galleryState.items.length) return;
-
-    galleryState.prev?.addEventListener('click', () => {
-      stopGallery(galleryState);
-      showGalleryItem(galleryState, galleryState.index - 1);
-      if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
-    });
-
-    galleryState.next?.addEventListener('click', () => {
-      stopGallery(galleryState);
-      showGalleryItem(galleryState, galleryState.index + 1);
-      if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
-    });
-
-    galleryState.thumbs.forEach((thumb, index) => {
-      thumb.addEventListener('click', () => {
-        stopGallery(galleryState);
-        showGalleryItem(galleryState, index);
-        if (galleryState.panel.classList.contains('is-active')) scheduleGallery(galleryState);
-      });
-    });
-  });
 
   function syncPanelAccessibility(index) {
     panels.forEach((panel, i) => {
@@ -176,7 +28,6 @@ export function initProdutosTabs() {
           el.setAttribute('tabindex', '-1');
           return;
         }
-
         if (el.getAttribute('tabindex') === '-1') {
           el.removeAttribute('tabindex');
         }
@@ -184,27 +35,44 @@ export function initProdutosTabs() {
     });
   }
 
-  function updateLineName(index) {
-    const nameEl = section.querySelector('.produtos-line-name__suffix');
-    const suffix = navItems[index]?.dataset.lineSuffix;
-    if (!nameEl || !suffix) return;
+  function updateLineContent(index) {
+    const nameSuffix = section.querySelector('.produtos-line-name__suffix');
+    const descEl = section.querySelector('.produtos-line-desc');
+    const ctaEl = section.querySelector('.produtos-line-cta');
+    const progressCurrent = section.querySelector('[data-produtos-current]');
+    const btn = navItems[index];
+    if (!nameSuffix || !btn) return;
+
+    const suffix = btn.dataset.lineSuffix;
+    const desc = btn.dataset.desc || '';
+    const href = btn.dataset.href || '#';
+    const numStr = String(index + 1).padStart(2, '0');
+
+    if (progressCurrent) progressCurrent.textContent = numStr;
 
     if (reducedMotion) {
-      nameEl.textContent = suffix;
+      if (suffix) nameSuffix.textContent = suffix;
+      if (descEl) descEl.textContent = desc;
+      if (ctaEl) ctaEl.href = href;
       return;
     }
 
-    gsap.to(nameEl, {
+    const targets = [nameSuffix, descEl, ctaEl].filter(Boolean);
+
+    gsap.to(targets, {
       opacity: 0,
-      y: 8,
-      duration: 0.18,
+      y: 6,
+      duration: 0.16,
       ease: 'power2.in',
       overwrite: true,
       onComplete() {
-        nameEl.textContent = suffix;
-        gsap.fromTo(nameEl,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.38, ease: 'machado' }
+        if (suffix) nameSuffix.textContent = suffix;
+        if (descEl) descEl.textContent = desc;
+        if (ctaEl) ctaEl.href = href;
+
+        gsap.fromTo(targets,
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.36, ease: 'machado', stagger: 0.05 }
         );
       },
     });
@@ -212,12 +80,11 @@ export function initProdutosTabs() {
 
   function animatePanel(panel) {
     if (reducedMotion) return;
+    const figure = panel.querySelector('.produto-figure');
+    if (!figure) return;
 
-    const media = panel.querySelector('.produto-gallery');
-    if (!media) return;
-
-    gsap.fromTo(media,
-      { autoAlpha: 0.85, scale: 0.994 },
+    gsap.fromTo(figure,
+      { autoAlpha: 0.8, scale: 0.97 },
       { autoAlpha: 1, scale: 1, duration: 0.9, ease: 'machado', overwrite: true }
     );
   }
@@ -236,8 +103,7 @@ export function initProdutosTabs() {
     });
 
     syncPanelAccessibility(nextIndex);
-    activateGallery(nextIndex);
-    updateLineName(nextIndex);
+    updateLineContent(nextIndex);
 
     if (shouldAnimate) {
       animatePanel(panels[nextIndex]);
@@ -276,23 +142,71 @@ export function initProdutosTabs() {
     desktopMode = true;
     syncPanelAccessibility(activeIndex < 0 ? 0 : activeIndex);
 
+    // ── Efeito 4: reveal de entrada — rail items ──
+    const railItems = gsap.utils.toArray(section.querySelectorAll('.produtos-rail__item'));
+    if (!reducedMotion) {
+      gsap.set(railItems, { autoAlpha: 0, y: 8 });
+    }
+
     const st = ScrollTrigger.create({
       trigger: section,
       start: 'top top',
       end: () => `+=${Math.round(window.innerHeight * 0.88) * (panels.length - 1)}`,
       pin: true,
       pinSpacing: true,
+      onEnter() {
+        if (reducedMotion) return;
+        gsap.to(railItems, {
+          autoAlpha: 1, y: 0,
+          duration: 0.55, stagger: 0.07, ease: 'machado',
+        });
+      },
       onUpdate(self) {
         if (reducedMotion) return;
-
         const index = Math.max(0, Math.min(
           panels.length - 1,
           Math.round(self.progress * (panels.length - 1))
         ));
-
         setActive(index);
       },
     });
+
+    // ── Efeitos 1 & 2: spotlight + parallax no stage ──
+    const stage = section.querySelector('.produtos-stage');
+    let spotFrame = null;
+    let sx = 50, sy = 50;
+
+    function renderSpot() {
+      spotFrame = null;
+      stage.style.setProperty('--mouse-x', `${sx}%`);
+      stage.style.setProperty('--mouse-y', `${sy}%`);
+    }
+
+    function onStageMove(e) {
+      const rect = stage.getBoundingClientRect();
+      sx = ((e.clientX - rect.left) / rect.width) * 100;
+      sy = ((e.clientY - rect.top) / rect.height) * 100;
+      if (!spotFrame) spotFrame = requestAnimationFrame(renderSpot);
+
+      if (reducedMotion) return;
+      const nx = (sx / 100 - 0.5) * 2;
+      const ny = (sy / 100 - 0.5) * 2;
+      const fig = panels[activeIndex]?.querySelector('.produto-figure');
+      if (fig) gsap.to(fig, { x: nx * 12, y: ny * 6, duration: 0.9, ease: 'power2.out', overwrite: 'auto' });
+    }
+
+    function onStageLeave() {
+      if (spotFrame) { cancelAnimationFrame(spotFrame); spotFrame = null; }
+      stage.style.setProperty('--mouse-x', '50%');
+      stage.style.setProperty('--mouse-y', '50%');
+      if (!reducedMotion) {
+        const fig = panels[activeIndex]?.querySelector('.produto-figure');
+        if (fig) gsap.to(fig, { x: 0, y: 0, duration: 0.9, ease: 'power2.out', overwrite: 'auto' });
+      }
+    }
+
+    stage.addEventListener('pointermove', onStageMove, { passive: true });
+    stage.addEventListener('pointerleave', onStageLeave);
 
     const handlers = navItems.map((item, index) => {
       const onClick = () => scrollToPanel(index, st);
@@ -304,6 +218,8 @@ export function initProdutosTabs() {
 
     return () => {
       handlers.forEach(([item, onClick]) => item.removeEventListener('click', onClick));
+      stage.removeEventListener('pointermove', onStageMove);
+      stage.removeEventListener('pointerleave', onStageLeave);
       desktopMode = false;
       syncPanelAccessibility(activeIndex < 0 ? 0 : activeIndex);
       st.kill();
@@ -330,7 +246,8 @@ export function initProdutosTabs() {
 
     if (!reducedMotion) {
       panels.forEach((panel) => {
-        gsap.fromTo(panel.querySelectorAll('.produto-gallery, .produto-panel__line-name'),
+        gsap.fromTo(
+          panel.querySelectorAll('.produto-figure, .produto-panel__copy'),
           { autoAlpha: 0, y: 24 },
           {
             autoAlpha: 1,

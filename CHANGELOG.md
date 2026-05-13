@@ -6,6 +6,59 @@
 
 ---
 
+## [2026-05-13] FEAT — Efeitos de iluminação e animação na seção #produtos
+
+**Agente:** Claude Code
+**Sessão:** Cursor spotlight, parallax, rail indicator, reveal de entrada
+
+### Alterado
+- `css/components/produtos.css` — Spotlight seguindo cursor: `--mouse-x/y` no `.produtos-stage`, `::after` com `radial-gradient + mix-blend-mode: screen`, `opacity: 0→1` ao hover; Rail indicator desktop: `.produtos-rail__item::after` com `scaleX(0→1)` ao `.is-active`, `transform-origin: left`
+- `css/animations.css` — Estado `cursor--view`: dot some (`opacity: 0`), follower expande para 60px com borda branca sutil
+- `js/animations/produtos-tabs.js` — Desktop: spotlight via `pointermove` + `rAF` atualizando CSS vars; parallax na `.produto-figure` ativa (`±12px X, ±6px Y`), reset ao `pointerleave`; reveal de entrada dos rail items (`autoAlpha + y` com stagger, dispara no `onEnter` do ScrollTrigger)
+- `js/animations/cursor.js` — Detecta `[data-cursor="view"]` e aplica classes `cursor--view` ao entrar/sair do stage
+- `index.html` — `data-cursor="view"` adicionado ao `.produtos-stage`
+
+---
+
+## [2026-05-13] STYLE — Refactor visual #produtos: image cover + tipografia Figma
+
+**Agente:** Claude Code
+**Sessão:** Alinhamento com export PNG 2x do Figma — análise das imagens reais
+
+### Alterado
+- `css/components/produtos.css` — Desktop: `.produto-figure` agora usa `position: absolute; inset: 0; width/height: 100%` preenchendo o stage inteiro (antes era width clamp com aspect-ratio 9:16); `.produto-figure img` alterado para `object-fit: cover; object-position: center 40%` aproveitando o fundo preto baked-in das imagens; `.produto-figure::before` (glow CSS) oculto no desktop (spotlight já existe nas imagens); `.produto-panel` removido `display: flex` (figure é absolute, flex era irrelevante); `.produtos-line-name` aumentado de `3.8vw` para `clamp(text-5xl, 6vw, text-hero)` para bater com as proporções do Figma; `.produtos-line-name__prefix` sobrescrito para `font-size: 1em` + `color: white` — stacked display com "LINHA" e "LEVE" no mesmo tamanho
+
+---
+
+## [2026-05-13] FEAT — Redesign editorial completo da seção #produtos (frontend-design + ui-ux-pro-max)
+
+**Agente:** Claude Code
+**Sessão:** Redesign profissional #produtos — layout cinematic split
+
+### Alterado
+- `index.html` — Adicionados: `.produtos-kicker` (linha + label mono), `.produtos-ghost-num` (número decorativo), `.produtos-progress` (contador 01/03 no stage); CTA alterado de `btn--outline` para `btn--split btn--split-outline` no desktop; `.produto-panel__copy` mobile atualizado com `.produto-panel__kicker` no lugar de `.produto-panel__line-name`
+- `css/components/produtos.css` — Redesign completo: painel esquerdo alargado para `clamp(300px, 36%, 420px)`; kicker com linha horizontal (padrão hero); ghost number decorativo (`opacity: 0.04`, fonte Machado, 7-11rem); stage com fade lateral esquerda (`::before` gradient preto→transparente); imagem aumentada para `clamp(420px, 88%, 820px)` com produto ancorado no fundo (`align-items: flex-end`); progresso `01/03` no canto inferior do stage; glow expandido (80% largura, opacity 0.18); rail com `rgba(255,255,255,0.3)` inativo → branco ativo
+- `js/animations/produtos-tabs.js` — `updateLineContent` expandido: atualiza `.produtos-ghost-num` (fade+scale ao trocar) e `[data-produtos-current]` (progresso); ghost number tem animação scale in/out independente dos demais targets
+
+---
+
+## [2026-05-13] REFACTOR — Seção #produtos simplificada: galeria removida, estilo hero-style
+
+**Agente:** Claude Code
+**Sessão:** Simplificação produtos — imagem única por linha + estilo fundo escuro
+
+### Alterado
+- `index.html` — Seção #produtos reescrita: galeria multi-imagem removida; cada painel agora usa `<figure class="produto-figure">` com a imagem principal (`leve.png`, `media.png`, `pesada.png`); adicionado `.produto-panel__copy` (nome + desc + CTA) visível apenas no mobile; `.produtos-copy` (com `.produtos-line-desc` e `.produtos-line-cta`) adicionado ao `.produtos-left` para desktop; `data-desc` e `data-href` adicionados aos botões do rail
+- `css/components/produtos.css` — CSS reescrito: removidos `.produto-gallery`, thumbs, sweep animation, controles prev/next; adicionados `.produtos-copy`, `.produtos-line-desc`, `.produtos-line-cta`; `.produto-figure` com `aspect-ratio: 9/16`, `object-fit: contain` e glow radial (`--color-primary`) sob o produto; desc e CTA ocultos no mobile, visíveis no desktop ≥1024px; `.produto-panel__copy` oculto no desktop
+- `js/animations/produtos-tabs.js` — Lógica de galeria inteiramente removida (stopGallery, showGalleryItem, scheduleGallery, activateGallery, autoplay, thumbs, counter, prev/next); `updateLineName` substituído por `updateLineContent` que atualiza também `.produtos-line-desc` e href do `.produtos-line-cta` via `data-*` dos botões do rail; `animatePanel` simplificada para animar apenas `.produto-figure`
+
+### Imagens agora utilizadas
+- `assets/images/produtos/leve.png` — 900×1600 (9:16)
+- `assets/images/produtos/media.png` — 900×1600 (9:16)
+- `assets/images/produtos/pesada.png` — 900×1600 (9:16)
+
+---
+
 ## [2026-05-12] CONTENT — Pilares: corpo de texto substituído por keywords técnicas
 
 **Agente:** Claude Code

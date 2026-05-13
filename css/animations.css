@@ -120,6 +120,22 @@
   opacity: 0;
 }
 
+/* Cursor sobre stage de produto: anel maior + dot some */
+#cursor.cursor--view {
+  opacity: 0;
+}
+
+#cursor-follower.cursor--view {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(255, 255, 255, 0.35);
+  transition:
+    width 0.35s var(--ease-machado),
+    height 0.35s var(--ease-machado),
+    border-color 0.35s var(--ease-machado),
+    opacity 0.2s ease;
+}
+
 /* Cursor oculto em touch */
 @media (hover: none) {
   #cursor, #cursor-follower { display: none; }

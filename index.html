@@ -460,117 +460,82 @@
 
       <div class="produtos-left">
         <nav class="produtos-rail" aria-label="Escolha a linha de plataforma">
-          <button class="produtos-rail__item is-active" type="button" data-go="0" aria-controls="produto-leve" aria-current="true" data-line-suffix="Leve">
+          <button class="produtos-rail__item is-active" type="button" data-go="0" aria-controls="produto-leve" aria-current="true" data-line-suffix="Leve" data-desc="Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg." data-href="#">
             <span class="produtos-rail__num mono">01</span>
             <span class="produtos-rail__title">Linha Leve</span>
           </button>
-          <button class="produtos-rail__item" type="button" data-go="1" aria-controls="produto-media" aria-current="false" data-line-suffix="Média">
+          <button class="produtos-rail__item" type="button" data-go="1" aria-controls="produto-media" aria-current="false" data-line-suffix="Media" data-desc="Versátil e robusta para frotas de médio porte. Capacidade de até 6.000 kg com acabamento de alta resistência." data-href="#">
             <span class="produtos-rail__num mono">02</span>
             <span class="produtos-rail__title">Linha Média</span>
           </button>
-          <button class="produtos-rail__item" type="button" data-go="2" aria-controls="produto-pesada" aria-current="false" data-line-suffix="Pesada">
+          <button class="produtos-rail__item" type="button" data-go="2" aria-controls="produto-pesada" aria-current="false" data-line-suffix="Pesada" data-desc="Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg." data-href="#">
             <span class="produtos-rail__num mono">03</span>
             <span class="produtos-rail__title">Linha Pesada</span>
           </button>
         </nav>
 
-        <h2 id="produtos-heading" class="produtos-line-name" aria-live="polite">
-          <span class="produtos-line-name__prefix">Linha</span>
-          <span class="produtos-line-name__suffix">Leve</span>
-        </h2>
+        <div class="produtos-copy">
+          <h2 id="produtos-heading" class="produtos-line-name" aria-live="polite">
+            <span class="produtos-line-name__prefix">Linha</span>
+            <span class="produtos-line-name__suffix">Leve</span>
+          </h2>
+          <p class="produtos-line-desc" aria-live="polite">Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg.</p>
+          <a href="#" class="btn btn--split btn--split-outline produtos-line-cta" data-magnetic>
+            <span class="btn__label">Ver linha completa</span>
+            <span class="btn__plus" aria-hidden="true">+</span>
+          </a>
+        </div>
       </div>
 
-      <div class="produtos-stage" aria-live="polite">
+      <div class="produtos-stage" aria-live="polite" data-cursor="view">
 
         <article id="produto-leve" class="produto-panel is-active" data-slide="0">
-          <div class="produto-gallery" data-product-gallery>
-            <div class="produto-gallery__main">
-              <figure class="produto-gallery__item is-active">
-                <img class="produto-gallery__media" src="./assets/images/produtos/leve/LEVE-1.png" alt="Linha Leve Machado em vista lateral" width="1400" height="1750" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/leve/LEVE-2.jpg" alt="Detalhe da plataforma Linha Leve" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/leve/LEVE-3.jpg" alt="Acabamento da plataforma Linha Leve" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/leve/LEVE-4.jpg" alt="Linha Leve em operação" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/leve/LEVE-5.jpg" alt="Aplicação em campo da Linha Leve" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Leve">
-                <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior" title="Imagem anterior">
-                  <svg class="produto-gallery__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
-                </button>
-                <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Próxima imagem" title="Próxima imagem">
-                  <svg class="produto-gallery__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-                </button>
-              </div>
-            </div>
+          <figure class="produto-figure">
+            <img src="./assets/images/produtos/leve.png" alt="Plataforma Machado Linha Leve" width="1882" height="3344" loading="lazy" decoding="async" />
+          </figure>
+          <div class="produto-panel__copy">
+            <span class="produto-panel__kicker mono">Linha Leve</span>
+            <p class="produto-panel__desc">Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg.</p>
+            <a href="#" class="btn btn--split btn--split-outline">
+              <span class="btn__label">Ver linha completa</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
           </div>
-          <p class="produto-panel__line-name">Linha Leve</p>
         </article>
 
         <article id="produto-media" class="produto-panel" data-slide="1">
-          <div class="produto-gallery" data-product-gallery>
-            <div class="produto-gallery__main">
-              <figure class="produto-gallery__item is-active">
-                <img class="produto-gallery__media" src="./assets/images/produtos/media/MEDIA-1.png" alt="Linha Média Machado em vista lateral" width="1400" height="1750" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/media/MEDIA-2.jpg" alt="Detalhe da plataforma Linha Média" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/media/MEDIA-3.jpg" alt="Acabamento da plataforma Linha Média" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/media/MEDIA-4.jpg" alt="Linha Média em operação" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Média">
-                <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior" title="Imagem anterior">
-                  <svg class="produto-gallery__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
-                </button>
-                <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Próxima imagem" title="Próxima imagem">
-                  <svg class="produto-gallery__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-                </button>
-              </div>
-            </div>
+          <figure class="produto-figure">
+            <img src="./assets/images/produtos/media.png" alt="Plataforma Machado Linha Média" width="1882" height="3344" loading="lazy" decoding="async" />
+          </figure>
+          <div class="produto-panel__copy">
+            <span class="produto-panel__kicker mono">Linha Média</span>
+            <p class="produto-panel__desc">Versátil e robusta para frotas de médio porte. Capacidade de até 6.000 kg com acabamento de alta resistência.</p>
+            <a href="#" class="btn btn--split btn--split-outline">
+              <span class="btn__label">Ver linha completa</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
           </div>
-          <p class="produto-panel__line-name">Linha Média</p>
         </article>
 
         <article id="produto-pesada" class="produto-panel" data-slide="2">
-          <div class="produto-gallery" data-product-gallery>
-            <div class="produto-gallery__main">
-              <figure class="produto-gallery__item is-active">
-                <img class="produto-gallery__media" src="./assets/images/produtos/pesada/PESADA-1.png" alt="Linha Pesada Machado em vista lateral" width="1400" height="1750" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/pesada/PESADA-2.jpg" alt="Detalhe da plataforma Linha Pesada" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/pesada/PESADA-3.jpg" alt="Acabamento da plataforma Linha Pesada" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/pesada/PESADA-4.jpg" alt="Linha Pesada em operação" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <figure class="produto-gallery__item">
-                <img class="produto-gallery__media" src="./assets/images/produtos/pesada/PESADA-5.jpg" alt="Aplicação em campo da Linha Pesada" width="1200" height="1600" loading="lazy" />
-              </figure>
-              <div class="produto-gallery__controls" aria-label="Controles da galeria Linha Pesada">
-                <button class="produto-gallery__btn" type="button" data-gallery-prev aria-label="Imagem anterior" title="Imagem anterior">
-                  <svg class="produto-gallery__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
-                </button>
-                <button class="produto-gallery__btn" type="button" data-gallery-next aria-label="Próxima imagem" title="Próxima imagem">
-                  <svg class="produto-gallery__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-                </button>
-              </div>
-            </div>
+          <figure class="produto-figure">
+            <img src="./assets/images/produtos/pesada.png" alt="Plataforma Machado Linha Pesada" width="1882" height="3344" loading="lazy" decoding="async" />
+          </figure>
+          <div class="produto-panel__copy">
+            <span class="produto-panel__kicker mono">Linha Pesada</span>
+            <p class="produto-panel__desc">Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg.</p>
+            <a href="#" class="btn btn--split btn--split-outline">
+              <span class="btn__label">Ver linha completa</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
           </div>
-          <p class="produto-panel__line-name">Linha Pesada</p>
         </article>
+
+        <div class="produtos-progress" aria-hidden="true">
+          <span class="mono" data-produtos-current>01</span>
+          <span class="mono produtos-progress__sep"> / </span>
+          <span class="mono">03</span>
+        </div>
 
       </div>
 

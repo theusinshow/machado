@@ -40,6 +40,21 @@ export function initCursor() {
     });
   });
 
+  // Efeito 3: cursor expandido ao entrar no stage de produto
+  const viewTargets = document.querySelectorAll('[data-cursor="view"]');
+
+  viewTargets.forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('cursor--view');
+      follower.classList.add('cursor--view');
+    });
+
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('cursor--view');
+      follower.classList.remove('cursor--view');
+    });
+  });
+
   document.addEventListener('mouseleave', () => {
     gsap.to([cursor, follower], { opacity: 0, duration: 0.2 });
   });

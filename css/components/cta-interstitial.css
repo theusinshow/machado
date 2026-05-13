@@ -7,15 +7,14 @@
   position: relative;
   padding-block: var(--section-sm);
   overflow: hidden;
-  background-color: var(--color-bg);
+  background-color: #EEEEEE;
 }
 
 .cta-mid::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, var(--color-bg) 0%, var(--color-navy-dark) 100%);
+  background: none;
   pointer-events: none;
 }
 

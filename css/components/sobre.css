@@ -354,7 +354,7 @@
 
 @media (min-width: 1024px) {
   .sobre-grid {
-    grid-template-columns: 55fr 45fr;
+    grid-template-columns: 45fr 55fr;
     gap: var(--space-16);
   }
 

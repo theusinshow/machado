@@ -1,0 +1,354 @@
+/* ===========================
+   SUBPAGES — Estilos Compartilhados
+   Machado Plataformas
+=========================== */
+
+/* ── PAGE HERO ── */
+
+.page-hero {
+  background: var(--color-black);
+  padding-top: calc(var(--navbar-height) + var(--space-20));
+  padding-bottom: var(--space-20);
+  overflow: hidden;
+  position: relative;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 2.8rem 2.8rem;
+  pointer-events: none;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── PAGE HERO — Eyebrow ── */
+
+.page-hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  animation: subpage-fade-up 0.7s ease 0.05s forwards;
+}
+
+.page-hero__eyebrow::before {
+  content: '';
+  display: inline-block;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  animation: subpage-rule-draw 0.6s var(--ease-machado) 0.15s forwards;
+}
+
+/* ── PAGE HERO — Title ── */
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-5xl), 9vw, var(--text-display));
+  font-weight: var(--weight-regular);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin: 0 0 var(--space-8);
+}
+
+.page-hero__title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.page-hero__title-inner {
+  display: block;
+  transform: translateY(105%);
+  animation: subpage-title-rise 1s var(--ease-machado) forwards;
+}
+
+.page-hero__title-line:nth-child(1) .page-hero__title-inner {
+  animation-delay: 0.1s;
+}
+
+.page-hero__title-line:nth-child(2) .page-hero__title-inner {
+  animation-delay: 0.17s;
+}
+
+.page-hero__title-line:nth-child(3) .page-hero__title-inner {
+  animation-delay: 0.24s;
+}
+
+/* ── PAGE HERO — Sub ── */
+
+.page-hero__sub {
+  max-width: 44rem;
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.58);
+  opacity: 0;
+  animation: subpage-fade-up 0.7s ease 0.4s forwards;
+}
+
+/* ── KEYFRAMES ── */
+
+@keyframes subpage-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subpage-title-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes subpage-rule-draw {
+  from {
+    width: 0;
+  }
+  to {
+    width: 2rem;
+  }
+}
+
+/* ── PAGE SECTION — Base ── */
+
+.page-section {
+  padding-block: var(--section-md);
+}
+
+.page-section--dark {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.page-section--mid {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-section--surface {
+  background: var(--color-surface);
+  color: var(--color-text-dark);
+}
+
+/* ── SECTION HEADER ── */
+
+.sec-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+/* ── SEC KICKER ── */
+
+.sec-kicker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+.sec-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+/* ── SEC TITLE ── */
+
+.sec-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  font-weight: var(--weight-bold);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  text-wrap: balance;
+}
+
+.sec-title--onlight {
+  color: var(--color-text);
+}
+
+/* ── SEC SUB ── */
+
+.sec-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 44ch;
+}
+
+.sec-sub--onlight {
+  color: var(--color-text-muted);
+}
+
+/* ── KPI STRIP ── */
+
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.kpi-strip--light {
+  background: var(--color-border);
+  border-color: var(--color-border);
+}
+
+/* ── KPI CELL ── */
+
+.kpi-cell {
+  background: var(--color-black);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: background 0.25s ease;
+}
+
+.kpi-strip--light .kpi-cell {
+  background: var(--color-surface);
+}
+
+@media (hover: hover) {
+  .kpi-cell:hover {
+    background: var(--color-bg);
+  }
+
+  .kpi-strip--light .kpi-cell:hover {
+    background: var(--color-white);
+  }
+}
+
+/* ── KPI CELL — Value ── */
+
+.kpi-cell__val {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: var(--weight-regular);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-primary-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-strip--light .kpi-cell__val {
+  color: var(--color-primary);
+}
+
+/* ── KPI CELL — Key ── */
+
+.kpi-cell__key {
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.kpi-strip--light .kpi-cell__key {
+  color: var(--color-text-muted);
+}
+
+/* ── PAGE CTA ── */
+
+.page-cta {
+  background: var(--color-black);
+  color: var(--color-white);
+  padding-block: var(--section-md);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── PAGE CTA — Eyebrow ── */
+
+.page-cta__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-6);
+}
+
+/* ── PAGE CTA — Title ── */
+
+.page-cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+  font-weight: var(--weight-regular);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  margin: 0 0 var(--space-10);
+}
+
+/* ── REDUCED MOTION ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero__eyebrow {
+    opacity: 1;
+    animation: none;
+  }
+
+  .page-hero__eyebrow::before {
+    width: 2rem;
+    animation: none;
+  }
+
+  .page-hero__title-inner {
+    transform: none;
+    animation: none;
+  }
+
+  .page-hero__sub {
+    opacity: 1;
+    animation: none;
+  }
+}

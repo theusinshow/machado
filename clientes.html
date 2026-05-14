@@ -32,48 +32,10 @@
 
   <!-- CSS Componentes -->
   <link rel="stylesheet" href="./css/components/navbar.css" />
+  <link rel="stylesheet" href="./css/components/subpages.css" />
   <link rel="stylesheet" href="./css/components/footer.css" />
 
   <style>
-    .page-hero {
-      background-color: var(--color-black);
-      color: var(--color-white);
-      padding: calc(var(--navbar-height) + var(--space-16)) 0 var(--space-16);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .page-hero__eyebrow {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-primary-light);
-      margin-bottom: var(--space-5);
-    }
-    .page-hero__eyebrow::before {
-      content: '';
-      display: block;
-      width: 2rem;
-      height: 1px;
-      background: var(--color-primary-light);
-    }
-    .page-hero__title {
-      font-family: var(--font-display);
-      font-size: clamp(var(--text-5xl), 8vw, var(--text-display));
-      font-weight: normal;
-      line-height: 0.88;
-      letter-spacing: -0.02em;
-      margin: 0 0 var(--space-6);
-    }
-    .page-hero__sub {
-      max-width: 44rem;
-      font-size: var(--text-lg);
-      color: var(--color-steel);
-      line-height: 1.7;
-      margin: 0;
-    }
     .page-content {
       background-color: var(--color-bg);
       padding-block: var(--section-md);
@@ -131,33 +93,6 @@
       color: var(--color-text-muted);
     }
 
-    /* CTA section */
-    .page-cta {
-      background-color: var(--color-black);
-      color: var(--color-white);
-      padding-block: var(--section-md);
-      text-align: center;
-    }
-    .page-cta__eyebrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-3);
-      font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-primary-light);
-      margin-bottom: var(--space-5);
-    }
-    .page-cta__title {
-      font-family: var(--font-display);
-      font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
-      font-weight: normal;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      margin: 0 0 var(--space-8);
-    }
   </style>
 </head>
 <body>
@@ -232,7 +167,11 @@
     <section class="page-hero" aria-label="Nossos Clientes">
       <div class="container">
         <p class="page-hero__eyebrow">Quem confia na Machado</p>
-        <h1 class="page-hero__title">Clientes</h1>
+        <h1 class="page-hero__title">
+          <span class="page-hero__title-line">
+            <span class="page-hero__title-inner">Clientes</span>
+          </span>
+        </h1>
         <p class="page-hero__sub">Transportadoras, guinchos e frotas de todo o Brasil que escolheram a Machado pela qualidade, durabilidade e suporte especializado.</p>
       </div>
     </section>

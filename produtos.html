@@ -32,48 +32,10 @@
 
   <!-- CSS Componentes -->
   <link rel="stylesheet" href="./css/components/navbar.css" />
+  <link rel="stylesheet" href="./css/components/subpages.css" />
   <link rel="stylesheet" href="./css/components/footer.css" />
 
   <style>
-    .page-hero {
-      background-color: var(--color-black);
-      color: var(--color-white);
-      padding: calc(var(--navbar-height) + var(--space-16)) 0 var(--space-16);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .page-hero__eyebrow {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-primary-light);
-      margin-bottom: var(--space-5);
-    }
-    .page-hero__eyebrow::before {
-      content: '';
-      display: block;
-      width: 2rem;
-      height: 1px;
-      background: var(--color-primary-light);
-    }
-    .page-hero__title {
-      font-family: var(--font-display);
-      font-size: clamp(var(--text-5xl), 8vw, var(--text-display));
-      font-weight: normal;
-      line-height: 0.88;
-      letter-spacing: -0.02em;
-      margin: 0 0 var(--space-6);
-    }
-    .page-hero__sub {
-      max-width: 44rem;
-      font-size: var(--text-lg);
-      color: var(--color-steel);
-      line-height: 1.7;
-      margin: 0;
-    }
     .page-content {
       background-color: var(--color-bg);
       padding-block: var(--section-md);
@@ -197,7 +159,11 @@
     <section class="page-hero" aria-label="Nossos Produtos">
       <div class="container">
         <p class="page-hero__eyebrow">Linha completa</p>
-        <h1 class="page-hero__title">Produtos</h1>
+        <h1 class="page-hero__title">
+          <span class="page-hero__title-line">
+            <span class="page-hero__title-inner">Produtos</span>
+          </span>
+        </h1>
         <p class="page-hero__sub">Plataformas fabricadas com aço de alta resistência para operações leves, médias e pesadas. Cada linha desenvolvida para um segmento específico.</p>
       </div>
     </section>

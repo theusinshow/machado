@@ -6,6 +6,22 @@
 
 ---
 
+## [2026-05-14] REFACTOR — Migra subpáginas para subpages.css compartilhado
+
+**Agente:** Claude Code
+**Sessão:** Integração subpages.css — remoção de inline styles duplicados
+
+### Criado
+- `css/components/subpages.css` — estilos compartilhados de subpáginas: `.page-hero` (com grade, animação eyebrow + title rise + sub fade), `.page-section`, `.sec-header`, `.sec-kicker`, `.sec-title`, `.kpi-strip`, `.kpi-cell`, `.page-cta`
+
+### Alterado
+- `produtos.html` — link `subpages.css` adicionado; `<style>` block simplificado (`.page-hero*` removidos, mantidos apenas `.page-content` e `.page-card*`); título `<h1>` atualizado com `.page-hero__title-line` + `.page-hero__title-inner` para animação de entrada
+- `clientes.html` — link `subpages.css` adicionado; `<style>` block simplificado (`.page-hero*` e `.page-cta*` removidos, mantidos apenas `.page-content` e `.depo-card*`); título atualizado com wrappers de animação
+- `sobre.html` — link `subpages.css` adicionado; `<style>` block simplificado (`.page-hero*` e `.page-cta*` removidos, mantidos apenas estilos de página específicos); `--space-px` solto (CSS inválido) substituído por `1px` direto no gap; título atualizado com wrappers de animação
+- `credito.html` — link `subpages.css` adicionado; `<style>` block inline removido completamente (apenas `.page-hero*` e `.page-cta*` estavam lá); título em duas linhas atualizado com wrappers de animação por linha
+
+---
+
 ## [2026-05-14] FEAT — Cria página Linha de Crédito e atualiza navbar global
 
 **Agente:** Claude Code

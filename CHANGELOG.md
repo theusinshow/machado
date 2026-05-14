@@ -6,6 +6,96 @@
 
 ---
 
+## [2026-05-14] FIX — Produtos: refactor layout proporção, altura e responsividade
+
+**Agente:** Claude Code
+**Sessão:** UI/UX Pro Max + Frontend CSS Refactor — seção catalog
+
+### Alterado
+- `produtos.html` — `<style>` block completamente refatorado:
+  - `.catalog-img-frame`: `aspect-ratio: 4/5` → `height: clamp(220px, 36vh, 340px)` — elimina overflow de viewport em notebooks (1366×768)
+  - `.catalog-img`: `object-fit: cover` → `object-fit: contain` + `object-position: center center` — mostra plataforma completa sem corte
+  - `.catalog-name`: `clamp(3.5rem, 5vw, 5.5rem)` → `clamp(2.25rem, 3.2vw, 4rem)` — título mais proporcional
+  - `.catalog-desc`: `line-height: 1.8` → `1.65`, adicionado `max-width: 28ch`
+  - `.catalog-body`: padding reduzido de `space-8/6/10` para `space-5/5/8`, gap de `space-4` para `space-3`
+  - `.catalog-body .btn`: margin-top de `space-6` → `space-4`
+  - `.catalog-idx`: padding reduzido de `space-5/6/4` para `space-4/5/3`
+  - `.catalog-measures`: `padding-top: space-6` → `space-4`
+  - `.catalog-bottom-strip`: `padding-block: space-8` → `space-5`
+  - `.catalog-bottom-strip__inner`: adicionado `padding-inline: space-4`
+  - `.catalog-section`: adicionado `padding-top: space-8`, `padding-bottom` de `section-md` → `section-sm`
+  - `.catalog-section .container--wide`: `margin-top: space-10` → `space-6`, `padding-inline` sobrescrito com `clamp(space-3, 2vw, space-6)`
+  - `.page-hero`: `padding-bottom: space-12` → `space-8`
+  - Breakpoints responsivos atualizados com novos valores de imagem e título
+
+### Resultado
+- Card total estimado em 1366×768: ~627px (era ~918px, redução de 32%)
+- Plataformas exibidas sem corte com `object-fit: contain`
+- Seção ocupa ~80% do viewport em notebook vs ~120% anterior
+
+---
+
+## [2026-05-14] STYLE — Produtos: auditoria design-system — tokens finais
+
+**Agente:** Claude Code
+**Sessão:** Design-system layout audit completo
+
+### Alterado
+- `produtos.html` — token residual `#FFFFFF` → `var(--color-white)`, `50px` → `var(--space-12)`, `0.6s` → `var(--dur-slow)` no `.catalog-img` transition
+
+---
+
+## [2026-05-14] FIX — Produtos: remove laranja, corrige tokens e botões
+
+**Agente:** Claude Code
+**Sessão:** Alinhamento ao sistema de design do projeto
+
+### Alterado
+- `produtos.html` — `<style>` block reescrito sem variáveis custom (`--copper`, `--catalog-bg`, etc.):
+  - Todas as cores migradas para tokens do projeto: `--color-primary-light`, `--color-border`, `--color-border-light`, `--color-text-muted`, `--color-bg`, `--color-footer-bg`, `--color-primary-glow`
+  - Todos os espaçamentos corrigidos para tokens válidos: `var(--space-7)` → `var(--space-8)`, `var(--space-9)` → `var(--space-10)`
+  - `--ease-machado` e `--dur-normal/slow` usados em vez de valores literais
+  - Gradiente do frame usa `var(--color-bg)` diretamente em vez de hex hardcoded
+  - Hover glow usa `var(--color-primary-glow)` (azul) em vez de cobre
+  - `.catalog-body .btn { align-self: flex-start; margin-top: var(--space-6); }` adicionado
+  - 3 links `class="catalog-cta"` substituídos por `class="btn btn--split btn--split-primary"` com `data-magnetic`
+
+---
+
+## [2026-05-14] STYLE — Refino completo do layout Catálogo em produtos.html
+
+**Agente:** Claude Code
+**Sessão:** Refinamento visual — hover, tipografia, imagens, hero, cores
+
+### Alterado
+- `produtos.html` — refinamento abrangente do bloco `<style>`:
+  - Hero funde com catálogo: `.page-hero { background-color: var(--catalog-bg) }` — elimina quebra visual
+  - Cobre ajustado para `#C08042` (mais quente, mais premium)
+  - `catalog-idx__rule`: opacity 0.3→1 no hover (regra "acende")
+  - `catalog-img-frame`: `aspect-ratio: 3/4.8`, fundo `#0B0F14`, gradiente bottom mais profundo
+  - `catalog-img`: drop-shadow mais forte, padding `var(--space-6) var(--space-8) 0`, scale 1.05 no hover
+  - `::before` novo: glow cobre radial vindo de baixo, aparece no hover
+  - `catalog-name`: `clamp(3.5rem, 5vw, 5.5rem)`, `line-height: 0.86`, `letter-spacing: -0.025em`
+  - CTA começa com `opacity: 0.6`, sobe para 1; seta percorre 6px com `cubic-bezier(0.16, 1, 0.3, 1)`
+  - `prefers-reduced-motion` adicionado
+
+---
+
+## [2026-05-14] FEAT — Redesign página Produtos: layout Catálogo editorial
+
+**Agente:** Claude Code
+**Sessão:** Redesign produtos.html — 3 opções de layout + implementação Catálogo
+
+### Alterado
+- `produtos.html` — `<style>` block completamente substituído; seção de conteúdo reescrita com layout Catálogo editorial (grid 3 colunas, imagens `aspect-ratio: 3/4.5`, hover zoom, acento cobre `#B87B45`, specs em linhas pontilhadas, bottom strip com CTA); adicionada seção `page-cta` ao final da `<main>`
+
+### Criado
+- `preview-A.html` — conceito "Ficha Técnica": painel 44/56 com tabs interativas, ghost number, especificações em tabela, foto bottom-anchored com glow
+- `preview-B.html` — conceito "Arsenal": 3 × 100svh por produto, scroll cinematic, ticker CSS, imagem absoluta à direita com gradiente
+- `preview-C.html` — conceito "Catálogo": grid editorial 3 colunas, acento cobre, medições com pontilhado, hover em imagem e nome (implementado em `produtos.html`)
+
+---
+
 ## [2026-05-14] REFACTOR — Migra subpáginas para subpages.css compartilhado
 
 **Agente:** Claude Code

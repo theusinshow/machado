@@ -11,6 +11,7 @@ import { initProdutosTabs }  from './animations/produtos-tabs.js';
 import { initNavbar }        from './animations/navbar.js';
 import { initSobreGallery }  from './animations/sobre-gallery.js';
 import { initButtonSwap }    from './animations/button-swap.js';
+import { initYoutubeFacade } from './animations/youtube-facade.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('js-ready');
@@ -29,5 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSobreGallery();
     initNavbar();
     initButtonSwap();
+    initYoutubeFacade();
   });
 });

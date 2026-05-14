@@ -6,6 +6,21 @@
 
 ---
 
+## [2026-05-14] FEAT — Subpáginas Produtos, Clientes e Sobre + navbar atualizada
+
+**Agente:** Claude Code
+**Sessão:** Criação das subpáginas e atualização de navegação
+
+### Criado
+- `produtos.html` — Subpágina com hero, cards das 3 linhas e footer completo
+- `clientes.html` — Subpágina com grid de 6 depoimentos de clientes e CTA final
+- `sobre.html` — Subpágina com stats, layout split, grid de valores e CTA final
+
+### Alterado
+- `index.html` — Navbar: "Depoimentos" renomeado para "Clientes"; links `#produtos`, `#depoimentos`, `#sobre` trocados por `./produtos.html`, `./clientes.html`, `./sobre.html`; footer atualizado para refletir mesmos links
+
+---
+
 ## [2026-05-13] FEAT — Efeitos de iluminação e animação na seção #produtos
 
 **Agente:** Claude Code

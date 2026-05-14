@@ -39,8 +39,6 @@
   <link rel="stylesheet" href="./css/components/hero.css" />
   <link rel="stylesheet" href="./css/components/produtos.css" />
   <link rel="stylesheet" href="./css/components/sobre.css" />
-  <link rel="stylesheet" href="./css/components/cta-interstitial.css" />
-  <link rel="stylesheet" href="./css/components/financiamento.css" />
   <link rel="stylesheet" href="./css/components/depoimentos.css" />
   <link rel="stylesheet" href="./css/components/footer.css" />
 </head>
@@ -109,6 +107,7 @@
           <a href="./produtos.html">Produtos</a>
           <a href="./clientes.html">Clientes</a>
           <a href="./sobre.html">Sobre</a>
+          <a href="./credito.html">Crédito</a>
         </nav>
 
         <div class="navbar-panel__meta">
@@ -231,43 +230,46 @@
     <div class="sobre-spec">
 
       <div class="sobre-spec__header" data-animate="fade-up">
-        <span class="sobre-kicker mono">// Quem Somos</span>
+        <div class="sobre-kicker-wrap">
+          <span class="sobre-kicker__rule" aria-hidden="true"></span>
+          <span class="sobre-kicker mono">Quem Somos</span>
+        </div>
         <h2 id="sobre-heading" class="sobre-title">
           Tradição que se<br>Mede em Quilômetros
         </h2>
+        <p class="sobre-subtitle">
+          Fabricante de plataformas para guincho com estrutura 100% própria em Minas Gerais.
+        </p>
       </div>
 
-      <div class="sobre-spec__sheet" data-animate="fade-up" data-delay="0.08">
-        <div class="sobre-spec__row">
-          <span class="sobre-spec__key mono">Fundada</span>
-          <span class="sobre-spec__dots" aria-hidden="true"></span>
-          <span class="sobre-spec__val">2004</span>
+      <div class="sobre-spec__grid" data-animate="fade-up" data-delay="0.08">
+
+        <div class="sobre-kpi sobre-kpi--hero">
+          <span class="sobre-kpi__val">22 <span class="sobre-kpi__unit">anos</span></span>
+          <span class="sobre-kpi__key mono">Experiência</span>
         </div>
-        <div class="sobre-spec__row">
-          <span class="sobre-spec__key mono">Unidades</span>
-          <span class="sobre-spec__dots" aria-hidden="true"></span>
-          <span class="sobre-spec__val">4000<span class="sobre-spec__plus">+</span></span>
+
+        <div class="sobre-kpi">
+          <span class="sobre-kpi__val">4000<span class="sobre-kpi__plus">+</span></span>
+          <span class="sobre-kpi__key mono">Unidades Produzidas</span>
         </div>
-        <div class="sobre-spec__row">
-          <span class="sobre-spec__key mono">Estados</span>
-          <span class="sobre-spec__dots" aria-hidden="true"></span>
-          <span class="sobre-spec__val">26</span>
+
+        <div class="sobre-kpi">
+          <span class="sobre-kpi__val">3000<span class="sobre-kpi__unit">m²</span></span>
+          <span class="sobre-kpi__key mono">Capacidade Fabril</span>
         </div>
-        <div class="sobre-spec__row">
-          <span class="sobre-spec__key mono">Experiência</span>
-          <span class="sobre-spec__dots" aria-hidden="true"></span>
-          <span class="sobre-spec__val">22 <span class="sobre-spec__unit">anos</span></span>
+
+        <div class="sobre-kpi sobre-kpi--wide">
+          <span class="sobre-kpi__val">100% <span class="sobre-kpi__unit">própria</span></span>
+          <span class="sobre-kpi__key mono">Estrutura</span>
         </div>
-        <div class="sobre-spec__row">
-          <span class="sobre-spec__key mono">Estrutura</span>
-          <span class="sobre-spec__dots" aria-hidden="true"></span>
-          <span class="sobre-spec__val">100% <span class="sobre-spec__unit">própria</span></span>
-        </div>
+
       </div>
 
       <div class="sobre-spec__footer" data-animate="fade-up" data-delay="0.16">
+        <p class="sobre-spec__statement">Desde 2004 na estrada.</p>
         <p class="sobre-spec__copy">
-          Desde 2004, fabricamos implementos rodoviários para profissionais em todo o Brasil — com estrutura própria e controle de qualidade em cada unidade.
+          Fabricamos implementos rodoviários para profissionais em todo o Brasil — controle de qualidade em cada unidade, entrega em qualquer estado.
         </p>
         <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
            class="btn btn--split btn--split-primary sobre-cta"
@@ -308,6 +310,97 @@
       </button>
     </div>
 
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       05 — PRODUTOS
+  ══════════════════════════════════════ -->
+  <section id="produtos" class="section produtos" aria-labelledby="produtos-heading" data-produtos-showcase>
+    <div class="produtos-shell">
+
+      <div class="produtos-left">
+        <nav class="produtos-rail" aria-label="Escolha a linha de plataforma">
+          <button class="produtos-rail__item is-active" type="button" data-go="0" aria-controls="produto-leve" aria-current="true" data-line-suffix="Leve" data-desc="Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg." data-href="#">
+            <span class="produtos-rail__num mono">01</span>
+            <span class="produtos-rail__title">Linha Leve</span>
+          </button>
+          <button class="produtos-rail__item" type="button" data-go="1" aria-controls="produto-media" aria-current="false" data-line-suffix="Media" data-desc="Versátil e robusta para frotas de médio porte. Capacidade de até 6.000 kg com acabamento de alta resistência." data-href="#">
+            <span class="produtos-rail__num mono">02</span>
+            <span class="produtos-rail__title">Linha Média</span>
+          </button>
+          <button class="produtos-rail__item" type="button" data-go="2" aria-controls="produto-pesada" aria-current="false" data-line-suffix="Pesada" data-desc="Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg." data-href="#">
+            <span class="produtos-rail__num mono">03</span>
+            <span class="produtos-rail__title">Linha Pesada</span>
+          </button>
+        </nav>
+
+        <div class="produtos-copy">
+          <h2 id="produtos-heading" class="produtos-line-name" aria-live="polite">
+            <span class="produtos-line-name__prefix">Linha</span>
+            <span class="produtos-line-name__suffix">Leve</span>
+          </h2>
+          <p class="produtos-line-desc" aria-live="polite">Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg.</p>
+          <a href="#" class="btn btn--split btn--split-outline produtos-line-cta" data-magnetic>
+            <span class="btn__label">Ver linha completa</span>
+            <span class="btn__plus" aria-hidden="true">+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="produtos-stage" aria-live="polite" data-cursor="view">
+
+        <article id="produto-leve" class="produto-panel is-active" data-slide="0">
+          <figure class="produto-figure">
+            <img src="./assets/images/produtos/LEVE.png" alt="Plataforma Machado Linha Leve" width="1882" height="3344" loading="lazy" decoding="async" />
+          </figure>
+          <div class="produto-panel__copy">
+            <span class="produto-panel__kicker mono">Linha Leve</span>
+            <p class="produto-panel__desc">Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg.</p>
+            <a href="#" class="btn btn--split btn--split-outline">
+              <span class="btn__label">Ver linha completa</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+        </article>
+
+        <article id="produto-media" class="produto-panel" data-slide="1">
+          <figure class="produto-figure">
+            <img src="./assets/images/produtos/MEDIA.png" alt="Plataforma Machado Linha Média" width="1882" height="3344" loading="lazy" decoding="async" />
+          </figure>
+          <div class="produto-panel__copy">
+            <span class="produto-panel__kicker mono">Linha Média</span>
+            <p class="produto-panel__desc">Versátil e robusta para frotas de médio porte. Capacidade de até 6.000 kg com acabamento de alta resistência.</p>
+            <a href="#" class="btn btn--split btn--split-outline">
+              <span class="btn__label">Ver linha completa</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+        </article>
+
+        <article id="produto-pesada" class="produto-panel" data-slide="2">
+          <figure class="produto-figure">
+            <img src="./assets/images/produtos/pesada.png" alt="Plataforma Machado Linha Pesada" width="1882" height="3344" loading="lazy" decoding="async" />
+          </figure>
+          <div class="produto-panel__copy">
+            <span class="produto-panel__kicker mono">Linha Pesada</span>
+            <p class="produto-panel__desc">Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg.</p>
+            <a href="#" class="btn btn--split btn--split-outline">
+              <span class="btn__label">Ver linha completa</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+        </article>
+
+        <div class="produtos-progress" aria-hidden="true">
+          <span class="mono" data-produtos-current>01</span>
+          <span class="mono produtos-progress__sep"> / </span>
+          <span class="mono">03</span>
+        </div>
+
+      </div>
+
+    </div>
   </section>
 
   <!-- ══════════════════════════════════════
@@ -414,268 +507,6 @@
           </article>
 
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       10 — CTA INTERMEDIÁRIO
-  ══════════════════════════════════════ -->
-  <section id="cta-mid" class="section cta-mid" aria-label="Call to action intermediário">
-    <div class="container">
-      <div class="cta-mid-content" data-animate="fade-up">
-        <div class="cta-mid__copy">
-          <span class="cta-mid__eyebrow mono">Próximo passo</span>
-          <h2 class="cta-mid__headline">
-            Encontre a plataforma certa para sua operação
-          </h2>
-          <p class="cta-mid__sub">
-            Fale com a Machado e receba orientação técnica para cotar o modelo ideal.
-          </p>
-        </div>
-
-        <div class="cta-mid__action">
-          <div class="cta-mid__btns">
-            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
-               class="btn btn--split btn--split-primary btn--split--lg"
-               target="_blank" rel="noopener noreferrer"
-               data-magnetic>
-              <span class="btn__label">Peça uma cotação agora</span>
-              <span class="btn__plus" aria-hidden="true">+</span>
-            </a>
-            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
-               class="btn btn--split btn--split-ghost"
-               target="_blank" rel="noopener noreferrer"
-               data-magnetic>
-              <span class="btn__label">Falar com especialista</span>
-              <span class="btn__plus" aria-hidden="true">+</span>
-            </a>
-          </div>
-
-          <ul class="cta-mid__trust" aria-label="Benefícios do atendimento">
-            <li>Atendimento especializado</li>
-            <li>Orçamento sem compromisso</li>
-            <li>Entrega para todo o Brasil</li>
-          </ul>
-        </div>
-
-        <figure class="cta-mid__visual" aria-hidden="true">
-          <img
-            src="./assets/images/produtos/pesada/PESADA-1.png"
-            alt=""
-            width="560"
-            height="420"
-            loading="lazy"
-          />
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       05 — PRODUTOS
-  ══════════════════════════════════════ -->
-  <section id="produtos" class="section produtos" aria-labelledby="produtos-heading" data-produtos-showcase>
-    <div class="produtos-shell">
-
-      <div class="produtos-left">
-        <nav class="produtos-rail" aria-label="Escolha a linha de plataforma">
-          <button class="produtos-rail__item is-active" type="button" data-go="0" aria-controls="produto-leve" aria-current="true" data-line-suffix="Leve" data-desc="Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg." data-href="#">
-            <span class="produtos-rail__num mono">01</span>
-            <span class="produtos-rail__title">Linha Leve</span>
-          </button>
-          <button class="produtos-rail__item" type="button" data-go="1" aria-controls="produto-media" aria-current="false" data-line-suffix="Media" data-desc="Versátil e robusta para frotas de médio porte. Capacidade de até 6.000 kg com acabamento de alta resistência." data-href="#">
-            <span class="produtos-rail__num mono">02</span>
-            <span class="produtos-rail__title">Linha Média</span>
-          </button>
-          <button class="produtos-rail__item" type="button" data-go="2" aria-controls="produto-pesada" aria-current="false" data-line-suffix="Pesada" data-desc="Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg." data-href="#">
-            <span class="produtos-rail__num mono">03</span>
-            <span class="produtos-rail__title">Linha Pesada</span>
-          </button>
-        </nav>
-
-        <div class="produtos-copy">
-          <h2 id="produtos-heading" class="produtos-line-name" aria-live="polite">
-            <span class="produtos-line-name__prefix">Linha</span>
-            <span class="produtos-line-name__suffix">Leve</span>
-          </h2>
-          <p class="produtos-line-desc" aria-live="polite">Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg.</p>
-          <a href="#" class="btn btn--split btn--split-outline produtos-line-cta" data-magnetic>
-            <span class="btn__label">Ver linha completa</span>
-            <span class="btn__plus" aria-hidden="true">+</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="produtos-stage" aria-live="polite" data-cursor="view">
-
-        <article id="produto-leve" class="produto-panel is-active" data-slide="0">
-          <figure class="produto-figure">
-            <img src="./assets/images/produtos/LEVE.png" alt="Plataforma Machado Linha Leve" width="1882" height="3344" loading="lazy" decoding="async" />
-          </figure>
-          <div class="produto-panel__copy">
-            <span class="produto-panel__kicker mono">Linha Leve</span>
-            <p class="produto-panel__desc">Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg.</p>
-            <a href="#" class="btn btn--split btn--split-outline">
-              <span class="btn__label">Ver linha completa</span>
-              <span class="btn__plus" aria-hidden="true">+</span>
-            </a>
-          </div>
-        </article>
-
-        <article id="produto-media" class="produto-panel" data-slide="1">
-          <figure class="produto-figure">
-            <img src="./assets/images/produtos/MEDIA.png" alt="Plataforma Machado Linha Média" width="1882" height="3344" loading="lazy" decoding="async" />
-          </figure>
-          <div class="produto-panel__copy">
-            <span class="produto-panel__kicker mono">Linha Média</span>
-            <p class="produto-panel__desc">Versátil e robusta para frotas de médio porte. Capacidade de até 6.000 kg com acabamento de alta resistência.</p>
-            <a href="#" class="btn btn--split btn--split-outline">
-              <span class="btn__label">Ver linha completa</span>
-              <span class="btn__plus" aria-hidden="true">+</span>
-            </a>
-          </div>
-        </article>
-
-        <article id="produto-pesada" class="produto-panel" data-slide="2">
-          <figure class="produto-figure">
-            <img src="./assets/images/produtos/pesada.png" alt="Plataforma Machado Linha Pesada" width="1882" height="3344" loading="lazy" decoding="async" />
-          </figure>
-          <div class="produto-panel__copy">
-            <span class="produto-panel__kicker mono">Linha Pesada</span>
-            <p class="produto-panel__desc">Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg.</p>
-            <a href="#" class="btn btn--split btn--split-outline">
-              <span class="btn__label">Ver linha completa</span>
-              <span class="btn__plus" aria-hidden="true">+</span>
-            </a>
-          </div>
-        </article>
-
-        <div class="produtos-progress" aria-hidden="true">
-          <span class="mono" data-produtos-current>01</span>
-          <span class="mono produtos-progress__sep"> / </span>
-          <span class="mono">03</span>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       08 — FINANCIAMENTO
-  ══════════════════════════════════════ -->
-  <section id="financiamento" class="section section--dark financiamento" aria-labelledby="financiamento-heading">
-    <div class="container">
-
-      <div class="financiamento-layout">
-        <div class="financiamento-content">
-          <div class="section-heading section-heading--compact financiamento-heading" data-animate="section-heading">
-            <span class="section-heading__meta mono">// Condições</span>
-            <span class="section-heading__rule" aria-hidden="true">
-              <span class="section-heading__square"></span>
-            </span>
-            <h2 id="financiamento-heading" class="section-heading__title">
-              Condições para colocar sua plataforma na rua
-            </h2>
-          </div>
-
-          <p class="financiamento-lead" data-animate="fade-up" data-delay="0.12">
-            Escolha a opção e fale com a equipe para consultar as condições.
-          </p>
-
-          <div class="financiamento-cta" data-animate="fade-up" data-delay="0.2">
-            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
-               class="btn btn--split btn--split-primary"
-               target="_blank" rel="noopener noreferrer"
-               data-magnetic>
-              <span class="btn__label">Consultar Condições</span>
-              <span class="btn__plus" aria-hidden="true">+</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="financiamento-panel" data-animate="scale-in">
-          <figure class="financiamento-panel__media">
-            <img
-              src="./assets/images/produtos/pesada/PESADA-1.png"
-              alt="Plataforma Machado em operação"
-              width="640"
-              height="480"
-              loading="lazy"
-            />
-          </figure>
-
-          <div class="financiamento-panel__body">
-            <span class="financiamento-panel__eyebrow mono">Negociação assistida</span>
-            <h3 class="financiamento-panel__title">Direto com quem fabrica.</h3>
-
-            <div class="financiamento-panel__steps" aria-label="Etapas da negociação">
-              <span class="financiamento-panel__step mono">01 Orçamento</span>
-              <span class="financiamento-panel__step mono">02 Condições</span>
-              <span class="financiamento-panel__step mono">03 Produção</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="financiamento-grid" aria-label="Formas de pagamento">
-
-        <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0" aria-label="Consultar condições de entrada">
-          <span class="financiamento-item__square" aria-hidden="true"></span>
-          <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>
-          </svg>
-          <span class="financiamento-item__label">Entrada</span>
-          <span class="financiamento-item__hint">Consultar</span>
-        </a>
-
-        <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.06" aria-label="Consultar condições de parcelamento">
-          <span class="financiamento-item__square" aria-hidden="true"></span>
-          <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 4l4.5 4.5M4 20l4.5-4.5M20 4l-4.5 4.5M20 20l-4.5-4.5M9 12h6M12 9v6"/>
-          </svg>
-          <span class="financiamento-item__label">Parcelamento</span>
-          <span class="financiamento-item__hint">Sob consulta</span>
-        </a>
-
-        <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.12" aria-label="Consultar pagamento por PIX">
-          <span class="financiamento-item__square" aria-hidden="true"></span>
-          <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/>
-          </svg>
-          <span class="financiamento-item__label">PIX</span>
-          <span class="financiamento-item__hint">Agilidade</span>
-        </a>
-
-        <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.18" aria-label="Consultar pagamento por cartão">
-          <span class="financiamento-item__square" aria-hidden="true"></span>
-          <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/>
-          </svg>
-          <span class="financiamento-item__label">Cartão</span>
-          <span class="financiamento-item__hint">Opções</span>
-        </a>
-
-        <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.24" aria-label="Consultar financiamento">
-          <span class="financiamento-item__square" aria-hidden="true"></span>
-          <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-          <span class="financiamento-item__label">Financiamento</span>
-          <span class="financiamento-item__hint">Orientado</span>
-        </a>
-
-        <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.3" aria-label="Consultar BNDES">
-          <span class="financiamento-item__square" aria-hidden="true"></span>
-          <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
-          </svg>
-          <span class="financiamento-item__label">BNDES</span>
-          <span class="financiamento-item__hint">Sob consulta</span>
-        </a>
-
       </div>
 
     </div>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Machado Plataformas — Depoimentos de clientes que confiam na qualidade e resistência das nossas plataformas para guincho." />
+  <meta name="description" content="Machado Plataformas — Conheça as condições de pagamento e linha de crédito disponíveis para adquirir sua plataforma para guincho." />
 
-  <meta property="og:title" content="Clientes — Machado Plataformas" />
-  <meta property="og:description" content="Veja o que dizem os clientes da Machado Plataformas sobre qualidade, durabilidade e atendimento." />
+  <meta property="og:title" content="Linha de Crédito — Machado Plataformas" />
+  <meta property="og:description" content="Entrada, parcelamento, PIX, cartão, financiamento e BNDES. Consulte as condições e coloque sua plataforma na rua." />
   <meta property="og:type" content="website" />
 
   <link rel="icon" type="image/png" href="./assets/images/logo/Icon.png" />
-  <title>Clientes — Machado Plataformas</title>
+  <title>Linha de Crédito — Machado Plataformas</title>
 
   <script>
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -32,6 +32,7 @@
 
   <!-- CSS Componentes -->
   <link rel="stylesheet" href="./css/components/navbar.css" />
+  <link rel="stylesheet" href="./css/components/financiamento.css" />
   <link rel="stylesheet" href="./css/components/footer.css" />
 
   <style>
@@ -73,62 +74,6 @@
       color: var(--color-steel);
       line-height: 1.7;
       margin: 0;
-    }
-    .page-content {
-      background-color: var(--color-bg);
-      padding-block: var(--section-md);
-    }
-
-    /* Depoimentos grid */
-    .depo-grid {
-      display: grid;
-      gap: var(--space-6);
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-    .depo-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      padding: var(--space-8);
-      display: grid;
-      gap: var(--space-5);
-    }
-    .depo-card__quote {
-      font-size: var(--text-sm);
-      line-height: 1.75;
-      color: var(--color-text);
-      margin: 0;
-      position: relative;
-      padding-left: var(--space-5);
-    }
-    .depo-card__quote::before {
-      content: '"';
-      position: absolute;
-      left: 0;
-      top: -0.1em;
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      line-height: 1;
-      color: var(--color-primary-light);
-    }
-    .depo-card__author {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
-      padding-top: var(--space-3);
-      border-top: 1px solid var(--color-border);
-    }
-    .depo-card__name {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-medium);
-      color: var(--color-text);
-    }
-    .depo-card__company {
-      font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
     }
 
     /* CTA section */
@@ -191,9 +136,9 @@
           <span class="nav-indicator" aria-hidden="true"></span>
           <a href="./index.html">Início</a>
           <a href="./produtos.html">Produtos</a>
-          <a href="./clientes.html" class="is-active">Clientes</a>
+          <a href="./clientes.html">Clientes</a>
           <a href="./sobre.html">Sobre</a>
-          <a href="./credito.html">Crédito</a>
+          <a href="./credito.html" class="is-active">Crédito</a>
         </nav>
         <div class="navbar-panel__meta">
           <div class="navbar-panel__contact">
@@ -211,13 +156,13 @@
           </div>
         </div>
         <div class="navbar-panel__cards" aria-label="Destaques rápidos">
-          <a href="./sobre.html" class="navbar-card">
-            <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="Equipe Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
-            <span class="navbar-card__eyebrow mono">Sobre a fábrica</span>
-            <strong class="navbar-card__title">Conheça a estrutura</strong>
+          <a href="./clientes.html" class="navbar-card">
+            <img src="./assets/images/hero/plataforma-hero.png" alt="Clientes Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
+            <span class="navbar-card__eyebrow mono">Depoimentos</span>
+            <strong class="navbar-card__title">Ver clientes</strong>
           </a>
           <a href="./produtos.html" class="navbar-card">
-            <img src="./assets/images/hero/plataforma-hero.png" alt="Produtos Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
+            <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="Produtos Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
             <span class="navbar-card__eyebrow mono">Linha completa</span>
             <strong class="navbar-card__title">Ver modelos</strong>
           </a>
@@ -229,81 +174,140 @@
   <main id="main">
 
     <!-- HERO DA PÁGINA -->
-    <section class="page-hero" aria-label="Nossos Clientes">
+    <section class="page-hero" aria-label="Linha de Crédito">
       <div class="container">
-        <p class="page-hero__eyebrow">Quem confia na Machado</p>
-        <h1 class="page-hero__title">Clientes</h1>
-        <p class="page-hero__sub">Transportadoras, guinchos e frotas de todo o Brasil que escolheram a Machado pela qualidade, durabilidade e suporte especializado.</p>
+        <p class="page-hero__eyebrow">Condições de pagamento</p>
+        <h1 class="page-hero__title">Linha de<br />Crédito</h1>
+        <p class="page-hero__sub">Diversas opções para colocar sua plataforma na rua. Consulte nossa equipe e encontre a condição ideal para o seu negócio.</p>
       </div>
     </section>
 
-    <!-- DEPOIMENTOS -->
-    <section class="page-content" aria-label="Depoimentos">
+    <!-- FINANCIAMENTO -->
+    <section id="financiamento" class="section section--dark financiamento" aria-labelledby="financiamento-heading">
       <div class="container">
-        <div class="depo-grid">
 
-          <article class="depo-card">
-            <p class="depo-card__quote">A plataforma Machado já tem mais de 3 anos de uso intenso e nunca precisou de manutenção estrutural. A qualidade do aço é visivelmente diferente das concorrentes.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Carlos Eduardo Souza</span>
-              <span class="depo-card__company">Guincho Souza — São Paulo, SP</span>
+        <div class="financiamento-layout">
+          <div class="financiamento-content">
+            <div class="section-heading section-heading--compact financiamento-heading" data-animate="section-heading">
+              <span class="section-heading__meta mono">// Condições</span>
+              <span class="section-heading__rule" aria-hidden="true">
+                <span class="section-heading__square"></span>
+              </span>
+              <h2 id="financiamento-heading" class="section-heading__title">
+                Condições para colocar sua plataforma na rua
+              </h2>
             </div>
-          </article>
 
-          <article class="depo-card">
-            <p class="depo-card__quote">Comprei duas plataformas médias e o atendimento foi excelente do início ao fim. Entrega no prazo, produto exatamente como prometido.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Rodrigo Ferreira</span>
-              <span class="depo-card__company">RF Transportes — Belo Horizonte, MG</span>
-            </div>
-          </article>
+            <p class="financiamento-lead" data-animate="fade-up" data-delay="0.12">
+              Escolha a opção e fale com a equipe para consultar as condições.
+            </p>
 
-          <article class="depo-card">
-            <p class="depo-card__quote">Usamos a linha pesada para remoção de caminhões. Já passou por situações extremas e nunca falhou. Recomendo sem hesitar para quem precisa de seriedade.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Marcos Alves</span>
-              <span class="depo-card__company">Alves Auto Socorro — Curitiba, PR</span>
+            <div class="financiamento-cta" data-animate="fade-up" data-delay="0.2">
+              <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+                 class="btn btn--split btn--split-primary"
+                 target="_blank" rel="noopener noreferrer"
+                 data-magnetic>
+                <span class="btn__label">Consultar Condições</span>
+                <span class="btn__plus" aria-hidden="true">+</span>
+              </a>
             </div>
-          </article>
+          </div>
 
-          <article class="depo-card">
-            <p class="depo-card__quote">Minha frota tem quatro plataformas Machado. O suporte pós-venda é rápido e eficiente. Empresa séria que respeita o cliente.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Fábio Nascimento</span>
-              <span class="depo-card__company">Nasci Guincho — Goiânia, GO</span>
-            </div>
-          </article>
+          <div class="financiamento-panel" data-animate="scale-in">
+            <figure class="financiamento-panel__media">
+              <img
+                src="./assets/images/produtos/pesada/PESADA-1.png"
+                alt="Plataforma Machado em operação"
+                width="640"
+                height="480"
+                loading="lazy"
+              />
+            </figure>
 
-          <article class="depo-card">
-            <p class="depo-card__quote">A plataforma leve que adquiri é perfeita para passeio e SUV. Robusta, acabamento impecável e o preço é muito justo pelo que entrega.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Ana Paula Lima</span>
-              <span class="depo-card__company">Lima Auto Peças — Uberlândia, MG</span>
-            </div>
-          </article>
+            <div class="financiamento-panel__body">
+              <span class="financiamento-panel__eyebrow mono">Negociação assistida</span>
+              <h3 class="financiamento-panel__title">Direto com quem fabrica.</h3>
 
-          <article class="depo-card">
-            <p class="depo-card__quote">Trabalho com guincho há 15 anos e a Machado é a melhor plataforma que já usei. Resistência e praticidade no dia a dia fazem toda a diferença.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Leandro Martins</span>
-              <span class="depo-card__company">Martins Reboque — Vitória, ES</span>
+              <div class="financiamento-panel__steps" aria-label="Etapas da negociação">
+                <span class="financiamento-panel__step mono">01 Orçamento</span>
+                <span class="financiamento-panel__step mono">02 Condições</span>
+                <span class="financiamento-panel__step mono">03 Produção</span>
+              </div>
             </div>
-          </article>
+          </div>
+        </div>
+
+        <div class="financiamento-grid" aria-label="Formas de pagamento">
+
+          <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0" aria-label="Consultar condições de entrada">
+            <span class="financiamento-item__square" aria-hidden="true"></span>
+            <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>
+            </svg>
+            <span class="financiamento-item__label">Entrada</span>
+            <span class="financiamento-item__hint">Consultar</span>
+          </a>
+
+          <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.06" aria-label="Consultar condições de parcelamento">
+            <span class="financiamento-item__square" aria-hidden="true"></span>
+            <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4l4.5 4.5M4 20l4.5-4.5M20 4l-4.5 4.5M20 20l-4.5-4.5M9 12h6M12 9v6"/>
+            </svg>
+            <span class="financiamento-item__label">Parcelamento</span>
+            <span class="financiamento-item__hint">Sob consulta</span>
+          </a>
+
+          <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.12" aria-label="Consultar pagamento por PIX">
+            <span class="financiamento-item__square" aria-hidden="true"></span>
+            <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/>
+            </svg>
+            <span class="financiamento-item__label">PIX</span>
+            <span class="financiamento-item__hint">Agilidade</span>
+          </a>
+
+          <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.18" aria-label="Consultar pagamento por cartão">
+            <span class="financiamento-item__square" aria-hidden="true"></span>
+            <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/>
+            </svg>
+            <span class="financiamento-item__label">Cartão</span>
+            <span class="financiamento-item__hint">Opções</span>
+          </a>
+
+          <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.24" aria-label="Consultar financiamento">
+            <span class="financiamento-item__square" aria-hidden="true"></span>
+            <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span class="financiamento-item__label">Financiamento</span>
+            <span class="financiamento-item__hint">Orientado</span>
+          </a>
+
+          <a class="financiamento-item" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" data-animate="fade-up" data-delay="0.3" aria-label="Consultar BNDES">
+            <span class="financiamento-item__square" aria-hidden="true"></span>
+            <svg class="financiamento-item__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+            </svg>
+            <span class="financiamento-item__label">BNDES</span>
+            <span class="financiamento-item__hint">Sob consulta</span>
+          </a>
 
         </div>
+
       </div>
     </section>
 
     <!-- CTA FINAL -->
     <section class="page-cta" aria-label="Solicitar orçamento">
       <div class="container">
-        <p class="page-cta__eyebrow">Próximo passo</p>
-        <h2 class="page-cta__title">Faça parte<br />da lista.</h2>
+        <p class="page-cta__eyebrow">Vamos trabalhar juntos</p>
+        <h2 class="page-cta__title">Consulte as<br />condições.</h2>
         <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
            class="btn btn--split btn--split-primary"
            target="_blank" rel="noopener noreferrer"
            data-magnetic>
-          <span class="btn__label">Solicitar Orçamento</span>
+          <span class="btn__label">Falar no WhatsApp</span>
           <span class="btn__plus" aria-hidden="true">+</span>
         </a>
       </div>
@@ -333,6 +337,7 @@
             <li><a href="./sobre.html">Empresa</a></li>
             <li><a href="./produtos.html">Produtos</a></li>
             <li><a href="./clientes.html">Clientes</a></li>
+            <li><a href="./credito.html">Crédito</a></li>
             <li><a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Contato</a></li>
           </ul>
         </div>

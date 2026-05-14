@@ -6,6 +6,96 @@
 
 ---
 
+## [2026-05-14] FEAT — Cria página Linha de Crédito e atualiza navbar global
+
+**Agente:** Claude Code
+**Sessão:** Criação de credito.html + migração da seção #financiamento
+
+### Criado
+- `credito.html` — subpage "Linha de Crédito" com page-hero + seção #financiamento completa + CTA final + footer
+
+### Alterado
+- `index.html` — removida seção `#financiamento` e link `financiamento.css`; adicionado `Crédito` ao navbar
+- `sobre.html` — adicionado `Crédito` ao navbar
+- `produtos.html` — adicionado `Crédito` ao navbar
+- `clientes.html` — adicionado `Crédito` ao navbar
+
+---
+
+## [2026-05-14] REFACTOR — Move #depoimentos para o final da home
+
+**Agente:** Claude Code
+**Sessão:** Reordenação de seções
+
+### Alterado
+- `index.html` — Section `#depoimentos` movida de posição 3 (após hero/sobre) para posição final antes do `</main>`, depois de `#financiamento`; nova ordem: Hero → Sobre → Produtos → Financiamento → Depoimentos → Footer
+
+---
+
+## [2026-05-14] FEAT — Remove section #cta-mid da home
+
+**Agente:** Claude Code
+**Sessão:** Remoção da section CTA intermediário
+
+### Removido
+- `index.html` — Section `#cta-mid` (CTA intermediário completo com copy, botões, trust list e figura)
+- `index.html` — `<link>` para `cta-interstitial.css` removido do `<head>`
+
+---
+
+## [2026-05-14] FIX — #sobre: botão CTA fora do viewport (overflow clip + space-between)
+
+**Agente:** Claude Code
+**Sessão:** Fix de layout — botão sumindo abaixo da section
+
+### Alterado
+- `css/components/sobre.css` — Removido `overflow: hidden` do `.sobre` (filhos já gerenciam o próprio overflow: `sobre-media` e `sobre-yt` têm regra própria); desktop `.sobre-spec` trocado de `justify-content: space-between` + `gap: 0` para `justify-content: flex-start` + `gap: var(--space-12)`, com `.sobre-spec__footer { margin-top: auto }` para manter footer ancorado na base quando há espaço
+
+---
+
+## [2026-05-14] STYLE — #sobre: espaçamento editorial + fixes web-design-guidelines
+
+**Agente:** Claude Code
+**Sessão:** design-system + web-design-guidelines — spacing tier-up
+
+### Alterado
+- `css/components/sobre.css` — Espacamento aumentado para tier editorial: `sobre-spec` gap `space-10→12`, padding mobile `space-16→20`; header gap `space-5→6`; KPI cells padding `space-8/6→10/8` (mobile), `space-10/9→12/10` (desktop, fix bug space-9 undefined); hero padding-block `space-10→12` (mobile), `space-12→16` (desktop); footer gap `space-6→8`, padding-top `space-8→10`; desktop spec padding `clamp(space-16→20)→clamp(space-20→24)` block; `text-wrap: balance` no `.sobre-title` (web-design-guidelines: headings); `font-variant-numeric: tabular-nums` no `.sobre-kpi__val` (web-design-guidelines: numeric columns)
+
+---
+
+## [2026-05-14] REFACTOR — #sobre: spec sheet rows → KPI Grid (ui-ux-pro-max)
+
+**Agente:** Claude Code
+**Sessão:** Refatoração completa da ficha técnica — KPI Grid visual
+
+### Alterado
+- `index.html` — Seção `#sobre`: substituído `.sobre-spec__sheet` + `.sobre-spec__row` por `.sobre-spec__grid` com células `.sobre-kpi`; hero (22 anos) ocupa linha inteira (`--hero`); Unidades Produzidas + Capacidade Fabril ficam em 2 colunas; Estrutura ocupa linha inteira (`--wide`); valor vai acima, label abaixo
+- `css/components/sobre.css` — Removidos: `.sobre-spec__sheet`, `.sobre-spec__row`, `.sobre-spec__key`, `.sobre-spec__dots`, `.sobre-spec__val`, `.sobre-spec__plus`, `.sobre-spec__unit` e seus overrides desktop; Adicionados: `.sobre-spec__grid` (gap 1px + bg branco para criar grid lines), `.sobre-kpi`, `.sobre-kpi--hero` (full-width + tint azul permanente + borda left accent), `.sobre-kpi--wide`, `.sobre-kpi__val`, `.sobre-kpi__key`, `.sobre-kpi__plus`, `.sobre-kpi__unit`; Hover usa apenas `background` (sem paint); Desktop: padding maior nas células; Reduced-motion atualizado; Subtitle contrast 0.45→0.62 (fix WCAG AA)
+
+---
+
+## [2026-05-14] STYLE — #sobre spec sheet: hover sweep, contraste e copy revisado
+
+**Agente:** Claude Code
+**Sessão:** frontend-design — hover row animation, paleta cinza-azul, copy update
+
+### Alterado
+- `index.html` — Spec sheet `#sobre`: removida row "Fundada 2004"; "Unidades" → "Unidades Produzidas"; "Estados 26" → "Capacidade Fabril 3000m²"; row order: Experiência (hero) → Unidades Produzidas → Capacidade Fabril → Estrutura
+- `css/components/sobre.css` — Row hover: sweep `background-size 0→100%` com gradiente azul + `box-shadow: inset 2px` accent lateral; key acende para `--color-steel` (#A7B0BA); dots ficam azuis; valores normais acendem em `--color-primary-light`; row hero ganha `text-shadow` glow; transições em `key`, `dots`, `val`; `min-width` key atualizado para `9.5rem` (mobile) / `10.5rem` (desktop); `prefers-reduced-motion` cobre todos novos elementos
+
+---
+
+## [2026-05-14] STYLE — Coluna esquerda #sobre: hierarquia, cores e novos elementos
+
+**Agente:** Claude Code
+**Sessão:** Melhoria da coluna de spec sheet — tipografia, hierarquia e layout
+
+### Alterado
+- `css/components/sobre.css` — Adicionados: `.sobre-kicker-wrap` (flex row), `.sobre-kicker__rule` (linha 2rem accent color), `.sobre-subtitle` (texto muted abaixo do título), `.sobre-spec__row--hero` (highlight azul na row de destaque), `.sobre-spec__statement` (frase bold no rodapé); Footer ganhou `border-top` separador e `padding-top`; Opacidades ajustadas: `--spec__key` 0.3→0.45, `--spec__dots` 0.1→0.15, `--spec__copy` 0.38→0.55; `--spec__val` font-weight 300→400; Row padding desktop `space-5→space-6`
+- `index.html` — Seção `#sobre`: kicker recebeu wrapper com rule span; `<p class="sobre-subtitle">` adicionado; row Experiência ganhou classe `--hero`; `<p class="sobre-spec__statement">` inserida antes do copy
+
+---
+
 ## [2026-05-14] FEAT — Subpáginas Produtos, Clientes e Sobre + navbar atualizada
 
 **Agente:** Claude Code

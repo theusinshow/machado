@@ -8,7 +8,7 @@
 .sobre {
   background-color: var(--color-black);
   color: var(--color-white);
-  overflow: hidden;
+  /* overflow gerenciado pelos filhos — sobre-media e sobre-yt têm overflow: hidden próprio */
 }
 
 /* ══════════════════════════════════════════════════════
@@ -21,8 +21,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
-  padding: var(--space-12) var(--space-6);
+  gap: var(--space-12);
+  padding: var(--space-20) var(--space-6);
   z-index: 1;
 }
 
@@ -44,13 +44,25 @@
 .sobre-spec__header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-6);
 }
 
-.sobre-kicker {
+.sobre-kicker-wrap {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+}
+
+.sobre-kicker__rule {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--color-primary-light);
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.sobre-kicker {
   font-family: var(--font-ui-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.22em;
@@ -65,75 +77,99 @@
   line-height: 0.92;
   letter-spacing: -0.03em;
   color: var(--color-white);
+  text-wrap: balance;
   margin: 0;
 }
 
-/* ── Ficha técnica ───────────────────────────────────── */
+.sobre-subtitle {
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0;
+  max-width: 34ch;
+}
 
-.sobre-spec__sheet {
+/* ── KPI Grid ────────────────────────────────────────── */
+
+.sobre-spec__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.07); /* hairline grid lines via gap */
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.sobre-kpi {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-block: var(--space-2);
+  justify-content: flex-end;
+  gap: var(--space-4);
+  padding: var(--space-10) var(--space-8);
+  background: var(--color-black);
+  transition: background 0.25s ease;
 }
 
-.sobre-spec__row {
-  display: flex;
-  align-items: center;
-  padding-block: var(--space-4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  gap: var(--space-3);
+/* Célula hero — ocupa largura toda, tint azul permanente */
+.sobre-kpi--hero {
+  grid-column: 1 / -1;
+  background: rgba(91, 155, 213, 0.05);
+  border-left: 2px solid var(--color-primary-light);
+  padding-block: var(--space-12);
 }
 
-.sobre-spec__row:last-child {
-  border-bottom: none;
+/* Célula de largura total (Estrutura) */
+.sobre-kpi--wide {
+  grid-column: 1 / -1;
 }
 
-.sobre-spec__key {
-  font-family: var(--font-ui-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
-  flex-shrink: 0;
-  min-width: 7rem;
+@media (hover: hover) {
+  .sobre-kpi:not(.sobre-kpi--hero):hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .sobre-kpi--hero:hover {
+    background: rgba(91, 155, 213, 0.09);
+  }
 }
 
-/* Linha pontilhada conectora — estética blueprint */
-.sobre-spec__dots {
-  flex: 1;
-  height: 0;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-  margin-bottom: 2px;
-}
-
-.sobre-spec__val {
+.sobre-kpi__val {
   font-family: var(--font-heading);
-  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-4xl));
+  font-size: clamp(var(--text-3xl), 3.5vw, var(--text-4xl));
   font-weight: 300;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--color-white);
-  text-align: right;
-  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 
-.sobre-spec__plus {
+.sobre-kpi--hero .sobre-kpi__val {
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-5xl));
+  font-weight: 200;
+  color: var(--color-primary-light);
+}
+
+.sobre-kpi__key {
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sobre-kpi__plus {
   color: var(--color-primary-light);
   font-size: 0.65em;
   vertical-align: super;
   margin-left: 1px;
 }
 
-.sobre-spec__unit {
+.sobre-kpi__unit {
   font-family: var(--font-ui-mono);
   font-size: 0.38em;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.35);
   vertical-align: middle;
-  margin-left: var(--space-1);
+  margin-left: 2px;
 }
 
 /* ── Footer ──────────────────────────────────────────── */
@@ -141,13 +177,24 @@
 .sobre-spec__footer {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-8);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: var(--space-10);
+}
+
+.sobre-spec__statement {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+  margin: 0;
 }
 
 .sobre-spec__copy {
   font-size: var(--text-sm);
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.55);
   margin: 0;
 }
 
@@ -308,24 +355,25 @@
   }
 
   .sobre-spec {
-    justify-content: space-between;
-    gap: 0;
+    justify-content: flex-start;
+    gap: var(--space-12);
     padding:
-      clamp(var(--space-12), 5vw, var(--space-16))
-      clamp(var(--space-8), 4vw, var(--space-14));
+      clamp(var(--space-20), 7vw, var(--space-24))
+      clamp(var(--space-12), 5vw, var(--space-16));
     border-right: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .sobre-spec__key {
-    min-width: 8rem;
+  /* Footer fica na base quando há espaço, segue o fluxo quando não há */
+  .sobre-spec__footer {
+    margin-top: auto;
   }
 
-  .sobre-spec__sheet {
-    padding-block: var(--space-4);
+  .sobre-kpi {
+    padding: var(--space-12) var(--space-10);
   }
 
-  .sobre-spec__row {
-    padding-block: var(--space-5);
+  .sobre-kpi--hero {
+    padding-block: var(--space-16);
   }
 
   /* Media: preenche 100% da altura do grid, com padding interno */
@@ -364,7 +412,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .sobre-yt__preview,
-  .sobre-video-corners span {
+  .sobre-video-corners span,
+  .sobre-kpi {
     transition: none;
   }
   .sobre-yt__play::after {

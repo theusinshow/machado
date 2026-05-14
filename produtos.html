@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Machado Plataformas — Linha completa de plataformas para guincho. Leve, Média e Pesada. Fabricação própria com qualidade certificada." />
+
+  <meta property="og:title" content="Produtos — Machado Plataformas" />
+  <meta property="og:description" content="Conheça a linha completa de plataformas Machado: Leve, Média e Pesada." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" href="./assets/images/logo/Icon.png" />
+  <title>Produtos — Machado Plataformas</title>
+
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- CSS Base -->
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/typography.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/animations.css" />
+
+  <!-- CSS Componentes -->
+  <link rel="stylesheet" href="./css/components/navbar.css" />
+  <link rel="stylesheet" href="./css/components/footer.css" />
+
+  <style>
+    .page-hero {
+      background-color: var(--color-black);
+      color: var(--color-white);
+      padding: calc(var(--navbar-height) + var(--space-16)) 0 var(--space-16);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+      margin-bottom: var(--space-5);
+    }
+    .page-hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--color-primary-light);
+    }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(var(--text-5xl), 8vw, var(--text-display));
+      font-weight: normal;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-6);
+    }
+    .page-hero__sub {
+      max-width: 44rem;
+      font-size: var(--text-lg);
+      color: var(--color-steel);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .page-content {
+      background-color: var(--color-bg);
+      padding-block: var(--section-md);
+    }
+    .page-placeholder {
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .page-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      padding: var(--space-8);
+      display: grid;
+      gap: var(--space-4);
+    }
+    .page-card__tag {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+    }
+    .page-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: normal;
+      line-height: 1;
+      color: var(--color-text);
+    }
+    .page-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .page-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-family: var(--font-ui-mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+      text-decoration: none;
+      margin-top: var(--space-2);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="navbar" role="banner">
+    <div class="container container--wide navbar-inner">
+      <a href="./index.html" class="navbar-logo" aria-label="Machado Plataformas — Início">
+        <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" width="130" height="32" />
+      </a>
+      <button class="navbar-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbar-panel">
+        <span class="navbar-toggle__label">Menu</span>
+        <span class="navbar-toggle__icon" aria-hidden="true">
+          <span class="navbar-toggle__line"></span>
+          <span class="navbar-toggle__line"></span>
+        </span>
+      </button>
+      <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+         class="btn btn--split btn--split-primary navbar-cta"
+         target="_blank" rel="noopener noreferrer"
+         data-magnetic>
+        <span class="btn__label">Faça seu Orçamento</span>
+        <span class="btn__plus" aria-hidden="true">+</span>
+      </a>
+    </div>
+    <div id="navbar-panel" class="navbar-panel" aria-hidden="true">
+      <div class="container container--wide navbar-panel__inner">
+        <nav class="navbar-panel__nav" aria-label="Menu expandido">
+          <span class="nav-indicator" aria-hidden="true"></span>
+          <a href="./index.html">Início</a>
+          <a href="./produtos.html" class="is-active">Produtos</a>
+          <a href="./clientes.html">Clientes</a>
+          <a href="./sobre.html">Sobre</a>
+        </nav>
+        <div class="navbar-panel__meta">
+          <div class="navbar-panel__contact">
+            <span class="navbar-panel__label mono">Contato</span>
+            <a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+            <span class="navbar-panel__note mono">Atendimento em todo o Brasil</span>
+          </div>
+          <div class="navbar-panel__status">
+            <span class="navbar-panel__label mono">Disponibilidade</span>
+            <p class="navbar-panel__status-line">
+              <span class="navbar-panel__status-dot" aria-hidden="true"></span>
+              Orçamentos e atendimento técnico em andamento.
+            </p>
+          </div>
+        </div>
+        <div class="navbar-panel__cards" aria-label="Destaques rápidos">
+          <a href="./sobre.html" class="navbar-card">
+            <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="Equipe Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
+            <span class="navbar-card__eyebrow mono">Sobre a fábrica</span>
+            <strong class="navbar-card__title">Conheça a estrutura</strong>
+          </a>
+          <a href="./clientes.html" class="navbar-card">
+            <img src="./assets/images/hero/plataforma-hero.png" alt="Clientes Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
+            <span class="navbar-card__eyebrow mono">Depoimentos</span>
+            <strong class="navbar-card__title">Ver clientes</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO DA PÁGINA -->
+    <section class="page-hero" aria-label="Nossos Produtos">
+      <div class="container">
+        <p class="page-hero__eyebrow">Linha completa</p>
+        <h1 class="page-hero__title">Produtos</h1>
+        <p class="page-hero__sub">Plataformas fabricadas com aço de alta resistência para operações leves, médias e pesadas. Cada linha desenvolvida para um segmento específico.</p>
+      </div>
+    </section>
+
+    <!-- CONTEÚDO -->
+    <section class="page-content" aria-label="Linhas de produto">
+      <div class="container">
+        <div class="page-placeholder">
+
+          <article class="page-card">
+            <span class="page-card__tag">01 — Linha</span>
+            <h2 class="page-card__title">Leve</h2>
+            <p class="page-card__desc">Plataformas para veículos de passeio, SUVs e utilitários. Estrutura em aço com capacidade de até 3.500 kg. Ideal para guinchos de médio porte.</p>
+            <a href="./index.html#produtos" class="page-card__cta">Solicitar orçamento →</a>
+          </article>
+
+          <article class="page-card">
+            <span class="page-card__tag">02 — Linha</span>
+            <h2 class="page-card__title">Media</h2>
+            <p class="page-card__desc">Versátil e robusta para frotas de médio porte. Capacidade de até 6.000 kg com acabamento de alta resistência e maior vida útil.</p>
+            <a href="./index.html#produtos" class="page-card__cta">Solicitar orçamento →</a>
+          </article>
+
+          <article class="page-card">
+            <span class="page-card__tag">03 — Linha</span>
+            <h2 class="page-card__title">Pesada</h2>
+            <p class="page-card__desc">Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg. Solução para o segmento pesado.</p>
+            <a href="./index.html#produtos" class="page-card__cta">Solicitar orçamento →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="footer-headline-wrap" aria-hidden="true">
+      <p class="footer-headline" aria-hidden="true">Machado Plataformas</p>
+    </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--brand">
+          <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" class="footer-logo" width="120" height="30" loading="lazy" />
+          <p class="footer-tagline">Soluções em plataformas veiculares com qualidade, segurança e confiança.</p>
+          <div class="footer-status">
+            <span>Atendimento nacional</span>
+            <span>Fabricação sob demanda</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Navegação</h3>
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./sobre.html">Empresa</a></li>
+            <li><a href="./produtos.html">Produtos</a></li>
+            <li><a href="./clientes.html">Clientes</a></li>
+            <li><a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <h3 class="footer-col__title">Contato</h3>
+          <a class="footer-cta" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">
+            <span>Solicitar orçamento</span>
+            <span aria-hidden="true">+</span>
+          </a>
+          <address class="footer-address">
+            <p><a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a></p>
+            <p><a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a></p>
+            <p>Minas Gerais, Brasil</p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy mono">&copy; 2026 Machado Plataformas. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script src="./js/gsap-setup.js"></script>
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>

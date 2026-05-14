@@ -225,92 +225,76 @@
   <!-- ══════════════════════════════════════
        02 — QUEM SOMOS
   ══════════════════════════════════════ -->
-  <section id="sobre" class="section section--light sobre" aria-labelledby="sobre-heading">
-    <div class="container">
-      <div class="sobre-grid">
+  <section id="sobre" class="sobre" aria-labelledby="sobre-heading">
+    <div class="container container--wide">
 
-        <div class="sobre-content">
-          <div class="section-heading section-heading--compact" data-animate="section-heading">
-            <span class="section-heading__meta mono">// Quem Somos</span>
-            <span class="section-heading__rule" aria-hidden="true">
-              <span class="section-heading__square"></span>
-            </span>
-            <h2 id="sobre-heading" class="section-heading__title">
-              Tradição que se Mede em Quilômetros Rodados
-            </h2>
-          </div>
-
-          <div class="sobre-display" data-animate="fade-up" data-delay="0.1">
-            <span class="sobre-display__number" data-count="22">22</span>
-            <span class="sobre-display__label mono">
-              anos fabricando implementos para o Brasil
-            </span>
-          </div>
-
-          <div class="sobre-copy" data-animate="fade-up" data-delay="0.2">
-            <p class="sobre-lead">
-              Desde 2004, a Machado Plataformas projeta e fabrica implementos rodoviários usados por profissionais em todo o Brasil.
-            </p>
-            <p>
-              Fabricação 100% própria em MG. Controle de qualidade em cada unidade.
-            </p>
-          </div>
-
-          <div class="sobre-mini-stats" data-animate="fade-up" data-delay="0.3">
-            <div class="sobre-mini-stat">
-              <span class="sobre-mini-stat__number">4000+</span>
-              <span class="sobre-mini-stat__label mono">unidades produzidas</span>
-            </div>
-            <div class="sobre-mini-stat">
-              <span class="sobre-mini-stat__number">26</span>
-              <span class="sobre-mini-stat__label mono">estados atendidos</span>
-            </div>
-            <div class="sobre-mini-stat">
-              <span class="sobre-mini-stat__number">100%</span>
-              <span class="sobre-mini-stat__label mono">fábrica própria</span>
-            </div>
-          </div>
-
-          <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
-             class="btn btn--split btn--split-primary sobre-cta"
-             target="_blank" rel="noopener noreferrer"
-             data-animate="fade-up" data-delay="0.4" data-magnetic>
-            <span class="btn__label">Solicitar Orçamento</span>
-            <span class="btn__plus" aria-hidden="true">+</span>
-          </a>
+      <!-- Tira editorial: título + número âncora -->
+      <div class="sobre-top" data-animate="fade-up">
+        <div class="sobre-top__info">
+          <span class="sobre-kicker mono">// Quem Somos</span>
+          <h2 id="sobre-heading" class="sobre-title">
+            Tradição que se Mede<br>em Quilômetros Rodados
+          </h2>
         </div>
-
-        <div class="sobre-media" data-animate="scale-in">
-          <div class="sobre-video-wrap">
-            <button
-              class="sobre-yt"
-              data-yt="i9T5rjnvAbk"
-              aria-label="Assistir vídeo institucional da Machado Plataformas"
-              type="button"
-            >
-              <video
-                class="sobre-yt__preview"
-                src="./assets/videos/preview-institucional.mp4"
-                poster="https://i.ytimg.com/vi/i9T5rjnvAbk/maxresdefault.jpg"
-                autoplay muted loop playsinline
-                preload="auto"
-                aria-hidden="true"
-              ></video>
-              <span class="sobre-yt__overlay" aria-hidden="true"></span>
-              <span class="sobre-yt__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
-                  <path d="M8 5.5v13L19 12 8 5.5z"/>
-                </svg>
-              </span>
-            </button>
-            <div class="sobre-badge" data-animate="fade-in" data-delay="0.3">
-              <span class="sobre-badge__label mono">DESDE</span>
-              <span class="sobre-badge__year">2004</span>
-            </div>
-          </div>
+        <div class="sobre-top__stat">
+          <span class="sobre-display__number" data-count="22">22</span>
+          <span class="sobre-display__label mono">anos fabricando<br>implementos no Brasil</span>
         </div>
-
       </div>
+
+      <!-- Vídeo full-width -->
+      <div class="sobre-video-wrap" data-animate="scale-in">
+        <div class="sobre-video-corners" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <button
+          class="sobre-yt"
+          data-yt="i9T5rjnvAbk"
+          aria-label="Assistir vídeo institucional da Machado Plataformas"
+          type="button"
+        >
+          <video
+            class="sobre-yt__preview"
+            src="./assets/videos/preview-institucional.mp4"
+            poster="https://i.ytimg.com/vi/i9T5rjnvAbk/maxresdefault.jpg"
+            autoplay muted loop playsinline
+            preload="auto"
+            aria-hidden="true"
+          ></video>
+          <span class="sobre-yt__overlay" aria-hidden="true"></span>
+          <span class="sobre-yt__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36" aria-hidden="true">
+              <path d="M8 5.5v13L19 12 8 5.5z"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Tira inferior: stats + CTA -->
+      <div class="sobre-bottom" data-animate="fade-up" data-delay="0.1">
+        <div class="sobre-stats">
+          <div class="sobre-stat">
+            <span class="sobre-stat__num">4000+</span>
+            <span class="sobre-stat__label mono">unidades produzidas</span>
+          </div>
+          <div class="sobre-stat">
+            <span class="sobre-stat__num">26</span>
+            <span class="sobre-stat__label mono">estados atendidos</span>
+          </div>
+          <div class="sobre-stat">
+            <span class="sobre-stat__num">100%</span>
+            <span class="sobre-stat__label mono">fábrica própria</span>
+          </div>
+        </div>
+        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+           class="btn btn--split btn--split-primary sobre-cta"
+           target="_blank" rel="noopener noreferrer"
+           data-magnetic>
+          <span class="btn__label">Solicitar Orçamento</span>
+          <span class="btn__plus" aria-hidden="true">+</span>
+        </a>
+      </div>
+
     </div>
   </section>
 

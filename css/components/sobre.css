@@ -59,11 +59,11 @@
 }
 
 .sobre-title {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
-  font-weight: normal;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
   color: var(--color-white);
   margin: 0;
 }
@@ -109,11 +109,11 @@
 }
 
 .sobre-spec__val {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(var(--text-2xl), 3.5vw, var(--text-4xl));
-  font-weight: normal;
+  font-weight: 300;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--color-white);
   text-align: right;
   flex-shrink: 0;
@@ -303,7 +303,7 @@
 @media (min-width: 1024px) {
   .sobre {
     display: grid;
-    grid-template-columns: 42fr 58fr;
+    grid-template-columns: 46fr 54fr;
     min-height: 100svh;
   }
 
@@ -328,10 +328,11 @@
     padding-block: var(--space-5);
   }
 
-  /* Media: preenche 100% da altura do grid */
+  /* Media: preenche 100% da altura do grid, com padding interno */
   .sobre-media {
     min-height: 0;
     position: relative;
+    padding: clamp(var(--space-8), 4vw, var(--space-12));
   }
 
   /* Gradiente que funde a borda esquerda com o painel */
@@ -341,7 +342,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 80px;
+    width: clamp(60px, 8vw, 100px);
     background: linear-gradient(to right, var(--color-black) 0%, transparent 100%);
     z-index: 3;
     pointer-events: none;

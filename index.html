@@ -226,66 +226,49 @@
        02 — QUEM SOMOS
   ══════════════════════════════════════ -->
   <section id="sobre" class="sobre" aria-labelledby="sobre-heading">
-    <div class="container container--wide">
 
-      <!-- Tira editorial: título + número âncora -->
-      <div class="sobre-top" data-animate="fade-up">
-        <div class="sobre-top__info">
-          <span class="sobre-kicker mono">// Quem Somos</span>
-          <h2 id="sobre-heading" class="sobre-title">
-            Tradição que se Mede<br>em Quilômetros Rodados
-          </h2>
+    <!-- Esquerda: ficha técnica -->
+    <div class="sobre-spec">
+
+      <div class="sobre-spec__header" data-animate="fade-up">
+        <span class="sobre-kicker mono">// Quem Somos</span>
+        <h2 id="sobre-heading" class="sobre-title">
+          Tradição que se<br>Mede em Quilômetros
+        </h2>
+      </div>
+
+      <div class="sobre-spec__sheet" data-animate="fade-up" data-delay="0.08">
+        <div class="sobre-spec__row">
+          <span class="sobre-spec__key mono">Fundada</span>
+          <span class="sobre-spec__dots" aria-hidden="true"></span>
+          <span class="sobre-spec__val">2004</span>
         </div>
-        <div class="sobre-top__stat">
-          <span class="sobre-display__number" data-count="22">22</span>
-          <span class="sobre-display__label mono">anos fabricando<br>implementos no Brasil</span>
+        <div class="sobre-spec__row">
+          <span class="sobre-spec__key mono">Unidades</span>
+          <span class="sobre-spec__dots" aria-hidden="true"></span>
+          <span class="sobre-spec__val">4000<span class="sobre-spec__plus">+</span></span>
+        </div>
+        <div class="sobre-spec__row">
+          <span class="sobre-spec__key mono">Estados</span>
+          <span class="sobre-spec__dots" aria-hidden="true"></span>
+          <span class="sobre-spec__val">26</span>
+        </div>
+        <div class="sobre-spec__row">
+          <span class="sobre-spec__key mono">Experiência</span>
+          <span class="sobre-spec__dots" aria-hidden="true"></span>
+          <span class="sobre-spec__val">22 <span class="sobre-spec__unit">anos</span></span>
+        </div>
+        <div class="sobre-spec__row">
+          <span class="sobre-spec__key mono">Estrutura</span>
+          <span class="sobre-spec__dots" aria-hidden="true"></span>
+          <span class="sobre-spec__val">100% <span class="sobre-spec__unit">própria</span></span>
         </div>
       </div>
 
-      <!-- Vídeo full-width -->
-      <div class="sobre-video-wrap" data-animate="scale-in">
-        <div class="sobre-video-corners" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </div>
-        <button
-          class="sobre-yt"
-          data-yt="i9T5rjnvAbk"
-          aria-label="Assistir vídeo institucional da Machado Plataformas"
-          type="button"
-        >
-          <video
-            class="sobre-yt__preview"
-            src="./assets/videos/preview-institucional.mp4"
-            poster="https://i.ytimg.com/vi/i9T5rjnvAbk/maxresdefault.jpg"
-            autoplay muted loop playsinline
-            preload="auto"
-            aria-hidden="true"
-          ></video>
-          <span class="sobre-yt__overlay" aria-hidden="true"></span>
-          <span class="sobre-yt__play" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36" aria-hidden="true">
-              <path d="M8 5.5v13L19 12 8 5.5z"/>
-            </svg>
-          </span>
-        </button>
-      </div>
-
-      <!-- Tira inferior: stats + CTA -->
-      <div class="sobre-bottom" data-animate="fade-up" data-delay="0.1">
-        <div class="sobre-stats">
-          <div class="sobre-stat">
-            <span class="sobre-stat__num">4000+</span>
-            <span class="sobre-stat__label mono">unidades produzidas</span>
-          </div>
-          <div class="sobre-stat">
-            <span class="sobre-stat__num">26</span>
-            <span class="sobre-stat__label mono">estados atendidos</span>
-          </div>
-          <div class="sobre-stat">
-            <span class="sobre-stat__num">100%</span>
-            <span class="sobre-stat__label mono">fábrica própria</span>
-          </div>
-        </div>
+      <div class="sobre-spec__footer" data-animate="fade-up" data-delay="0.16">
+        <p class="sobre-spec__copy">
+          Desde 2004, fabricamos implementos rodoviários para profissionais em todo o Brasil — com estrutura própria e controle de qualidade em cada unidade.
+        </p>
         <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
            class="btn btn--split btn--split-primary sobre-cta"
            target="_blank" rel="noopener noreferrer"
@@ -296,6 +279,35 @@
       </div>
 
     </div>
+
+    <!-- Direita: vídeo full-height -->
+    <div class="sobre-media" data-animate="scale-in">
+      <div class="sobre-video-corners" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <button
+        class="sobre-yt"
+        data-yt="i9T5rjnvAbk"
+        aria-label="Assistir vídeo institucional da Machado Plataformas"
+        type="button"
+      >
+        <video
+          class="sobre-yt__preview"
+          src="./assets/videos/preview-institucional.mp4"
+          poster="https://i.ytimg.com/vi/i9T5rjnvAbk/maxresdefault.jpg"
+          autoplay muted loop playsinline
+          preload="auto"
+          aria-hidden="true"
+        ></video>
+        <span class="sobre-yt__overlay" aria-hidden="true"></span>
+        <span class="sobre-yt__play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36" aria-hidden="true">
+            <path d="M8 5.5v13L19 12 8 5.5z"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+
   </section>
 
   <!-- ══════════════════════════════════════

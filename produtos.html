@@ -187,11 +187,7 @@
     .arsenal__img-side {
       position: relative;
       overflow: hidden;
-      min-height: clamp(260px, 50svh, 480px);
-      align-self: stretch;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      align-self: center;
       border: 1px solid rgba(255, 255, 255, 0.05);
       /* Corner brackets — cantos de visor de engenharia em azul primário */
       background-image:
@@ -239,12 +235,11 @@
     }
 
     .arsenal__img {
-      max-height: clamp(220px, 42svh, 400px);
-      width: auto;
-      max-width: 92%;
+      width: 100%;
+      height: auto;
       display: block;
       mix-blend-mode: lighten;
-      transition: transform 0.8s var(--ease-machado), opacity 0.22s var(--ease-premium);
+      transition: opacity 0.22s var(--ease-premium);
     }
 
     /* ── Arrow navigation ── */

@@ -36,10 +36,7 @@
   <link rel="stylesheet" href="./css/components/footer.css" />
 
   <style>
-    /* === ARSENAL — Produtos Cinematic Scroll === */
-
-    /* Seamless transition: page-hero flows directly into first arsenal section */
-    .page-hero { padding-bottom: 0; }
+    /* === PRODUCTS GRID === */
 
     /* ── Wrapper — separador de linha entre seções ── */
     .arsenal-stack {
@@ -340,15 +337,183 @@
       .arsenal__nav { right: var(--space-3); }
     }
 
-    /* Focus ring para navegação por teclado */
-    .arsenal:focus-visible {
-      outline: 2px solid rgba(91, 155, 213, 0.45);
-      outline-offset: -2px;
+    /* ── Grid container ── */
+    .products-grid {
+      background: var(--color-surface);
+      padding-block: var(--space-16) var(--space-20);
+    }
+
+    .products-grid__inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      max-width: var(--container-default);
+      margin-inline: auto;
+      padding-inline: var(--container-padding);
+    }
+
+    /* ── Card ── */
+    .pcard {
+      background: var(--color-white);
+      border: 1px solid rgba(28, 36, 48, 0.1);
+      display: flex;
+      flex-direction: column;
+      transition:
+        transform 0.28s var(--ease-machado),
+        box-shadow 0.28s var(--ease-machado),
+        border-color 0.28s var(--ease-machado);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .pcard:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 48px rgba(28, 36, 48, 0.13);
+        border-color: rgba(26, 75, 130, 0.3);
+      }
+    }
+
+    /* ── Image area ── */
+    .pcard__img-wrap {
+      height: clamp(180px, 18vw, 240px);
+      padding: var(--space-8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .pcard__img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+
+    /* ── Card body ── */
+    .pcard__body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: var(--space-6);
+      border-top: 1px solid rgba(28, 36, 48, 0.08);
+    }
+
+    /* ── Kicker ── */
+    .pcard__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .pcard__kicker::before {
+      content: '';
+      width: 2rem;
+      height: 1px;
+      background-color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    /* ── Product name ── */
+    .pcard__name {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 3.5vw, 3.75rem);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--color-text-dark);
+      margin: 0 0 var(--space-5);
+    }
+
+    /* ── Specs strip ── */
+    .pcard__specs {
+      display: flex;
+      border: 1px solid rgba(28, 36, 48, 0.1);
+      background: var(--color-surface);
+      margin-bottom: var(--space-5);
+    }
+
+    .pcard__spec {
+      flex: 1;
+      padding: var(--space-3) var(--space-4);
+      border-right: 1px solid rgba(28, 36, 48, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .pcard__spec:last-child { border-right: none; }
+
+    .pcard__spec-label {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(28, 36, 48, 0.45);
+    }
+
+    .pcard__spec-val {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-dark);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Description ── */
+    .pcard__desc {
+      font-size: var(--text-base);
+      line-height: 1.65;
+      color: var(--color-bg-light);
+      flex: 1;
+      margin: 0 0 var(--space-6);
+    }
+
+    /* ── CTA ── */
+    .pcard__cta { width: 100%; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .products-grid__inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pcard:last-child {
+        grid-column: 1 / -1;
+        max-width: calc(50% - var(--space-3));
+        margin-inline: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .products-grid {
+        padding-block: var(--space-10) var(--space-14);
+      }
+
+      .products-grid__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      .pcard:last-child {
+        grid-column: auto;
+        max-width: none;
+        margin-inline: 0;
+      }
+
+      .pcard__img-wrap { height: clamp(160px, 45vw, 220px); }
+      .pcard__name { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+      .pcard__specs { flex-wrap: wrap; }
+      .pcard__spec { min-width: calc(50% - 1px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .arsenal__ticker-inner { animation: none; }
-      .arsenal__img { transition: none; }
+      .pcard { transition: none; }
     }
   </style>
 </head>
@@ -433,213 +598,107 @@
       </div>
     </section>
 
-    <div class="arsenal-stack">
+    <section class="products-grid" aria-label="Linha de produtos">
+      <div class="products-grid__inner">
 
-    <!-- ── LINHA LEVE ── -->
-    <section class="arsenal arsenal--leve" aria-label="Linha Leve" tabindex="0">
-      <div class="arsenal__inner">
-
-        <div class="arsenal__content">
-          <span class="arsenal__kicker">01 / 03 — Linha Leve</span>
-          <h2 class="arsenal__name">LEVE</h2>
-
-          <div class="arsenal__specs" aria-label="Especificações técnicas">
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Capacidade</span>
-              <span class="arsenal__spec__val">3.500 kg</span>
-            </div>
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Comprimento</span>
-              <span class="arsenal__spec__val">6,20 m</span>
-            </div>
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Aplicação</span>
-              <span class="arsenal__spec__val">Passeio / SUV</span>
-            </div>
+        <!-- ── LINHA LEVE ── -->
+        <article class="pcard" aria-label="Linha Leve">
+          <div class="pcard__img-wrap">
+            <img class="pcard__img" src="./assets/images/produtos/leve/LEVE-1.png" alt="Plataforma Leve Machado" loading="eager" />
           </div>
-
-          <p class="arsenal__desc">
-            Estrutura tubular em aço para guinchos de médio porte. Acabamento eletrostático de alta durabilidade, ideal para veículos de passeio, SUVs e utilitários leves.
-          </p>
-
-          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Leve."
-             class="btn btn--split btn--split-primary"
-             target="_blank" rel="noopener noreferrer" data-magnetic>
-            <span class="btn__label">Solicitar Orçamento</span>
-            <span class="btn__plus" aria-hidden="true">+</span>
-          </a>
-        </div>
-
-        <div class="arsenal__img-side">
-          <img
-            class="arsenal__img"
-            src="./assets/images/produtos/leve/LEVE-1.png"
-            alt="Plataforma Leve Machado"
-            loading="eager"
-            data-gallery='["./assets/images/produtos/leve/LEVE-1.png","./assets/images/produtos/leve/LEVE-2.jpg","./assets/images/produtos/leve/LEVE-3.jpg","./assets/images/produtos/leve/LEVE-4.jpg","./assets/images/produtos/leve/LEVE-5.jpg"]'
-          />
-          <div class="arsenal__nav">
-            <button class="arsenal__arrow arsenal__arrow--prev" aria-label="Foto anterior" disabled>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M10 12L6 8l4-4"/>
-              </svg>
-            </button>
-            <span class="arsenal__img-counter" aria-live="polite">01 / 05</span>
-            <button class="arsenal__arrow arsenal__arrow--next" aria-label="Próxima foto">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 4l4 4-4 4"/>
-              </svg>
-            </button>
+          <div class="pcard__body">
+            <span class="pcard__kicker">01 — Linha Leve</span>
+            <h2 class="pcard__name">LEVE</h2>
+            <div class="pcard__specs" aria-label="Especificações técnicas">
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Capacidade</span>
+                <span class="pcard__spec-val">3.500 kg</span>
+              </div>
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Comprimento</span>
+                <span class="pcard__spec-val">6,20 m</span>
+              </div>
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Aplicação</span>
+                <span class="pcard__spec-val">Passeio / SUV</span>
+              </div>
+            </div>
+            <p class="pcard__desc">Estrutura tubular em aço para guinchos de médio porte. Acabamento eletrostático de alta durabilidade, ideal para veículos de passeio, SUVs e utilitários leves.</p>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Leve."
+               class="btn btn--split btn--split-primary pcard__cta"
+               target="_blank" rel="noopener noreferrer" data-magnetic>
+              <span class="btn__label">Solicitar Orçamento</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
           </div>
-        </div>
+        </article>
 
-      </div>
-      <div class="arsenal__ticker" aria-hidden="true">
-        <div class="arsenal__ticker-inner">
-          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── LINHA MEDIA ── -->
-    <section class="arsenal arsenal--media arsenal--alt" aria-label="Linha Média" tabindex="0">
-      <div class="arsenal__inner">
-
-        <div class="arsenal__content">
-          <span class="arsenal__kicker">02 / 03 — Linha Média</span>
-          <h2 class="arsenal__name">MÉDIA</h2>
-
-          <div class="arsenal__specs" aria-label="Especificações técnicas">
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Capacidade</span>
-              <span class="arsenal__spec__val">6.000 kg</span>
-            </div>
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Comprimento</span>
-              <span class="arsenal__spec__val">7,40 m</span>
-            </div>
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Aplicação</span>
-              <span class="arsenal__spec__val">Frotas / Médio Porte</span>
-            </div>
+        <!-- ── LINHA MEDIA ── -->
+        <article class="pcard" aria-label="Linha Média">
+          <div class="pcard__img-wrap">
+            <img class="pcard__img" src="./assets/images/produtos/media/MEDIA-1.png" alt="Plataforma Média Machado" loading="lazy" />
           </div>
-
-          <p class="arsenal__desc">
-            Versátil e robusta para frotas de médio porte. Sistema de travas reforçado, maior vida útil operacional e capacidade de até 6.000 kg com acabamento de alta resistência.
-          </p>
-
-          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Média."
-             class="btn btn--split btn--split-primary"
-             target="_blank" rel="noopener noreferrer" data-magnetic>
-            <span class="btn__label">Solicitar Orçamento</span>
-            <span class="btn__plus" aria-hidden="true">+</span>
-          </a>
-        </div>
-
-        <div class="arsenal__img-side">
-          <img
-            class="arsenal__img"
-            src="./assets/images/produtos/media/MEDIA-1.png"
-            alt="Plataforma Média Machado"
-            loading="lazy"
-            data-gallery='["./assets/images/produtos/media/MEDIA-1.png","./assets/images/produtos/media/MEDIA-2.jpg","./assets/images/produtos/media/MEDIA-3.jpg","./assets/images/produtos/media/MEDIA-4.jpg"]'
-          />
-          <div class="arsenal__nav">
-            <button class="arsenal__arrow arsenal__arrow--prev" aria-label="Foto anterior" disabled>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M10 12L6 8l4-4"/>
-              </svg>
-            </button>
-            <span class="arsenal__img-counter" aria-live="polite">01 / 04</span>
-            <button class="arsenal__arrow arsenal__arrow--next" aria-label="Próxima foto">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 4l4 4-4 4"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-      </div>
-      <div class="arsenal__ticker" aria-hidden="true">
-        <div class="arsenal__ticker-inner">
-          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── LINHA PESADA ── -->
-    <section class="arsenal arsenal--pesada" aria-label="Linha Pesada" tabindex="0">
-      <div class="arsenal__inner">
-
-        <div class="arsenal__content">
-          <span class="arsenal__kicker">03 / 03 — Linha Pesada</span>
-          <h2 class="arsenal__name">PESADA</h2>
-
-          <div class="arsenal__specs" aria-label="Especificações técnicas">
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Capacidade</span>
-              <span class="arsenal__spec__val">8.000 kg+</span>
+          <div class="pcard__body">
+            <span class="pcard__kicker">02 — Linha Média</span>
+            <h2 class="pcard__name">MÉDIA</h2>
+            <div class="pcard__specs" aria-label="Especificações técnicas">
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Capacidade</span>
+                <span class="pcard__spec-val">6.000 kg</span>
+              </div>
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Comprimento</span>
+                <span class="pcard__spec-val">7,40 m</span>
+              </div>
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Aplicação</span>
+                <span class="pcard__spec-val">Frotas / Médio</span>
+              </div>
             </div>
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Comprimento</span>
-              <span class="arsenal__spec__val">9,00 m</span>
-            </div>
-            <div class="arsenal__spec">
-              <span class="arsenal__spec__label">Aplicação</span>
-              <span class="arsenal__spec__val">Caminhões / Grande Porte</span>
-            </div>
+            <p class="pcard__desc">Versátil e robusta para frotas de médio porte. Sistema de travas reforçado, maior vida útil operacional e capacidade de até 6.000 kg.</p>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Média."
+               class="btn btn--split btn--split-primary pcard__cta"
+               target="_blank" rel="noopener noreferrer" data-magnetic>
+              <span class="btn__label">Solicitar Orçamento</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
           </div>
+        </article>
 
-          <p class="arsenal__desc">
-            Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg — a solução definitiva para quem opera no segmento pesado.
-          </p>
-
-          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Pesada."
-             class="btn btn--split btn--split-primary"
-             target="_blank" rel="noopener noreferrer" data-magnetic>
-            <span class="btn__label">Solicitar Orçamento</span>
-            <span class="btn__plus" aria-hidden="true">+</span>
-          </a>
-        </div>
-
-        <div class="arsenal__img-side">
-          <img
-            class="arsenal__img"
-            src="./assets/images/produtos/pesada/PESADA-1.png"
-            alt="Plataforma Pesada Machado"
-            loading="lazy"
-            data-gallery='["./assets/images/produtos/pesada/PESADA-1.png","./assets/images/produtos/pesada/PESADA-2.jpg","./assets/images/produtos/pesada/PESADA-3.jpg","./assets/images/produtos/pesada/PESADA-4.jpg","./assets/images/produtos/pesada/PESADA-5.jpg"]'
-          />
-          <div class="arsenal__nav">
-            <button class="arsenal__arrow arsenal__arrow--prev" aria-label="Foto anterior" disabled>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M10 12L6 8l4-4"/>
-              </svg>
-            </button>
-            <span class="arsenal__img-counter" aria-live="polite">01 / 05</span>
-            <button class="arsenal__arrow arsenal__arrow--next" aria-label="Próxima foto">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M6 4l4 4-4 4"/>
-              </svg>
-            </button>
+        <!-- ── LINHA PESADA ── -->
+        <article class="pcard" aria-label="Linha Pesada">
+          <div class="pcard__img-wrap">
+            <img class="pcard__img" src="./assets/images/produtos/pesada/PESADA-1.png" alt="Plataforma Pesada Machado" loading="lazy" />
           </div>
-        </div>
+          <div class="pcard__body">
+            <span class="pcard__kicker">03 — Linha Pesada</span>
+            <h2 class="pcard__name">PESADA</h2>
+            <div class="pcard__specs" aria-label="Especificações técnicas">
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Capacidade</span>
+                <span class="pcard__spec-val">8.000 kg+</span>
+              </div>
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Comprimento</span>
+                <span class="pcard__spec-val">9,00 m</span>
+              </div>
+              <div class="pcard__spec">
+                <span class="pcard__spec-label">Aplicação</span>
+                <span class="pcard__spec-val">Caminhões</span>
+              </div>
+            </div>
+            <p class="pcard__desc">Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg — a solução definitiva para o segmento pesado.</p>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Pesada."
+               class="btn btn--split btn--split-primary pcard__cta"
+               target="_blank" rel="noopener noreferrer" data-magnetic>
+              <span class="btn__label">Solicitar Orçamento</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+        </article>
 
-      </div>
-      <div class="arsenal__ticker" aria-hidden="true">
-        <div class="arsenal__ticker-inner">
-          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
-        </div>
-      </div>
-    </section>
-
-    </div><!-- /arsenal-stack -->
+      </div><!-- /products-grid__inner -->
+    </section><!-- /products-grid -->
 
     <!-- CTA FINAL -->
     <section class="page-cta" aria-label="Solicitar orçamento">
@@ -706,64 +765,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
-  <script>
-    // Arsenal gallery navigation — PNG → contain, JPG → cover
-    document.querySelectorAll('.arsenal').forEach(function(section) {
-      var img = section.querySelector('.arsenal__img');
-      var prevBtn = section.querySelector('.arsenal__arrow--prev');
-      var nextBtn = section.querySelector('.arsenal__arrow--next');
-      var counter = section.querySelector('.arsenal__img-counter');
-      if (!img || !prevBtn || !nextBtn) return;
-
-      var gallery = JSON.parse(img.dataset.gallery || '[]');
-      if (gallery.length <= 1) {
-        var nav = section.querySelector('.arsenal__nav');
-        if (nav) nav.style.display = 'none';
-        return;
-      }
-
-      var idx = 0;
-
-      function isPng(src) { return src.toLowerCase().endsWith('.png'); }
-
-      function setImage(newIdx) {
-        idx = Math.max(0, Math.min(gallery.length - 1, newIdx));
-        var src = gallery[idx];
-        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        if (reducedMotion) {
-          img.src = src;
-          img.style.objectFit = isPng(src) ? 'contain' : 'cover';
-          img.style.objectPosition = isPng(src) ? 'center bottom' : 'center center';
-        } else {
-          img.style.opacity = '0';
-          setTimeout(function() {
-            img.src = src;
-            img.style.objectFit = isPng(src) ? 'contain' : 'cover';
-            img.style.objectPosition = isPng(src) ? 'center bottom' : 'center center';
-            img.style.opacity = '1';
-          }, 220);
-        }
-
-        if (counter) {
-          counter.textContent =
-            String(idx + 1).padStart(2, '0') + ' / ' +
-            String(gallery.length).padStart(2, '0');
-        }
-        prevBtn.disabled = idx === 0;
-        nextBtn.disabled = idx === gallery.length - 1;
-      }
-
-      prevBtn.addEventListener('click', function() { setImage(idx - 1); });
-      nextBtn.addEventListener('click', function() { setImage(idx + 1); });
-
-      // Keyboard: ← → when section is focused
-      section.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft')  { e.preventDefault(); setImage(idx - 1); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); setImage(idx + 1); }
-      });
-    });
-  </script>
   <script src="./js/gsap-setup.js"></script>
   <script type="module" src="./js/main.js"></script>
 

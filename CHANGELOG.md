@@ -6,6 +6,16 @@
 
 ---
 
+## [2026-05-15] FEAT — Produtos: redesign completo — Grid de Cards
+
+**Agente:** Claude Code
+**Sessão:** Redesign página Produtos — Grid de Cards light
+
+### Alterado
+- `produtos.html` — Substituição total do layout Arsenal (cinematic scroll, dark) pelo novo layout Grid de Cards (fundo claro `--color-surface`, tipografia escura). 3 artigos `.pcard` com imagem, especificações técnicas e CTA. Remoção completa do HTML `.arsenal__*`, ticker e script inline de galeria.
+
+---
+
 ## [2026-05-15] STYLE — Produtos: Arsenal — layout mais compacto
 
 **Agente:** Claude Code

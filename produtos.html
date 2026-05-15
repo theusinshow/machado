@@ -41,12 +41,16 @@
     /* Seamless transition: page-hero flows directly into first arsenal section */
     .page-hero { padding-bottom: 0; }
 
-    /* ── Wrapper — gap discreto entre seções, mesma cor do fundo ── */
+    /* ── Wrapper — separador de linha entre seções ── */
     .arsenal-stack {
       background: var(--color-black);
       display: flex;
       flex-direction: column;
-      gap: var(--space-4);
+      gap: 0;
+    }
+
+    .arsenal + .arsenal {
+      border-top: 1px solid var(--color-navbar-border-dark-strong);
     }
 
     /* ── Section ── */
@@ -109,9 +113,8 @@
     .arsenal__specs {
       display: flex;
       gap: 0;
-      border: 1px solid rgba(255,255,255,0.09);
-      backdrop-filter: blur(4px);
-      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--color-menu-bg);
       max-width: 380px;
       margin-bottom: var(--space-8);
     }

@@ -6,6 +6,33 @@
 
 ---
 
+## [2026-05-15] STYLE — Produtos: Arsenal — separador de linha e specs charcoal
+
+**Agente:** Claude Code
+**Sessão:** Contraste — linha separadora e cor #333333 nos specs
+
+### Alterado
+- `produtos.html`:
+  - `.arsenal-stack`: `gap` removido → `0`; adicionado `.arsenal + .arsenal { border-top: 1px solid var(--color-navbar-border-dark-strong) }` — separador de linha fina entre seções
+  - `.arsenal__specs`: `background: rgba(0,0,0,0.3)` → `var(--color-menu-bg)` (#333333) — painel de specs vira charcoal consistente com o navbar; `backdrop-filter` removido
+
+---
+
+## [2026-05-15] STYLE — Produtos: Arsenal — split panel claro/escuro
+
+**Agente:** Claude Code
+**Sessão:** Contraste — content side off-white, image side dark
+
+### Alterado
+- `produtos.html` — split panel implementado:
+  - `.arsenal__content`: `background: #F5F4F0` + `padding-inline` interno
+  - Cores adaptadas ao fundo claro: `.arsenal__name` → `var(--color-black)`, `.arsenal__desc` → `rgba(0,0,0,0.56)`, kicker/traço → `var(--color-primary)`
+  - Specs panel: border/bg claro, sem `backdrop-filter`
+  - `.arsenal__img-side::before`: left-edge blend removido → top-fade discreto (`to bottom`)
+  - `.arsenal--alt` override atualizado com mesma lógica (sem left/right blend)
+
+---
+
 ## [2026-05-15] STYLE — Produtos: Arsenal — escala, mirror e gap discreto
 
 **Agente:** Claude Code

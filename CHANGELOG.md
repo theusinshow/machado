@@ -6,6 +6,24 @@
 
 ---
 
+## [2026-05-15] STYLE — Produtos: Arsenal — layout mais compacto
+
+**Agente:** Claude Code
+**Sessão:** Compactação proporcional das seções Arsenal
+
+### Alterado
+- `produtos.html` — reduções proporcionais em todas as dimensões verticais:
+  - `arsenal__inner` min-height: `clamp(520px, 78svh, 800px)` → `clamp(380px, 56svh, 640px)`
+  - `arsenal__content` padding-block: `clamp(3.5rem, 7vh, 6rem) …` → `clamp(2rem, 4vh, 4rem) clamp(1.5rem, 3vh, 3rem)`
+  - `arsenal__kicker` margin-bottom: `var(--space-6)` → `var(--space-4)`
+  - `arsenal__name` font-size: `clamp(5rem, 8vw, 8.5rem)` → `clamp(3.5rem, 5.5vw, 6rem)`; margin: `space-8` → `space-5`
+  - `arsenal__specs` margin-bottom: `space-8` → `space-5`; `arsenal__spec` padding: `space-4 space-5` → `space-3 space-4`
+  - `arsenal__desc` margin-bottom: `space-10` → `space-6`
+  - Responsive ≤1024px: img-side height, content padding e name size reduzidos proporcionalmente
+  - Responsive ≤600px: name size `clamp(3.5rem, 18vw, 5rem)` → `clamp(2.5rem, 14vw, 4rem)`
+
+---
+
 ## [2026-05-15] FIX — Produtos: Arsenal — polimento UI/UX (acessibilidade, interação, tipografia)
 
 **Agente:** Claude Code

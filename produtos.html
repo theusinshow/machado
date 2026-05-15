@@ -374,8 +374,8 @@
 
     /* ── Image area ── */
     .pcard__img-wrap {
-      height: clamp(180px, 18vw, 240px);
-      padding: var(--space-8);
+      height: clamp(240px, 26vw, 340px);
+      padding: var(--space-5);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -465,13 +465,33 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* ── Description ── */
-    .pcard__desc {
-      font-size: var(--text-base);
-      line-height: 1.65;
-      color: var(--color-bg-light);
-      flex: 1;
+    /* ── Feature list ── */
+    .pcard__features {
+      list-style: none;
+      padding: 0;
       margin: 0 0 var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .pcard__features li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--color-bg-light);
+    }
+
+    .pcard__features li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      flex-shrink: 0;
     }
 
     /* ── CTA ── */
@@ -506,7 +526,7 @@
         margin-inline: 0;
       }
 
-      .pcard__img-wrap { height: clamp(160px, 45vw, 220px); }
+      .pcard__img-wrap { height: clamp(200px, 52vw, 280px); }
       .pcard__name { font-size: clamp(2.5rem, 10vw, 3.5rem); }
       .pcard__specs { flex-wrap: wrap; }
       .pcard__spec { min-width: calc(50% - 1px); }
@@ -623,7 +643,12 @@
                 <span class="pcard__spec-val">Passeio / SUV</span>
               </div>
             </div>
-            <p class="pcard__desc">Estrutura tubular em aço para guinchos de médio porte. Acabamento eletrostático de alta durabilidade, ideal para veículos de passeio, SUVs e utilitários leves.</p>
+            <ul class="pcard__features">
+              <li>Estrutura tubular em aço de alta resistência</li>
+              <li>Acabamento eletrostático de alta durabilidade</li>
+              <li>Ideal para passeio, SUVs e utilitários leves</li>
+              <li>Entrega nacional com suporte técnico</li>
+            </ul>
             <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Leve."
                class="btn btn--split btn--split-primary pcard__cta"
                target="_blank" rel="noopener noreferrer" data-magnetic>
@@ -655,7 +680,12 @@
                 <span class="pcard__spec-val">Frotas / Médio</span>
               </div>
             </div>
-            <p class="pcard__desc">Versátil e robusta para frotas de médio porte. Sistema de travas reforçado, maior vida útil operacional e capacidade de até 6.000 kg.</p>
+            <ul class="pcard__features">
+              <li>Sistema de travas reforçado para maior segurança</li>
+              <li>Maior vida útil operacional</li>
+              <li>Versátil para frotas de médio porte</li>
+              <li>Entrega nacional com suporte técnico</li>
+            </ul>
             <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Média."
                class="btn btn--split btn--split-primary pcard__cta"
                target="_blank" rel="noopener noreferrer" data-magnetic>
@@ -687,7 +717,12 @@
                 <span class="pcard__spec-val">Caminhões</span>
               </div>
             </div>
-            <p class="pcard__desc">Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg — a solução definitiva para o segmento pesado.</p>
+            <ul class="pcard__features">
+              <li>Aço de alta resistência para cargas pesadas</li>
+              <li>Estrutura dimensionada para caminhões</li>
+              <li>Solução definitiva para o segmento pesado</li>
+              <li>Entrega nacional com suporte técnico</li>
+            </ul>
             <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Pesada."
                class="btn btn--split btn--split-primary pcard__cta"
                target="_blank" rel="noopener noreferrer" data-magnetic>

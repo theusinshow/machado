@@ -41,18 +41,25 @@
     /* Seamless transition: page-hero flows directly into first arsenal section */
     .page-hero { padding-bottom: 0; }
 
+    /* ── Wrapper — gap discreto entre seções, mesma cor do fundo ── */
+    .arsenal-stack {
+      background: var(--color-black);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
     /* ── Section ── */
     .arsenal {
       position: relative;
       background: var(--color-black);
       overflow: hidden;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     .arsenal__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 100svh;
+      min-height: clamp(520px, 78svh, 800px);
       padding-inline: clamp(2.5rem, 7vw, 7rem);
     }
 
@@ -61,7 +68,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding-block: clamp(6rem, 12vh, 10rem) clamp(4.5rem, 9vh, 7rem);
+      padding-block: clamp(3.5rem, 7vh, 6rem) clamp(3rem, 5vh, 4.5rem);
       position: relative;
       z-index: 4;
     }
@@ -181,7 +188,7 @@
     /* ── Arrow navigation ── */
     .arsenal__nav {
       position: absolute;
-      bottom: clamp(3.5rem, 7vh, 5.5rem);
+      bottom: clamp(2.5rem, 5vh, 4rem);
       right: var(--space-5);
       display: flex;
       align-items: center;
@@ -260,6 +267,24 @@
       to   { transform: translateX(-50%); }
     }
 
+    /* ── Layout alternado — seção do meio espelhada ── */
+    .arsenal--alt .arsenal__content { order: 2; align-items: flex-end; text-align: right; }
+    .arsenal--alt .arsenal__img-side { order: 1; }
+
+    /* Linha decorativa do kicker migra para depois do texto */
+    .arsenal--alt .arsenal__kicker { flex-direction: row-reverse; }
+
+    /* Fade do lado direito da imagem quando layout está invertido */
+    .arsenal--alt .arsenal__img-side::before {
+      background: linear-gradient(to left, var(--color-black) 0%, transparent 22%);
+    }
+
+    /* Setas ficam no canto esquerdo da imagem quando invertida */
+    .arsenal--alt .arsenal__nav {
+      right: auto;
+      left: var(--space-5);
+    }
+
     /* ── Tonal filters per line ── */
     .arsenal--leve .arsenal__img {
       filter: drop-shadow(0 0 60px rgba(91,155,213,0.15)) drop-shadow(0 40px 60px rgba(0,0,0,0.9));
@@ -281,7 +306,7 @@
       }
 
       .arsenal__img-side {
-        height: clamp(280px, 50vw, 480px);
+        height: clamp(240px, 40vw, 400px);
         order: -1;
       }
 
@@ -290,7 +315,7 @@
       }
 
       .arsenal__content {
-        padding-block: var(--space-8) clamp(3rem, 7vh, 5rem);
+        padding-block: var(--space-6) clamp(2.5rem, 5vh, 4rem);
       }
 
       .arsenal__name { font-size: clamp(4rem, 14vw, 6.5rem); }
@@ -391,6 +416,8 @@
       </div>
     </section>
 
+    <div class="arsenal-stack">
+
     <!-- ── LINHA LEVE ── -->
     <section class="arsenal arsenal--leve" aria-label="Linha Leve" tabindex="0">
       <div class="arsenal__inner">
@@ -460,7 +487,7 @@
     </section>
 
     <!-- ── LINHA MEDIA ── -->
-    <section class="arsenal arsenal--media" aria-label="Linha Média" tabindex="0">
+    <section class="arsenal arsenal--media arsenal--alt" aria-label="Linha Média" tabindex="0">
       <div class="arsenal__inner">
 
         <div class="arsenal__content">
@@ -594,6 +621,8 @@
         </div>
       </div>
     </section>
+
+    </div><!-- /arsenal-stack -->
 
     <!-- CTA FINAL -->
     <section class="page-cta" aria-label="Solicitar orçamento">

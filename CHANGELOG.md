@@ -6,6 +6,19 @@
 
 ---
 
+## [2026-05-15] STYLE — Produtos: Arsenal — escala, mirror e gap discreto
+
+**Agente:** Claude Code
+**Sessão:** Refinamento do Arsenal após implementação inicial
+
+### Alterado
+- `produtos.html` — 3 melhorias pós-implementação:
+  - **Escala reduzida**: `min-height: 100svh` → `clamp(520px, 78svh, 800px)`; padding-block proporcional reduzido — seções menos altas, mais compactas
+  - **Mirror da seção MÉDIA**: classe `arsenal--alt` adicionada na section MÉDIA — imagem à esquerda, conteúdo à direita com `align-items: flex-end` + `text-align: right`; kicker com `flex-direction: row-reverse`; gradiente lateral invertido (`to left`); setas reposicionadas para esquerda
+  - **Gap discreto entre seções**: wrapper `<div class="arsenal-stack">` com `background: var(--color-black)` + `gap: var(--space-4)` — distância física entre seções sem contraste de cor (black-on-black); `border-bottom` removido do `.arsenal`
+
+---
+
 ## [2026-05-15] FEAT — Produtos: implementação do layout Arsenal (cinematic scroll)
 
 **Agente:** Claude Code

@@ -51,7 +51,7 @@
 
     .arsenal + .arsenal {
       border-top: 1px solid var(--color-navbar-border-dark-strong);
-      margin-top: var(--space-12);
+      margin-top: var(--space-16);
     }
 
     /* ── Section ── */
@@ -64,8 +64,9 @@
     .arsenal__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: clamp(280px, 60svh, 560px);
-      padding-inline: clamp(2.5rem, 5.5vw, 6rem);
+      min-height: clamp(320px, 65svh, 620px);
+      padding-inline: clamp(3rem, 6vw, 8rem);
+      gap: var(--space-12);
     }
 
     /* ── Content — left column ── */
@@ -73,9 +74,9 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: flex-end;
+      justify-content: center;
       text-align: left;
-      padding-block: clamp(2rem, 4vh, 4rem) clamp(1.75rem, 3.5vh, 3.5rem);
+      padding-block: clamp(3rem, 6vh, 6rem);
       position: relative;
       z-index: 4;
     }
@@ -90,7 +91,7 @@
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--color-primary-light);
-      margin-bottom: var(--space-3);
+      margin-bottom: var(--space-4);
     }
 
     .arsenal__kicker::before {
@@ -109,7 +110,7 @@
       line-height: 0.88;
       letter-spacing: -0.02em;
       color: var(--color-text);
-      margin-bottom: var(--space-4);
+      margin-bottom: var(--space-5);
     }
 
     /* Specs — glass panel */
@@ -118,8 +119,8 @@
       gap: 0;
       border: 1px solid rgba(255,255,255,0.1);
       background: var(--color-menu-bg);
-      max-width: 380px;
-      margin-bottom: var(--space-4);
+      max-width: 400px;
+      margin-bottom: var(--space-5);
     }
 
     .arsenal__spec {
@@ -150,10 +151,10 @@
     .arsenal__features {
       list-style: none;
       padding: 0;
-      margin: 0 0 var(--space-5);
+      margin: 0 0 var(--space-6);
       display: flex;
       flex-direction: column;
-      gap: var(--space-2);
+      gap: var(--space-3);
     }
 
     .arsenal__features li {

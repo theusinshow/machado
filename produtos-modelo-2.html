@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PREVIEW — Modelo 2: Comparativo Técnico</title>
+
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/typography.css" />
+
+  <style>
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+    }
+
+    /* ─── Preview badge ─── */
+    .preview-badge {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: #2C6E2F;
+      color: var(--color-white);
+      text-align: center;
+      padding: 0.5rem;
+      font-family: var(--font-ui-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Section wrapper ─── */
+    .ct-section {
+      background: var(--color-bg);
+      padding-top: 4.5rem;
+      padding-bottom: var(--space-20);
+    }
+
+    .ct-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding-inline: var(--space-8);
+    }
+
+    /* ─── Header ─── */
+    .ct-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-8);
+      margin-bottom: var(--space-10);
+      padding-bottom: var(--space-8);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .ct-header__left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .ct-eyebrow {
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .ct-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--color-primary-light);
+      display: block;
+    }
+
+    .ct-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--color-text);
+    }
+
+    .ct-subtitle {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      max-width: 40ch;
+      line-height: 1.6;
+    }
+
+    .ct-header__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+
+    .ct-legend {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .ct-legend__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-primary-light);
+    }
+
+    /* ─── Comparison grid ─── */
+    .ct-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--color-border);
+    }
+
+    /* ─── Product column ─── */
+    .ct-col {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--color-border);
+      cursor: pointer;
+      transition: background var(--dur-normal) ease;
+    }
+
+    .ct-col:last-child {
+      border-right: none;
+    }
+
+    .ct-col.is-featured {
+      background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+      position: relative;
+    }
+
+    .ct-col.is-featured::before {
+      content: 'DESTAQUE';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-primary-light);
+      color: var(--color-white);
+      font-family: var(--font-ui-mono);
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      padding: 3px 10px;
+      z-index: 2;
+    }
+
+    /* ─── Column header ─── */
+    .ct-col__header {
+      padding: var(--space-6) var(--space-6) var(--space-5);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .ct-col__idx {
+      font-family: var(--font-ui-mono);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+    }
+
+    .ct-col__name {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+
+    .ct-col__tagline {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      max-width: 24ch;
+    }
+
+    /* ─── Image frame ─── */
+    .ct-img-wrap {
+      position: relative;
+      background: var(--color-black);
+      overflow: hidden;
+      height: clamp(200px, 28vh, 320px);
+      border-bottom: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+
+    .ct-img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.6s var(--ease-machado, cubic-bezier(0.16, 1, 0.3, 1));
+      transform: scale(1.25);
+    }
+
+    .ct-col:hover .ct-img {
+      transform: scale(1.32);
+    }
+
+    /* Thumbnail strip */
+    .ct-thumbs {
+      display: flex;
+      gap: 2px;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-footer-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .ct-thumb {
+      width: 44px;
+      height: 34px;
+      object-fit: cover;
+      object-position: center;
+      cursor: pointer;
+      opacity: 0.45;
+      border: 1px solid transparent;
+      transition: opacity 0.2s ease, border-color 0.2s ease;
+      background: var(--color-black);
+      flex-shrink: 0;
+    }
+
+    .ct-thumb.is-active,
+    .ct-thumb:hover {
+      opacity: 1;
+      border-color: var(--color-primary-light);
+    }
+
+    /* ─── Specs block ─── */
+    .ct-specs {
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
+    .ct-spec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+      gap: var(--space-4);
+    }
+
+    .ct-spec-row:last-child {
+      border-bottom: none;
+    }
+
+    .ct-spec-label {
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+
+    .ct-spec-value {
+      font-family: var(--font-ui-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text);
+      text-align: right;
+    }
+
+    .ct-spec-value.highlight {
+      color: var(--color-primary-light);
+    }
+
+    /* Capacity bar */
+    .ct-cap-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+    }
+
+    .ct-cap-bar__label {
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+
+    .ct-cap-bar__track {
+      flex: 1;
+      height: 3px;
+      background: var(--color-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ct-cap-bar__fill {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      background: var(--color-primary-light);
+      transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .ct-cap-bar__num {
+      font-family: var(--font-ui-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-text);
+      flex-shrink: 0;
+      min-width: 4ch;
+      text-align: right;
+    }
+
+    /* ─── Footer strip ─── */
+    .ct-col__footer {
+      padding: var(--space-5) var(--space-6);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .ct-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-ui-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      text-decoration: none;
+      padding: var(--space-3) var(--space-5);
+      border: 1px solid var(--color-border);
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .ct-cta:hover,
+    .ct-cta.primary {
+      border-color: var(--color-primary-light);
+      color: var(--color-primary-light);
+    }
+
+    .ct-cta.primary {
+      background: color-mix(in srgb, var(--color-primary-light) 8%, transparent);
+    }
+
+    .ct-cta svg {
+      width: 14px; height: 14px;
+      transition: transform 0.2s ease;
+    }
+
+    .ct-cta:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ─── Bottom bar ─── */
+    .ct-bottom {
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+
+    .ct-bottom__note {
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .ct-bottom__note::before {
+      content: '';
+      width: 12px; height: 1px;
+      background: var(--color-text-muted);
+    }
+
+    .ct-bottom__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-ui-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      text-decoration: none;
+      padding: var(--space-3) var(--space-8);
+      background: var(--color-primary-light);
+      border: 1px solid var(--color-primary-light);
+      transition: background 0.2s ease;
+    }
+
+    .ct-bottom__cta:hover {
+      background: transparent;
+      color: var(--color-primary-light);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 960px) {
+      .ct-grid {
+        grid-template-columns: 1fr;
+      }
+      .ct-col {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .ct-col:last-child {
+        border-bottom: none;
+      }
+      .ct-img-wrap {
+        height: clamp(180px, 35vw, 280px);
+      }
+      .ct-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .ct-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .ct-container {
+        padding-inline: var(--space-4);
+      }
+      .ct-title {
+        font-size: clamp(2rem, 10vw, 3rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-badge">
+  PREVIEW APENAS — Modelo 2: Comparativo Técnico Premium — Não implementado em produtos.html
+</div>
+
+<section class="ct-section">
+  <div class="ct-container">
+
+    <!-- Header -->
+    <header class="ct-header">
+      <div class="ct-header__left">
+        <span class="ct-eyebrow">Linha Completa</span>
+        <h2 class="ct-title">PRODUTOS</h2>
+        <p class="ct-subtitle">Escolha a configuração ideal para sua operação. Cada linha é desenvolvida para demandas específicas de carga e aplicação.</p>
+      </div>
+      <div class="ct-header__right">
+        <span class="ct-legend"><span class="ct-legend__dot"></span>Clique na imagem para alternar fotos</span>
+        <span class="ct-legend"><span class="ct-legend__dot" style="background:var(--color-text-muted)"></span>Hover para destacar</span>
+      </div>
+    </header>
+
+    <!-- Grid -->
+    <div class="ct-grid" id="ctGrid">
+
+      <!-- LEVE -->
+      <div class="ct-col" data-product="leve">
+        <div class="ct-col__header">
+          <span class="ct-col__idx">01 / 03</span>
+          <h3 class="ct-col__name">LEVE</h3>
+          <p class="ct-col__tagline">Ideal para veículos leves e distribuição urbana</p>
+        </div>
+
+        <div class="ct-img-wrap">
+          <img
+            class="ct-img"
+            src="./assets/images/produtos/leve/LEVE-1.png"
+            alt="Plataforma Leve"
+            data-imgs='["./assets/images/produtos/leve/LEVE-1.png","./assets/images/produtos/leve/LEVE-2.jpg","./assets/images/produtos/leve/LEVE-3.jpg","./assets/images/produtos/leve/LEVE-4.jpg","./assets/images/produtos/leve/LEVE-5.jpg"]'
+          />
+        </div>
+
+        <div class="ct-thumbs">
+          <img class="ct-thumb is-active" src="./assets/images/produtos/leve/LEVE-1.png" alt="" data-idx="0" />
+          <img class="ct-thumb" src="./assets/images/produtos/leve/LEVE-2.jpg" alt="" data-idx="1" />
+          <img class="ct-thumb" src="./assets/images/produtos/leve/LEVE-3.jpg" alt="" data-idx="2" />
+          <img class="ct-thumb" src="./assets/images/produtos/leve/LEVE-4.jpg" alt="" data-idx="3" />
+          <img class="ct-thumb" src="./assets/images/produtos/leve/LEVE-5.jpg" alt="" data-idx="4" />
+        </div>
+
+        <div class="ct-specs">
+          <div class="ct-cap-bar">
+            <span class="ct-cap-bar__label">Capacidade</span>
+            <div class="ct-cap-bar__track"><div class="ct-cap-bar__fill" style="width:33%"></div></div>
+            <span class="ct-cap-bar__num">3 t</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Comprimento</span>
+            <span class="ct-spec-value">4,5 a 7,0 m</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Largura</span>
+            <span class="ct-spec-value">2,0 a 2,4 m</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Aplicação</span>
+            <span class="ct-spec-value highlight">Distribuição</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Norma</span>
+            <span class="ct-spec-value">NBR 6601</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Garantia</span>
+            <span class="ct-spec-value">12 meses</span>
+          </div>
+        </div>
+
+        <div class="ct-col__footer">
+          <a href="#" class="ct-cta">
+            Ver detalhes
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- MEDIA — featured -->
+      <div class="ct-col is-featured" data-product="media">
+        <div class="ct-col__header">
+          <span class="ct-col__idx">02 / 03</span>
+          <h3 class="ct-col__name">MEDIA</h3>
+          <p class="ct-col__tagline">Versatilidade para frotas mistas e longas distâncias</p>
+        </div>
+
+        <div class="ct-img-wrap">
+          <img
+            class="ct-img"
+            src="./assets/images/produtos/media/MEDIA-1.png"
+            alt="Plataforma Media"
+            data-imgs='["./assets/images/produtos/media/MEDIA-1.png","./assets/images/produtos/media/MEDIA-2.jpg","./assets/images/produtos/media/MEDIA-3.jpg","./assets/images/produtos/media/MEDIA-4.jpg"]'
+          />
+        </div>
+
+        <div class="ct-thumbs">
+          <img class="ct-thumb is-active" src="./assets/images/produtos/media/MEDIA-1.png" alt="" data-idx="0" />
+          <img class="ct-thumb" src="./assets/images/produtos/media/MEDIA-2.jpg" alt="" data-idx="1" />
+          <img class="ct-thumb" src="./assets/images/produtos/media/MEDIA-3.jpg" alt="" data-idx="2" />
+          <img class="ct-thumb" src="./assets/images/produtos/media/MEDIA-4.jpg" alt="" data-idx="3" />
+        </div>
+
+        <div class="ct-specs">
+          <div class="ct-cap-bar">
+            <span class="ct-cap-bar__label">Capacidade</span>
+            <div class="ct-cap-bar__track"><div class="ct-cap-bar__fill" style="width:66%"></div></div>
+            <span class="ct-cap-bar__num">8 t</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Comprimento</span>
+            <span class="ct-spec-value">6,0 a 9,5 m</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Largura</span>
+            <span class="ct-spec-value">2,4 a 2,6 m</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Aplicação</span>
+            <span class="ct-spec-value highlight">Polivalente</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Norma</span>
+            <span class="ct-spec-value">NBR 6601</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Garantia</span>
+            <span class="ct-spec-value">12 meses</span>
+          </div>
+        </div>
+
+        <div class="ct-col__footer">
+          <a href="#" class="ct-cta primary">
+            Ver detalhes
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PESADA -->
+      <div class="ct-col" data-product="pesada">
+        <div class="ct-col__header">
+          <span class="ct-col__idx">03 / 03</span>
+          <h3 class="ct-col__name">PESADA</h3>
+          <p class="ct-col__tagline">Máxima capacidade para operações industriais e mineração</p>
+        </div>
+
+        <div class="ct-img-wrap">
+          <img
+            class="ct-img"
+            src="./assets/images/produtos/pesada/PESADA-1.png"
+            alt="Plataforma Pesada"
+            data-imgs='["./assets/images/produtos/pesada/PESADA-1.png","./assets/images/produtos/pesada/PESADA-2.jpg","./assets/images/produtos/pesada/PESADA-3.jpg","./assets/images/produtos/pesada/PESADA-4.jpg","./assets/images/produtos/pesada/PESADA-5.jpg"]'
+          />
+        </div>
+
+        <div class="ct-thumbs">
+          <img class="ct-thumb is-active" src="./assets/images/produtos/pesada/PESADA-1.png" alt="" data-idx="0" />
+          <img class="ct-thumb" src="./assets/images/produtos/pesada/PESADA-2.jpg" alt="" data-idx="1" />
+          <img class="ct-thumb" src="./assets/images/produtos/pesada/PESADA-3.jpg" alt="" data-idx="2" />
+          <img class="ct-thumb" src="./assets/images/produtos/pesada/PESADA-4.jpg" alt="" data-idx="3" />
+          <img class="ct-thumb" src="./assets/images/produtos/pesada/PESADA-5.jpg" alt="" data-idx="4" />
+        </div>
+
+        <div class="ct-specs">
+          <div class="ct-cap-bar">
+            <span class="ct-cap-bar__label">Capacidade</span>
+            <div class="ct-cap-bar__track"><div class="ct-cap-bar__fill" style="width:100%"></div></div>
+            <span class="ct-cap-bar__num">25 t</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Comprimento</span>
+            <span class="ct-spec-value">8,0 a 14,0 m</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Largura</span>
+            <span class="ct-spec-value">2,6 a 3,0 m</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Aplicação</span>
+            <span class="ct-spec-value highlight">Industrial</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Norma</span>
+            <span class="ct-spec-value">NBR 6601</span>
+          </div>
+          <div class="ct-spec-row">
+            <span class="ct-spec-label">Garantia</span>
+            <span class="ct-spec-value">12 meses</span>
+          </div>
+        </div>
+
+        <div class="ct-col__footer">
+          <a href="#" class="ct-cta">
+            Ver detalhes
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /ct-grid -->
+
+    <!-- Bottom bar -->
+    <div class="ct-bottom">
+      <span class="ct-bottom__note">Todos os modelos com entrega para todo o Brasil</span>
+      <a href="#" class="ct-bottom__cta">
+        Faça seu orçamento
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Thumbnail gallery switcher per column
+  document.querySelectorAll('.ct-col').forEach(col => {
+    const mainImg = col.querySelector('.ct-img');
+    const thumbs = col.querySelectorAll('.ct-thumb');
+
+    if (!mainImg || !thumbs.length) return;
+
+    const imgs = JSON.parse(mainImg.dataset.imgs || '[]');
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => {
+        if (i >= imgs.length) return;
+
+        // Fade out
+        mainImg.style.transition = 'opacity 0.2s ease, transform 0.6s var(--ease-machado, cubic-bezier(0.16,1,0.3,1))';
+        mainImg.style.opacity = '0';
+
+        setTimeout(() => {
+          mainImg.src = imgs[i];
+          mainImg.style.opacity = '1';
+        }, 180);
+
+        // Update active thumb
+        thumbs.forEach(t => t.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+      });
+    });
+
+    // Hover on main image cycles through gallery
+    let hoverTimer = null;
+    let hoverIdx = 0;
+    col.querySelector('.ct-img-wrap')?.addEventListener('mouseenter', () => {
+      hoverIdx = parseInt(col.querySelector('.ct-thumb.is-active')?.dataset.idx || '0');
+    });
+  });
+
+  // Animate capacity bars on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.ct-cap-bar__fill').forEach(fill => {
+          const target = fill.style.width;
+          fill.style.width = '0';
+          requestAnimationFrame(() => {
+            fill.style.transition = 'width 1s cubic-bezier(0.16, 1, 0.3, 1)';
+            fill.style.width = target;
+          });
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.ct-grid').forEach(g => observer.observe(g));
+</script>
+
+</body>
+</html>

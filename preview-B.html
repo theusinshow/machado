@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview B — ARSENAL — Machado Plataformas</title>
+
+  <link rel="icon" type="image/png" href="./assets/images/logo/Icon.png" />
+
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/typography.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/animations.css" />
+  <link rel="stylesheet" href="./css/components/navbar.css" />
+  <link rel="stylesheet" href="./css/components/subpages.css" />
+  <link rel="stylesheet" href="./css/components/footer.css" />
+
+  <style>
+    /* ============================================
+       PREVIEW B — ARSENAL
+       Concept: Cinematic full-screen scroll — each
+       product owns a 100svh section. Raw, powerful,
+       film-still aesthetic. No JS required.
+    ============================================ */
+
+    .arsenal-intro {
+      background: var(--color-black);
+      padding-top: var(--navbar-height);
+      padding-bottom: var(--space-10);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .arsenal-intro__inner {
+      padding: var(--space-10) 0 0;
+    }
+
+    .arsenal-intro__eyebrow {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: var(--space-4);
+    }
+
+    .arsenal-intro__headline {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: normal;
+      color: var(--color-text);
+      line-height: 1;
+      letter-spacing: -0.015em;
+    }
+
+    /* ── Arsenal section ── */
+    .arsenal {
+      position: relative;
+      min-height: 100svh;
+      background: var(--color-black);
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+    }
+
+    /* Product image — right side, fills full height */
+    .arsenal__img-panel {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-right: 4%;
+    }
+
+    .arsenal__img {
+      height: 100%;
+      width: auto;
+      max-width: 55%;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 0 80px rgba(0,0,0,0.9));
+    }
+
+    /* Left gradient — fuses with black background */
+    .arsenal__grad-left {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        var(--color-black) 38%,
+        rgba(0,0,0,0.75) 55%,
+        transparent 75%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Bottom gradient — pulls feet into black */
+    .arsenal__grad-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(to top, var(--color-black) 0%, transparent 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Content — left side */
+    .arsenal__content {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-12) var(--space-12) var(--space-16);
+      max-width: 55%;
+    }
+
+    .arsenal__index {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .arsenal__index::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .arsenal__name {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: var(--space-8);
+    }
+
+    .arsenal__name__prefix {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+      margin-bottom: var(--space-2);
+    }
+
+    .arsenal__name__main {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 10vw, 9.5rem);
+      font-weight: normal;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+
+    /* Specs — glass panel */
+    .arsenal__specs {
+      display: flex;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,0.09);
+      backdrop-filter: blur(4px);
+      background: rgba(0,0,0,0.3);
+      max-width: 380px;
+      margin-bottom: var(--space-10);
+    }
+
+    .arsenal__spec {
+      flex: 1;
+      padding: var(--space-4) var(--space-5);
+      border-right: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .arsenal__spec:last-child { border-right: none; }
+
+    .arsenal__spec__label {
+      display: block;
+      font-family: var(--font-ui-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 4px;
+    }
+
+    .arsenal__spec__val {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text);
+    }
+
+    /* CTA */
+    .arsenal__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    /* Bottom ticker */
+    .arsenal__ticker {
+      position: absolute;
+      bottom: var(--space-6);
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      z-index: 5;
+      padding: var(--space-2) 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .arsenal__ticker-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: arsenal-ticker 22s linear infinite;
+    }
+
+    .arsenal__ticker-text {
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+      padding-right: var(--space-8);
+    }
+
+    @keyframes arsenal-ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Section divider */
+    .arsenal + .arsenal {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Tonal variation per section ── */
+    .arsenal--leve .arsenal__img {
+      filter: drop-shadow(0 0 60px rgba(91, 155, 213, 0.15)) drop-shadow(0 40px 60px rgba(0,0,0,0.9));
+    }
+
+    .arsenal--media .arsenal__img {
+      filter: drop-shadow(0 0 60px rgba(91, 155, 213, 0.2)) drop-shadow(0 40px 60px rgba(0,0,0,0.9));
+    }
+
+    .arsenal--media .arsenal__grad-left {
+      background: linear-gradient(
+        to right,
+        var(--color-black) 38%,
+        rgba(0,0,0,0.8) 58%,
+        transparent 75%
+      );
+    }
+
+    .arsenal--pesada .arsenal__img {
+      filter: drop-shadow(0 0 100px rgba(26, 75, 130, 0.3)) drop-shadow(0 40px 80px rgba(0,0,0,0.95));
+    }
+
+    .arsenal--pesada .arsenal__name__main {
+      color: #fff;
+    }
+
+    .arsenal--pesada .arsenal__grad-left {
+      background: linear-gradient(
+        to right,
+        var(--color-black) 40%,
+        rgba(0,0,0,0.85) 58%,
+        transparent 76%
+      );
+    }
+
+    /* Preview label */
+    .preview-label {
+      background: var(--color-black);
+      padding: var(--space-3) var(--space-8);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .preview-label p {
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .arsenal__content {
+        max-width: 100%;
+        padding: var(--space-8) var(--space-5) calc(var(--space-14) + 44px);
+      }
+      .arsenal__img {
+        max-width: 70%;
+        opacity: 0.45;
+      }
+      .arsenal__name__main {
+        font-size: clamp(4rem, 16vw, 6rem);
+      }
+      .arsenal__specs { max-width: 100%; }
+      .arsenal__ticker { bottom: var(--space-4); }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Ir para o conteúdo</a>
+
+  <header id="navbar" class="navbar" role="banner">
+    <div class="container container--wide navbar-inner">
+      <a href="./index.html" class="navbar-logo" aria-label="Machado Plataformas — Início">
+        <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" width="130" height="32" />
+      </a>
+      <button class="navbar-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbar-panel">
+        <span class="navbar-toggle__label">Menu</span>
+        <span class="navbar-toggle__icon" aria-hidden="true">
+          <span class="navbar-toggle__line"></span>
+          <span class="navbar-toggle__line"></span>
+        </span>
+      </button>
+      <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+         class="btn btn--split btn--split-primary navbar-cta"
+         target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span class="btn__label">Faça seu Orçamento</span>
+        <span class="btn__plus" aria-hidden="true">+</span>
+      </a>
+    </div>
+    <div id="navbar-panel" class="navbar-panel" aria-hidden="true">
+      <div class="container container--wide navbar-panel__inner">
+        <nav class="navbar-panel__nav" aria-label="Menu expandido">
+          <span class="nav-indicator" aria-hidden="true"></span>
+          <a href="./index.html">Início</a>
+          <a href="./produtos.html" class="is-active">Produtos</a>
+          <a href="./clientes.html">Clientes</a>
+          <a href="./sobre.html">Sobre</a>
+          <a href="./credito.html">Crédito</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="preview-label">
+      <p>Preview B — Conceito: Arsenal / Cinematic Scroll</p>
+    </div>
+
+    <!-- INTRO STRIP -->
+    <div class="arsenal-intro">
+      <div class="container">
+        <div class="arsenal-intro__inner">
+          <span class="arsenal-intro__eyebrow">Linha completa</span>
+          <h1 class="arsenal-intro__headline">Produtos</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LEVE ── -->
+    <section class="arsenal arsenal--leve" aria-label="Linha Leve">
+      <div class="arsenal__img-panel" aria-hidden="true">
+        <img
+          src="./assets/images/produtos/LEVE.png"
+          alt=""
+          class="arsenal__img"
+          loading="eager"
+        />
+      </div>
+      <div class="arsenal__grad-left" aria-hidden="true"></div>
+      <div class="arsenal__grad-bottom" aria-hidden="true"></div>
+
+      <div class="arsenal__content">
+        <div class="arsenal__index" aria-hidden="true">01 / 03</div>
+
+        <div class="arsenal__name">
+          <span class="arsenal__name__prefix">Linha</span>
+          <span class="arsenal__name__main">LEVE</span>
+        </div>
+
+        <div class="arsenal__specs" aria-label="Especificações técnicas">
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Cap.</span>
+            <span class="arsenal__spec__val">3.500 kg</span>
+          </div>
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Comp.</span>
+            <span class="arsenal__spec__val">6,20 m</span>
+          </div>
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Aplic.</span>
+            <span class="arsenal__spec__val">Passeio / SUV</span>
+          </div>
+        </div>
+
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.75;max-width:46ch;margin-bottom:var(--space-8);">
+          Estrutura tubular em aço para guinchos de médio porte. Acabamento eletrostático de alta durabilidade, ideal para veículos de passeio, SUVs e utilitários leves.
+        </p>
+
+        <div class="arsenal__cta">
+          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Leve."
+             class="btn btn--split btn--split-primary"
+             target="_blank" rel="noopener noreferrer" data-magnetic>
+            <span class="btn__label">Solicitar orçamento</span>
+            <span class="btn__plus" aria-hidden="true">+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="arsenal__ticker" aria-hidden="true">
+        <div class="arsenal__ticker-inner">
+          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MÉDIA ── -->
+    <section class="arsenal arsenal--media" aria-label="Linha Média">
+      <div class="arsenal__img-panel" aria-hidden="true">
+        <img
+          src="./assets/images/produtos/MEDIA.png"
+          alt=""
+          class="arsenal__img"
+          loading="lazy"
+        />
+      </div>
+      <div class="arsenal__grad-left" aria-hidden="true"></div>
+      <div class="arsenal__grad-bottom" aria-hidden="true"></div>
+
+      <div class="arsenal__content">
+        <div class="arsenal__index" aria-hidden="true">02 / 03</div>
+
+        <div class="arsenal__name">
+          <span class="arsenal__name__prefix">Linha</span>
+          <span class="arsenal__name__main">MÉDIA</span>
+        </div>
+
+        <div class="arsenal__specs" aria-label="Especificações técnicas">
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Cap.</span>
+            <span class="arsenal__spec__val">6.000 kg</span>
+          </div>
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Comp.</span>
+            <span class="arsenal__spec__val">7,40 m</span>
+          </div>
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Aplic.</span>
+            <span class="arsenal__spec__val">Frotas / Médio Porte</span>
+          </div>
+        </div>
+
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.75;max-width:46ch;margin-bottom:var(--space-8);">
+          Versátil e robusta para frotas de médio porte. Sistema de travas reforçado e maior vida útil operacional. Capacidade de até 6.000 kg com acabamento de alta resistência.
+        </p>
+
+        <div class="arsenal__cta">
+          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Média."
+             class="btn btn--split btn--split-primary"
+             target="_blank" rel="noopener noreferrer" data-magnetic>
+            <span class="btn__label">Solicitar orçamento</span>
+            <span class="btn__plus" aria-hidden="true">+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="arsenal__ticker" aria-hidden="true">
+        <div class="arsenal__ticker-inner">
+          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PESADA ── -->
+    <section class="arsenal arsenal--pesada" aria-label="Linha Pesada">
+      <div class="arsenal__img-panel" aria-hidden="true">
+        <img
+          src="./assets/images/produtos/pesada.png"
+          alt=""
+          class="arsenal__img"
+          loading="lazy"
+        />
+      </div>
+      <div class="arsenal__grad-left" aria-hidden="true"></div>
+      <div class="arsenal__grad-bottom" aria-hidden="true"></div>
+
+      <div class="arsenal__content">
+        <div class="arsenal__index" aria-hidden="true">03 / 03</div>
+
+        <div class="arsenal__name">
+          <span class="arsenal__name__prefix">Linha</span>
+          <span class="arsenal__name__main">PESADA</span>
+        </div>
+
+        <div class="arsenal__specs" aria-label="Especificações técnicas">
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Cap.</span>
+            <span class="arsenal__spec__val">8.000 kg+</span>
+          </div>
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Comp.</span>
+            <span class="arsenal__spec__val">9,00 m</span>
+          </div>
+          <div class="arsenal__spec">
+            <span class="arsenal__spec__label">Aplic.</span>
+            <span class="arsenal__spec__val">Caminhões / Grande Porte</span>
+          </div>
+        </div>
+
+        <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.75;max-width:46ch;margin-bottom:var(--space-8);">
+          Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg — solução definitiva para quem opera no segmento pesado.
+        </p>
+
+        <div class="arsenal__cta">
+          <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Pesada."
+             class="btn btn--split btn--split-primary"
+             target="_blank" rel="noopener noreferrer" data-magnetic>
+            <span class="btn__label">Solicitar orçamento</span>
+            <span class="btn__plus" aria-hidden="true">+</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="arsenal__ticker" aria-hidden="true">
+        <div class="arsenal__ticker-inner">
+          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
+          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="page-cta" aria-label="Solicitar orçamento">
+      <div class="container">
+        <p class="page-cta__eyebrow">Próximo passo</p>
+        <h2 class="page-cta__title">Escolha<br />o seu modelo.</h2>
+        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+           class="btn btn--split btn--split-primary"
+           target="_blank" rel="noopener noreferrer" data-magnetic>
+          <span class="btn__label">Falar com especialista</span>
+          <span class="btn__plus" aria-hidden="true">+</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="footer-headline-wrap" aria-hidden="true">
+      <p class="footer-headline" aria-hidden="true">Machado Plataformas</p>
+    </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--brand">
+          <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" class="footer-logo" width="120" height="30" loading="lazy" />
+          <p class="footer-tagline">Soluções em plataformas veiculares com qualidade, segurança e confiança.</p>
+          <div class="footer-status">
+            <span>Atendimento nacional</span>
+            <span>Fabricação sob demanda</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Navegação</h3>
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./sobre.html">Empresa</a></li>
+            <li><a href="./produtos.html">Produtos</a></li>
+            <li><a href="./clientes.html">Clientes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <h3 class="footer-col__title">Contato</h3>
+          <a class="footer-cta" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">
+            <span>Solicitar orçamento</span>
+            <span aria-hidden="true">+</span>
+          </a>
+          <address class="footer-address">
+            <p><a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a></p>
+            <p>Minas Gerais, Brasil</p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy mono">&copy; 2026 Machado Plataformas. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script src="./js/gsap-setup.js"></script>
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>

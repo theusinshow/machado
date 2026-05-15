@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview C — CATÁLOGO — Machado Plataformas</title>
+
+  <link rel="icon" type="image/png" href="./assets/images/logo/Icon.png" />
+
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/typography.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/animations.css" />
+  <link rel="stylesheet" href="./css/components/navbar.css" />
+  <link rel="stylesheet" href="./css/components/subpages.css" />
+  <link rel="stylesheet" href="./css/components/footer.css" />
+
+  <style>
+    /* ============================================
+       PREVIEW C — CATÁLOGO
+       Concept: Editorial grid — fashion-catalogue
+       coldness with industrial warmth. Three columns,
+       copper accents, immaculate typography.
+    ============================================ */
+
+    :root {
+      --copper: #B87B45;
+      --copper-dim: rgba(184, 123, 69, 0.65);
+      --catalog-bg: #070A0D;
+      --catalog-border: rgba(255,255,255,0.06);
+    }
+
+    .catalog-section {
+      background: var(--catalog-bg);
+      padding-block: var(--section-md);
+    }
+
+    /* ── Grid ── */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--catalog-border);
+    }
+
+    .catalog-col {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--catalog-border);
+      position: relative;
+    }
+
+    .catalog-col:last-child { border-right: none; }
+
+    /* Index marker */
+    .catalog-idx {
+      font-family: var(--font-ui-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--copper);
+      padding: var(--space-5) var(--space-6) var(--space-4);
+      border-bottom: 1px solid var(--catalog-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .catalog-idx__rule {
+      display: block;
+      flex: 1;
+      height: 1px;
+      background: var(--copper-dim);
+      margin-left: var(--space-4);
+      opacity: 0.4;
+    }
+
+    /* Image frame */
+    .catalog-img-frame {
+      position: relative;
+      overflow: hidden;
+      background: #0D1117;
+      aspect-ratio: 3 / 4.5;
+      border-bottom: 1px solid var(--catalog-border);
+    }
+
+    .catalog-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: var(--space-4) var(--space-6) 0;
+    }
+
+    .catalog-col:hover .catalog-img {
+      transform: scale(1.04);
+    }
+
+    /* Hover tint overlay */
+    .catalog-img-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(7, 10, 13, 0.7) 0%,
+        transparent 40%
+      );
+      pointer-events: none;
+    }
+
+    /* Content area */
+    .catalog-body {
+      padding: var(--space-6) var(--space-6) var(--space-8);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: var(--space-5);
+    }
+
+    .catalog-name {
+      font-family: var(--font-display);
+      font-size: clamp(var(--text-4xl), 4.5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+      transition: color 0.25s ease;
+    }
+
+    .catalog-col:hover .catalog-name {
+      color: var(--copper);
+    }
+
+    .catalog-desc {
+      font-size: var(--text-sm);
+      line-height: 1.75;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    /* Spec measurement lines */
+    .catalog-measures {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-top: auto;
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--catalog-border);
+    }
+
+    .catalog-measure {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+
+    .catalog-measure__label {
+      font-family: var(--font-ui-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .catalog-measure__dots {
+      flex: 1;
+      border-bottom: 1px dotted rgba(255,255,255,0.1);
+      margin-bottom: 2px;
+    }
+
+    .catalog-measure__val {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: var(--copper);
+      letter-spacing: 0.05em;
+    }
+
+    /* Arrow CTA */
+    .catalog-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+      text-decoration: none;
+      margin-top: var(--space-5);
+      transition: gap 0.25s ease;
+    }
+
+    .catalog-cta:hover { gap: var(--space-4); }
+
+    .catalog-cta__arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .catalog-cta:hover .catalog-cta__arrow {
+      transform: translateX(4px);
+    }
+
+    /* Bottom strip */
+    .catalog-bottom-strip {
+      background: var(--catalog-bg);
+      border-top: 1px solid var(--catalog-border);
+      padding-block: var(--space-8);
+    }
+
+    .catalog-bottom-strip__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+
+    .catalog-note {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* Preview label */
+    .preview-label {
+      background: var(--catalog-bg);
+      padding: var(--space-3) var(--space-8);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .preview-label p {
+      font-family: var(--font-ui-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .catalog-col:nth-child(2n) { border-right: none; }
+      .catalog-col:nth-child(-n+2) { border-bottom: 1px solid var(--catalog-border); }
+      .catalog-col:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        border-right: none;
+        border-top: 1px solid var(--catalog-border);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .catalog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .catalog-col {
+        border-right: none;
+        border-bottom: 1px solid var(--catalog-border);
+      }
+
+      .catalog-col:last-child {
+        grid-column: auto;
+        max-width: 100%;
+      }
+
+      .catalog-name {
+        font-size: clamp(var(--text-4xl), 14vw, 5rem);
+      }
+
+      .catalog-bottom-strip__inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Ir para o conteúdo</a>
+
+  <header id="navbar" class="navbar" role="banner">
+    <div class="container container--wide navbar-inner">
+      <a href="./index.html" class="navbar-logo" aria-label="Machado Plataformas — Início">
+        <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" width="130" height="32" />
+      </a>
+      <button class="navbar-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbar-panel">
+        <span class="navbar-toggle__label">Menu</span>
+        <span class="navbar-toggle__icon" aria-hidden="true">
+          <span class="navbar-toggle__line"></span>
+          <span class="navbar-toggle__line"></span>
+        </span>
+      </button>
+      <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+         class="btn btn--split btn--split-primary navbar-cta"
+         target="_blank" rel="noopener noreferrer" data-magnetic>
+        <span class="btn__label">Faça seu Orçamento</span>
+        <span class="btn__plus" aria-hidden="true">+</span>
+      </a>
+    </div>
+    <div id="navbar-panel" class="navbar-panel" aria-hidden="true">
+      <div class="container container--wide navbar-panel__inner">
+        <nav class="navbar-panel__nav" aria-label="Menu expandido">
+          <span class="nav-indicator" aria-hidden="true"></span>
+          <a href="./index.html">Início</a>
+          <a href="./produtos.html" class="is-active">Produtos</a>
+          <a href="./clientes.html">Clientes</a>
+          <a href="./sobre.html">Sobre</a>
+          <a href="./credito.html">Crédito</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="preview-label">
+      <p>Preview C — Conceito: Catálogo / Editorial Grid</p>
+    </div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-label="Nossos Produtos">
+      <div class="container">
+        <p class="page-hero__eyebrow">Linha completa</p>
+        <h1 class="page-hero__title">
+          <span class="page-hero__title-line">
+            <span class="page-hero__title-inner">Produtos</span>
+          </span>
+        </h1>
+        <p class="page-hero__sub">Plataformas fabricadas com aço de alta resistência para operações leves, médias e pesadas. Cada linha desenvolvida para um segmento específico.</p>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO GRID -->
+    <section class="catalog-section" aria-label="Linhas de produto">
+      <div class="container container--wide">
+
+        <div class="catalog-grid">
+
+          <!-- LEVE -->
+          <article class="catalog-col">
+            <div class="catalog-idx">
+              <span>01</span>
+              <span class="catalog-idx__rule" aria-hidden="true"></span>
+            </div>
+            <div class="catalog-img-frame">
+              <img
+                src="./assets/images/produtos/LEVE.png"
+                alt="Plataforma Leve Machado"
+                class="catalog-img"
+                loading="eager"
+              />
+            </div>
+            <div class="catalog-body">
+              <h2 class="catalog-name">LEVE</h2>
+              <p class="catalog-desc">Para veículos de passeio, SUVs e utilitários. Estrutura tubular em aço com acabamento eletrostático e alta resistência à corrosão.</p>
+
+              <div class="catalog-measures" aria-label="Especificações">
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Capacidade</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">3.500 kg</span>
+                </div>
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Comprimento</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">6,20 m</span>
+                </div>
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Largura</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">2,40 m</span>
+                </div>
+              </div>
+
+              <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Leve."
+                 class="catalog-cta"
+                 target="_blank" rel="noopener noreferrer">
+                Solicitar orçamento
+                <span class="catalog-cta__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- MÉDIA -->
+          <article class="catalog-col">
+            <div class="catalog-idx">
+              <span>02</span>
+              <span class="catalog-idx__rule" aria-hidden="true"></span>
+            </div>
+            <div class="catalog-img-frame">
+              <img
+                src="./assets/images/produtos/MEDIA.png"
+                alt="Plataforma Média Machado"
+                class="catalog-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="catalog-body">
+              <h2 class="catalog-name">MÉDIA</h2>
+              <p class="catalog-desc">Versátil e robusta para frotas de médio porte. Sistema de travas reforçado, maior vida útil e capacidade de até 6.000 kg.</p>
+
+              <div class="catalog-measures" aria-label="Especificações">
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Capacidade</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">6.000 kg</span>
+                </div>
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Comprimento</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">7,40 m</span>
+                </div>
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Largura</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">2,55 m</span>
+                </div>
+              </div>
+
+              <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Média."
+                 class="catalog-cta"
+                 target="_blank" rel="noopener noreferrer">
+                Solicitar orçamento
+                <span class="catalog-cta__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- PESADA -->
+          <article class="catalog-col">
+            <div class="catalog-idx">
+              <span>03</span>
+              <span class="catalog-idx__rule" aria-hidden="true"></span>
+            </div>
+            <div class="catalog-img-frame">
+              <img
+                src="./assets/images/produtos/pesada.png"
+                alt="Plataforma Pesada Machado"
+                class="catalog-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="catalog-body">
+              <h2 class="catalog-name">PESADA</h2>
+              <p class="catalog-desc">Para caminhões e operações de grande porte. Aço de alta resistência com capacidade acima de 8.000 kg — a solução do segmento pesado.</p>
+
+              <div class="catalog-measures" aria-label="Especificações">
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Capacidade</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">8.000 kg+</span>
+                </div>
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Comprimento</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">9,00 m</span>
+                </div>
+                <div class="catalog-measure">
+                  <span class="catalog-measure__label">Largura</span>
+                  <span class="catalog-measure__dots" aria-hidden="true"></span>
+                  <span class="catalog-measure__val">2,70 m</span>
+                </div>
+              </div>
+
+              <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20orçamento%20da%20Linha%20Pesada."
+                 class="catalog-cta"
+                 target="_blank" rel="noopener noreferrer">
+                Solicitar orçamento
+                <span class="catalog-cta__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Bottom strip -->
+        <div class="catalog-bottom-strip">
+          <div class="catalog-bottom-strip__inner">
+            <span class="catalog-note">3 linhas disponíveis — Fabricação própria — Entrega para todo o Brasil</span>
+            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+               class="btn btn--split btn--split-primary"
+               target="_blank" rel="noopener noreferrer" data-magnetic>
+              <span class="btn__label">Solicitar Orçamento</span>
+              <span class="btn__plus" aria-hidden="true">+</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="page-cta" aria-label="Solicitar orçamento">
+      <div class="container">
+        <p class="page-cta__eyebrow">Próximo passo</p>
+        <h2 class="page-cta__title">Faça parte<br />da lista.</h2>
+        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+           class="btn btn--split btn--split-primary"
+           target="_blank" rel="noopener noreferrer" data-magnetic>
+          <span class="btn__label">Solicitar Orçamento</span>
+          <span class="btn__plus" aria-hidden="true">+</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="footer-headline-wrap" aria-hidden="true">
+      <p class="footer-headline" aria-hidden="true">Machado Plataformas</p>
+    </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-col--brand">
+          <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" class="footer-logo" width="120" height="30" loading="lazy" />
+          <p class="footer-tagline">Soluções em plataformas veiculares com qualidade, segurança e confiança.</p>
+          <div class="footer-status">
+            <span>Atendimento nacional</span>
+            <span>Fabricação sob demanda</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Navegação</h3>
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./sobre.html">Empresa</a></li>
+            <li><a href="./produtos.html">Produtos</a></li>
+            <li><a href="./clientes.html">Clientes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <h3 class="footer-col__title">Contato</h3>
+          <a class="footer-cta" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">
+            <span>Solicitar orçamento</span>
+            <span aria-hidden="true">+</span>
+          </a>
+          <address class="footer-address">
+            <p><a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a></p>
+            <p>Minas Gerais, Brasil</p>
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy mono">&copy; 2026 Machado Plataformas. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script src="./js/gsap-setup.js"></script>
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>

@@ -6,6 +6,26 @@
 
 ---
 
+## [2026-05-15] FIX — Produtos: Arsenal — polimento UI/UX (acessibilidade, interação, tipografia)
+
+**Agente:** Claude Code
+**Sessão:** Auditoria ui-ux-pro-max — 7 correções
+
+### Alterado
+- `produtos.html`:
+  - **Acessibilidade**: `.arsenal__spec__label` — `font-size: 9px` → `var(--text-xs)` (12px); `color: rgba(255,255,255,0.28)` → `rgba(255,255,255,0.5)` (contraste ~4.8:1 no charcoal, aprovado WCAG AA)
+  - **Tokens**: `.arsenal__spec` border usa `var(--color-navbar-border-dark-strong)` em vez de valor raw
+  - **Easing**: `.arsenal__img` transition usa `var(--ease-machado)` e `var(--ease-premium)` em vez de cubic-bezier inline
+  - **Touch**: `.arsenal__arrow` recebe `touch-action: manipulation` (elimina 300ms delay) e `user-select: none`
+  - **Estado ativo**: `.arsenal__arrow:active` com `transform: scale(0.92)` — feedback de pressão
+  - **Transição da seta**: `transition` inclui `transform 0.12s ease` para restore suave do active
+  - **Números**: `.arsenal__img-counter` recebe `font-variant-numeric: tabular-nums` — previne layout shift
+  - **Focus ring**: `.arsenal:focus-visible` com outline azul sutil para navegação por teclado
+  - **Reduced motion (JS)**: `setImage()` verifica `prefers-reduced-motion` — troca imagem instantaneamente se ativo
+  - **Reduced motion (CSS)**: `.arsenal__img { transition: none }` em `prefers-reduced-motion`
+
+---
+
 ## [2026-05-15] STYLE — Produtos: Arsenal — separador de linha e specs charcoal
 
 **Agente:** Claude Code

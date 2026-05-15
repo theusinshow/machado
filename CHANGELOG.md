@@ -6,6 +6,41 @@
 
 ---
 
+## [2026-05-15] FEAT — Produtos: implementação do layout Arsenal (cinematic scroll)
+
+**Agente:** Claude Code
+**Sessão:** Implementação Arsenal na página real após aprovação do Preview B
+
+### Alterado
+- `produtos.html` — substituição completa do layout catálogo pelo Arsenal:
+  - `<style>` block reescrito: classes `.catalog-*` removidas, classes `.arsenal` implementadas
+  - Layout: 3 seções `100svh` empilhadas (LEVE, MÉDIA, PESADA), grid 50/50 conteúdo/imagem
+  - Margens bilaterais com `clamp(2.5rem, 7vw, 7rem)` — sem sangria de borda
+  - Imagens movidas para subpastas (`/leve/`, `/media/`, `/pesada/`) com galeria de 4–5 fotos por linha
+  - Navegação por setas prev/next com contador `01/05`; lógica PNG → `contain`, JPG → `cover`
+  - Padrão tipográfico do hero replicado: `.arsenal__kicker` (traço azul + label mono), `.arsenal__name` (display font grande), `.arsenal__desc` (estilo `.hero-subtitle`)
+  - Glass panel de specs, ticker animado por linha, filtros tonais por variante
+  - `.page-hero { padding-bottom: 0 }` para transição fluida hero → primeira seção
+  - Responsivo: mobile stack vertical, imagem acima, tablet 50vw altura mínima
+  - JS inline de galeria antes dos módulos GSAP
+
+---
+
+## [2026-05-15] FEAT — Produtos: criação de 3 arquivos de preview para novos layouts
+
+**Agente:** Claude Code
+**Sessão:** Preview de modelos de layout para seleção pelo cliente
+
+### Criado
+- `produtos-modelo-1.html` — Preview Modelo 1: Vitrine Editorial — layout 40/60, produto único em destaque, ghost number, thumbnails, navegação por setas
+- `produtos-modelo-2.html` — Preview Modelo 2: Comparativo Técnico Premium — grid 3 colunas, galeria por thumbnail, barras de capacidade, tabela de specs
+- `produtos-modelo-3.html` — Preview Modelo 3: Experiência Imersiva — tabs LEVE/MEDIA/PESADA sticky, stage full-height, specs completos por produto, ghost number, tags
+
+### Observação
+Nenhum arquivo existente foi alterado. `produtos.html` permanece intacto. Aguardar aprovação do cliente antes de implementar.
+
+---
+
 ## [2026-05-14] FIX — Produtos: refactor layout proporção, altura e responsividade
 
 **Agente:** Claude Code

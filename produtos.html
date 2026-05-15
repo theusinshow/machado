@@ -187,7 +187,31 @@
     .arsenal__img-side {
       position: relative;
       overflow: hidden;
-      max-height: clamp(280px, 60svh, 560px);
+      aspect-ratio: 3 / 2;
+      align-self: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      /* Corner brackets — cantos de visor de engenharia em azul primário */
+      background-image:
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
+        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4));
+      background-size:
+        2rem 1px, 1px 2rem,
+        2rem 1px, 1px 2rem,
+        2rem 1px, 1px 2rem,
+        2rem 1px, 1px 2rem;
+      background-position:
+        0 0,       0 0,
+        100% 0,    100% 0,
+        0 100%,    0 100%,
+        100% 100%, 100% 100%;
+      background-repeat: no-repeat;
+      box-shadow: inset 0 0 80px rgba(91, 155, 213, 0.04);
     }
 
     /* Left-edge fade: image blends into content area */
@@ -195,7 +219,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--color-black) 0%, transparent 22%);
+      background: linear-gradient(to right, var(--color-black) 0%, transparent 20%);
       z-index: 2;
       pointer-events: none;
     }
@@ -205,7 +229,7 @@
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 22%;
+      height: 18%;
       background: linear-gradient(to top, var(--color-black) 0%, transparent 100%);
       z-index: 2;
       pointer-events: none;
@@ -321,7 +345,7 @@
 
     /* Fade do lado direito da imagem quando layout está invertido */
     .arsenal--alt .arsenal__img-side::before {
-      background: linear-gradient(to left, var(--color-black) 0%, transparent 22%);
+      background: linear-gradient(to left, var(--color-black) 0%, transparent 20%);
     }
 
     /* Setas ficam no canto esquerdo da imagem quando invertida */

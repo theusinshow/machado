@@ -6,6 +6,39 @@
 
 ---
 
+## [2026-05-15] FEAT — Produtos: Arsenal — carousel horizontal estilo Instagram
+
+**Agente:** Claude Code
+**Sessão:** Carousel horizontal com 3 slides visíveis por seção
+
+### Alterado
+- `produtos.html` — refatoração do img-side para carousel horizontal:
+  - HTML: cada `arsenal__img-side` agora contém `.arsenal__carousel > .arsenal__carousel-track > .arsenal__slide` (3-5 slides por seção)
+  - CSS: `.arsenal__carousel` com `overflow-x: scroll; scroll-snap-type: x mandatory`, track com `height: clamp(200px, 48svh, 490px)`, slides `flex: 0 0 calc((100% - 6px) / 3)` (3 visíveis desktop, 2 mobile)
+  - CSS: `.arsenal__slide--hero` usa `object-fit: contain; mix-blend-mode: lighten` (PNG); `.arsenal__slide--photo` usa `object-fit: cover; mix-blend-mode: normal` (JPG)
+  - JS: substituído src-swap por `carousel.scrollTo({ left: slide.offsetLeft })` com snap snapping por índice; counter e setas mantidos
+
+---
+
+## [2026-05-15] STYLE — Produtos: Arsenal — compactação vertical (ui-ux-pro-max)
+
+**Agente:** Claude Code
+**Sessão:** Compactação Arsenal — disposição de elementos e altura vertical
+
+### Alterado
+- `produtos.html` — redução cirúrgica de espaçamentos verticais para maior densidade sem distorcer imagens:
+  - `arsenal__inner` min-height: `clamp(320px, 65svh, 620px)` → `clamp(280px, 54svh, 560px)`
+  - `arsenal__inner` gap: `var(--space-12)` → `var(--space-8)` (3rem → 2rem entre colunas)
+  - `arsenal__content` padding-block: `clamp(3rem, 6vh, 6rem)` → `clamp(1.75rem, 3.5vh, 4rem)`
+  - `arsenal__kicker` margin-bottom: `var(--space-4)` → `var(--space-3)`
+  - `arsenal__name` margin-bottom: `var(--space-5)` → `var(--space-4)`
+  - `arsenal__specs` margin-bottom: `var(--space-5)` → `var(--space-4)`
+  - `arsenal__spec` padding: `var(--space-3) var(--space-4)` → `var(--space-2) var(--space-3)`
+  - `arsenal__features` margin-bottom: `var(--space-6)` → `var(--space-5)`; gap: `var(--space-3)` → `var(--space-2)`
+  - `.arsenal + .arsenal` margin-top: `var(--space-16)` → `var(--space-10)`
+
+---
+
 ## [2026-05-15] FEAT — Produtos: redesign completo — Grid de Cards
 
 **Agente:** Claude Code

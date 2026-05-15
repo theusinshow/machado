@@ -51,7 +51,7 @@
 
     .arsenal + .arsenal {
       border-top: 1px solid var(--color-navbar-border-dark-strong);
-      margin-top: var(--space-16);
+      margin-top: var(--space-10);
     }
 
     /* ── Section ── */
@@ -64,9 +64,9 @@
     .arsenal__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: clamp(320px, 65svh, 620px);
+      min-height: clamp(280px, 54svh, 560px);
       padding-inline: clamp(3rem, 6vw, 8rem);
-      gap: var(--space-12);
+      gap: var(--space-8);
     }
 
     /* ── Content — left column ── */
@@ -76,7 +76,7 @@
       align-items: flex-start;
       justify-content: center;
       text-align: left;
-      padding-block: clamp(3rem, 6vh, 6rem);
+      padding-block: clamp(1.75rem, 3.5vh, 4rem);
       position: relative;
       z-index: 4;
       max-width: 440px;
@@ -93,7 +93,7 @@
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--color-primary-light);
-      margin-bottom: var(--space-4);
+      margin-bottom: var(--space-3);
     }
 
     .arsenal__kicker::before {
@@ -112,7 +112,7 @@
       line-height: 0.88;
       letter-spacing: -0.02em;
       color: var(--color-text);
-      margin-bottom: var(--space-5);
+      margin-bottom: var(--space-4);
     }
 
     /* Specs — glass panel */
@@ -122,12 +122,12 @@
       border: 1px solid rgba(255,255,255,0.1);
       background: var(--color-menu-bg);
       max-width: 400px;
-      margin-bottom: var(--space-5);
+      margin-bottom: var(--space-4);
     }
 
     .arsenal__spec {
       flex: 1;
-      padding: var(--space-3) var(--space-4);
+      padding: var(--space-2) var(--space-3);
       border-right: 1px solid var(--color-navbar-border-dark-strong);
     }
 
@@ -153,10 +153,10 @@
     .arsenal__features {
       list-style: none;
       padding: 0;
-      margin: 0 0 var(--space-6);
+      margin: 0 0 var(--space-5);
       display: flex;
       flex-direction: column;
-      gap: var(--space-3);
+      gap: var(--space-2);
     }
 
     .arsenal__features li {
@@ -220,7 +220,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--color-black) 0%, transparent 20%);
+      background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, transparent 12%);
       z-index: 2;
       pointer-events: none;
     }
@@ -237,11 +237,19 @@
     }
 
     .arsenal__img {
-      width: 100%;
+      width: auto;
+      max-width: 100%;
+      max-height: clamp(260px, 60svh, 580px);
       height: auto;
       display: block;
+      margin: 0;
       mix-blend-mode: lighten;
       transition: opacity 0.22s var(--ease-premium);
+    }
+
+    /* Alt layout: imagem à esquerda, texto à direita — imagem alinha para a direita (em direção ao texto) */
+    .arsenal--alt .arsenal__img {
+      margin-left: auto;
     }
 
     /* ── Arrow navigation ── */
@@ -344,7 +352,7 @@
 
     /* Fade do lado direito da imagem quando layout está invertido */
     .arsenal--alt .arsenal__img-side::before {
-      background: linear-gradient(to left, var(--color-black) 0%, transparent 20%);
+      background: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 12%);
     }
 
     /* Setas ficam no canto esquerdo da imagem quando invertida */
@@ -353,16 +361,66 @@
       left: var(--space-5);
     }
 
-    /* ── Tonal filters per line ── */
-    .arsenal--leve .arsenal__img {
+    /* ── Carousel — horizontal strip ── */
+    .arsenal__carousel {
+      overflow-x: scroll;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+      width: 100%;
+    }
+    .arsenal__carousel::-webkit-scrollbar { display: none; }
+
+    .arsenal__carousel-track {
+      display: flex;
+      gap: 3px;
+      height: clamp(200px, 48svh, 490px);
+    }
+
+    /* Spacers antes e depois para centrar o slide ativo */
+    .arsenal__carousel-track::before,
+    .arsenal__carousel-track::after {
+      content: '';
+      display: block;
+      flex: 0 0 calc((100% - 6px) / 3);
+      flex-shrink: 0;
+    }
+
+    .arsenal__slide {
+      flex: 0 0 calc((100% - 6px) / 3);
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      scroll-snap-align: center;
+    }
+
+    /* Override base .arsenal__img for carousel context */
+    .arsenal__slide .arsenal__img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      margin: 0;
+      object-fit: cover;
+      mix-blend-mode: normal;
+      display: block;
+    }
+
+    /* Hero slide — PNG product render */
+    .arsenal__slide--hero .arsenal__img {
+      object-fit: cover;
+      mix-blend-mode: lighten;
+      object-position: center center;
+    }
+
+    /* ── Tonal filters per line — applied to hero slide only ── */
+    .arsenal--leve .arsenal__slide--hero .arsenal__img {
       filter: drop-shadow(0 0 60px rgba(91,155,213,0.15)) drop-shadow(0 40px 60px rgba(0,0,0,0.9));
     }
 
-    .arsenal--media .arsenal__img {
+    .arsenal--media .arsenal__slide--hero .arsenal__img {
       filter: drop-shadow(0 0 60px rgba(91,155,213,0.22)) drop-shadow(0 40px 60px rgba(0,0,0,0.9));
     }
 
-    .arsenal--pesada .arsenal__img {
+    .arsenal--pesada .arsenal__slide--hero .arsenal__img {
       filter: drop-shadow(0 0 100px rgba(26,75,130,0.3)) drop-shadow(0 40px 80px rgba(0,0,0,0.95));
     }
 
@@ -373,13 +431,19 @@
         padding-inline: clamp(1.5rem, 5vw, 4rem);
       }
 
-      .arsenal__img-side {
-        height: clamp(200px, 32vw, 320px);
-        order: -1;
-      }
+      .arsenal__img-side { order: -1; }
 
       .arsenal__img-side::before {
         background: linear-gradient(to bottom, var(--color-black) 0%, transparent 20%);
+      }
+
+      .arsenal__carousel-track {
+        height: clamp(160px, 40vw, 300px);
+      }
+
+      /* 2 slides visible on mobile */
+      .arsenal__slide {
+        flex: 0 0 calc((100% - 3px) / 2);
       }
 
       .arsenal__content {
@@ -530,13 +594,25 @@
         </div>
 
         <div class="arsenal__img-side">
-          <img
-            class="arsenal__img"
-            src="./assets/images/produtos/leve/LEVE-1.png"
-            alt="Plataforma Leve Machado"
-            loading="eager"
-            data-gallery='["./assets/images/produtos/leve/LEVE-1.png","./assets/images/produtos/leve/LEVE-2.jpg","./assets/images/produtos/leve/LEVE-3.jpg","./assets/images/produtos/leve/LEVE-4.jpg","./assets/images/produtos/leve/LEVE-5.jpg"]'
-          />
+          <div class="arsenal__carousel">
+            <div class="arsenal__carousel-track">
+              <div class="arsenal__slide arsenal__slide--hero">
+                <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-1.png" alt="Plataforma Leve Machado" loading="eager" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-2.jpg" alt="Plataforma Leve — foto 2" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-3.jpg" alt="Plataforma Leve — foto 3" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-4.jpg" alt="Plataforma Leve — foto 4" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-5.jpg" alt="Plataforma Leve — foto 5" loading="lazy" />
+              </div>
+            </div>
+          </div>
           <div class="arsenal__nav">
             <button class="arsenal__arrow arsenal__arrow--prev" aria-label="Foto anterior" disabled>
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -600,13 +676,22 @@
         </div>
 
         <div class="arsenal__img-side">
-          <img
-            class="arsenal__img"
-            src="./assets/images/produtos/media/MEDIA-1.png"
-            alt="Plataforma Média Machado"
-            loading="lazy"
-            data-gallery='["./assets/images/produtos/media/MEDIA-1.png","./assets/images/produtos/media/MEDIA-2.jpg","./assets/images/produtos/media/MEDIA-3.jpg","./assets/images/produtos/media/MEDIA-4.jpg"]'
-          />
+          <div class="arsenal__carousel">
+            <div class="arsenal__carousel-track">
+              <div class="arsenal__slide arsenal__slide--hero">
+                <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-1.png" alt="Plataforma Média Machado" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-2.jpg" alt="Plataforma Média — foto 2" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-3.jpg" alt="Plataforma Média — foto 3" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-4.jpg" alt="Plataforma Média — foto 4" loading="lazy" />
+              </div>
+            </div>
+          </div>
           <div class="arsenal__nav">
             <button class="arsenal__arrow arsenal__arrow--prev" aria-label="Foto anterior" disabled>
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -670,13 +755,25 @@
         </div>
 
         <div class="arsenal__img-side">
-          <img
-            class="arsenal__img"
-            src="./assets/images/produtos/pesada/PESADA-1.png"
-            alt="Plataforma Pesada Machado"
-            loading="lazy"
-            data-gallery='["./assets/images/produtos/pesada/PESADA-1.png","./assets/images/produtos/pesada/PESADA-2.jpg","./assets/images/produtos/pesada/PESADA-3.jpg","./assets/images/produtos/pesada/PESADA-4.jpg","./assets/images/produtos/pesada/PESADA-5.jpg"]'
-          />
+          <div class="arsenal__carousel">
+            <div class="arsenal__carousel-track">
+              <div class="arsenal__slide arsenal__slide--hero">
+                <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-1.png" alt="Plataforma Pesada Machado" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-2.jpg" alt="Plataforma Pesada — foto 2" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-3.jpg" alt="Plataforma Pesada — foto 3" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-4.jpg" alt="Plataforma Pesada — foto 4" loading="lazy" />
+              </div>
+              <div class="arsenal__slide arsenal__slide--photo">
+                <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-5.jpg" alt="Plataforma Pesada — foto 5" loading="lazy" />
+              </div>
+            </div>
+          </div>
           <div class="arsenal__nav">
             <button class="arsenal__arrow arsenal__arrow--prev" aria-label="Foto anterior" disabled>
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -770,61 +867,50 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
   <script>
-    // Arsenal gallery navigation — PNG → contain, JPG → cover
+    // Arsenal carousel — scroll horizontal, 3 slides visíveis
     document.querySelectorAll('.arsenal').forEach(function(section) {
-      var img = section.querySelector('.arsenal__img');
-      var prevBtn = section.querySelector('.arsenal__arrow--prev');
-      var nextBtn = section.querySelector('.arsenal__arrow--next');
-      var counter = section.querySelector('.arsenal__img-counter');
-      if (!img || !prevBtn || !nextBtn) return;
+      var carousel   = section.querySelector('.arsenal__carousel');
+      var prevBtn    = section.querySelector('.arsenal__arrow--prev');
+      var nextBtn    = section.querySelector('.arsenal__arrow--next');
+      var counter    = section.querySelector('.arsenal__img-counter');
+      if (!carousel || !prevBtn || !nextBtn) return;
 
-      var gallery = JSON.parse(img.dataset.gallery || '[]');
-      if (gallery.length <= 1) {
-        var nav = section.querySelector('.arsenal__nav');
-        if (nav) nav.style.display = 'none';
-        return;
-      }
+      var slides = Array.from(carousel.querySelectorAll('.arsenal__slide'));
+      var total  = slides.length;
+      var idx    = 0;
 
-      var idx = 0;
-
-      function isPng(src) { return src.toLowerCase().endsWith('.png'); }
-
-      function setImage(newIdx) {
-        idx = Math.max(0, Math.min(gallery.length - 1, newIdx));
-        var src = gallery[idx];
-        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        if (reducedMotion) {
-          img.src = src;
-          img.style.objectFit = isPng(src) ? 'contain' : 'cover';
-          img.style.objectPosition = isPng(src) ? 'center bottom' : 'center center';
-        } else {
-          img.style.opacity = '0';
-          setTimeout(function() {
-            img.src = src;
-            img.style.objectFit = isPng(src) ? 'contain' : 'cover';
-            img.style.objectPosition = isPng(src) ? 'center bottom' : 'center center';
-            img.style.opacity = '1';
-          }, 220);
-        }
-
+      function updateNav() {
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx === total - 1;
         if (counter) {
           counter.textContent =
             String(idx + 1).padStart(2, '0') + ' / ' +
-            String(gallery.length).padStart(2, '0');
+            String(total).padStart(2, '0');
         }
-        prevBtn.disabled = idx === 0;
-        nextBtn.disabled = idx === gallery.length - 1;
       }
 
-      prevBtn.addEventListener('click', function() { setImage(idx - 1); });
-      nextBtn.addEventListener('click', function() { setImage(idx + 1); });
+      function goTo(newIdx) {
+        idx = Math.max(0, Math.min(total - 1, newIdx));
+        // Scroll de forma que o slide ativo fique no slot central.
+        // O spacer ::before tem largura = 1 slide + 1 gap, então:
+        // idx=0 → scrollLeft=0 (spacer | HERO | foto1)
+        // idx=n → scrollLeft = slides[n-1].offsetLeft − carousel.offsetLeft
+        var scrollPos = idx === 0
+          ? 0
+          : slides[idx - 1].offsetLeft - carousel.offsetLeft;
+        carousel.scrollTo({ left: scrollPos, behavior: 'smooth' });
+        updateNav();
+      }
 
-      // Keyboard: ← → when section is focused
+      prevBtn.addEventListener('click', function() { goTo(idx - 1); });
+      nextBtn.addEventListener('click', function() { goTo(idx + 1); });
+
       section.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft')  { e.preventDefault(); setImage(idx - 1); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); setImage(idx + 1); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(idx - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(idx + 1); }
       });
+
+      updateNav();
     });
   </script>
   <script src="./js/gsap-setup.js"></script>

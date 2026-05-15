@@ -64,7 +64,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: clamp(280px, 60svh, 560px);
-      padding-inline: clamp(1.25rem, 3vw, 3rem);
+      padding-inline: clamp(2.5rem, 5.5vw, 6rem);
     }
 
     /* ── Content — left column ── */
@@ -72,7 +72,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding-block: clamp(1.25rem, 2.5vh, 2.5rem) clamp(1rem, 2vh, 2rem);
+      padding-block: clamp(2rem, 4vh, 4rem) clamp(1.75rem, 3.5vh, 3.5rem);
       position: relative;
       z-index: 4;
     }
@@ -87,7 +87,7 @@
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--color-primary-light);
-      margin-bottom: var(--space-2);
+      margin-bottom: var(--space-3);
     }
 
     .arsenal__kicker::before {
@@ -101,12 +101,12 @@
     /* Hero-title style — product name */
     .arsenal__name {
       font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.4vw, 2.5rem);
+      font-size: clamp(2.5rem, 4.5vw, 4.75rem);
       font-weight: 900;
       line-height: 0.88;
       letter-spacing: -0.02em;
       color: var(--color-text);
-      margin-bottom: var(--space-1);
+      margin-bottom: var(--space-4);
     }
 
     /* Specs — glass panel */
@@ -116,12 +116,12 @@
       border: 1px solid rgba(255,255,255,0.1);
       background: var(--color-menu-bg);
       max-width: 380px;
-      margin-bottom: var(--space-1);
+      margin-bottom: var(--space-4);
     }
 
     .arsenal__spec {
       flex: 1;
-      padding: var(--space-1) var(--space-2);
+      padding: var(--space-3) var(--space-4);
       border-right: 1px solid var(--color-navbar-border-dark-strong);
     }
 
@@ -145,11 +145,11 @@
 
     /* Description — hero-subtitle style */
     .arsenal__desc {
-      font-size: 0.8125rem;
-      line-height: 1.55;
+      font-size: var(--text-sm);
+      line-height: 1.65;
       color: var(--color-text-muted);
-      max-width: 44ch;
-      margin: 0 0 var(--space-2);
+      max-width: 38ch;
+      margin: 0 0 var(--space-5);
     }
 
     /* ── Image side — right column ── */
@@ -192,7 +192,7 @@
     /* ── Arrow navigation ── */
     .arsenal__nav {
       position: absolute;
-      bottom: clamp(0.5rem, 1.2vh, 1rem);
+      bottom: clamp(1.75rem, 3.5vh, 3rem);
       right: var(--space-5);
       display: flex;
       align-items: center;

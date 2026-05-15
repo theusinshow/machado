@@ -63,8 +63,8 @@
     .arsenal__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: clamp(168px, 24svh, 280px);
-      padding-inline: clamp(1.4rem, 3.5vw, 3.5rem);
+      min-height: clamp(120px, 17svh, 200px);
+      padding-inline: clamp(1.25rem, 3vw, 3rem);
     }
 
     /* ── Content — left column ── */
@@ -72,7 +72,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding-block: clamp(0.7rem, 1.4vh, 1.4rem) clamp(0.5rem, 1vh, 1rem);
+      padding-block: clamp(0.5rem, 1vh, 1rem) clamp(0.35rem, 0.7vh, 0.75rem);
       position: relative;
       z-index: 4;
     }
@@ -101,12 +101,12 @@
     /* Hero-title style — product name */
     .arsenal__name {
       font-family: var(--font-display);
-      font-size: clamp(1.9rem, 3.2vw, 3.3rem);
+      font-size: clamp(1.4rem, 2.4vw, 2.5rem);
       font-weight: 900;
       line-height: 0.88;
       letter-spacing: -0.02em;
       color: var(--color-text);
-      margin-bottom: var(--space-2);
+      margin-bottom: var(--space-1);
     }
 
     /* Specs — glass panel */
@@ -116,12 +116,12 @@
       border: 1px solid rgba(255,255,255,0.1);
       background: var(--color-menu-bg);
       max-width: 380px;
-      margin-bottom: var(--space-2);
+      margin-bottom: var(--space-1);
     }
 
     .arsenal__spec {
       flex: 1;
-      padding: var(--space-2) var(--space-3);
+      padding: var(--space-1) var(--space-2);
       border-right: 1px solid var(--color-navbar-border-dark-strong);
     }
 
@@ -145,11 +145,11 @@
 
     /* Description — hero-subtitle style */
     .arsenal__desc {
-      font-size: 0.875rem;
-      line-height: 1.6;
+      font-size: 0.8125rem;
+      line-height: 1.55;
       color: var(--color-text-muted);
       max-width: 44ch;
-      margin: 0 0 var(--space-3);
+      margin: 0 0 var(--space-2);
     }
 
     /* ── Image side — right column ── */
@@ -191,7 +191,7 @@
     /* ── Arrow navigation ── */
     .arsenal__nav {
       position: absolute;
-      bottom: clamp(1rem, 2vh, 1.75rem);
+      bottom: clamp(0.5rem, 1.2vh, 1rem);
       right: var(--space-5);
       display: flex;
       align-items: center;

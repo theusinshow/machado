@@ -138,38 +138,59 @@
       margin-bottom: var(--space-4);
     }
 
-    /* Specs — glass panel */
+    /* Specs — painel técnico */
     .arsenal__specs {
       display: flex;
       gap: 0;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: var(--color-menu-bg);
+      border: 1px solid rgba(255,255,255,0.07);
       max-width: 400px;
       margin-bottom: var(--space-4);
     }
 
     .arsenal__spec {
       flex: 1;
-      padding: var(--space-2) var(--space-3);
-      border-right: 1px solid var(--color-navbar-border-dark-strong);
+      padding: var(--space-3) var(--space-3) var(--space-3);
+      border-right: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
     }
 
     .arsenal__spec:last-child { border-right: none; }
 
+    /* Linha de acento azul que se desenha por célula */
+    .arsenal__spec::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .arsenal__content.is-visible .arsenal__spec:nth-child(1)::before { transform: scaleX(1); transition-delay: 160ms; }
+    .arsenal__content.is-visible .arsenal__spec:nth-child(2)::before { transform: scaleX(1); transition-delay: 215ms; }
+    .arsenal__content.is-visible .arsenal__spec:nth-child(3)::before { transform: scaleX(1); transition-delay: 270ms; }
+
     .arsenal__spec__label {
       display: block;
       font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
+      font-size: 0.62rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: var(--space-1);
+      color: rgba(255,255,255,0.32);
+      margin-bottom: var(--space-2);
     }
 
     .arsenal__spec__val {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-medium, 500);
+      font-size: 1.35rem;
+      font-weight: 700;
       color: var(--color-text);
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     /* Feature list — replaces paragraph desc */
@@ -525,6 +546,7 @@
       .arsenal__features li { opacity: 1; clip-path: none; transition: none; }
       .arsenal__content .btn { opacity: 1; transform: none; transition: none; }
       .arsenal__content::before { transform: scaleY(1); transition: none; }
+      .arsenal__spec::before { transform: scaleX(1); transition: none; }
     }
   </style>
 </head>

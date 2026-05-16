@@ -23,6 +23,9 @@
   <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <!-- CSS Base -->
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/variables.css" />
@@ -50,8 +53,9 @@
     }
 
     .arsenal + .arsenal {
-      border-top: 1px solid var(--color-navbar-border-dark-strong);
-      margin-top: var(--space-10);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
     }
 
     /* ── Section ── */
@@ -66,6 +70,7 @@
       grid-template-columns: 1fr 1fr;
       min-height: clamp(280px, 54svh, 560px);
       padding-inline: clamp(3rem, 6vw, 8rem);
+      padding-bottom: 3rem;
       gap: var(--space-8);
     }
 
@@ -111,7 +116,7 @@
       font-weight: 900;
       line-height: 0.88;
       letter-spacing: -0.02em;
-      color: var(--color-text);
+      color: var(--color-primary-light);
       margin-bottom: var(--space-4);
     }
 
@@ -190,29 +195,6 @@
       position: relative;
       overflow: hidden;
       align-self: center;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      /* Corner brackets — cantos de visor de engenharia em azul primário */
-      background-image:
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4)),
-        linear-gradient(rgba(91, 155, 213, 0.4), rgba(91, 155, 213, 0.4));
-      background-size:
-        2rem 1px, 1px 2rem,
-        2rem 1px, 1px 2rem,
-        2rem 1px, 1px 2rem,
-        2rem 1px, 1px 2rem;
-      background-position:
-        0 0,       0 0,
-        100% 0,    100% 0,
-        0 100%,    0 100%,
-        100% 100%, 100% 100%;
-      background-repeat: no-repeat;
-      box-shadow: inset 0 0 80px rgba(91, 155, 213, 0.04);
     }
 
     /* Left-edge fade: image blends into content area */
@@ -220,7 +202,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, transparent 12%);
+      background: linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 8%);
       z-index: 2;
       pointer-events: none;
     }
@@ -255,40 +237,41 @@
     /* ── Arrow navigation ── */
     .arsenal__nav {
       position: absolute;
-      bottom: clamp(1.75rem, 3.5vh, 3rem);
-      right: var(--space-5);
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
       display: flex;
       align-items: center;
-      gap: var(--space-3);
-      z-index: 5;
+      justify-content: space-between;
+      padding-inline: var(--space-4);
     }
 
     .arsenal__arrow {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.25);
       backdrop-filter: blur(6px);
       cursor: pointer;
-      color: rgba(255,255,255,0.55);
+      pointer-events: all;
+      color: rgba(255,255,255,1);
       touch-action: manipulation;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
-      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.12s ease;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.12s ease;
     }
 
     .arsenal__arrow:hover:not(:disabled) {
+      background: rgba(0,0,0,0.78);
       border-color: var(--color-primary-light);
       color: var(--color-primary-light);
-      background: rgba(0,0,0,0.8);
     }
 
     .arsenal__arrow:active:not(:disabled) {
-      transform: scale(0.92);
-      background: rgba(0,0,0,0.9);
+      transform: scale(0.9);
     }
 
     .arsenal__arrow:disabled {
@@ -298,11 +281,15 @@
     }
 
     .arsenal__arrow svg {
-      width: 16px; height: 16px;
+      width: 22px; height: 22px;
       pointer-events: none;
     }
 
     .arsenal__img-counter {
+      position: absolute;
+      bottom: clamp(1.5rem, 3vh, 2.5rem);
+      left: 50%;
+      transform: translateX(-50%);
       font-family: var(--font-ui-mono);
       font-size: 10px;
       letter-spacing: 0.2em;
@@ -318,7 +305,7 @@
       bottom: 0; left: 0; right: 0;
       overflow: hidden;
       z-index: 6;
-      padding: var(--space-2) 0;
+      padding: var(--space-5) 0;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -331,10 +318,10 @@
     .arsenal__ticker-text {
       font-family: var(--font-ui-mono);
       font-size: 10px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.18);
-      padding-right: var(--space-8);
+      padding-right: var(--space-10);
     }
 
     @keyframes arsenal-ticker {
@@ -342,7 +329,15 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* ── Layout alternado — seção do meio espelhada ── */
+    /* ── Layout alternado — seção do meio com respiro próprio ── */
+    .arsenal--alt {
+      padding-block: 20px;
+    }
+
+    .arsenal--pesada {
+      margin-top: 20px;
+    }
+
     .arsenal--alt .arsenal__content { order: 2; align-items: flex-end; text-align: right; margin-inline: auto; }
     .arsenal--alt .arsenal__img-side { order: 1; }
     .arsenal--alt .arsenal__specs { margin-left: auto; }
@@ -352,75 +347,44 @@
 
     /* Fade do lado direito da imagem quando layout está invertido */
     .arsenal--alt .arsenal__img-side::before {
-      background: linear-gradient(to left, rgba(0,0,0,0.7) 0%, transparent 12%);
+      background: linear-gradient(to left, rgba(0,0,0,0.45) 0%, transparent 8%);
     }
 
-    /* Setas ficam no canto esquerdo da imagem quando invertida */
-    .arsenal--alt .arsenal__nav {
-      right: auto;
-      left: var(--space-5);
-    }
 
-    /* ── Carousel — horizontal strip ── */
-    .arsenal__carousel {
-      overflow-x: scroll;
-      scrollbar-width: none;
-      scroll-snap-type: x mandatory;
+    /* ── Swiper Coverflow ── */
+    .arsenal-swiper {
       width: 100%;
-    }
-    .arsenal__carousel::-webkit-scrollbar { display: none; }
-
-    .arsenal__carousel-track {
-      display: flex;
-      gap: 3px;
-      height: clamp(200px, 48svh, 490px);
+      padding-block: var(--space-6);
     }
 
-    /* Spacers antes e depois para centrar o slide ativo */
-    .arsenal__carousel-track::before,
-    .arsenal__carousel-track::after {
-      content: '';
-      display: block;
-      flex: 0 0 calc((100% - 6px) / 3);
-      flex-shrink: 0;
-    }
-
-    .arsenal__slide {
-      flex: 0 0 calc((100% - 6px) / 3);
-      flex-shrink: 0;
-      overflow: hidden;
+    .arsenal-swiper .swiper-slide {
+      width: 62%;
       position: relative;
-      scroll-snap-align: center;
     }
 
-    /* Override base .arsenal__img for carousel context */
-    .arsenal__slide .arsenal__img {
+    .arsenal-swiper .arsenal__img {
       width: 100%;
-      height: 100%;
+      height: clamp(250px, 44svh, 510px);
       max-height: none;
-      margin: 0;
       object-fit: cover;
       mix-blend-mode: normal;
+      margin: 0;
       display: block;
+      transition: opacity 0.22s var(--ease-premium);
     }
 
-    /* Hero slide — PNG product render */
-    .arsenal__slide--hero .arsenal__img {
-      object-fit: cover;
+    .arsenal-swiper .swiper-slide--hero .arsenal__img {
       mix-blend-mode: lighten;
-      object-position: center center;
     }
 
-    /* ── Tonal filters per line — applied to hero slide only ── */
-    .arsenal--leve .arsenal__slide--hero .arsenal__img {
+    /* Tonal filters — slide hero por linha */
+    .arsenal--leve .arsenal-swiper .swiper-slide--hero .arsenal__img {
       filter: drop-shadow(0 0 60px rgba(91,155,213,0.15)) drop-shadow(0 40px 60px rgba(0,0,0,0.9));
     }
-
-    .arsenal--media .arsenal__slide--hero .arsenal__img {
+    .arsenal--media .arsenal-swiper .swiper-slide--hero .arsenal__img {
       filter: drop-shadow(0 0 60px rgba(91,155,213,0.22)) drop-shadow(0 40px 60px rgba(0,0,0,0.9));
     }
-
-    .arsenal--pesada .arsenal__slide--hero .arsenal__img {
+    .arsenal--pesada .arsenal-swiper .swiper-slide--hero .arsenal__img {
       filter: drop-shadow(0 0 100px rgba(26,75,130,0.3)) drop-shadow(0 40px 80px rgba(0,0,0,0.95));
     }
 
@@ -437,13 +401,12 @@
         background: linear-gradient(to bottom, var(--color-black) 0%, transparent 20%);
       }
 
-      .arsenal__carousel-track {
-        height: clamp(160px, 40vw, 300px);
+      .arsenal-swiper .swiper-slide {
+        width: 80%;
       }
 
-      /* 2 slides visible on mobile */
-      .arsenal__slide {
-        flex: 0 0 calc((100% - 3px) / 2);
+      .arsenal-swiper .arsenal__img {
+        height: clamp(160px, 36vw, 280px);
       }
 
       .arsenal__content {
@@ -470,6 +433,45 @@
     @media (prefers-reduced-motion: reduce) {
       .arsenal__ticker-inner { animation: none; }
       .arsenal__img { transition: none; }
+    }
+
+    /* ── Content entrance animations — staggered fade-up ── */
+    .arsenal__kicker,
+    .arsenal__name,
+    .arsenal__specs,
+    .arsenal__features,
+    .arsenal__content .btn {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.42s ease-out, transform 0.42s ease-out;
+    }
+
+    .arsenal__content.is-visible .arsenal__kicker {
+      opacity: 1; transform: translateY(0); transition-delay: 0ms;
+    }
+    .arsenal__content.is-visible .arsenal__name {
+      opacity: 1; transform: translateY(0); transition-delay: 75ms;
+    }
+    .arsenal__content.is-visible .arsenal__specs {
+      opacity: 1; transform: translateY(0); transition-delay: 155ms;
+    }
+    .arsenal__content.is-visible .arsenal__features {
+      opacity: 1; transform: translateY(0); transition-delay: 225ms;
+    }
+    .arsenal__content.is-visible .btn {
+      opacity: 1; transform: translateY(0); transition-delay: 295ms;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .arsenal__kicker,
+      .arsenal__name,
+      .arsenal__specs,
+      .arsenal__features,
+      .arsenal__content .btn {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
   </style>
 </head>
@@ -561,7 +563,7 @@
       <div class="arsenal__inner">
 
         <div class="arsenal__content">
-          <span class="arsenal__kicker">01 / 03 — Linha Leve</span>
+          <span class="arsenal__kicker">Linha Leve</span>
           <h2 class="arsenal__name">LEVE</h2>
 
           <div class="arsenal__specs" aria-label="Especificações técnicas">
@@ -594,21 +596,21 @@
         </div>
 
         <div class="arsenal__img-side">
-          <div class="arsenal__carousel">
-            <div class="arsenal__carousel-track">
-              <div class="arsenal__slide arsenal__slide--hero">
+          <div class="swiper arsenal-swiper" data-initial-slide="0">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide swiper-slide--hero">
                 <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-1.png" alt="Plataforma Leve Machado" loading="eager" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-2.jpg" alt="Plataforma Leve — foto 2" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-3.jpg" alt="Plataforma Leve — foto 3" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-4.jpg" alt="Plataforma Leve — foto 4" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/leve/LEVE-5.jpg" alt="Plataforma Leve — foto 5" loading="lazy" />
               </div>
             </div>
@@ -643,7 +645,7 @@
       <div class="arsenal__inner">
 
         <div class="arsenal__content">
-          <span class="arsenal__kicker">02 / 03 — Linha Média</span>
+          <span class="arsenal__kicker">Linha Média</span>
           <h2 class="arsenal__name">MÉDIA</h2>
 
           <div class="arsenal__specs" aria-label="Especificações técnicas">
@@ -676,18 +678,18 @@
         </div>
 
         <div class="arsenal__img-side">
-          <div class="arsenal__carousel">
-            <div class="arsenal__carousel-track">
-              <div class="arsenal__slide arsenal__slide--hero">
+          <div class="swiper arsenal-swiper" data-initial-slide="0">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide swiper-slide--hero">
                 <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-1.png" alt="Plataforma Média Machado" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-2.jpg" alt="Plataforma Média — foto 2" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-3.jpg" alt="Plataforma Média — foto 3" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/media/MEDIA-4.jpg" alt="Plataforma Média — foto 4" loading="lazy" />
               </div>
             </div>
@@ -722,7 +724,7 @@
       <div class="arsenal__inner">
 
         <div class="arsenal__content">
-          <span class="arsenal__kicker">03 / 03 — Linha Pesada</span>
+          <span class="arsenal__kicker">Linha Pesada</span>
           <h2 class="arsenal__name">PESADA</h2>
 
           <div class="arsenal__specs" aria-label="Especificações técnicas">
@@ -755,21 +757,21 @@
         </div>
 
         <div class="arsenal__img-side">
-          <div class="arsenal__carousel">
-            <div class="arsenal__carousel-track">
-              <div class="arsenal__slide arsenal__slide--hero">
+          <div class="swiper arsenal-swiper" data-initial-slide="0">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide swiper-slide--hero">
                 <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-1.png" alt="Plataforma Pesada Machado" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-2.jpg" alt="Plataforma Pesada — foto 2" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-3.jpg" alt="Plataforma Pesada — foto 3" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-4.jpg" alt="Plataforma Pesada — foto 4" loading="lazy" />
               </div>
-              <div class="arsenal__slide arsenal__slide--photo">
+              <div class="swiper-slide">
                 <img class="arsenal__img" src="./assets/images/produtos/pesada/PESADA-5.jpg" alt="Plataforma Pesada — foto 5" loading="lazy" />
               </div>
             </div>
@@ -861,57 +863,78 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
   <script>
-    // Arsenal carousel — scroll horizontal, 3 slides visíveis
+    // Arsenal — Swiper Coverflow
     document.querySelectorAll('.arsenal').forEach(function(section) {
-      var carousel   = section.querySelector('.arsenal__carousel');
-      var prevBtn    = section.querySelector('.arsenal__arrow--prev');
-      var nextBtn    = section.querySelector('.arsenal__arrow--next');
-      var counter    = section.querySelector('.arsenal__img-counter');
-      if (!carousel || !prevBtn || !nextBtn) return;
+      var swiperEl = section.querySelector('.arsenal-swiper');
+      var prevBtn  = section.querySelector('.arsenal__arrow--prev');
+      var nextBtn  = section.querySelector('.arsenal__arrow--next');
+      var counter  = section.querySelector('.arsenal__img-counter');
+      if (!swiperEl) return;
 
-      var slides = Array.from(carousel.querySelectorAll('.arsenal__slide'));
-      var total  = slides.length;
-      var idx    = 0;
+      var total = swiperEl.querySelectorAll('.swiper-slide').length;
 
-      function updateNav() {
-        prevBtn.disabled = idx === 0;
-        nextBtn.disabled = idx === total - 1;
+      function updateNav(sw) {
+        if (prevBtn) prevBtn.disabled = sw.isBeginning;
+        if (nextBtn) nextBtn.disabled = sw.isEnd;
         if (counter) {
           counter.textContent =
-            String(idx + 1).padStart(2, '0') + ' / ' +
+            String(sw.activeIndex + 1).padStart(2, '0') + ' / ' +
             String(total).padStart(2, '0');
         }
       }
 
-      function goTo(newIdx) {
-        idx = Math.max(0, Math.min(total - 1, newIdx));
-        // Scroll de forma que o slide ativo fique no slot central.
-        // O spacer ::before tem largura = 1 slide + 1 gap, então:
-        // idx=0 → scrollLeft=0 (spacer | HERO | foto1)
-        // idx=n → scrollLeft = slides[n-1].offsetLeft − carousel.offsetLeft
-        var scrollPos = idx === 0
-          ? 0
-          : slides[idx - 1].offsetLeft - carousel.offsetLeft;
-        carousel.scrollTo({ left: scrollPos, behavior: 'smooth' });
-        updateNav();
-      }
+      var initialSlide = parseInt(swiperEl.dataset.initialSlide || '0', 10);
 
-      prevBtn.addEventListener('click', function() { goTo(idx - 1); });
-      nextBtn.addEventListener('click', function() { goTo(idx + 1); });
-
-      section.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(idx - 1); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(idx + 1); }
+      var swiper = new Swiper(swiperEl, {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        initialSlide: initialSlide,
+        coverflowEffect: {
+          rotate: 28,
+          stretch: 0,
+          depth: 160,
+          modifier: 1,
+          slideShadows: false,
+        },
+        on: {
+          init:        function(sw) { updateNav(sw); },
+          slideChange: function(sw) { updateNav(sw); },
+        },
       });
 
-      updateNav();
+      if (prevBtn) prevBtn.addEventListener('click', function() { swiper.slidePrev(); });
+      if (nextBtn) nextBtn.addEventListener('click', function() { swiper.slideNext(); });
+
+      section.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); swiper.slidePrev(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); swiper.slideNext(); }
+      });
     });
+
+    // Content entrance animations
+    var contentEls = document.querySelectorAll('.arsenal__content');
+    if (contentEls.length && 'IntersectionObserver' in window) {
+      var contentObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            contentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      contentEls.forEach(function(el) { contentObserver.observe(el); });
+    } else {
+      contentEls.forEach(function(el) { el.classList.add('is-visible'); });
+    }
   </script>
   <script src="./js/gsap-setup.js"></script>
   <script type="module" src="./js/main.js"></script>

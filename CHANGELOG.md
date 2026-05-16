@@ -6,6 +6,21 @@
 
 ---
 
+## [2026-05-16] STYLE — Produtos: Arsenal — refactor content (título azul, kicker limpo, animações)
+
+**Agente:** Claude Code
+**Sessão:** Refactor arsenal__content — ui-ux-pro-max
+
+### Alterado
+- `produtos.html` — melhorias no bloco `.arsenal__content`:
+  - `.arsenal__name` cor alterada de `var(--color-text)` para `var(--color-primary-light)` (azul do site)
+  - Kickers das 3 seções: removido prefixo "NN / 03 —" → apenas "Linha Leve", "Linha Média", "Linha Pesada"
+  - CSS: stagger fade-up entrance animation (opacity + translateY, 42s ease-out) com delays 0/75/155/225/295ms para kicker, name, specs, features e btn
+  - JS: IntersectionObserver (threshold 0.18) adiciona `.is-visible` ao `.arsenal__content` visível; fallback para browsers sem suporte
+  - `@media (prefers-reduced-motion)`: animações desativadas
+
+---
+
 ## [2026-05-15] FEAT — Produtos: Arsenal — carousel horizontal estilo Instagram
 
 **Agente:** Claude Code

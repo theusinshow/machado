@@ -184,22 +184,11 @@
   overflow: hidden;
 }
 
-/* Gradiente branco → azul claríssimo */
 .page-hero__title-inner {
   display: block;
   transform: translateY(105%);
   animation: subpage-title-rise 1s var(--ease-machado) forwards;
-  background: linear-gradient(180deg, #ffffff 0%, #ccdded 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Última linha: outline azul */
-.page-hero__title-line:last-child .page-hero__title-inner {
-  background: none;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px #1B4D84;
+  color: var(--color-white);
 }
 
 .page-hero__title-line:nth-child(1) .page-hero__title-inner { animation-delay: 0.1s; }

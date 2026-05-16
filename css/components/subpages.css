@@ -13,29 +13,134 @@
   position: relative;
 }
 
-/* Grade + vinheta radial no canto esquerdo */
+/* Grade + vinheta + linha diagonal */
 .page-hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(ellipse 65% 80% at 0% 50%, rgba(27, 77, 132, 0.07) 0%, transparent 70%),
-    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
-  background-size: auto, 2.8rem 2.8rem, 2.8rem 2.8rem;
+    linear-gradient(128deg,
+      transparent calc(42% - 0.5px),
+      rgba(255,255,255,0.04) calc(42% - 0.5px),
+      rgba(255,255,255,0.04) calc(42% + 0.5px),
+      transparent calc(42% + 0.5px)
+    ),
+    radial-gradient(ellipse 65% 80% at 0% 50%, rgba(27,77,132,0.09) 0%, transparent 70%),
+    linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
+  background-size: auto, auto, 2.8rem 2.8rem, 2.8rem 2.8rem;
   pointer-events: none;
+  z-index: 0;
 }
 
-/* Fade para preto na base — transição suave para o conteúdo */
+/* Fade para preto na base */
 .page-hero::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 6rem;
+  bottom: 0; left: 0; right: 0;
+  height: 5rem;
   background: linear-gradient(to bottom, transparent 0%, var(--color-black) 100%);
   pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Scan line — varre o hero no load ── */
+.page-hero__scan {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(255,255,255,0.18) 25%,
+    rgba(91,155,213,0.5) 50%,
+    rgba(255,255,255,0.18) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 6;
+  animation: page-hero-scan 1.1s var(--ease-machado) 0.05s forwards;
+}
+
+/* ── Ticker ── */
+.page-hero__ticker {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  overflow: hidden;
+  z-index: 3;
+  padding: var(--space-3) 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.page-hero__ticker-inner {
+  display: flex;
+  white-space: nowrap;
+  animation: page-hero-ticker 28s linear infinite;
+}
+
+.page-hero__ticker-text {
+  font-family: var(--font-ui-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.13);
+  padding-right: var(--space-10);
+}
+
+/* ── Número de página ── */
+.page-hero__page-num {
+  position: absolute;
+  bottom: var(--space-10);
+  left: var(--space-6);
+  font-family: var(--font-ui-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.18);
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  animation: subpage-fade-up 0.6s ease 0.6s forwards;
+}
+
+/* ── Coordenadas ── */
+.page-hero__coords {
+  position: absolute;
+  bottom: var(--space-10);
+  right: var(--space-6);
+  font-family: var(--font-ui-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.18);
+  text-align: right;
+  line-height: 1.7;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  animation: subpage-fade-up 0.6s ease 0.65s forwards;
+}
+
+/* ── Status ── */
+.page-hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  margin-bottom: var(--space-4);
+  opacity: 0;
+  animation: subpage-fade-up 0.5s ease 0s forwards;
+}
+
+.page-hero__status::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: status-pulse 2.5s ease-in-out 1s infinite;
 }
 
 /* ── PAGE HERO — Eyebrow ── */
@@ -51,7 +156,7 @@
   color: rgba(255, 255, 255, 0.38);
   margin-bottom: var(--space-5);
   opacity: 0;
-  animation: subpage-fade-up 0.7s ease 0.05s forwards;
+  animation: subpage-fade-up 0.7s ease 0.1s forwards;
 }
 
 .page-hero__eyebrow::before {
@@ -60,7 +165,7 @@
   height: 1px;
   width: 0;
   background: currentColor;
-  animation: subpage-rule-draw 0.7s var(--ease-machado) 0.2s forwards;
+  animation: subpage-rule-draw 0.7s var(--ease-machado) 0.25s forwards;
 }
 
 /* ── PAGE HERO — Title ── */
@@ -71,7 +176,6 @@
   font-weight: var(--weight-regular);
   line-height: 0.86;
   letter-spacing: -0.03em;
-  color: var(--color-white);
   margin: 0 0 var(--space-8);
 }
 
@@ -80,10 +184,22 @@
   overflow: hidden;
 }
 
+/* Gradiente branco → azul claríssimo */
 .page-hero__title-inner {
   display: block;
   transform: translateY(105%);
   animation: subpage-title-rise 1s var(--ease-machado) forwards;
+  background: linear-gradient(180deg, #ffffff 0%, #ccdded 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Última linha: outline azul */
+.page-hero__title-line:last-child .page-hero__title-inner {
+  background: none;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px #1B4D84;
 }
 
 .page-hero__title-line:nth-child(1) .page-hero__title-inner { animation-delay: 0.1s; }
@@ -119,6 +235,21 @@
 @keyframes subpage-rule-draw {
   from { width: 0; }
   to   { width: 2.5rem; }
+}
+
+@keyframes page-hero-scan {
+  from { top: 0; opacity: 1; }
+  to   { top: 100%; opacity: 0; }
+}
+
+@keyframes page-hero-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50%       { opacity: 0.6; box-shadow: 0 0 0 4px rgba(74,222,128,0); }
 }
 
 /* ── PAGE SECTION — Base ── */
@@ -316,23 +447,14 @@
 /* ── REDUCED MOTION ── */
 
 @media (prefers-reduced-motion: reduce) {
-  .page-hero__eyebrow {
-    opacity: 1;
-    animation: none;
-  }
-
-  .page-hero__eyebrow::before {
-    width: 2rem;
-    animation: none;
-  }
-
-  .page-hero__title-inner {
-    transform: none;
-    animation: none;
-  }
-
-  .page-hero__sub {
-    opacity: 1;
-    animation: none;
-  }
+  .page-hero__scan { animation: none; opacity: 0; }
+  .page-hero__ticker-inner { animation: none; }
+  .page-hero__status { opacity: 1; animation: none; }
+  .page-hero__status::before { animation: none; }
+  .page-hero__eyebrow { opacity: 1; animation: none; }
+  .page-hero__eyebrow::before { width: 2.5rem; animation: none; }
+  .page-hero__title-inner { transform: none; animation: none; }
+  .page-hero__sub { opacity: 1; animation: none; }
+  .page-hero__page-num { opacity: 1; animation: none; }
+  .page-hero__coords { opacity: 1; animation: none; }
 }

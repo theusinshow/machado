@@ -8,30 +8,34 @@
 .page-hero {
   background: var(--color-black);
   padding-top: calc(var(--navbar-height) + var(--space-20));
-  padding-bottom: var(--space-20);
+  padding-bottom: var(--space-24);
   overflow: hidden;
   position: relative;
 }
 
+/* Grade + vinheta radial no canto esquerdo */
 .page-hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-  background-size: 2.8rem 2.8rem;
+    radial-gradient(ellipse 65% 80% at 0% 50%, rgba(27, 77, 132, 0.07) 0%, transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
+  background-size: auto, 2.8rem 2.8rem, 2.8rem 2.8rem;
   pointer-events: none;
 }
 
+/* Fade para preto na base — transição suave para o conteúdo */
 .page-hero::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
+  height: 6rem;
+  background: linear-gradient(to bottom, transparent 0%, var(--color-black) 100%);
+  pointer-events: none;
 }
 
 /* ── PAGE HERO — Eyebrow ── */
@@ -42,10 +46,10 @@
   gap: var(--space-3);
   font-family: var(--font-ui-mono);
   font-size: var(--text-xs);
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-primary-light);
-  margin-bottom: var(--space-6);
+  color: rgba(255, 255, 255, 0.38);
+  margin-bottom: var(--space-5);
   opacity: 0;
   animation: subpage-fade-up 0.7s ease 0.05s forwards;
 }
@@ -56,17 +60,17 @@
   height: 1px;
   width: 0;
   background: currentColor;
-  animation: subpage-rule-draw 0.6s var(--ease-machado) 0.15s forwards;
+  animation: subpage-rule-draw 0.7s var(--ease-machado) 0.2s forwards;
 }
 
 /* ── PAGE HERO — Title ── */
 
 .page-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-5xl), 9vw, var(--text-display));
+  font-size: clamp(var(--text-5xl), 10vw, var(--text-display));
   font-weight: var(--weight-regular);
-  line-height: 0.88;
-  letter-spacing: -0.02em;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
   color: var(--color-white);
   margin: 0 0 var(--space-8);
 }
@@ -82,59 +86,39 @@
   animation: subpage-title-rise 1s var(--ease-machado) forwards;
 }
 
-.page-hero__title-line:nth-child(1) .page-hero__title-inner {
-  animation-delay: 0.1s;
-}
-
-.page-hero__title-line:nth-child(2) .page-hero__title-inner {
-  animation-delay: 0.17s;
-}
-
-.page-hero__title-line:nth-child(3) .page-hero__title-inner {
-  animation-delay: 0.24s;
-}
+.page-hero__title-line:nth-child(1) .page-hero__title-inner { animation-delay: 0.1s; }
+.page-hero__title-line:nth-child(2) .page-hero__title-inner { animation-delay: 0.17s; }
+.page-hero__title-line:nth-child(3) .page-hero__title-inner { animation-delay: 0.24s; }
 
 /* ── PAGE HERO — Sub ── */
 
 .page-hero__sub {
-  max-width: 44rem;
+  max-width: 38rem;
   font-family: var(--font-body);
-  font-size: var(--text-lg);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.58);
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.48);
+  padding-left: var(--space-4);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
   opacity: 0;
-  animation: subpage-fade-up 0.7s ease 0.4s forwards;
+  animation: subpage-fade-up 0.7s ease 0.42s forwards;
 }
 
 /* ── KEYFRAMES ── */
 
 @keyframes subpage-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes subpage-title-rise {
-  from {
-    transform: translateY(105%);
-  }
-  to {
-    transform: translateY(0);
-  }
+  from { transform: translateY(105%); }
+  to   { transform: translateY(0); }
 }
 
 @keyframes subpage-rule-draw {
-  from {
-    width: 0;
-  }
-  to {
-    width: 2rem;
-  }
+  from { width: 0; }
+  to   { width: 2.5rem; }
 }
 
 /* ── PAGE SECTION — Base ── */

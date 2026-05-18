@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Machado Plataformas — Depoimentos de clientes que confiam na qualidade e resistência das nossas plataformas para guincho." />
+  <meta name="description" content="Machado Plataformas — Clientes em ação e depoimentos de quem confia na qualidade e resistência das nossas plataformas para guincho." />
 
   <meta property="og:title" content="Clientes — Machado Plataformas" />
   <meta property="og:description" content="Veja o que dizem os clientes da Machado Plataformas sobre qualidade, durabilidade e atendimento." />
@@ -33,66 +33,242 @@
   <!-- CSS Componentes -->
   <link rel="stylesheet" href="./css/components/navbar.css" />
   <link rel="stylesheet" href="./css/components/subpages.css" />
+  <link rel="stylesheet" href="./css/components/depoimentos.css" />
   <link rel="stylesheet" href="./css/components/footer.css" />
 
   <style>
-    .page-content {
-      background-color: var(--color-bg);
-      padding-block: var(--section-md);
+    /* === PAGE CTA — ações duplas === */
+    .page-cta__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
     }
 
-    /* Depoimentos grid */
-    .depo-grid {
-      display: grid;
-      gap: var(--space-6);
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-    .depo-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      padding: var(--space-8);
-      display: grid;
-      gap: var(--space-5);
-    }
-    .depo-card__quote {
-      font-size: var(--text-sm);
-      line-height: 1.75;
-      color: var(--color-text);
-      margin: 0;
-      position: relative;
-      padding-left: var(--space-5);
-    }
-    .depo-card__quote::before {
-      content: '"';
-      position: absolute;
-      left: 0;
-      top: -0.1em;
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      line-height: 1;
-      color: var(--color-primary-light);
-    }
-    .depo-card__author {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
-      padding-top: var(--space-3);
-      border-top: 1px solid var(--color-border);
-    }
-    .depo-card__name {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-medium);
-      color: var(--color-text);
-    }
-    .depo-card__company {
+    .btn--ghost-white {
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+      padding-inline: var(--space-8);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.8);
       font-family: var(--font-ui-mono);
       font-size: var(--text-xs);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      text-decoration: none;
+      transition:
+        border-color var(--dur-fast) var(--ease-premium),
+        color var(--dur-fast) var(--ease-premium),
+        background var(--dur-fast) var(--ease-premium);
     }
 
+    @media (hover: hover) {
+      .btn--ghost-white:hover {
+        border-color: rgba(255, 255, 255, 0.7);
+        color: var(--color-white);
+        background: rgba(255, 255, 255, 0.06);
+      }
+    }
+
+    /* === CLIENTES EM AÇÃO === */
+
+    .em-acao {
+      background: #ffffff;
+      padding-top: var(--section-md);
+      padding-bottom: var(--section-md);
+    }
+
+    /* header da galeria — espelha o padrão de depoimentos-header */
+    .em-acao-header {
+      display: grid;
+      gap: var(--space-6);
+      align-items: end;
+      margin-bottom: var(--space-12);
+    }
+    @media (min-width: 768px) {
+      .em-acao-header {
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      }
+    }
+    .em-acao-header__text {
+      max-width: 440px;
+      margin: 0;
+      color: rgba(28, 36, 48, 0.6);
+      font-size: var(--text-base);
+      line-height: 1.65;
+    }
+
+    /* eyebrow e section-title no contexto claro da galeria */
+    .em-acao .eyebrow {
+      color: var(--color-primary);
+      border-color: rgba(27, 77, 132, 0.2);
+      background: rgba(27, 77, 132, 0.05);
+    }
+    .em-acao .section-title {
+      color: var(--color-text-dark);
+    }
+
+    .em-acao-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: clamp(150px, 17vw, 210px);
+      gap: 2px;
+      margin-top: var(--space-12);
+    }
+
+    /* Layout 4 colunas, 3 linhas exatas com 10 itens:
+       Linha 1: [item1 span2] + [item2] + [item3]
+       Linha 2: [item4] + [item5] + [item6] + [item7]
+       Linha 3: [item8 span2] + [item9] + [item10] */
+    .em-acao-item:nth-child(1),
+    .em-acao-item:nth-child(8) {
+      grid-column: span 2;
+    }
+
+    .em-acao-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--color-bg-mid);
+    }
+
+    .em-acao-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s var(--ease-machado);
+      filter: grayscale(0.1);
+    }
+
+    .em-acao-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    @media (hover: hover) {
+      .em-acao-item:hover img {
+        transform: scale(1.04);
+        filter: grayscale(0);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .em-acao-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: clamp(130px, 28vw, 190px);
+      }
+      .em-acao-item:nth-child(8) { grid-column: span 1; }
+    }
+
+    @media (max-width: 480px) {
+      .em-acao-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: clamp(180px, 55vw, 260px);
+      }
+      .em-acao-item:nth-child(1),
+      .em-acao-item:nth-child(8) { grid-column: span 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .em-acao-item img { transition: none; filter: none; }
+    }
+
+    /* === DEPOIMENTOS — TEMA CLARO (override do dark default) === */
+
+    .depoimentos--light {
+      background: var(--color-surface);
+    }
+
+    /* Eyebrow / kicker */
+    .depoimentos--light .eyebrow {
+      color: var(--color-primary);
+      border-color: rgba(27, 77, 132, 0.2);
+      background: rgba(27, 77, 132, 0.05);
+    }
+
+    /* Título e subtítulo */
+    .depoimentos--light .section-title {
+      color: var(--color-text-dark);
+    }
+    .depoimentos--light .depoimentos-header__text {
+      color: rgba(28, 36, 48, 0.6);
+    }
+
+    /* Trust strip */
+    .depoimentos--light .depoimentos-trust {
+      background-color: #ffffff;
+      border-color: rgba(28, 36, 48, 0.1);
+    }
+    .depoimentos--light .depoimentos-trust__item {
+      border-color: rgba(28, 36, 48, 0.1);
+    }
+    .depoimentos--light .depoimentos-trust__item strong {
+      color: var(--color-text-dark);
+    }
+    .depoimentos--light .depoimentos-trust__item span {
+      color: rgba(28, 36, 48, 0.5);
+    }
+
+    /* Cards */
+    .depoimentos--light .depoimento-card {
+      background: #ffffff;
+      border-color: rgba(28, 36, 48, 0.09);
+      box-shadow: 0 2px 12px rgba(28, 36, 48, 0.06);
+    }
+    .depoimentos--light .depoimento-card::after {
+      color: rgba(91, 155, 213, 0.1);
+    }
+    .depoimentos--light .depoimento-card--featured {
+      background: linear-gradient(160deg, rgba(91,155,213,0.06) 0%, #ffffff 55%);
+      border-color: rgba(91, 155, 213, 0.35);
+      box-shadow: 0 4px 24px rgba(91, 155, 213, 0.1);
+    }
+
+    /* Hover nos cards */
+    @media (hover: hover) and (pointer: fine) {
+      .depoimentos--light .depoimento-card:hover {
+        border-color: rgba(27, 77, 132, 0.25);
+        box-shadow: 0 8px 32px rgba(28, 36, 48, 0.1);
+        transform: translateY(-6px);
+      }
+    }
+
+    /* Tag / categoria */
+    .depoimentos--light .depoimento-card__tag {
+      background-color: rgba(27, 77, 132, 0.05);
+      color: var(--color-primary);
+      border-color: rgba(27, 77, 132, 0.18);
+    }
+
+    /* Texto da citação */
+    .depoimentos--light .depoimento-card__text {
+      color: rgba(28, 36, 48, 0.85);
+    }
+
+    /* Separador author */
+    .depoimentos--light .depoimento-card__author {
+      border-top-color: rgba(28, 36, 48, 0.1);
+    }
+
+    /* Avatar */
+    .depoimentos--light .depoimento-card__avatar {
+      background-color: var(--color-primary);
+      border-color: rgba(27, 77, 132, 0.3);
+      color: #ffffff;
+    }
+
+    /* Nome e empresa */
+    .depoimentos--light .depoimento-card__nome {
+      color: var(--color-text-dark);
+    }
+    .depoimentos--light .depoimento-card__empresa {
+      color: rgba(28, 36, 48, 0.5);
+    }
   </style>
 </head>
 <body>
@@ -175,6 +351,10 @@
       </div>
       <span class="page-hero__page-num" aria-hidden="true">— 02 / 04</span>
       <span class="page-hero__coords" aria-hidden="true">−19.9167° S · −43.9345° O<br>ALT 896M · MG · BR</span>
+      <div class="page-hero__deco" aria-hidden="true">
+        <span class="page-hero__deco-num">02</span>
+        <span class="page-hero__deco-label">MG · BR</span>
+      </div>
       <div class="container">
         <p class="page-hero__status" aria-hidden="true">Sistema ativo</p>
         <p class="page-hero__eyebrow">Quem confia na Machado</p>
@@ -183,64 +363,264 @@
             <span class="page-hero__title-inner">Clientes</span>
           </span>
         </h1>
-        <p class="page-hero__sub">Transportadoras, guinchos e frotas de todo o Brasil que escolheram a Machado pela qualidade, durabilidade e suporte especializado.</p>
+      </div>
+    </section>
+
+    <div class="page-divider" aria-hidden="true">
+      <span class="page-divider__label">Clientes</span>
+    </div>
+
+    <!-- CLIENTES EM AÇÃO -->
+    <section class="em-acao" aria-labelledby="em-acao-heading">
+      <div class="container">
+        <div class="em-acao-header" data-animate="fade-up">
+          <div>
+            <span class="eyebrow">Plataformas em campo</span>
+            <h2 id="em-acao-heading" class="section-title">Clientes em ação.</h2>
+          </div>
+          <p class="em-acao-header__text">
+            Guinchos, transportadoras e frotas de todo o Brasil registrados em operação real com plataformas Machado.
+          </p>
+        </div>
+        <div class="em-acao-grid" role="list" aria-label="Galeria de clientes">
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg"
+               alt="Plataforma Machado em operação de guincho"
+               loading="eager" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
+               alt="Guincho equipado com plataforma Machado"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg"
+               alt="Plataforma Machado em campo"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg"
+               alt="Operação com plataforma veicular Machado"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg"
+               alt="Plataforma Machado em serviço"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg"
+               alt="Guincho trabalhando com plataforma Machado"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg"
+               alt="Plataforma em operação diária"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg"
+               alt="Veículo carregado na plataforma Machado"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/2.jpeg"
+               alt="Plataforma Machado no campo"
+               loading="lazy" />
+        </figure>
+
+        <figure class="em-acao-item" role="listitem">
+          <img src="./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg"
+               alt="Cliente Machado em operação"
+               loading="lazy" />
+        </figure>
+
+        </div>
       </div>
     </section>
 
     <!-- DEPOIMENTOS -->
-    <section class="page-content" aria-label="Depoimentos">
+    <section class="section depoimentos depoimentos--light" aria-labelledby="depoimentos-heading">
       <div class="container">
-        <div class="depo-grid">
 
-          <article class="depo-card">
-            <p class="depo-card__quote">A plataforma Machado já tem mais de 3 anos de uso intenso e nunca precisou de manutenção estrutural. A qualidade do aço é visivelmente diferente das concorrentes.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Carlos Eduardo Souza</span>
-              <span class="depo-card__company">Guincho Souza — São Paulo, SP</span>
-            </div>
-          </article>
-
-          <article class="depo-card">
-            <p class="depo-card__quote">Comprei duas plataformas médias e o atendimento foi excelente do início ao fim. Entrega no prazo, produto exatamente como prometido.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Rodrigo Ferreira</span>
-              <span class="depo-card__company">RF Transportes — Belo Horizonte, MG</span>
-            </div>
-          </article>
-
-          <article class="depo-card">
-            <p class="depo-card__quote">Usamos a linha pesada para remoção de caminhões. Já passou por situações extremas e nunca falhou. Recomendo sem hesitar para quem precisa de seriedade.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Marcos Alves</span>
-              <span class="depo-card__company">Alves Auto Socorro — Curitiba, PR</span>
-            </div>
-          </article>
-
-          <article class="depo-card">
-            <p class="depo-card__quote">Minha frota tem quatro plataformas Machado. O suporte pós-venda é rápido e eficiente. Empresa séria que respeita o cliente.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Fábio Nascimento</span>
-              <span class="depo-card__company">Nasci Guincho — Goiânia, GO</span>
-            </div>
-          </article>
-
-          <article class="depo-card">
-            <p class="depo-card__quote">A plataforma leve que adquiri é perfeita para passeio e SUV. Robusta, acabamento impecável e o preço é muito justo pelo que entrega.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Ana Paula Lima</span>
-              <span class="depo-card__company">Lima Auto Peças — Uberlândia, MG</span>
-            </div>
-          </article>
-
-          <article class="depo-card">
-            <p class="depo-card__quote">Trabalho com guincho há 15 anos e a Machado é a melhor plataforma que já usei. Resistência e praticidade no dia a dia fazem toda a diferença.</p>
-            <div class="depo-card__author">
-              <span class="depo-card__name">Leandro Martins</span>
-              <span class="depo-card__company">Martins Reboque — Vitória, ES</span>
-            </div>
-          </article>
-
+        <div class="depoimentos-header section-header" data-animate="fade-up">
+          <div>
+            <span class="eyebrow">Avaliações de Clientes</span>
+            <h2 id="depoimentos-heading" class="section-title">Confiança de quem coloca a plataforma para trabalhar.</h2>
+          </div>
+          <p class="depoimentos-header__text">
+            Relatos de operadores que dependem de resistência, prazo e suporte direto de fábrica.
+          </p>
         </div>
+
+        <div class="depoimentos-trust" aria-label="Resumo de confiança" data-animate="fade-up" data-delay="0.08">
+          <div class="depoimentos-trust__item">
+            <strong>2.000+</strong>
+            <span>clientes satisfeitos</span>
+          </div>
+          <div class="depoimentos-trust__item">
+            <strong>22+</strong>
+            <span>anos de experiência</span>
+          </div>
+          <div class="depoimentos-trust__item">
+            <strong>Brasil</strong>
+            <span>atendimento nacional</span>
+          </div>
+        </div>
+
+        <div class="depoimentos-wrapper">
+          <div class="depoimentos-track">
+
+            <article class="depoimento-card" data-animate="fade-up" data-delay="0.08">
+              <div class="depoimento-card__top">
+                <span class="depoimento-card__tag mono">Plataforma pesada</span>
+                <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <blockquote class="depoimento-card__text">
+                "A plataforma já tem mais de 3 anos de uso intenso e nunca precisou de manutenção estrutural. A qualidade do aço é visivelmente diferente das concorrentes."
+              </blockquote>
+              <div class="depoimento-card__author">
+                <span class="depoimento-card__avatar" aria-hidden="true">CE</span>
+                <div>
+                  <strong class="depoimento-card__nome">Carlos Eduardo Souza</strong>
+                  <span class="depoimento-card__empresa mono">Guincho Souza · São Paulo, SP</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="depoimento-card depoimento-card--featured" data-animate="fade-up" data-delay="0.16">
+              <div class="depoimento-card__top">
+                <span class="depoimento-card__tag mono">Frota de guinchos</span>
+                <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <blockquote class="depoimento-card__text">
+                "Minha frota tem quatro plataformas Machado. O suporte pós-venda é rápido e eficiente. Empresa séria que respeita o cliente."
+              </blockquote>
+              <div class="depoimento-card__author">
+                <span class="depoimento-card__avatar" aria-hidden="true">FN</span>
+                <div>
+                  <strong class="depoimento-card__nome">Fábio Nascimento</strong>
+                  <span class="depoimento-card__empresa mono">Nasci Guincho · Goiânia, GO</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="depoimento-card" data-animate="fade-up" data-delay="0.24">
+              <div class="depoimento-card__top">
+                <span class="depoimento-card__tag mono">Linha média</span>
+                <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <blockquote class="depoimento-card__text">
+                "Comprei duas plataformas médias e o atendimento foi excelente do início ao fim. Entrega no prazo, produto exatamente como prometido."
+              </blockquote>
+              <div class="depoimento-card__author">
+                <span class="depoimento-card__avatar" aria-hidden="true">RF</span>
+                <div>
+                  <strong class="depoimento-card__nome">Rodrigo Ferreira</strong>
+                  <span class="depoimento-card__empresa mono">RF Transportes · Belo Horizonte, MG</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="depoimento-card" data-animate="fade-up" data-delay="0.32">
+              <div class="depoimento-card__top">
+                <span class="depoimento-card__tag mono">Auto socorro</span>
+                <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <blockquote class="depoimento-card__text">
+                "Usamos a linha pesada para remoção de caminhões. Já passou por situações extremas e nunca falhou. Recomendo sem hesitar para quem precisa de seriedade."
+              </blockquote>
+              <div class="depoimento-card__author">
+                <span class="depoimento-card__avatar" aria-hidden="true">MA</span>
+                <div>
+                  <strong class="depoimento-card__nome">Marcos Alves</strong>
+                  <span class="depoimento-card__empresa mono">Alves Auto Socorro · Curitiba, PR</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="depoimento-card" data-animate="fade-up" data-delay="0.40">
+              <div class="depoimento-card__top">
+                <span class="depoimento-card__tag mono">Plataforma leve</span>
+                <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <blockquote class="depoimento-card__text">
+                "A plataforma leve é perfeita para passeio e SUV. Robusta, acabamento impecável e o preço é muito justo pelo que entrega."
+              </blockquote>
+              <div class="depoimento-card__author">
+                <span class="depoimento-card__avatar" aria-hidden="true">AL</span>
+                <div>
+                  <strong class="depoimento-card__nome">Ana Paula Lima</strong>
+                  <span class="depoimento-card__empresa mono">Lima Auto Peças · Uberlândia, MG</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="depoimento-card" data-animate="fade-up" data-delay="0.48">
+              <div class="depoimento-card__top">
+                <span class="depoimento-card__tag mono">15 anos de guincho</span>
+                <div class="depoimento-card__stars" aria-label="5 de 5 estrelas">
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <blockquote class="depoimento-card__text">
+                "Trabalho com guincho há 15 anos e a Machado é a melhor plataforma que já usei. Resistência e praticidade no dia a dia fazem toda a diferença."
+              </blockquote>
+              <div class="depoimento-card__author">
+                <span class="depoimento-card__avatar" aria-hidden="true">LM</span>
+                <div>
+                  <strong class="depoimento-card__nome">Leandro Martins</strong>
+                  <span class="depoimento-card__empresa mono">Martins Reboque · Vitória, ES</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -249,13 +629,21 @@
       <div class="container">
         <p class="page-cta__eyebrow">Próximo passo</p>
         <h2 class="page-cta__title">Faça parte<br />da lista.</h2>
-        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
-           class="btn btn--split btn--split-primary"
-           target="_blank" rel="noopener noreferrer"
-           data-magnetic>
-          <span class="btn__label">Solicitar Orçamento</span>
-          <span class="btn__plus" aria-hidden="true">+</span>
-        </a>
+        <div class="page-cta__actions">
+          <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+             class="btn btn--split btn--split-primary"
+             target="_blank" rel="noopener noreferrer"
+             data-magnetic>
+            <span class="btn__label">Solicitar Orçamento</span>
+            <span class="btn__plus" aria-hidden="true">+</span>
+          </a>
+          <a href="https://wa.me/5500000000000?text=Olá!%20Vim%20pela%20página%20de%20clientes%20e%20gostaria%20de%20conversar."
+             class="btn btn--ghost-white"
+             target="_blank" rel="noopener noreferrer"
+             data-magnetic>
+            <span class="btn__label">Falar no WhatsApp</span>
+          </a>
+        </div>
       </div>
     </section>
 

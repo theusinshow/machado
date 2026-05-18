@@ -6,6 +6,166 @@
 
 ---
 
+## [2026-05-18] FIX — sobre.html: restauração do diferenciais, correção de font, limpeza de CSS morto
+
+**Agente:** Claude Code
+**Sessão:** Correção pós-refatoração sobre.html
+
+### Alterado
+- `sobre.html`:
+  - Re-adicionado link para `diferenciais.css` (seção sticky-scroll restaurada)
+  - `#diferenciais` (sticky-scroll original com 4 steps + 4 imagens) restaurado acima de `.sobre-empresa`
+  - `.sobre-stat__num`: `font-family` trocado de `var(--font-display)` → `var(--font-heading)` para evitar caracteres ausentes na Machado TTF (`+`, `.`, vírgula)
+  - Removido CSS morto das classes `.sobre-pilares`, `.pilares-header`, `.pilares-list`, `.pilar-row` (seção substituída pelo original)
+
+---
+
+## [2026-05-18] REFACTOR — sobre.html: reestruturação completa (white bg + padrão canônico)
+
+**Agente:** Claude Code
+**Sessão:** Refatoração sobre.html (/frontend-design /ui-ux-pro-max /copywriting)
+
+### Alterado
+- `sobre.html`:
+  - Removido link `diferenciais.css` (seção substituída)
+  - `<style>` completamente reescrito — estilos limpos, fundo branco, tokens AA ✓
+  - **"Sobre a empresa"** (branco): header 2-col canônico (eyebrow + section-title) + strip de 4 stats (números grandes, fonte display, azul primário) + split texto/imagem (1:1 em 1024px)
+  - **"Pilares da empresa"** (surface #F2F4F6): header 2-col canônico + lista editorial numerada (4 pilares como linhas de tabela — num col 3.5rem | corpo | tags)
+  - Removidos: `page-content`, `page-content--alt`, `valores-grid`, `valor-item`, `diferenciais` (seção sticky-scroll)
+  - Copy reescrito (copywriting skill): direto, industrial, sem buzzwords
+  - "3 Linhas de produto" → "2.000+ Clientes ativos" (mais impactante)
+  - Pilares consolidados: Aço / Fabricação / Garantia / Suporte (4 items, layout limpo)
+
+---
+
+## [2026-05-18] STYLE — clientes.html: padronização de cabeçalhos (eyebrow + section-title)
+
+**Agente:** Claude Code
+**Sessão:** Padronização de títulos
+
+### Alterado
+- `clientes.html`:
+  - Galeria "Clientes em ação": substituído padrão `sec-kicker` + `sec-title` pelo padrão canônico `eyebrow` + `section-title` com wrapper `.em-acao-header` (grid 2 colunas em tablet+, igual ao `.depoimentos-header`)
+  - Adicionado parágrafo de apoio `.em-acao-header__text` na galeria (mesmo papel do `.depoimentos-header__text`)
+  - CSS atualizado: removidas regras `sec-kicker`/`sec-title`, adicionados overrides para `eyebrow` e `section-title` no contexto claro da galeria
+  - Ambas as seções agora usam: wrapper grid > (eyebrow + section-title) + texto de apoio + data-animate="fade-up"
+
+---
+
+## [2026-05-18] FIX/FEAT — clientes.html: remoção de dead node + CTA duplo com WhatsApp
+
+**Agente:** Claude Code
+**Sessão:** Melhorias finais clientes.html
+
+### Alterado
+- `clientes.html`:
+  - Removido `page-hero__sub` (texto hidden por CSS — dead node)
+  - CTA final: adicionado `page-cta__actions` (flex wrap) com botão secundário `btn--ghost-white` "Falar no WhatsApp"
+  - Adicionados estilos inline: `.page-cta__actions`, `.btn--ghost-white` (ghost outline para fundo escuro, com hover sutil)
+
+---
+
+## [2026-05-18] STYLE — clientes.html: tema claro (white background) para galeria e depoimentos
+
+**Agente:** Claude Code
+**Sessão:** Otimização galeria + tema light
+
+### Alterado
+- `clientes.html` — tema light via overrides inline scoped:
+  - `.em-acao`: bg `#ffffff`, kicker e título adaptados para fundo claro (contraste AA ≥4.5:1)
+  - `.depoimentos`: removida classe `section--dark`; adicionada `.depoimentos--light`
+  - Cards em branco com `border: rgba(28,36,48,0.09)` e `box-shadow` minimal
+  - `.depoimento-card--featured`: gradiente azul leve + borda `primary-light`
+  - Avatar: `background: var(--color-primary)` com texto branco
+  - Texto muted: substituído de `--color-text-muted` (#A7B0BA, contraste insuficiente) por `rgba(28,36,48,0.5/0.6)` (contraste AA ✓)
+  - `.depoimentos--light` escoped para não afetar index.html
+
+---
+
+## [2026-05-18] STYLE — clientes.html: galeria compactada para 4 colunas
+
+**Agente:** Claude Code
+**Sessão:** Otimização galeria clientes
+
+### Alterado
+- `clientes.html` — `.em-acao-grid`:
+  - Grid migrado de 3 para 4 colunas
+  - Substituído `aspect-ratio: 4/3` por `grid-auto-rows: clamp(150px, 17vw, 210px)` (altura fixa fluida)
+  - Layout rebalanceado para 3 linhas exatas: item1(span2)+item2+item3 / item4-7 / item8(span2)+item9+item10
+  - Resultado: ~50% menos altura vertical (~630px vs ~1200px no desktop)
+  - Responsivo: 2 colunas em 767px, 1 coluna em 480px
+
+---
+
+## [2026-05-18] STYLE — page-hero: separador linha + label (revert diagonal)
+
+**Agente:** Claude Code
+**Sessão:** Refinamento page-hero
+
+### Alterado
+- `css/components/subpages.css`:
+  - `.page-hero`: removido `clip-path` (revert opção 3)
+  - `.page-hero::after`: fade de base restaurado
+  - Adicionados estilos `.page-divider` e `.page-divider__label` — linha fina com label mono centralizado
+- `produtos.html` — divider com label "Produtos"
+- `clientes.html` — divider com label "Clientes"
+- `sobre.html` — divider com label "Sobre"
+- `credito.html` — divider com label "Linha de Crédito"
+
+---
+
+## [2026-05-18] STYLE — page-hero: separador diagonal (clip-path)
+
+**Agente:** Claude Code
+**Sessão:** Refinamento page-hero
+
+### Alterado
+- `css/components/subpages.css`:
+  - `.page-hero`: adicionado `clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.5rem), 0 100%)` — corte diagonal na borda inferior
+  - `.page-hero::after`: desativado (`display: none`) — substituído pelo corte diagonal
+
+---
+
+## [2026-05-18] STYLE — page-hero: compacto — remove status/sub, título menor e espaçado
+
+**Agente:** Claude Code
+**Sessão:** Refinamento page-hero — simplificação e compactação
+
+### Alterado
+- `css/components/subpages.css`:
+  - `.page-hero`: padding-top reduzido (`+ space-8`), padding-bottom (`space-10`), min-height `clamp(200px, 30svh, 340px)`
+  - `.page-hero__title`: fonte reduzida para `clamp(2rem, 7vw, 5.25rem)` (metade anterior), letter-spacing `0.12em`, margin removida
+  - `.page-hero__status`: `display: none`
+  - `.page-hero__sub`: `display: none`
+
+---
+
+## [2026-05-18] STYLE — page-hero: refinamento visual completo (escala, atmosfera, animações, layout)
+
+**Agente:** Claude Code
+**Sessão:** Refinamento page-hero — todas as subpáginas
+
+### Alterado
+- `css/components/subpages.css` — Refatoração completa do bloco PAGE HERO:
+  - `.page-hero`: adicionado `min-height: clamp(480px, 68svh, 760px)` para presença vertical maior
+  - `.page-hero::before`: segundo glow (top-right sutil `rgba(91,155,213,0.07)`), glow principal mais forte (`0.18` vs `0.09`), fade-in animado (`page-hero-bg-in`)
+  - `.page-hero::after`: fade de base aumentado de 5rem para 8rem
+  - `.page-hero__title`: fonte maior `clamp(4rem, 14vw, 10.5rem)` (era `clamp(3rem, 10vw, 8rem)`), letter-spacing `-0.04em` (era `-0.03em`), line-height `0.84`
+  - `.page-hero__title-inner`: animação `subpage-title-rise` agora inclui `filter: blur(8px) → blur(0)` para entrada cinematográfica
+  - `.page-hero__sub`: borda esquerda migrou para `2px solid rgba(91,155,213,0.28)` (azul sutil vs branco neutro)
+  - Novos keyframes: `page-hero-bg-in`, `page-hero-deco-in`
+  - Novos estilos: `.page-hero__deco`, `.page-hero__deco-num`, `.page-hero__deco-label`
+  - `@media (prefers-reduced-motion)`: atualizado para incluir novos elementos e `filter: none` no título
+  - `@media (max-width: 767px)`: `.page-hero__deco { display: none }` para mobile
+
+### Criado (estrutura HTML)
+- `produtos.html` — elemento `<div class="page-hero__deco">` com número "01" e label "MG · BR"
+- `clientes.html` — elemento `<div class="page-hero__deco">` com número "02"
+- `sobre.html` — elemento `<div class="page-hero__deco">` com número "03"
+- `credito.html` — elemento `<div class="page-hero__deco">` com número "04"
+
+---
+
 ## [2026-05-16] STYLE — Produtos: Arsenal — refactor content (título azul, kicker limpo, animações)
 
 **Agente:** Claude Code

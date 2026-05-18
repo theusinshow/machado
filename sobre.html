@@ -37,118 +37,107 @@
   <link rel="stylesheet" href="./css/components/footer.css" />
 
   <style>
-    /* Content sections */
-    .page-content {
-      background-color: var(--color-bg);
+
+    /* === SOBRE A EMPRESA === */
+    .sobre-empresa {
+      background: #ffffff;
       padding-block: var(--section-md);
     }
-    .page-content--alt {
-      background-color: var(--color-surface);
+
+    /* Header canônico 2-col */
+    .sobre-header {
+      display: grid;
+      gap: var(--space-6);
+      align-items: end;
+      margin-bottom: var(--space-12);
+    }
+    @media (min-width: 768px) {
+      .sobre-header {
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      }
+    }
+    .sobre-header__text {
+      max-width: 440px;
+      margin: 0;
+      color: rgba(28, 36, 48, 0.6);
+      font-size: var(--text-base);
+      line-height: 1.65;
     }
 
     /* Stats strip */
     .sobre-stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1px;
-      background-color: var(--color-border);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
+      background: rgba(28, 36, 48, 0.08);
+      border: 1px solid rgba(28, 36, 48, 0.08);
       margin-bottom: var(--space-16);
     }
+    @media (min-width: 640px) {
+      .sobre-stats { grid-template-columns: repeat(4, 1fr); }
+    }
     .sobre-stat {
-      background-color: var(--color-surface);
+      background: #ffffff;
       padding: var(--space-8) var(--space-6);
       display: grid;
       gap: var(--space-2);
     }
     .sobre-stat__num {
-      font-family: var(--font-display);
-      font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
-      font-weight: normal;
+      font-family: var(--font-heading);
+      font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+      font-weight: var(--weight-bold);
       line-height: 1;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       color: var(--color-primary);
+      font-variant-numeric: tabular-nums;
     }
     .sobre-stat__label {
       font-family: var(--font-ui-mono);
       font-size: var(--text-xs);
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--color-text-muted);
+      color: rgba(28, 36, 48, 0.5);
     }
 
-    /* Text + image layout */
+    /* Split texto + imagem */
     .sobre-split {
       display: grid;
       gap: var(--space-12);
-      align-items: start;
+      align-items: center;
     }
     @media (min-width: 1024px) {
-      .sobre-split {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-16);
-      }
-    }
-
-    .sobre-text__eyebrow {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-primary-light);
-      margin-bottom: var(--space-5);
-    }
-    .sobre-text__eyebrow::before {
-      content: '';
-      display: block;
-      width: 2rem;
-      height: 1px;
-      background: var(--color-primary-light);
-    }
-    .sobre-text__title {
-      font-family: var(--font-display);
-      font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
-      font-weight: normal;
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      color: var(--color-text);
-      margin: 0 0 var(--space-6);
+      .sobre-split { grid-template-columns: 1fr 1fr; gap: var(--space-16); }
     }
     .sobre-text__body {
       display: grid;
-      gap: var(--space-4);
+      gap: var(--space-5);
     }
     .sobre-text__body p {
       font-size: var(--text-base);
       line-height: 1.75;
-      color: var(--color-text-muted);
+      color: rgba(28, 36, 48, 0.65);
       margin: 0;
+    }
+    .sobre-text__body p:first-child {
+      font-size: var(--text-lg);
+      color: rgba(28, 36, 48, 0.85);
     }
 
     .sobre-image {
       position: relative;
-      border-radius: 2px;
       overflow: hidden;
       aspect-ratio: 4 / 3;
-      background-color: var(--color-black);
+      background: var(--color-bg-mid);
     }
     .sobre-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
     }
     .sobre-image__badge {
       position: absolute;
-      bottom: var(--space-4);
-      left: var(--space-4);
-      background-color: var(--color-black);
-      border: 1px solid rgba(255,255,255,0.12);
+      bottom: var(--space-4); left: var(--space-4);
+      background: rgba(0, 0, 0, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       padding: var(--space-3) var(--space-4);
       display: grid;
       gap: var(--space-1);
@@ -159,49 +148,24 @@
       font-weight: normal;
       line-height: 1;
       color: var(--color-white);
+      letter-spacing: 0.06em;
     }
     .sobre-image__badge-label {
       font-family: var(--font-ui-mono);
       font-size: var(--text-xs);
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255, 255, 255, 0.5);
     }
 
-    /* Values grid */
-    .valores-grid {
-      display: grid;
-      gap: 1px;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      background-color: var(--color-border);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
+    /* eyebrow + section-title em contexto claro */
+    .sobre-empresa .eyebrow {
+      color: var(--color-primary);
+      border-color: rgba(27, 77, 132, 0.2);
+      background: rgba(27, 77, 132, 0.05);
     }
-    .valor-item {
-      background-color: var(--color-surface);
-      padding: var(--space-8);
-      display: grid;
-      gap: var(--space-3);
-    }
-    .valor-item__num {
-      font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.18em;
-      color: var(--color-primary-light);
-    }
-    .valor-item__title {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: normal;
-      line-height: 1;
-      color: var(--color-text);
-    }
-    .valor-item__desc {
-      font-size: var(--text-sm);
-      line-height: 1.7;
-      color: var(--color-text-muted);
-      margin: 0;
+    .sobre-empresa .section-title {
+      color: var(--color-text-dark);
     }
 
   </style>
@@ -286,6 +250,10 @@
       </div>
       <span class="page-hero__page-num" aria-hidden="true">— 03 / 04</span>
       <span class="page-hero__coords" aria-hidden="true">−19.9167° S · −43.9345° O<br>ALT 896M · MG · BR</span>
+      <div class="page-hero__deco" aria-hidden="true">
+        <span class="page-hero__deco-num">03</span>
+        <span class="page-hero__deco-label">MG · BR</span>
+      </div>
       <div class="container">
         <p class="page-hero__status" aria-hidden="true">Sistema ativo</p>
         <p class="page-hero__eyebrow">Nossa história</p>
@@ -298,10 +266,23 @@
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="page-content" aria-label="Números da empresa">
+    <div class="page-divider" aria-hidden="true">
+      <span class="page-divider__label">Sobre</span>
+    </div>
+
+    <!-- SOBRE A EMPRESA -->
+    <section class="sobre-empresa" aria-labelledby="sobre-heading">
       <div class="container">
-        <div class="sobre-stats">
+
+        <div class="sobre-header" data-animate="fade-up">
+          <div>
+            <span class="eyebrow">A empresa</span>
+            <h2 id="sobre-heading" class="section-title">Feito aqui. Com quem sabe o que está fazendo.</h2>
+          </div>
+          <p class="sobre-header__text">Mais de duas décadas de fabricação própria em Minas Gerais. Cada plataforma passa pelo nosso controle — do aço ao acabamento.</p>
+        </div>
+
+        <div class="sobre-stats" aria-label="Números da empresa">
           <div class="sobre-stat">
             <span class="sobre-stat__num">22+</span>
             <span class="sobre-stat__label">Anos de mercado</span>
@@ -315,26 +296,22 @@
             <span class="sobre-stat__label">Estados atendidos</span>
           </div>
           <div class="sobre-stat">
-            <span class="sobre-stat__num">3</span>
-            <span class="sobre-stat__label">Linhas de produto</span>
+            <span class="sobre-stat__num">2.000+</span>
+            <span class="sobre-stat__label">Clientes ativos</span>
           </div>
         </div>
 
-        <!-- Texto + imagem -->
         <div class="sobre-split">
-          <div class="sobre-text">
-            <p class="sobre-text__eyebrow">A empresa</p>
-            <h2 class="sobre-text__title">Fabricação própria.<br />Qualidade comprovada.</h2>
+          <div class="sobre-text" data-animate="fade-up">
             <div class="sobre-text__body">
-              <p>A Machado Plataformas nasceu da experiência prática no setor de implementos rodoviários. Com estrutura própria de fabricação em Minas Gerais, controlamos cada etapa do processo — do corte do aço à entrega final.</p>
-              <p>Nossa linha cobre três segmentos distintos: leve, média e pesada. Cada modelo é desenvolvido para um tipo específico de operação, garantindo que o cliente invista exatamente no que precisa.</p>
-              <p>Atendemos guinchos, transportadoras, locadoras e frotas em todo o território nacional, com logística flexível e suporte técnico especializado.</p>
+              <p>A Machado nasceu da necessidade de quem opera guincho: uma plataforma que aguentasse o dia a dia pesado sem precisar de assistência a cada mês.</p>
+              <p>Fabricamos tudo internamente — do corte do aço à pintura final. Isso nos dá controle sobre qualidade, prazo e custo. Sem terceirizados, sem surpresas na entrega.</p>
+              <p>Atendemos guinchos, transportadoras, locadoras e frotas em todo o Brasil. Nossa equipe orienta o cliente desde a escolha do modelo até o suporte pós-venda.</p>
             </div>
           </div>
-
-          <div class="sobre-image">
+          <div class="sobre-image" data-animate="fade-up" data-delay="0.12">
             <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
-                 alt="Estrutura de fabricação da Machado Plataformas"
+                 alt="Fabricação Machado Plataformas em Minas Gerais"
                  width="800" height="600"
                  loading="lazy" />
             <div class="sobre-image__badge">
@@ -343,43 +320,11 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- VALORES -->
-    <section class="page-content page-content--alt" aria-label="Nossos valores">
-      <div class="container">
-        <div class="valores-grid">
-
-          <div class="valor-item">
-            <span class="valor-item__num">01</span>
-            <h3 class="valor-item__title">Qualidade de material</h3>
-            <p class="valor-item__desc">Aço de alta resistência selecionado com critérios rígidos. Estrutura que suporta cargas extremas sem deformação.</p>
-          </div>
-
-          <div class="valor-item">
-            <span class="valor-item__num">02</span>
-            <h3 class="valor-item__title">Fabricação própria</h3>
-            <p class="valor-item__desc">Controle total do processo produtivo, da matéria-prima ao acabamento. Sem intermediários, sem terceirização de etapas críticas.</p>
-          </div>
-
-          <div class="valor-item">
-            <span class="valor-item__num">03</span>
-            <h3 class="valor-item__title">Suporte especializado</h3>
-            <p class="valor-item__desc">Equipe técnica disponível para auxiliar na escolha do modelo correto e no suporte pós-venda em qualquer estado.</p>
-          </div>
-
-          <div class="valor-item">
-            <span class="valor-item__num">04</span>
-            <h3 class="valor-item__title">Entrega nacional</h3>
-            <p class="valor-item__desc">Logística estruturada para atender clientes em todo o Brasil com prazos definidos e rastreamento completo.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- PILARES -->
+    <!-- PILARES DA EMPRESA -->
     <section id="diferenciais" class="section section--light diferenciais" aria-labelledby="diferenciais-heading" data-diferenciais>
       <div class="container container--wide">
         <div class="diferenciais-layout">
@@ -427,7 +372,6 @@
                 <p class="diferencial-step__chips">Escolha · Instalação · Pós-venda</p>
               </div>
             </article>
-
           </div>
 
           <div class="diferenciais-visual" aria-hidden="true">

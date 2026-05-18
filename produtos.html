@@ -340,35 +340,6 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* ── Ticker ── */
-    .arsenal__ticker {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      overflow: hidden;
-      z-index: 6;
-      padding: var(--space-5) 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .arsenal__ticker-inner {
-      display: flex;
-      white-space: nowrap;
-      animation: arsenal-ticker 22s linear infinite;
-    }
-
-    .arsenal__ticker-text {
-      font-family: var(--font-ui-mono);
-      font-size: 10px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.18);
-      padding-right: var(--space-10);
-    }
-
-    @keyframes arsenal-ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
 
     /* ── Layout alternado — seção do meio com respiro próprio ── */
     .arsenal--alt {
@@ -631,6 +602,10 @@
       </div>
       <span class="page-hero__page-num" aria-hidden="true">— 01 / 04</span>
       <span class="page-hero__coords" aria-hidden="true">−19.9167° S · −43.9345° O<br>ALT 896M · MG · BR</span>
+      <div class="page-hero__deco" aria-hidden="true">
+        <span class="page-hero__deco-num">01</span>
+        <span class="page-hero__deco-label">MG · BR</span>
+      </div>
       <div class="container">
         <p class="page-hero__status" aria-hidden="true">Sistema ativo</p>
         <p class="page-hero__eyebrow">3 linhas. Uma fábrica.</p>
@@ -642,6 +617,10 @@
         <p class="page-hero__sub">Aço de alta resistência, do passeio ao caminhão.</p>
       </div>
     </section>
+
+    <div class="page-divider" aria-hidden="true">
+      <span class="page-divider__label">Produtos</span>
+    </div>
 
     <div class="arsenal-stack">
 
@@ -718,13 +697,6 @@
         </div>
 
       </div>
-      <div class="arsenal__ticker" aria-hidden="true">
-        <div class="arsenal__ticker-inner">
-          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Leve — Machado Plataformas — 3.500 kg — Passeio e SUV — Fabricação própria — Entrega nacional —&nbsp;</span>
-        </div>
-      </div>
     </section>
 
     <!-- ── LINHA MEDIA ── -->
@@ -796,13 +768,6 @@
           </div>
         </div>
 
-      </div>
-      <div class="arsenal__ticker" aria-hidden="true">
-        <div class="arsenal__ticker-inner">
-          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Média — Machado Plataformas — 6.000 kg — Frotas e médio porte — Estrutura reforçada — Fabricação própria —&nbsp;</span>
-        </div>
       </div>
     </section>
 
@@ -878,13 +843,6 @@
           </div>
         </div>
 
-      </div>
-      <div class="arsenal__ticker" aria-hidden="true">
-        <div class="arsenal__ticker-inner">
-          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
-          <span class="arsenal__ticker-text">Linha Pesada — Machado Plataformas — 8.000 kg+ — Caminhões — Segmento pesado — Aço de alta resistência — Fabricação própria —&nbsp;</span>
-        </div>
       </div>
     </section>
 

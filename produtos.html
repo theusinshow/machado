@@ -364,22 +364,26 @@
     }
 
 
-    /* ── Swiper Coverflow ── */
+    /* ── Swiper ── */
     .arsenal-swiper {
       width: 100%;
       padding-block: var(--space-6);
     }
 
     .arsenal-swiper .swiper-slide {
-      width: 62%;
+      width: 100%;
       position: relative;
+    }
+
+    .arsenal-swiper .swiper-slide {
+      aspect-ratio: 16 / 9;
     }
 
     .arsenal-swiper .arsenal__img {
       width: 100%;
-      height: clamp(250px, 44svh, 510px);
+      height: 100%;
       max-height: none;
-      object-fit: cover;
+      object-fit: contain;
       mix-blend-mode: normal;
       margin: 0;
       display: block;
@@ -415,11 +419,7 @@
       }
 
       .arsenal-swiper .swiper-slide {
-        width: 80%;
-      }
-
-      .arsenal-swiper .arsenal__img {
-        height: clamp(160px, 36vw, 280px);
+        width: 100%;
       }
 
       .arsenal__content {
@@ -446,6 +446,98 @@
     @media (prefers-reduced-motion: reduce) {
       .arsenal__ticker-inner { animation: none; }
       .arsenal__img { transition: none; }
+    }
+
+    /* ── Lightbox ── */
+    .arsenal__img { cursor: zoom-in; }
+
+    .lb-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.93);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .lb-overlay.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lb-img-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: min(92vw, 1280px);
+      max-height: 90svh;
+    }
+    .lb-img {
+      display: block;
+      max-width: 100%;
+      max-height: 90svh;
+      object-fit: contain;
+      transform: scale(0.92);
+      opacity: 0;
+      transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
+      user-select: none;
+    }
+    .lb-overlay.is-open .lb-img {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .lb-close {
+      position: fixed;
+      top: var(--space-5);
+      right: var(--space-5);
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease;
+      z-index: 2001;
+    }
+    .lb-close:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+    .lb-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 64px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+      z-index: 2001;
+    }
+    .lb-arrow--prev { left: var(--space-4); }
+    .lb-arrow--next { right: var(--space-4); }
+    .lb-arrow:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+    .lb-arrow:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
+    .lb-counter {
+      position: fixed;
+      bottom: var(--space-5);
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-ui-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      color: rgba(255, 255, 255, 0.3);
+      pointer-events: none;
+      z-index: 2001;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .lb-overlay, .lb-img { transition: none; }
     }
 
     /* ── Content entrance animations — staggered ── */
@@ -908,6 +1000,17 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lb-overlay" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
+    <div class="lb-img-wrap">
+      <img class="lb-img" id="lb-img" src="" alt="" />
+    </div>
+    <button class="lb-close" id="lb-close" aria-label="Fechar">✕</button>
+    <button class="lb-arrow lb-arrow--prev" id="lb-prev" aria-label="Imagem anterior">&#8249;</button>
+    <button class="lb-arrow lb-arrow--next" id="lb-next" aria-label="Próxima imagem">&#8250;</button>
+    <span class="lb-counter" id="lb-counter" aria-live="polite"></span>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -915,7 +1018,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
   <script>
-    // Arsenal — Swiper Coverflow
+    // Arsenal — Swiper slide simples (1 imagem por vez)
     document.querySelectorAll('.arsenal').forEach(function(section) {
       var swiperEl = section.querySelector('.arsenal-swiper');
       var prevBtn  = section.querySelector('.arsenal__arrow--prev');
@@ -935,21 +1038,11 @@
         }
       }
 
-      var initialSlide = parseInt(swiperEl.dataset.initialSlide || '0', 10);
-
       var swiper = new Swiper(swiperEl, {
-        effect: 'coverflow',
+        effect: 'slide',
         grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        initialSlide: initialSlide,
-        coverflowEffect: {
-          rotate: 28,
-          stretch: 0,
-          depth: 160,
-          modifier: 1,
-          slideShadows: false,
-        },
+        slidesPerView: 1,
+        speed: 420,
         on: {
           init:        function(sw) { updateNav(sw); },
           slideChange: function(sw) { updateNav(sw); },
@@ -964,6 +1057,81 @@
         if (e.key === 'ArrowRight') { e.preventDefault(); swiper.slideNext(); }
       });
     });
+
+    // Lightbox
+    (function() {
+      var overlay   = document.getElementById('lb-overlay');
+      var lbImg     = document.getElementById('lb-img');
+      var lbClose   = document.getElementById('lb-close');
+      var lbPrev    = document.getElementById('lb-prev');
+      var lbNext    = document.getElementById('lb-next');
+      var lbCounter = document.getElementById('lb-counter');
+      var images = [];
+      var current = 0;
+      var lastFocused = null;
+
+      function show(idx) {
+        current = idx;
+        var d = images[current];
+        lbImg.style.opacity = '0';
+        lbImg.style.transform = 'scale(0.92)';
+        lbImg.src = d.src;
+        lbImg.alt = d.alt;
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            lbImg.style.opacity = '';
+            lbImg.style.transform = '';
+          });
+        });
+        lbPrev.disabled = current === 0;
+        lbNext.disabled = current === images.length - 1;
+        lbCounter.textContent =
+          String(current + 1).padStart(2, '0') + ' / ' +
+          String(images.length).padStart(2, '0');
+      }
+
+      function open(imgs, idx) {
+        lastFocused = document.activeElement;
+        images = imgs;
+        overlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        if (window.lenisInstance) window.lenisInstance.stop();
+        show(idx);
+        setTimeout(function() { lbClose.focus(); }, 50);
+      }
+
+      function close() {
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (window.lenisInstance) window.lenisInstance.start();
+        if (lastFocused) lastFocused.focus();
+      }
+
+      lbClose.addEventListener('click', close);
+      lbPrev.addEventListener('click', function() { if (current > 0) show(current - 1); });
+      lbNext.addEventListener('click', function() { if (current < images.length - 1) show(current + 1); });
+
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) close();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (!overlay.classList.contains('is-open')) return;
+        if (e.key === 'Escape') { e.preventDefault(); close(); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); if (current > 0) show(current - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); if (current < images.length - 1) show(current + 1); }
+      });
+
+      document.querySelectorAll('.arsenal-swiper').forEach(function(swiperEl) {
+        var imgs = Array.from(swiperEl.querySelectorAll('.arsenal__img'));
+        imgs.forEach(function(img, i) {
+          img.addEventListener('click', function() {
+            var list = imgs.map(function(el) { return { src: el.src, alt: el.alt }; });
+            open(list, i);
+          });
+        });
+      });
+    })();
 
     // Content entrance animations
     var contentEls = document.querySelectorAll('.arsenal__content');

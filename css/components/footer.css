@@ -56,11 +56,12 @@
   width: max-content;
   margin: 0 0 calc(-1 * var(--space-8));
   color: var(--color-white);
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: clamp(5.5rem, 17vw, 20rem);
-  font-weight: normal;
+  font-weight: 900;
   line-height: 0.74;
-  letter-spacing: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   white-space: nowrap;
   opacity: 0.08;
   transform-origin: left bottom;

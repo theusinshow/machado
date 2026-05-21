@@ -56,9 +56,9 @@
 
 .social-proof-stat__number {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: clamp(var(--text-4xl), 11vw, var(--text-5xl));
-  font-weight: normal;
+  font-weight: 900;
   line-height: 0.9;
   letter-spacing: -0.02em;
   color: var(--color-black);

@@ -107,7 +107,7 @@
   right: var(--space-6);
   bottom: var(--space-4);
   color: var(--color-primary-ring);
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: 8rem;
   line-height: 0.75;
   pointer-events: none;

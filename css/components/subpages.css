@@ -165,11 +165,12 @@
 /* ── PAGE HERO — Title ── */
 
 .page-hero__title {
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: clamp(2rem, 7vw, 5.25rem);
-  font-weight: var(--weight-regular);
+  font-weight: 900;
   line-height: 0.9;
   letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -213,9 +214,9 @@
 }
 
 .page-hero__deco-num {
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: clamp(8rem, 20vw, 18rem);
-  font-weight: var(--weight-regular);
+  font-weight: 900;
   line-height: 1;
   letter-spacing: -0.05em;
   color: transparent;
@@ -406,9 +407,9 @@
 /* ── KPI CELL — Value ── */
 
 .kpi-cell__val {
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
-  font-weight: var(--weight-regular);
+  font-weight: 900;
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--color-primary-light);
@@ -461,11 +462,12 @@
 /* ── PAGE CTA — Title ── */
 
 .page-cta__title {
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
-  font-weight: var(--weight-regular);
+  font-weight: 900;
   line-height: 0.9;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--color-white);
   margin: 0 0 var(--space-10);
 }

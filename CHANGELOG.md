@@ -6,6 +6,35 @@
 
 ---
 
+## [2026-05-21] STYLE — Tipografia: Orbitron Black definida como fonte definitiva dos títulos de seção
+
+**Agente:** Claude Code
+**Sessão:** Estudo tipográfico — decisão final
+
+### Alterado
+- `css/typography.css` — `@import` Orbitron Black 900 via Google Fonts (fonte definitiva de títulos)
+- `css/variables.css` — `--font-titles` consolidada com Orbitron; removidos comentários de estudo e Eurostile Extended do stack
+- `css/components/social-proof.css`, `produtos.css`, `footer.css`, `subpages.css` — `font-weight: 900` aplicado
+- `produtos.html` — `.arsenal__name` usando `--font-titles` / Orbitron 900
+
+---
+
+## [2026-05-21] STYLE — Estudo tipográfico: Eurostile Extended nos títulos, Metal Gear preservado apenas no hero
+
+**Agente:** Claude Code
+**Sessão:** Estudo tipográfico — Eurostile Extended
+
+### Alterado
+- `css/variables.css` — adicionada variável `--font-titles` com stack Eurostile Extended + Rajdhani como fallback
+- `css/typography.css` — adicionado `@import` Google Fonts para Rajdhani (fallback do estudo; remover em produção)
+- `css/components/social-proof.css` — `.social-proof-stat__number` → `--font-titles`, weight 700
+- `css/components/produtos.css` — `.produtos-line-name` e `.produtos-line-name__prefix` → `--font-titles`, uppercase, letter-spacing ajustado
+- `css/components/depoimentos.css` — `.depoimento-card::after` (aspas decorativas) → `--font-titles`
+- `css/components/footer.css` — `.footer-headline` → `--font-titles`, uppercase, weight 700
+- `css/components/subpages.css` — `.page-hero__title`, `.page-hero__deco-num`, `.kpi-cell__val`, `.page-cta__title` → `--font-titles`, weight 700
+
+---
+
 ## [2026-05-18] FIX — sobre.html: restauração do diferenciais, correção de font, limpeza de CSS morto
 
 **Agente:** Claude Code

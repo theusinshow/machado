@@ -114,11 +114,12 @@
   display: grid;
   grid-template-rows: auto auto;
   gap: 0.18em;
-  font-family: var(--font-display);
+  font-family: var(--font-titles);
   font-size: clamp(var(--text-4xl), 9vw, var(--text-6xl));
-  font-weight: normal;
+  font-weight: 900;
   line-height: 0.92;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--color-white);
   pointer-events: none;
   user-select: none;
@@ -129,9 +130,10 @@
   font-size: 0.52em;
   color: rgba(255, 255, 255, 0.55);
   margin-bottom: 0.08em;
-  letter-spacing: 0.04em;
-  font-family: var(--font-display);
-  font-weight: normal;
+  letter-spacing: 0.14em;
+  font-family: var(--font-titles);
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .produtos-line-name__suffix {

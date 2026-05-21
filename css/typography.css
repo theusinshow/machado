@@ -4,11 +4,23 @@
    Depende de: variables.css
 =========================== */
 
+/* ── Orbitron Black (títulos de seção) ── */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+
 /* ── Fonte Proprietária ── */
 @font-face {
   font-family: 'Machado';
   src: url('../assets/fonts/METAG___.TTF') format('truetype');
   font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Eurostile Extended Black ── */
+@font-face {
+  font-family: 'Eurostile Extended';
+  src: url('../assets/fonts/EurostileExtendedBlack.ttf') format('truetype');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }

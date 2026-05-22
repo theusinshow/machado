@@ -44,7 +44,7 @@
 .sobre-spec__header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
   position: relative;
   padding: var(--space-4);
 }
@@ -108,23 +108,22 @@
 }
 
 .sobre-title {
-  font-family: var(--font-heading);
-  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
+  font-family: 'Horizon', var(--font-heading);
+  font-size: clamp(3rem, 7.5vw, 6rem);
   font-weight: 700;
-  line-height: 0.92;
-  letter-spacing: 0.01em;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   color: var(--color-white);
-  text-wrap: balance;
   margin: 0;
 }
 
 .sobre-subtitle {
-  font-size: var(--text-sm);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.62);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
   margin: 0;
-  max-width: 34ch;
+  max-width: 38ch;
 }
 
 /* ── KPI Grid ────────────────────────────────────────── */

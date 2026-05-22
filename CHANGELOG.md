@@ -6,6 +6,52 @@
 
 ---
 
+## [2026-05-22] FEAT — Clientes: galerias imersivas + seção Entregas Realizadas
+
+**Agente:** Claude Code
+**Sessão:** Refinamentos clientes.html — galerias, entregas, arsenal
+
+### Alterado
+- `clientes.html` — galeria "Clientes em Ação" convertida de grid masonry para carrossel Swiper imersivo: slides altos (`clamp(420px, 68vh, 720px)`), efeito spotlight (slide ativo scale 1 / opacity 1, laterais scale 0.93 / opacity 0.45), `centeredSlides`, `loop: true`, `initialSlide: 1`, numeração no canto de cada slide, setas prev/next + contador
+- `clientes.html` — adicionado Swiper CSS/JS (`swiper@11`) via CDN
+- `clientes.html` — seção `ENTREGAS REALIZADAS` criada: 4 KPIs (2.000+ plataformas, 22 anos, 27 UFs, 100% fabricação própria), galeria carrossel idêntica ao em-acao (fundo escuro, setas com tema escuro), ticker animado de estados atendidos com `// Cobertura nacional`
+- `clientes.html` — galeria de entregas: mesmo Swiper imersivo com `loop: true`, `initialSlide: 1`, spotlight effect, contador e numeração por slide
+
+### Alterado — Arsenal (produtos.html)
+- `produtos.html` — `min-height` do `arsenal__inner` ajustado para `clamp(240px, 38svh, 420px)`; imagens com `transform: scale(0.85)`; linha vertical gradiente do `arsenal__content::before` removida; `max-width` do content aumentado `440px → 520px`; título `arsenal__name` aumentado para `clamp(3rem, 5.5vw, 5.75rem)`
+- `produtos.html` — lista `.arsenal__features` redesenhada: separadores horizontais entre itens, fonte mono uppercase, marcador square azul 6×6px
+- `produtos.html` — tagline curta adicionada abaixo do título em cada linha (Leve, Média, Pesada); label `// DIFERENCIAIS` adicionado acima da lista de features
+
+---
+
+## [2026-05-22] FIX — Arsenal: imagens maiores — swiper preenche altura total da coluna
+
+**Agente:** Claude Code
+**Sessão:** Refinamentos visuais — arsenal + opcionais + depoimentos + footer
+
+### Alterado
+- `produtos.html` — `.arsenal-swiper`: removido `aspect-ratio: 16/9` dos slides; swiper agora usa `height: 100%` + `flex: 1` preenchendo toda a altura da coluna de imagem; `.arsenal__img-side` ganhou `min-height` e `height: 100%` para propagar a altura corretamente; `.swiper-wrapper` e `.swiper-slide` configurados com `height: 100%`
+
+---
+
+## [2026-05-21] FEAT — Seção Opcionais: 6 cards de acessórios com placeholder blueprint
+
+**Agente:** Claude Code
+**Sessão:** Refinamentos visuais — arsenal + opcionais + depoimentos + footer
+
+### Criado
+- `produtos.html` — nova seção `.opcionais` com 6 cards (Alongamento de Chassis, Asa Delta, Rampas, Sapatas Hidráulicas, Remonte, Portas Laterais Removíveis); placeholder blueprint com gradiente CSS; background branco, padding 40px, sem labels de header
+
+### Alterado
+- `produtos.html` — `.page-hero` padding-bottom restaurado (removida override que zerava o espaço inferior); `.arsenal__inner min-height` aumentado para `clamp(400px, 68svh, 720px)`; `.arsenal__img-side align-self: stretch`
+- `css/components/depoimentos.css` — refatorado para background branco; cores dos cards, textos e trust strip ajustadas para contexto claro
+- `css/components/footer.css` — `.footer-headline` migrada para `var(--font-display)` (fonte Machado/METAG), texto reduzido para "Machado", centralizado, `font-size: clamp(4rem, 14vw, 18rem)`; `.footer-grid min-height` reduzido
+- `css/typography.css` — `.text-stroke` corrigido: `color: #1B4D84` em vez de `transparent`
+- `css/components/sobre.css` — título e subtítulo com tamanhos revistos; `.sobre-cta` com classe `btn--split--lg`
+- `index.html` — `.depoimentos` sem classe `section--dark`; `.sobre-cta` com `btn--split--lg`
+
+---
+
 ## [2026-05-21] STYLE — Tipografia: Orbitron Black definida como fonte definitiva dos títulos de seção
 
 **Agente:** Claude Code

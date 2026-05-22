@@ -6,47 +6,36 @@
 /* ── PAGE HERO ── */
 
 .page-hero {
-  background: var(--color-black);
+  background: linear-gradient(150deg, #1A2E46 0%, #112236 50%, #0d1825 100%);
   padding-top: calc(var(--navbar-height) + var(--space-8));
-  padding-bottom: var(--space-10);
+  padding-bottom: var(--space-14);
   overflow: hidden;
   position: relative;
-  min-height: clamp(200px, 30svh, 340px);
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(91, 155, 213, 0.18);
 }
 
-/* Grade + glow duplo + linha diagonal */
+/* Glow azul esquerda + linha diagonal clean */
 .page-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
+  background:
+    radial-gradient(ellipse 75% 85% at -5% 65%, rgba(27, 77, 132, 0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 45% at 98% 10%, rgba(91, 155, 213, 0.10) 0%, transparent 60%),
     linear-gradient(128deg,
-      transparent calc(42% - 0.5px),
-      rgba(255,255,255,0.05) calc(42% - 0.5px),
-      rgba(255,255,255,0.05) calc(42% + 0.5px),
-      transparent calc(42% + 0.5px)
-    ),
-    radial-gradient(ellipse 80% 90% at -8% 55%, rgba(27,77,132,0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 65% at 105% -5%, rgba(91,155,213,0.07) 0%, transparent 60%),
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-  background-size: auto, auto, auto, 2.8rem 2.8rem, 2.8rem 2.8rem;
+      transparent calc(55% - 0.5px),
+      rgba(91, 155, 213, 0.08) calc(55% - 0.5px),
+      rgba(91, 155, 213, 0.08) calc(55% + 0.5px),
+      transparent calc(55% + 0.5px)
+    );
   pointer-events: none;
   z-index: 0;
-  opacity: 0;
-  animation: page-hero-bg-in 1.4s ease 0.05s forwards;
 }
 
-/* Fade para preto na base */
-.page-hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 5rem;
-  background: linear-gradient(to bottom, transparent 0%, var(--color-black) 100%);
-  pointer-events: none;
-  z-index: 1;
-}
+.page-hero::after { content: none; }
 
 /* ── PAGE DIVIDER ── */
 
@@ -58,78 +47,13 @@
 
 .page-divider__label { display: none; }
 
-/* ── Scan line — varre o hero no load ── */
-.page-hero__scan {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right,
-    transparent 0%,
-    rgba(255,255,255,0.18) 25%,
-    rgba(91,155,213,0.5) 50%,
-    rgba(255,255,255,0.18) 75%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 6;
-  animation: page-hero-scan 1.1s var(--ease-machado) 0.05s forwards;
-}
-
-/* ── Ticker ── */
-.page-hero__ticker {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  overflow: hidden;
-  z-index: 3;
-  padding: var(--space-3) 0;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.page-hero__ticker-inner {
-  display: flex;
-  white-space: nowrap;
-  animation: page-hero-ticker 28s linear infinite;
-}
-
-.page-hero__ticker-text {
-  font-family: var(--font-ui-mono);
-  font-size: 9px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.13);
-  padding-right: var(--space-10);
-}
-
-/* ── Número de página ── */
-.page-hero__page-num {
-  position: absolute;
-  bottom: var(--space-10);
-  left: var(--space-6);
-  font-family: var(--font-ui-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.18);
-  pointer-events: none;
-  z-index: 4;
-  opacity: 0;
-  animation: subpage-fade-up 0.6s ease 0.6s forwards;
-}
-
-/* ── Coordenadas ── */
-.page-hero__coords {
-  position: absolute;
-  bottom: var(--space-10);
-  right: var(--space-6);
-  font-family: var(--font-ui-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.18);
-  text-align: right;
-  line-height: 1.7;
-  pointer-events: none;
-  z-index: 4;
-  opacity: 0;
-  animation: subpage-fade-up 0.6s ease 0.65s forwards;
+/* ── Decorativos removidos no redesign clean ── */
+.page-hero__scan,
+.page-hero__ticker,
+.page-hero__page-num,
+.page-hero__coords,
+.page-hero__deco {
+  display: none;
 }
 
 /* ── Status ── */
@@ -147,7 +71,7 @@
   font-size: var(--text-xs);
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
+  color: var(--color-primary-light);
   margin-bottom: var(--space-5);
   opacity: 0;
   animation: subpage-fade-up 0.7s ease 0.1s forwards;
@@ -166,10 +90,10 @@
 
 .page-hero__title {
   font-family: var(--font-titles);
-  font-size: clamp(2rem, 7vw, 5.25rem);
-  font-weight: 900;
+  font-size: clamp(1.75rem, 5.5vw, 4rem);
+  font-weight: 700;
   line-height: 0.9;
-  letter-spacing: 0.12em;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
   margin: 0;
 }
@@ -194,47 +118,6 @@
 
 .page-hero__sub {
   display: none;
-}
-
-/* ── PAGE HERO — Decoração fantasma ── */
-
-.page-hero__deco {
-  position: absolute;
-  top: 50%;
-  right: clamp(var(--space-8), 7vw, 6rem);
-  transform: translateY(-50%);
-  pointer-events: none;
-  z-index: 2;
-  user-select: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  opacity: 0;
-  animation: page-hero-deco-in 1.4s var(--ease-machado) 0.3s forwards;
-}
-
-.page-hero__deco-num {
-  font-family: var(--font-titles);
-  font-size: clamp(8rem, 20vw, 18rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,0.05);
-  display: block;
-}
-
-.page-hero__deco-label {
-  font-family: var(--font-ui-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.1);
-  margin-top: var(--space-2);
-}
-
-@media (max-width: 767px) {
-  .page-hero__deco { display: none; }
 }
 
 /* ── KEYFRAMES ── */

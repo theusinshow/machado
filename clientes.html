@@ -30,6 +30,9 @@
   <link rel="stylesheet" href="./css/layout.css" />
   <link rel="stylesheet" href="./css/animations.css" />
 
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <!-- CSS Componentes -->
   <link rel="stylesheet" href="./css/components/navbar.css" />
   <link rel="stylesheet" href="./css/components/subpages.css" />
@@ -80,12 +83,11 @@
       padding-bottom: var(--section-md);
     }
 
-    /* header da galeria — espelha o padrão de depoimentos-header */
     .em-acao-header {
       display: grid;
       gap: var(--space-6);
       align-items: end;
-      margin-bottom: var(--space-12);
+      margin-bottom: var(--space-10);
     }
     @media (min-width: 768px) {
       .em-acao-header {
@@ -100,82 +102,477 @@
       line-height: 1.65;
     }
 
-    /* eyebrow e section-title no contexto claro da galeria */
     .em-acao .eyebrow {
       color: var(--color-primary);
       border-color: rgba(27, 77, 132, 0.2);
       background: rgba(27, 77, 132, 0.05);
     }
-    .em-acao .section-title {
-      color: var(--color-text-dark);
-    }
+    .em-acao .section-title { color: var(--color-text-dark); }
 
-    .em-acao-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: clamp(150px, 17vw, 210px);
-      gap: 2px;
-      margin-top: var(--space-12);
-    }
-
-    /* Layout 4 colunas, 3 linhas exatas com 10 itens:
-       Linha 1: [item1 span2] + [item2] + [item3]
-       Linha 2: [item4] + [item5] + [item6] + [item7]
-       Linha 3: [item8 span2] + [item9] + [item10] */
-    .em-acao-item:nth-child(1),
-    .em-acao-item:nth-child(8) {
-      grid-column: span 2;
-    }
-
-    .em-acao-item {
+    /* ── Galeria Swiper imersiva ── */
+    .em-acao-swiper-wrap {
       position: relative;
-      overflow: hidden;
-      background: var(--color-bg-mid);
+      margin-inline: calc(-1 * var(--space-6));
     }
 
-    .em-acao-item img {
+    @media (min-width: 1280px) {
+      .em-acao-swiper-wrap {
+        margin-inline: calc(-1 * clamp(var(--space-6), 6vw, 8rem));
+      }
+    }
+
+    .em-acao-swiper {
+      width: 100%;
+      overflow: hidden;
+      padding-inline: clamp(var(--space-6), 5vw, 6rem);
+    }
+
+    .em-acao-swiper .swiper-slide {
+      height: clamp(420px, 68vh, 720px);
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.93);
+      opacity: 0.45;
+      transition: transform 0.6s var(--ease-machado), opacity 0.5s ease;
+      will-change: transform, opacity;
+    }
+
+    .em-acao-swiper .swiper-slide-active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .em-acao-swiper .swiper-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.7s var(--ease-machado);
-      filter: grayscale(0.1);
+      transition: transform 1s var(--ease-machado);
     }
 
-    .em-acao-item::after {
+    .em-acao-swiper .swiper-slide-active img {
+      transform: scale(1);
+    }
+
+    /* Overlay gradiente inferior */
+    .em-acao-swiper .swiper-slide::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%);
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%),
+        linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 30%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Numeração no canto */
+    .em-acao-swiper .swiper-slide::before {
+      content: attr(data-num);
+      position: absolute;
+      bottom: var(--space-5);
+      right: var(--space-5);
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.45);
+      z-index: 2;
+    }
+
+    /* ── Controles ── */
+    .em-acao-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: var(--space-5);
+      padding-inline: clamp(var(--space-6), 5vw, 6rem);
+    }
+
+    .em-acao-arrows {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .em-acao-arrow {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.12);
+      color: rgba(28,36,48,0.55);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.12s ease;
+    }
+
+    .em-acao-arrow:hover:not(:disabled) {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .em-acao-arrow:active:not(:disabled) { transform: scale(0.92); }
+
+    .em-acao-arrow:disabled {
+      opacity: 0.22;
+      cursor: default;
       pointer-events: none;
     }
 
-    @media (hover: hover) {
-      .em-acao-item:hover img {
-        transform: scale(1.04);
-        filter: grayscale(0);
-      }
+    .em-acao-arrow svg { width: 20px; height: 20px; pointer-events: none; }
+
+    .em-acao-counter {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      color: rgba(28,36,48,0.38);
+      font-variant-numeric: tabular-nums;
     }
 
-    @media (max-width: 767px) {
-      .em-acao-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: clamp(130px, 28vw, 190px);
-      }
-      .em-acao-item:nth-child(8) { grid-column: span 1; }
-    }
-
-    @media (max-width: 480px) {
-      .em-acao-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: clamp(180px, 55vw, 260px);
-      }
-      .em-acao-item:nth-child(1),
-      .em-acao-item:nth-child(8) { grid-column: span 1; }
+    .em-acao-counter strong {
+      color: var(--color-text-dark);
+      font-weight: 500;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .em-acao-item img { transition: none; filter: none; }
+      .em-acao-swiper .swiper-slide,
+      .em-acao-swiper .swiper-slide img { transition: none; }
+      .em-acao-swiper .swiper-slide { transform: scale(1); opacity: 1; }
+    }
+
+    /* === ENTREGAS REALIZADAS === */
+
+    .entregas {
+      background: var(--color-black);
+      color: var(--color-white);
+      padding-block: clamp(4rem, 8vw, 7rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid de fundo sutil */
+    .entregas::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 2.8rem 2.8rem;
+      pointer-events: none;
+    }
+
+    .entregas__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .entregas__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .entregas__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+      margin-bottom: var(--space-3);
+    }
+
+    .entregas__eyebrow::before {
+      content: '';
+      width: 1.75rem;
+      height: 1px;
+      background: currentColor;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .entregas__title {
+      font-family: var(--font-titles);
+      font-size: clamp(1.75rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .entregas__subtitle {
+      max-width: 32ch;
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      color: rgba(255,255,255,0.38);
+      margin: 0;
+      text-align: right;
+    }
+
+    /* Grid de KPIs */
+    .entregas-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    @media (min-width: 768px) {
+      .entregas-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .entregas-kpi {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: var(--space-3);
+      padding: var(--space-6) var(--space-6) var(--space-5);
+      background: var(--color-black);
+      position: relative;
+      transition: background 0.25s ease;
+    }
+
+    .entregas-kpi::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--color-primary-light);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      .entregas-kpi:hover { background: rgba(255,255,255,0.03); }
+      .entregas-kpi:hover::before { opacity: 0.6; }
+    }
+
+    .entregas-kpi__val {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--color-white);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .entregas-kpi__sup {
+      font-size: 0.45em;
+      vertical-align: super;
+      color: var(--color-primary-light);
+      margin-left: 1px;
+    }
+
+    .entregas-kpi__key {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.4;
+    }
+
+    /* Galeria carrossel — mesma lógica do em-acao-swiper */
+    .entregas-gallery-wrap {
+      position: relative;
+      margin-inline: calc(-1 * var(--space-6));
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    @media (min-width: 1280px) {
+      .entregas-gallery-wrap {
+        margin-inline: calc(-1 * clamp(var(--space-6), 6vw, 8rem));
+      }
+    }
+
+    .entregas-gallery-swiper {
+      width: 100%;
+      overflow: hidden;
+      padding-inline: clamp(var(--space-6), 5vw, 6rem);
+    }
+
+    .entregas-gallery-swiper .swiper-slide {
+      height: clamp(420px, 68vh, 720px);
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.93);
+      opacity: 0.45;
+      transition: transform 0.6s var(--ease-machado), opacity 0.5s ease;
+      will-change: transform, opacity;
+    }
+
+    .entregas-gallery-swiper .swiper-slide-active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .entregas-gallery-swiper .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 1s var(--ease-machado);
+    }
+
+    .entregas-gallery-swiper .swiper-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%),
+        linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 30%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .entregas-gallery-swiper .swiper-slide::before {
+      content: attr(data-num);
+      position: absolute;
+      bottom: var(--space-5);
+      right: var(--space-5);
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.45);
+      z-index: 2;
+    }
+
+    .entregas-gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: var(--space-5);
+      padding-inline: clamp(var(--space-6), 5vw, 6rem);
+    }
+
+    .entregas-gallery-arrows {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .entregas-gallery-arrow {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.12s ease;
+    }
+
+    .entregas-gallery-arrow:hover:not(:disabled) {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .entregas-gallery-arrow:active:not(:disabled) { transform: scale(0.92); }
+
+    .entregas-gallery-arrow:disabled {
+      opacity: 0.22;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .entregas-gallery-arrow svg { width: 20px; height: 20px; pointer-events: none; }
+
+    .entregas-gallery-counter {
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.3);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .entregas-gallery-counter strong {
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .entregas-gallery-swiper .swiper-slide,
+      .entregas-gallery-swiper .swiper-slide img { transition: none; }
+      .entregas-gallery-swiper .swiper-slide { transform: scale(1); opacity: 1; }
+    }
+
+    /* Ticker de estados */
+    .entregas-ticker {
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: var(--space-5);
+    }
+
+    .entregas-ticker__label {
+      font-family: var(--font-ui-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+      margin-bottom: var(--space-3);
+    }
+
+    .entregas-ticker__track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: entregas-scroll 28s linear infinite;
+    }
+
+    .entregas-ticker__inner {
+      display: flex;
+      gap: var(--space-4);
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    @keyframes entregas-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .entregas-ticker__item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-ui-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .entregas-ticker__item::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--color-primary-light);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .entregas-ticker__track { animation: none; }
+      .entregas-kpi { transition: none; }
     }
 
     /* === DEPOIMENTOS — TEMA CLARO (override do dark default) === */
@@ -382,69 +779,199 @@
             Guinchos, transportadoras e frotas de todo o Brasil registrados em operação real com plataformas Machado.
           </p>
         </div>
-        <div class="em-acao-grid" role="list" aria-label="Galeria de clientes">
+        <div class="em-acao-swiper-wrap">
+          <div class="swiper em-acao-swiper" aria-label="Galeria de clientes em ação">
+            <div class="swiper-wrapper">
+              <figure class="swiper-slide" data-num="01 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg"
+                     alt="Plataforma Machado em operação de guincho" loading="eager" />
+              </figure>
+              <figure class="swiper-slide" data-num="02 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
+                     alt="Guincho equipado com plataforma Machado" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="03 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg"
+                     alt="Plataforma Machado em campo" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="04 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg"
+                     alt="Operação com plataforma veicular Machado" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="05 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg"
+                     alt="Plataforma Machado em serviço" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="06 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg"
+                     alt="Guincho trabalhando com plataforma Machado" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="07 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg"
+                     alt="Plataforma em operação diária" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="08 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg"
+                     alt="Veículo carregado na plataforma Machado" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="09 / 10">
+                <img src="./assets/images/galeria/2.jpeg"
+                     alt="Plataforma Machado no campo" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="10 / 10">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg"
+                     alt="Cliente Machado em operação" loading="lazy" />
+              </figure>
+            </div>
+          </div>
 
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg"
-               alt="Plataforma Machado em operação de guincho"
-               loading="eager" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
-               alt="Guincho equipado com plataforma Machado"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg"
-               alt="Plataforma Machado em campo"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg"
-               alt="Operação com plataforma veicular Machado"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg"
-               alt="Plataforma Machado em serviço"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg"
-               alt="Guincho trabalhando com plataforma Machado"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg"
-               alt="Plataforma em operação diária"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg"
-               alt="Veículo carregado na plataforma Machado"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/2.jpeg"
-               alt="Plataforma Machado no campo"
-               loading="lazy" />
-        </figure>
-
-        <figure class="em-acao-item" role="listitem">
-          <img src="./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg"
-               alt="Cliente Machado em operação"
-               loading="lazy" />
-        </figure>
-
+          <div class="em-acao-controls">
+            <div class="em-acao-arrows">
+              <button class="em-acao-arrow em-acao-arrow--prev" aria-label="Fotos anteriores" disabled>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10 12L6 8l4-4"/>
+                </svg>
+              </button>
+              <button class="em-acao-arrow em-acao-arrow--next" aria-label="Próximas fotos">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 4l4 4-4 4"/>
+                </svg>
+              </button>
+            </div>
+            <span class="em-acao-counter" aria-live="polite">
+              <strong>01</strong> — 10
+            </span>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ENTREGAS REALIZADAS -->
+    <section class="entregas" aria-labelledby="entregas-heading">
+      <div class="container entregas__inner">
+
+        <div class="entregas__header" data-animate="fade-up">
+          <div>
+            <p class="entregas__eyebrow">Histórico de operações</p>
+            <h2 id="entregas-heading" class="entregas__title">Entregas Realizadas</h2>
+          </div>
+          <p class="entregas__subtitle">Números que refletem anos de fabricação consistente e entrega em todo o território nacional.</p>
+        </div>
+
+        <div class="entregas-grid" data-animate="fade-up" data-delay="0.06">
+          <div class="entregas-kpi">
+            <span class="entregas-kpi__val">2.000<span class="entregas-kpi__sup">+</span></span>
+            <span class="entregas-kpi__key">Plataformas Entregues</span>
+          </div>
+          <div class="entregas-kpi">
+            <span class="entregas-kpi__val">22<span class="entregas-kpi__sup">anos</span></span>
+            <span class="entregas-kpi__key">De Fabricação</span>
+          </div>
+          <div class="entregas-kpi">
+            <span class="entregas-kpi__val">27<span class="entregas-kpi__sup">UF</span></span>
+            <span class="entregas-kpi__key">Estados Atendidos</span>
+          </div>
+          <div class="entregas-kpi">
+            <span class="entregas-kpi__val">100<span class="entregas-kpi__sup">%</span></span>
+            <span class="entregas-kpi__key">Fabricação Própria</span>
+          </div>
+        </div>
+
+        <div class="entregas-gallery-wrap" data-animate="fade-up" data-delay="0.10">
+          <div class="swiper entregas-gallery-swiper">
+            <div class="swiper-wrapper">
+              <figure class="swiper-slide" data-num="01 / 06">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg"
+                     alt="Plataforma Machado entregue em campo" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="02 / 06">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg"
+                     alt="Entrega de plataforma Machado" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="03 / 06">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg"
+                     alt="Plataforma Machado em operação" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="04 / 06">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
+                     alt="Guincho com plataforma Machado" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="05 / 06">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg"
+                     alt="Plataforma Machado em serviço" loading="lazy" />
+              </figure>
+              <figure class="swiper-slide" data-num="06 / 06">
+                <img src="./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg"
+                     alt="Cliente Machado em operação" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+
+          <div class="entregas-gallery-controls">
+            <div class="entregas-gallery-arrows">
+              <button class="entregas-gallery-arrow entregas-gallery-arrow--prev" aria-label="Foto anterior" disabled>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M10 12L6 8l4-4"/>
+                </svg>
+              </button>
+              <button class="entregas-gallery-arrow entregas-gallery-arrow--next" aria-label="Próxima foto">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 4l4 4-4 4"/>
+                </svg>
+              </button>
+            </div>
+            <span class="entregas-gallery-counter" aria-live="polite">
+              <strong>01</strong> — 06
+            </span>
+          </div>
+        </div>
+
+        <div class="entregas-ticker" data-animate="fade-up" data-delay="0.12">
+          <p class="entregas-ticker__label">// Cobertura nacional</p>
+          <div class="entregas-ticker__track" aria-hidden="true">
+            <div class="entregas-ticker__inner">
+              <span class="entregas-ticker__item">Minas Gerais</span>
+              <span class="entregas-ticker__item">São Paulo</span>
+              <span class="entregas-ticker__item">Rio de Janeiro</span>
+              <span class="entregas-ticker__item">Espírito Santo</span>
+              <span class="entregas-ticker__item">Goiás</span>
+              <span class="entregas-ticker__item">Mato Grosso</span>
+              <span class="entregas-ticker__item">Mato Grosso do Sul</span>
+              <span class="entregas-ticker__item">Paraná</span>
+              <span class="entregas-ticker__item">Santa Catarina</span>
+              <span class="entregas-ticker__item">Rio Grande do Sul</span>
+              <span class="entregas-ticker__item">Bahia</span>
+              <span class="entregas-ticker__item">Pernambuco</span>
+              <span class="entregas-ticker__item">Ceará</span>
+              <span class="entregas-ticker__item">Maranhão</span>
+              <span class="entregas-ticker__item">Pará</span>
+              <span class="entregas-ticker__item">Amazonas</span>
+              <span class="entregas-ticker__item">Rondônia</span>
+              <span class="entregas-ticker__item">Tocantins</span>
+            </div>
+            <div class="entregas-ticker__inner" aria-hidden="true">
+              <span class="entregas-ticker__item">Minas Gerais</span>
+              <span class="entregas-ticker__item">São Paulo</span>
+              <span class="entregas-ticker__item">Rio de Janeiro</span>
+              <span class="entregas-ticker__item">Espírito Santo</span>
+              <span class="entregas-ticker__item">Goiás</span>
+              <span class="entregas-ticker__item">Mato Grosso</span>
+              <span class="entregas-ticker__item">Mato Grosso do Sul</span>
+              <span class="entregas-ticker__item">Paraná</span>
+              <span class="entregas-ticker__item">Santa Catarina</span>
+              <span class="entregas-ticker__item">Rio Grande do Sul</span>
+              <span class="entregas-ticker__item">Bahia</span>
+              <span class="entregas-ticker__item">Pernambuco</span>
+              <span class="entregas-ticker__item">Ceará</span>
+              <span class="entregas-ticker__item">Maranhão</span>
+              <span class="entregas-ticker__item">Pará</span>
+              <span class="entregas-ticker__item">Amazonas</span>
+              <span class="entregas-ticker__item">Rondônia</span>
+              <span class="entregas-ticker__item">Tocantins</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -693,6 +1220,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -700,6 +1228,84 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
   <script src="./js/gsap-setup.js"></script>
   <script type="module" src="./js/main.js"></script>
+
+  <script>
+    // Galeria entregas realizadas
+    (function () {
+      var prevBtn = document.querySelector('.entregas-gallery-arrow--prev');
+      var nextBtn = document.querySelector('.entregas-gallery-arrow--next');
+      var counter = document.querySelector('.entregas-gallery-counter');
+      var total   = 6;
+
+      var swiper = new Swiper('.entregas-gallery-swiper', {
+        initialSlide: 1,
+        loop: true,
+        slidesPerView: 1.08,
+        spaceBetween: 12,
+        centeredSlides: true,
+        grabCursor: true,
+        speed: 600,
+        breakpoints: {
+          600:  { slidesPerView: 1.35, spaceBetween: 16 },
+          1024: { slidesPerView: 1.55, spaceBetween: 20 },
+          1280: { slidesPerView: 1.7,  spaceBetween: 24 },
+        },
+        on: {
+          init: update,
+          slideChange: update,
+        },
+      });
+
+      function update(sw) {
+        var idx = sw.activeIndex + 1;
+        if (counter) counter.innerHTML = '<strong>' + String(idx).padStart(2, '0') + '</strong> — ' + String(total).padStart(2, '0');
+        if (prevBtn) prevBtn.disabled = sw.isBeginning;
+        if (nextBtn) nextBtn.disabled = sw.isEnd;
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { swiper.slidePrev(); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { swiper.slideNext(); });
+    })();
+
+    // Galeria clientes em ação
+    (function () {
+      var prevBtn  = document.querySelector('.em-acao-arrow--prev');
+      var nextBtn  = document.querySelector('.em-acao-arrow--next');
+      var counter  = document.querySelector('.em-acao-counter');
+      var total    = 10;
+
+      var swiper = new Swiper('.em-acao-swiper', {
+        initialSlide: 1,
+        loop: true,
+        slidesPerView: 1.08,
+        spaceBetween: 12,
+        centeredSlides: true,
+        grabCursor: true,
+        speed: 600,
+        breakpoints: {
+          600:  { slidesPerView: 1.35, spaceBetween: 16 },
+          1024: { slidesPerView: 1.55, spaceBetween: 20 },
+          1280: { slidesPerView: 1.7,  spaceBetween: 24 },
+        },
+        on: {
+          init: update,
+          slideChange: update,
+        },
+      });
+
+      function update(sw) {
+        var idx = sw.activeIndex + 1;
+        if (counter) {
+          counter.innerHTML = '<strong>' + String(idx).padStart(2, '0') + '</strong> — ' + String(total).padStart(2, '0');
+        }
+        if (prevBtn) prevBtn.disabled = sw.isBeginning;
+        if (nextBtn) nextBtn.disabled = sw.isEnd;
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { swiper.slidePrev(); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { swiper.slideNext(); });
+    })();
+  </script>
 
 </body>
 </html>

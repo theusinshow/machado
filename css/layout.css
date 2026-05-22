@@ -102,8 +102,10 @@
   max-width: 52rem;
   overflow-wrap: normal;
   color: var(--heading-title);
-  font-family: var(--font-heading);
+  font-family: 'Horizon', var(--font-heading);
   font-size: var(--text-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   font-weight: var(--weight-regular);
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -330,7 +332,7 @@
 }
 
 .btn--split-primary .btn__plus {
-  background-color: var(--color-navy);
+  background-color: #25D366;
   color: var(--color-white);
 }
 
@@ -340,7 +342,7 @@
 }
 
 .btn--split-primary:hover .btn__plus {
-  background-color: var(--color-primary);
+  background-color: #1ebe5d;
 }
 
 /* ── Variante: Outline ── */
@@ -351,9 +353,9 @@
 }
 
 .btn--split-outline .btn__plus {
-  background-color: transparent;
-  color: var(--color-primary-light);
-  box-shadow: inset 0 0 0 1px var(--color-primary-light);
+  background-color: #25D366;
+  color: var(--color-white);
+  box-shadow: none;
 }
 
 .btn--split-outline:hover .btn__label {
@@ -363,9 +365,9 @@
 }
 
 .btn--split-outline:hover .btn__plus {
-  background-color: var(--color-navy);
+  background-color: #1ebe5d;
   color: var(--color-white);
-  box-shadow: inset 0 0 0 1px var(--color-navy);
+  box-shadow: none;
 }
 
 /* ── Variante: Ghost ── */

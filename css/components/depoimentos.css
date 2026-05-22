@@ -4,10 +4,21 @@
 =========================== */
 
 .depoimentos {
-  background:
-    linear-gradient(180deg, var(--color-bg) 0%, var(--color-navy-dark) 100%);
+  background: #ffffff;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
+/* ── Título e eyebrow em fundo claro ── */
+.depoimentos .section-title {
+  color: #0d1825;
+}
+
+.depoimentos .eyebrow {
+  color: var(--color-primary);
+}
+
+/* ── Header ── */
 .depoimentos-header {
   display: grid;
   gap: var(--space-6);
@@ -21,24 +32,25 @@
 .depoimentos-header__text {
   max-width: 440px;
   margin: 0;
-  color: var(--color-text-muted);
+  color: #52606d;
   font-size: var(--text-base);
   line-height: 1.65;
 }
 
+/* ── Trust strip ── */
 .depoimentos-trust {
   display: grid;
   grid-template-columns: 1fr;
   margin-bottom: var(--space-8);
-  border: 1px solid var(--color-border-light);
-  background-color: var(--color-primary-soft);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #f5f7fa;
 }
 
 .depoimentos-trust__item {
   display: grid;
   gap: var(--space-2);
   padding: var(--space-5);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 .depoimentos-trust__item:last-child {
@@ -46,7 +58,7 @@
 }
 
 .depoimentos-trust__item strong {
-  color: var(--color-white);
+  color: #0d1825;
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
   font-weight: var(--weight-medium);
@@ -54,13 +66,14 @@
 }
 
 .depoimentos-trust__item span {
-  color: var(--color-text-muted);
+  color: #6b7280;
   font-family: var(--font-ui-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
+/* ── Track ── */
 .depoimentos-wrapper {
   position: relative;
 }
@@ -71,6 +84,7 @@
   gap: var(--space-5);
 }
 
+/* ── Card ── */
 .depoimento-card {
   position: relative;
   display: flex;
@@ -79,17 +93,18 @@
   gap: var(--space-6);
   padding: var(--space-6);
   overflow: hidden;
-  background:
-    linear-gradient(180deg, var(--color-navbar-panel-card) 0%, transparent 100%),
-    var(--color-bg-mid);
-  border: 1px solid var(--color-border-light);
-  box-shadow: 0 24px 60px var(--color-navbar-shadow);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 6px 24px rgba(0, 0, 0, 0.05);
   transition:
     border-color var(--dur-normal) var(--ease-premium),
     transform var(--dur-normal) var(--ease-premium),
     box-shadow var(--dur-normal) var(--ease-premium);
 }
 
+/* Linha azul topo */
 .depoimento-card::before {
   content: '';
   position: absolute;
@@ -101,25 +116,26 @@
   transition: transform var(--dur-normal) var(--ease-premium);
 }
 
+/* Aspa decorativa */
 .depoimento-card::after {
   content: '"';
   position: absolute;
   right: var(--space-6);
   bottom: var(--space-4);
-  color: var(--color-primary-ring);
+  color: rgba(27, 77, 132, 0.07);
   font-family: var(--font-titles);
   font-size: 8rem;
   line-height: 0.75;
   pointer-events: none;
 }
 
+/* Card destaque */
 .depoimento-card--featured {
-  background:
-    linear-gradient(180deg, var(--color-primary-surface) 0%, transparent 100%),
-    var(--color-bg-mid);
-  border-color: var(--color-primary-light);
+  background: #eef3fa;
+  border-color: rgba(27, 77, 132, 0.2);
 }
 
+/* ── Card — partes ── */
 .depoimento-card__top {
   position: relative;
   z-index: 1;
@@ -134,9 +150,9 @@
   align-items: center;
   min-height: 1.75rem;
   padding-inline: var(--space-3);
-  background-color: var(--color-primary-soft);
-  color: var(--color-primary-muted);
-  border: 1px solid var(--color-primary-ring);
+  background-color: rgba(27, 77, 132, 0.07);
+  color: var(--color-primary);
+  border: 1px solid rgba(27, 77, 132, 0.15);
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -158,7 +174,7 @@
   position: relative;
   z-index: 1;
   margin: 0;
-  color: var(--color-text);
+  color: #1e293b;
   font-size: var(--text-xl);
   font-style: normal;
   font-weight: var(--weight-regular);
@@ -173,7 +189,7 @@
   gap: var(--space-4);
   padding-top: var(--space-5);
   margin-top: auto;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .depoimento-card__avatar {
@@ -183,9 +199,9 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-navy);
+  background-color: #1B4D84;
   color: var(--color-white);
-  border: 1px solid var(--color-primary-ring);
+  border: 1px solid rgba(27, 77, 132, 0.25);
   font-family: var(--font-ui-mono);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
@@ -194,7 +210,7 @@
 
 .depoimento-card__nome {
   display: block;
-  color: var(--color-text);
+  color: #0d1825;
   font-family: var(--font-heading);
   font-size: var(--text-base);
   font-weight: var(--weight-medium);
@@ -204,14 +220,17 @@
 .depoimento-card__empresa {
   display: block;
   margin-top: var(--space-1);
-  color: var(--color-text-muted);
+  color: #6b7280;
   font-size: var(--text-xs);
 }
 
+/* ── Hover ── */
 @media (hover: hover) and (pointer: fine) {
   .depoimento-card:hover {
-    border-color: var(--color-primary-muted);
-    box-shadow: 0 28px 70px var(--color-navbar-dark);
+    border-color: rgba(27, 77, 132, 0.25);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.09),
+      0 4px 12px rgba(27, 77, 132, 0.07);
     transform: translateY(-6px);
   }
 
@@ -220,6 +239,7 @@
   }
 }
 
+/* ── Responsivo ── */
 @media (min-width: 768px) {
   .depoimentos-header {
     grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
@@ -230,7 +250,7 @@
   }
 
   .depoimentos-trust__item {
-    border-right: 1px solid var(--color-border);
+    border-right: 1px solid rgba(0, 0, 0, 0.07);
     border-bottom: 0;
   }
 

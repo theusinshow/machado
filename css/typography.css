@@ -4,8 +4,15 @@
    Depende de: variables.css
 =========================== */
 
-/* ── Orbitron Black (títulos de seção) ── */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+
+/* ── Horizon ── */
+@font-face {
+  font-family: 'Horizon';
+  src: url('../assets/fonts/Horizon-Font/Horizon.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ── Fonte Proprietária ── */
 @font-face {
@@ -21,6 +28,15 @@
   font-family: 'Eurostile Extended';
   src: url('../assets/fonts/EurostileExtendedBlack.ttf') format('truetype');
   font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Chillax Variable ── */
+@font-face {
+  font-family: 'Chillax';
+  src: url('../assets/fonts/Chillax_Complete/Fonts/TTF/Chillax-Variable.ttf') format('truetype');
+  font-weight: 200 700;
   font-style: normal;
   font-display: swap;
 }
@@ -41,6 +57,12 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   color: var(--color-text);
   letter-spacing: 0;
+}
+
+h2 {
+  font-family: 'Horizon', var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 h1 { font-size: var(--text-5xl); }
@@ -71,11 +93,11 @@ p {
 }
 
 .section-title {
-  font-family: var(--font-heading);
+  font-family: 'Horizon', var(--font-heading);
   font-size: 3rem;
-  font-weight: var(--weight-regular);
+  font-weight: 700;
   line-height: 1.05;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   color: var(--color-text);
   text-transform: uppercase;
 }
@@ -113,6 +135,11 @@ p {
 .text-muted   { color: var(--color-text-muted); }
 .text-primary { color: var(--color-primary-light); }
 .text-dark    { color: var(--color-text-dark); }
+
+/* ── Texto outline (stroke) — para efeito fill + outline nos H2 ── */
+.text-stroke {
+  color: #1B4D84;
+}
 
 .uppercase { text-transform: uppercase; }
 .condensed { font-family: var(--font-heading); }

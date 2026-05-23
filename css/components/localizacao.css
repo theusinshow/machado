@@ -1,0 +1,270 @@
+/* ===========================
+   COMPONENTE: Localização (MapLibre GL JS)
+   Depende de: variables.css, buttons
+=========================== */
+
+/* ── Section ── */
+.localizacao {
+  background: var(--color-footer-bg);
+  padding-block: clamp(5rem, 10vw, 8rem);
+  border-top: 1px solid var(--color-navbar-border-dark-strong);
+}
+
+/* ── Grid 2 colunas ── */
+.localizacao__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+}
+
+@media (min-width: 1024px) {
+  .localizacao__grid {
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: clamp(3rem, 5vw, 6rem);
+    align-items: center;
+  }
+}
+
+/* ── Coluna texto ── */
+.localizacao__eyebrow {
+  display: block;
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-5);
+}
+
+.localizacao__title {
+  font-family: var(--font-titles);
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 0.95;
+  margin: 0 0 var(--space-7);
+}
+
+.localizacao__text {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 var(--space-8);
+  max-width: 34ch;
+}
+
+/* ── Bloco de endereço ── */
+.localizacao__address {
+  margin: 0 0 var(--space-8);
+  font-style: normal;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.localizacao__address-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding-block: var(--space-4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.localizacao__address-label {
+  font-family: var(--font-ui-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.22);
+  padding-top: 2px;
+}
+
+.localizacao__address-value {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.localizacao__address-value a {
+  color: var(--color-primary-light);
+  text-decoration: none;
+  transition: opacity var(--dur-fast) ease;
+}
+
+.localizacao__address-value a:hover,
+.localizacao__address-value a:focus-visible {
+  opacity: 0.72;
+  outline: 0;
+}
+
+/* ── Botões ── */
+.localizacao__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 479px) {
+  .localizacao__text { max-width: 100%; }
+  .localizacao__actions { flex-direction: column; }
+  .localizacao__actions .btn--split { width: 100%; }
+}
+
+/* ── Wrapper do mapa ── */
+.localizacao__map-wrap {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1a1f26;
+}
+
+#machado-map {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 46vw, 520px);
+}
+
+/* ── Marcador personalizado ── */
+.machado-map-marker {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+}
+
+.machado-map-marker__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: var(--color-primary-light, #5b9bd5);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+
+.machado-map-marker__pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: rgba(91, 155, 213, 0.38);
+  border-radius: 50%;
+  animation: machado-map-pulse 2.6s ease-out infinite;
+  z-index: 1;
+}
+
+@keyframes machado-map-pulse {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(5);   opacity: 0;   }
+}
+
+/* ── Popup ── */
+.machado-map-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 168px;
+}
+
+.machado-map-popup__name {
+  display: block;
+  font-family: var(--font-ui-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.machado-map-popup__addr {
+  display: block;
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.machado-map-popup__link {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-ui-mono, monospace);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5b9bd5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.machado-map-popup__link:hover {
+  color: #ffffff;
+}
+
+/* MapLibre popup skin */
+.maplibregl-popup-content {
+  background: rgba(9, 11, 14, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 0 !important;
+  padding: 14px 16px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px);
+}
+
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: rgba(9, 11, 14, 0.92) !important;
+}
+
+.maplibregl-popup-close-button {
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-size: 18px !important;
+  top: 2px !important;
+  right: 6px !important;
+  background: none !important;
+  border: none !important;
+}
+
+.maplibregl-popup-close-button:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: none !important;
+}
+
+/* MapLibre controles */
+.maplibregl-ctrl-group {
+  background: rgba(9, 11, 14, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.maplibregl-ctrl-group button {
+  background-color: transparent !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(1);
+}
+
+.maplibregl-ctrl-attrib {
+  background: rgba(0, 0, 0, 0.55) !important;
+}
+
+.maplibregl-ctrl-attrib a,
+.maplibregl-ctrl-attrib-inner {
+  color: rgba(255, 255, 255, 0.28) !important;
+  font-size: 9px !important;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .machado-map-marker__pulse { animation: none; opacity: 0; }
+}

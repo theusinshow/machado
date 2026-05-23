@@ -23,8 +23,9 @@
   <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- MapLibre GL JS -->
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="./css/components/localizacao.css" />
 
   <!-- CSS Base -->
   <link rel="stylesheet" href="./css/reset.css" />
@@ -393,6 +394,9 @@
     }
 
   </style>
+
+  <!-- Mobile responsiveness — após o <style> inline para vencer na cascata -->
+  <link rel="stylesheet" href="./css/mobile.css" />
 </head>
 <body>
 
@@ -681,46 +685,57 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
   <script src="./js/gsap-setup.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/sp8=" crossorigin=""></script>
   <script type="module" src="./js/main.js"></script>
 
-  <!-- Mapa Leaflet -->
+  <!-- MapLibre GL JS — Mapa Sobre -->
+  <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
   <script>
     window.addEventListener('load', function () {
       var mapEl = document.getElementById('sobre-map');
-      if (!mapEl) return;
+      if (!mapEl || typeof maplibregl === 'undefined') return;
 
-      var lat = -27.6453, lng = -48.6701;
+      var coords = [-48.6701, -27.6453];
 
-      var map = L.map('sobre-map', {
-        center: [lat, lng],
-        zoom: 13,
-        zoomControl: true,
-        scrollWheelZoom: false,
+      var map = new maplibregl.Map({
+        container: 'sobre-map',
+        style: 'https://tiles.openfreemap.org/styles/bright',
+        center: coords,
+        zoom: 15,
+        pitch: 0,
+        bearing: 0,
         attributionControl: true
       });
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        subdomains: 'abc',
-        maxZoom: 19
-      }).addTo(map);
+      map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
 
-      var markerIcon = L.divIcon({
-        className: '',
-        html: '<div class="map-pin"></div>',
-        iconSize: [12, 12],
-        iconAnchor: [6, 6]
+      var markerEl = document.createElement('div');
+      markerEl.className = 'machado-map-marker';
+      markerEl.setAttribute('aria-label', 'Localização da Machado Plataformas');
+      markerEl.innerHTML =
+        '<div class="machado-map-marker__dot"></div>' +
+        '<div class="machado-map-marker__pulse"></div>';
+
+      var popup = new maplibregl.Popup({
+        offset: 24,
+        closeButton: true,
+        closeOnClick: false,
+        maxWidth: '220px'
+      }).setHTML(
+        '<div class="machado-map-popup">' +
+          '<span class="machado-map-popup__name">Machado Plataformas</span>' +
+          '<span class="machado-map-popup__addr">R. B, Qd. 01 Lt. 13 — Pacheco<br>Palhoça — SC, 88134-040</span>' +
+          '<a class="machado-map-popup__link" href="https://www.google.com/maps/search/?api=1&query=R.+B+Qd.+01+Lt.+13%2C+Pacheco%2C+Palho%C3%A7a+-+SC%2C+88134-040" target="_blank" rel="noopener noreferrer">Abrir rota ↗</a>' +
+        '</div>'
+      );
+
+      var marker = new maplibregl.Marker({ element: markerEl, anchor: 'center' })
+        .setLngLat(coords)
+        .setPopup(popup)
+        .addTo(map);
+
+      map.on('load', function () {
+        marker.togglePopup();
       });
-
-      L.marker([lat, lng], { icon: markerIcon })
-        .addTo(map)
-        .bindPopup(
-          '<strong style="font-family:monospace;font-size:11px;letter-spacing:.08em">MACHADO PLATAFORMAS</strong>' +
-          '<br><span style="font-family:monospace;font-size:10px;color:#888">Palhoça · SC · Brasil</span>'
-        );
-
-      map.invalidateSize(true);
     });
   </script>
 

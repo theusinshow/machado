@@ -6,6 +6,64 @@
 
 ---
 
+## [2026-05-23] FEAT — Responsividade mobile completa para todo o site
+
+**Agente:** Claude Code
+**Sessão:** Mobile responsiveness — refatoração completa xs/sm/md
+
+### Criado
+- `css/mobile.css` — arquivo dedicado de responsividade, ~780 linhas. Cobre todos os breakpoints:
+  - `xs ≤ 479px` — iPhones pequenos, Android compactos
+  - `sm ≤ 767px` — phones em geral
+  - `md ≤ 1023px` — tablets e landscape phones
+  - Componentes cobertos: global overflow, navbar, hero, sobre spec (home), social-proof, diferenciais, produtos, cta-mid, financiamento, depoimentos, section-headers, footer, subpages, localizacao, clientes (em-acao/entregas), sobre-unified (sobre.html), WhatsApp float, touch targets
+
+### Alterado
+- `index.html` — `<link rel="stylesheet" href="./css/mobile.css">` adicionado como último link do `<head>` (após todos os componentes)
+- `sobre.html` — `<link rel="stylesheet" href="./css/mobile.css">` adicionado **após o `</style>` inline** para garantir precedência na cascata
+- `produtos.html` — `<link rel="stylesheet" href="./css/mobile.css">` adicionado após os dois `</style>` inline
+- `clientes.html` — `<link rel="stylesheet" href="./css/mobile.css">` adicionado após o `</style>` inline
+- `credito.html` — `<link rel="stylesheet" href="./css/mobile.css">` adicionado como último link do `<head>`
+
+### Correções críticas incluídas no mobile.css
+- **Hero**: `white-space: nowrap` causava overflow de título em 375px → font-size reduzido + overlay escuro para legibilidade do texto
+- **Diferenciais**: `white-space: nowrap` no título e `translateX(40px)` no step ativo causavam overflow horizontal → corrigidos
+- **Produtos**: `aspect-ratio: 9/16` gerava 596px de altura em mobile → reduzido para 3:4 (sm) e 1:1 (xs)
+- **Footer**: `min-height` removido em mobile para evitar espaço vazio excessivo
+- **Subpages**: `padding-block: var(--section-md)` (mín. 80px) → `clamp(3.5rem, 8vw, 6rem)` em mobile
+- **sobre.html**: conflito de nomes `.sobre-title` entre home (dark panel) e página sobre (branco) → regras da home restritas a `.sobre-spec .sobre-title`
+
+---
+
+## [2026-05-23] FIX — Mapa MapLibre removido da home + adicionado em sobre.html + estilo bright
+
+**Agente:** Claude Code
+**Sessão:** MapLibre — migração para sobre.html e correção de estilo
+
+### Alterado
+- `index.html` — seção `#localizacao` completamente removida (HTML, links CSS, CDN MapLibre + script init)
+- `sobre.html` — Leaflet substituído por MapLibre GL JS (CDN, style `bright`, coords Palhoça SC)
+- `sobre.html` — `<link>` maplibre-gl.css + localizacao.css adicionados; Leaflet CSS removido
+- `sobre.html` — script init MapLibre: mapa com marcador custom (dot + pulse), popup com endereço e link para rota, `togglePopup` automático ao carregar
+- `css/components/localizacao.css` — mantido como componente compartilhado
+
+---
+
+## [2026-05-23] FEAT — Seção Localização com MapLibre GL JS na landing page
+
+**Agente:** Claude Code
+**Sessão:** MapLibre GL JS — seção de localização premium
+
+### Criado
+- `css/components/localizacao.css` — estilos da seção: grid 2 colunas, eyebrow/title/text, address rows, marker com pulse, popup dark, controles MapLibre com tema escuro
+
+### Alterado
+- `index.html` — `<head>`: `localizacao.css` + `maplibre-gl.css` (CDN)
+- `index.html` — nova section `#localizacao` inserida antes de `</main>`: layout 2 colunas, bloco de endereço/telefone, botões "Traçar rota" e "Falar pelo WhatsApp"
+- `index.html` — `<body>` final: CDN `maplibre-gl.js` + script de init (mapa Positron, marcador custom, popup, `togglePopup` no load)
+
+---
+
 ## [2026-05-23] CONTENT — Atualização completa de dados da empresa — Palhoça, SC
 
 **Agente:** Claude Code

@@ -67,10 +67,11 @@ export function initLoader() {
     }
 
     timeline.to(loader, {
-      clipPath: 'polygon(115% 0, 100% 0, -15% 100%, 0 100%)',
-      duration: 0.72,
+      autoAlpha: 0,
+      scale: 1.06,
+      duration: 0.6,
       delay: 0.75,
-      ease: 'wipe',
+      ease: 'machado',
       pointerEvents: 'none',
     });
   });

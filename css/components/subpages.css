@@ -355,6 +355,18 @@
   margin: 0 0 var(--space-10);
 }
 
+/* ── PAGE CTA — Nota ── */
+
+.page-cta__note {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-10);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 /* ── REDUCED MOTION ── */
 
 @media (prefers-reduced-motion: reduce) {

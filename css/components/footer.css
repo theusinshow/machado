@@ -13,30 +13,6 @@
   border-top: 1px solid var(--color-navbar-border-dark-strong);
 }
 
-.footer::before,
-.footer::after {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-}
-
-.footer::before {
-  inset: 0;
-  background:
-    linear-gradient(90deg, var(--color-navbar-border-dark) 1px, transparent 1px),
-    linear-gradient(180deg, var(--color-navbar-border-dark) 1px, transparent 1px);
-  background-size: var(--space-16) var(--space-16);
-  opacity: 0.32;
-}
-
-.footer::after {
-  right: calc(-1 * var(--space-24));
-  bottom: var(--space-24);
-  width: clamp(16rem, 34vw, 36rem);
-  aspect-ratio: 1;
-  border: 1px solid var(--color-navbar-border-dark-strong);
-  transform: rotate(-12deg);
-}
 
 .footer .container {
   position: relative;

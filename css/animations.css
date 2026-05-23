@@ -48,8 +48,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  will-change: clip-path;
+  will-change: opacity, transform;
 }
 
 .loader__inner {

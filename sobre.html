@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Machado Plataformas — Conheça nossa história, estrutura de fabricação e o time por trás de cada plataforma produzida em Minas Gerais." />
+  <meta name="description" content="Machado Plataformas — Especialistas em plataformas de auto socorro. 3.000 m² de fábrica, corte a laser e CNC, fabricação 100% própria em Palhoça, SC." />
 
   <meta property="og:title" content="Sobre — Machado Plataformas" />
   <meta property="og:description" content="Mais de duas décadas fabricando plataformas para guincho com qualidade, precisão e comprometimento." />
@@ -23,6 +23,9 @@
   <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
   <!-- CSS Base -->
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/variables.css" />
@@ -33,115 +36,201 @@
   <!-- CSS Componentes -->
   <link rel="stylesheet" href="./css/components/navbar.css" />
   <link rel="stylesheet" href="./css/components/subpages.css" />
-  <link rel="stylesheet" href="./css/components/diferenciais.css" />
   <link rel="stylesheet" href="./css/components/footer.css" />
 
   <style>
 
-    /* === SOBRE A EMPRESA === */
-    .sobre-empresa {
+    /* ═══════════════════════════════════════
+       SOBRE UNIFICADA — história + localização
+    ═══════════════════════════════════════ */
+
+    .sobre-unified {
       background: #ffffff;
-      padding-block: var(--section-md);
+      padding-block: clamp(4rem, 8vw, 7rem);
+      border-top: 1px solid rgba(28, 36, 48, 0.07);
     }
 
-    /* Header canônico 2-col */
-    .sobre-header {
-      display: grid;
+    /* ── Cabeçalho ── */
+
+    .sobre-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
       gap: var(--space-6);
-      align-items: end;
-      margin-bottom: var(--space-12);
-    }
-    @media (min-width: 768px) {
-      .sobre-header {
-        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-      }
-    }
-    .sobre-header__text {
-      max-width: 440px;
-      margin: 0;
-      color: rgba(28, 36, 48, 0.6);
-      font-size: var(--text-base);
-      line-height: 1.65;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      flex-wrap: wrap;
     }
 
-    /* Stats strip */
-    .sobre-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: rgba(28, 36, 48, 0.08);
-      border: 1px solid rgba(28, 36, 48, 0.08);
-      margin-bottom: var(--space-16);
-    }
-    @media (min-width: 640px) {
-      .sobre-stats { grid-template-columns: repeat(4, 1fr); }
-    }
-    .sobre-stat {
-      background: #ffffff;
-      padding: var(--space-8) var(--space-6);
-      display: grid;
-      gap: var(--space-2);
-    }
-    .sobre-stat__num {
-      font-family: var(--font-heading);
-      font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
-      font-weight: var(--weight-bold);
-      line-height: 1;
-      letter-spacing: -0.03em;
-      color: var(--color-primary);
-      font-variant-numeric: tabular-nums;
-    }
-    .sobre-stat__label {
+    .sobre-eyebrow {
       font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.16em;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(28, 36, 48, 0.5);
+      color: var(--color-primary);
     }
 
-    /* Split texto + imagem */
-    .sobre-split {
+    .sobre-coords {
+      font-family: var(--font-ui-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      color: rgba(28, 36, 48, 0.28);
+      text-align: right;
+    }
+
+    .sobre-title {
+      font-family: var(--font-titles);
+      font-size: clamp(1.9rem, 3.6vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-dark);
+      line-height: 1;
+      margin: 0 0 clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .sobre-title em {
+      font-style: normal;
+      color: rgba(28, 36, 48, 0.22);
+    }
+
+    /* ── Separador interno ── */
+
+    .sobre-rule {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      margin-block: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .sobre-rule__line {
+      flex: 1;
+      height: 1px;
+      background: rgba(28, 36, 48, 0.08);
+    }
+
+    .sobre-rule__label {
+      font-family: var(--font-ui-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(28, 36, 48, 0.3);
+      white-space: nowrap;
+    }
+
+    /* ── Corpo: texto + visual ── */
+
+    .sobre-corpo {
       display: grid;
       gap: var(--space-12);
-      align-items: center;
     }
+
     @media (min-width: 1024px) {
-      .sobre-split { grid-template-columns: 1fr 1fr; gap: var(--space-16); }
+      .sobre-corpo {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: clamp(3rem, 5vw, 6rem);
+        align-items: start;
+      }
     }
-    .sobre-text__body {
-      display: grid;
+
+    /* Coluna esquerda — texto */
+    .sobre-texto__intro {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      font-weight: 500;
+      line-height: 1.65;
+      color: rgba(28, 36, 48, 0.88);
+      margin: 0 0 var(--space-6);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid rgba(28, 36, 48, 0.08);
+    }
+
+    .sobre-texto__body {
+      display: flex;
+      flex-direction: column;
       gap: var(--space-5);
+      margin-bottom: var(--space-8);
     }
-    .sobre-text__body p {
+
+    .sobre-texto__body p {
       font-size: var(--text-base);
-      line-height: 1.75;
-      color: rgba(28, 36, 48, 0.65);
+      line-height: 1.8;
+      color: rgba(28, 36, 48, 0.55);
       margin: 0;
     }
-    .sobre-text__body p:first-child {
-      font-size: var(--text-lg);
-      color: rgba(28, 36, 48, 0.85);
+
+    .sobre-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .sobre-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      border: 1px solid rgba(27, 77, 132, 0.18);
+      font-family: var(--font-ui-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .sobre-chip:hover {
+      background: rgba(27, 77, 132, 0.04);
+      border-color: rgba(27, 77, 132, 0.35);
+    }
+
+    .sobre-chip::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--color-primary);
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    /* Coluna direita — visual */
+    .sobre-visual {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
     }
 
     .sobre-image {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 4 / 3;
-      background: var(--color-bg-mid);
+      aspect-ratio: 3 / 2;
     }
+
     .sobre-image img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85) contrast(1.05);
+      transition: transform 0.7s var(--ease-machado), filter 0.5s ease;
     }
+
+    .sobre-image:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.95) contrast(1.05);
+    }
+
     .sobre-image__badge {
       position: absolute;
-      bottom: var(--space-4); left: var(--space-4);
-      background: rgba(0, 0, 0, 0.72);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      bottom: var(--space-4);
+      left: var(--space-4);
+      background: rgba(0, 0, 0, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: var(--space-3) var(--space-4);
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: var(--space-1);
+      backdrop-filter: blur(6px);
     }
+
     .sobre-image__badge-num {
       font-family: var(--font-display);
       font-size: var(--text-2xl);
@@ -150,22 +239,157 @@
       color: var(--color-white);
       letter-spacing: 0.06em;
     }
+
     .sobre-image__badge-label {
       font-family: var(--font-ui-mono);
-      font-size: var(--text-xs);
-      letter-spacing: 0.14em;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.4);
     }
 
-    /* eyebrow + section-title em contexto claro */
-    .sobre-empresa .eyebrow {
-      color: var(--color-primary);
-      border-color: rgba(27, 77, 132, 0.2);
-      background: rgba(27, 77, 132, 0.05);
+    /* Stats — grid 2×2 sob a imagem */
+    .sobre-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(28, 36, 48, 0.09);
+      border: 1px solid rgba(28, 36, 48, 0.09);
     }
-    .sobre-empresa .section-title {
+
+    .sobre-stat {
+      background: #f7f8fa;
+      padding: var(--space-5) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .sobre-stat__num {
+      font-family: var(--font-titles);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.02em;
       color: var(--color-text-dark);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sobre-stat__suffix {
+      font-size: 0.55em;
+      color: var(--color-primary);
+      vertical-align: super;
+      margin-left: 1px;
+    }
+
+    .sobre-stat__label {
+      font-family: var(--font-ui-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(28, 36, 48, 0.42);
+      margin-top: var(--space-1);
+    }
+
+    /* ── Localização ── */
+
+    .sobre-loc {
+      display: grid;
+      gap: var(--space-10);
+    }
+
+    @media (min-width: 1024px) {
+      .sobre-loc {
+        grid-template-columns: minmax(240px, 0.38fr) 1fr;
+        gap: clamp(3rem, 5vw, 6rem);
+        align-items: start;
+      }
+    }
+
+    .sobre-loc__title {
+      font-family: var(--font-titles);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-dark);
+      line-height: 1.1;
+      margin: 0 0 var(--space-8);
+    }
+
+    .sobre-loc__items {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sobre-loc__item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding-block: var(--space-4);
+      border-bottom: 1px solid rgba(28, 36, 48, 0.07);
+    }
+
+    .sobre-loc__item:first-child { padding-top: 0; }
+    .sobre-loc__item:last-child { border-bottom: none; }
+
+    .sobre-loc__label {
+      font-family: var(--font-ui-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(28, 36, 48, 0.32);
+    }
+
+    .sobre-loc__value {
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: rgba(28, 36, 48, 0.62);
+    }
+
+    .sobre-loc__value a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .sobre-loc__value a:hover { opacity: 0.7; }
+
+    /* Mapa */
+    .sobre-map-wrap {
+      position: relative;
+      overflow: hidden;
+      height: clamp(280px, 40vw, 440px);
+      border: 1px solid rgba(28, 36, 48, 0.1);
+    }
+
+    #sobre-map { width: 100%; height: clamp(280px, 40vw, 440px); display: block; }
+
+    .leaflet-container {
+      background: #e8ecf0;
+      font-family: var(--font-ui-mono);
+    }
+
+    .leaflet-control-attribution {
+      background: rgba(255, 255, 255, 0.85) !important;
+      color: rgba(28, 36, 48, 0.45) !important;
+      font-size: 8px !important;
+    }
+
+    .leaflet-control-attribution a { color: rgba(28, 36, 48, 0.55) !important; }
+
+    .map-pin {
+      width: 12px;
+      height: 12px;
+      background: var(--color-primary-light);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(74, 143, 212, 0.2), 0 0 16px rgba(74, 143, 212, 0.35);
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .sobre-image img { transition: none; }
     }
 
   </style>
@@ -238,21 +462,21 @@
 
   <main id="main">
 
-    <!-- HERO DA PÁGINA -->
+    <!-- ── HERO ── -->
     <section class="page-hero" aria-label="Sobre a Machado">
       <div class="page-hero__scan" aria-hidden="true"></div>
       <div class="page-hero__ticker" aria-hidden="true">
         <div class="page-hero__ticker-inner">
-          <span class="page-hero__ticker-text">MACHADO PLATAFORMAS — FABRICAÇÃO PRÓPRIA — MINAS GERAIS — QUALIDADE CERTIFICADA — AÇO ALTA RESISTÊNCIA — ENTREGA NACIONAL —&nbsp;</span>
-          <span class="page-hero__ticker-text">MACHADO PLATAFORMAS — FABRICAÇÃO PRÓPRIA — MINAS GERAIS — QUALIDADE CERTIFICADA — AÇO ALTA RESISTÊNCIA — ENTREGA NACIONAL —&nbsp;</span>
-          <span class="page-hero__ticker-text">MACHADO PLATAFORMAS — FABRICAÇÃO PRÓPRIA — MINAS GERAIS — QUALIDADE CERTIFICADA — AÇO ALTA RESISTÊNCIA — ENTREGA NACIONAL —&nbsp;</span>
+          <span class="page-hero__ticker-text">MACHADO PLATAFORMAS — FABRICAÇÃO PRÓPRIA — PALHOÇA · SC — 3.000 M² — CORTE A LASER — CNC — ENTREGA NACIONAL —&nbsp;</span>
+          <span class="page-hero__ticker-text">MACHADO PLATAFORMAS — FABRICAÇÃO PRÓPRIA — PALHOÇA · SC — 3.000 M² — CORTE A LASER — CNC — ENTREGA NACIONAL —&nbsp;</span>
+          <span class="page-hero__ticker-text">MACHADO PLATAFORMAS — FABRICAÇÃO PRÓPRIA — PALHOÇA · SC — 3.000 M² — CORTE A LASER — CNC — ENTREGA NACIONAL —&nbsp;</span>
         </div>
       </div>
       <span class="page-hero__page-num" aria-hidden="true">— 03 / 04</span>
-      <span class="page-hero__coords" aria-hidden="true">−19.9167° S · −43.9345° O<br>ALT 896M · MG · BR</span>
+      <span class="page-hero__coords" aria-hidden="true">−27.6453° S · −48.6701° O<br>ALT 5M · SC · BR</span>
       <div class="page-hero__deco" aria-hidden="true">
         <span class="page-hero__deco-num">03</span>
-        <span class="page-hero__deco-label">MG · BR</span>
+        <span class="page-hero__deco-label">SC · BR</span>
       </div>
       <div class="container">
         <p class="page-hero__status" aria-hidden="true">Sistema ativo</p>
@@ -262,7 +486,7 @@
             <span class="page-hero__title-inner">Sobre</span>
           </span>
         </h1>
-        <p class="page-hero__sub">Mais de duas décadas fabricando plataformas para guincho em Minas Gerais. Cada peça é produzida com aço de alta resistência e controle rigoroso de qualidade.</p>
+        <p class="page-hero__sub">3.000 m² de fábrica. Corte a laser, CNC e fabricação 100% própria em Palhoça, SC. Cada plataforma é construída para aguentar o trabalho real — sem quebrar no momento que o cliente mais precisa.</p>
       </div>
     </section>
 
@@ -270,71 +494,135 @@
       <span class="page-divider__label">Sobre</span>
     </div>
 
-    <!-- SOBRE A EMPRESA -->
-    <section class="sobre-empresa" aria-labelledby="sobre-heading">
+    <!-- ── EMPRESA + LOCALIZAÇÃO ── -->
+    <section class="sobre-unified" aria-labelledby="sobre-heading">
       <div class="container">
 
-        <div class="sobre-header" data-animate="fade-up">
-          <div>
-            <span class="eyebrow">A empresa</span>
-            <h2 id="sobre-heading" class="section-title">Feito aqui. Com quem sabe o que está fazendo.</h2>
-          </div>
-          <p class="sobre-header__text">Mais de duas décadas de fabricação própria em Minas Gerais. Cada plataforma passa pelo nosso controle — do aço ao acabamento.</p>
+        <!-- Cabeçalho editorial -->
+        <div class="sobre-head" data-animate="fade-in">
+          <span class="sobre-eyebrow">A empresa · Palhoça · SC</span>
+          <span class="sobre-coords" aria-hidden="true">−27.6453° S · −48.6701° O</span>
         </div>
 
-        <div class="sobre-stats" aria-label="Números da empresa">
-          <div class="sobre-stat">
-            <span class="sobre-stat__num">22+</span>
-            <span class="sobre-stat__label">Anos de mercado</span>
+        <h2 id="sobre-heading" class="sobre-title" data-animate="fade-up">
+          Feitos para<br /><em>quem trabalha</em><br />pesado.
+        </h2>
+
+        <!-- Corpo: texto esquerda, visual direita -->
+        <div class="sobre-corpo">
+
+          <div data-animate="fade-up">
+            <p class="sobre-texto__intro">A Machado Plataformas é especializada na fabricação de plataformas de auto socorro — soluções completas para quem precisa transportar veículos com segurança e agilidade.</p>
+            <div class="sobre-texto__body">
+              <p>Com 3.000 m² de infraestrutura fabril moderna e maquinário avançado — corte a laser e CNC — garantimos precisão e durabilidade em cada peça produzida.</p>
+              <p>Fabricamos tudo internamente, do corte do aço à pintura final. Sem terceirizados. Controle total sobre qualidade, prazo e custo — sem surpresas na entrega.</p>
+              <p>Projetada para suportar diferentes tipos de carga, nossa linha de plataformas atende operadores de guincho, transportadoras e frotas dos clientes mais exigentes do mercado.</p>
+            </div>
+            <div class="sobre-chips" aria-label="Diferenciais de fabricação">
+              <span class="sobre-chip">Corte a Laser</span>
+              <span class="sobre-chip">Usinagem CNC</span>
+              <span class="sobre-chip">Fabricação Própria</span>
+              <span class="sobre-chip">3.000 m²</span>
+              <span class="sobre-chip">Entrega Nacional</span>
+            </div>
           </div>
-          <div class="sobre-stat">
-            <span class="sobre-stat__num">500+</span>
-            <span class="sobre-stat__label">Unidades produzidas</span>
+
+          <div class="sobre-visual" data-animate="fade-up" data-delay="0.12">
+            <div class="sobre-image">
+              <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
+                   alt="Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+                   width="800" height="600" loading="lazy" />
+              <div class="sobre-image__badge">
+                <span class="sobre-image__badge-num">SC</span>
+                <span class="sobre-image__badge-label">Fabricado em Santa Catarina</span>
+              </div>
+            </div>
+
+            <div class="sobre-stats" aria-label="Números da empresa" data-animate="fade-up" data-delay="0.18">
+              <div class="sobre-stat">
+                <span class="sobre-stat__num"><span data-count="22">22</span><span class="sobre-stat__suffix">+</span></span>
+                <span class="sobre-stat__label">Anos de mercado</span>
+              </div>
+              <div class="sobre-stat">
+                <span class="sobre-stat__num"><span data-count="2000">2.000</span><span class="sobre-stat__suffix">+</span></span>
+                <span class="sobre-stat__label">Plataformas entregues</span>
+              </div>
+              <div class="sobre-stat">
+                <span class="sobre-stat__num"><span data-count="27">27</span><span class="sobre-stat__suffix">UF</span></span>
+                <span class="sobre-stat__label">Estados atendidos</span>
+              </div>
+              <div class="sobre-stat">
+                <span class="sobre-stat__num">3.000<span class="sobre-stat__suffix">m²</span></span>
+                <span class="sobre-stat__label">Área fabril</span>
+              </div>
+            </div>
           </div>
-          <div class="sobre-stat">
-            <span class="sobre-stat__num">18</span>
-            <span class="sobre-stat__label">Estados atendidos</span>
-          </div>
-          <div class="sobre-stat">
-            <span class="sobre-stat__num">2.000+</span>
-            <span class="sobre-stat__label">Clientes ativos</span>
-          </div>
+
         </div>
 
-        <div class="sobre-split">
-          <div class="sobre-text" data-animate="fade-up">
-            <div class="sobre-text__body">
-              <p>A Machado nasceu da necessidade de quem opera guincho: uma plataforma que aguentasse o dia a dia pesado sem precisar de assistência a cada mês.</p>
-              <p>Fabricamos tudo internamente — do corte do aço à pintura final. Isso nos dá controle sobre qualidade, prazo e custo. Sem terceirizados, sem surpresas na entrega.</p>
-              <p>Atendemos guinchos, transportadoras, locadoras e frotas em todo o Brasil. Nossa equipe orienta o cliente desde a escolha do modelo até o suporte pós-venda.</p>
+        <!-- Divisor interno -->
+        <div class="sobre-rule" aria-hidden="true" data-animate="fade-in">
+          <span class="sobre-rule__line"></span>
+          <span class="sobre-rule__label">Onde Estamos</span>
+          <span class="sobre-rule__line"></span>
+        </div>
+
+        <!-- Localização -->
+        <div class="sobre-loc">
+
+          <div data-animate="fade-up">
+            <h3 class="sobre-loc__title">Nossa<br />Fábrica</h3>
+            <div class="sobre-loc__items">
+              <div class="sobre-loc__item">
+                <span class="sobre-loc__label">Endereço</span>
+                <span class="sobre-loc__value">R. B, Qd. 01 Lt. 13 — Pacheco<br />Palhoça — SC, 88134-040</span>
+              </div>
+              <div class="sobre-loc__item">
+                <span class="sobre-loc__label">Área fabril</span>
+                <span class="sobre-loc__value">3.000 m² — estrutura própria</span>
+              </div>
+              <div class="sobre-loc__item">
+                <span class="sobre-loc__label">Atendimento</span>
+                <span class="sobre-loc__value">Todo o Brasil · 27 estados</span>
+              </div>
+              <div class="sobre-loc__item">
+                <span class="sobre-loc__label">Telefone</span>
+                <span class="sobre-loc__value"><a href="tel:+554833489982">(48) 3348-9982</a></span>
+              </div>
+              <div class="sobre-loc__item">
+                <span class="sobre-loc__label">WhatsApp</span>
+                <span class="sobre-loc__value">
+                  <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+                </span>
+              </div>
             </div>
           </div>
-          <div class="sobre-image" data-animate="fade-up" data-delay="0.12">
-            <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
-                 alt="Fabricação Machado Plataformas em Minas Gerais"
-                 width="800" height="600"
-                 loading="lazy" />
-            <div class="sobre-image__badge">
-              <span class="sobre-image__badge-num">MG</span>
-              <span class="sobre-image__badge-label">Fabricado em Minas Gerais</span>
-            </div>
+
+          <div class="sobre-map-wrap">
+            <div id="sobre-map" style="width:100%;height:360px;" aria-label="Mapa — Machado Plataformas, Palhoça, SC"></div>
           </div>
+
         </div>
 
       </div>
     </section>
 
-    <!-- CTA FINAL -->
+    <!-- ── CTA FINAL ── -->
     <section class="page-cta" aria-label="Solicitar orçamento">
       <div class="container">
         <p class="page-cta__eyebrow">Vamos trabalhar juntos</p>
         <h2 class="page-cta__title">Solicite seu<br />orçamento.</h2>
+        <p class="page-cta__note">Sem compromisso</p>
         <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
            class="btn btn--split btn--split-primary"
            target="_blank" rel="noopener noreferrer"
            data-magnetic>
           <span class="btn__label">Falar no WhatsApp</span>
-          <span class="btn__plus" aria-hidden="true">+</span>
+          <span class="btn__plus" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </span>
         </a>
       </div>
     </section>
@@ -344,7 +632,7 @@
   <!-- FOOTER -->
   <footer id="footer" class="footer" role="contentinfo">
     <div class="footer-headline-wrap" aria-hidden="true">
-      <p class="footer-headline" aria-hidden="true">Machado Plataformas</p>
+      <p class="footer-headline" aria-hidden="true">Machado</p>
     </div>
     <div class="container">
       <div class="footer-grid">
@@ -373,9 +661,10 @@
             <span aria-hidden="true">+</span>
           </a>
           <address class="footer-address">
+            <p><a href="tel:+554833489982">(48) 3348-9982</a></p>
             <p><a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a></p>
             <p><a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a></p>
-            <p>Minas Gerais, Brasil</p>
+            <p>Palhoça, SC</p>
           </address>
         </div>
       </div>
@@ -385,13 +674,55 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
   <script src="./js/gsap-setup.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/sp8=" crossorigin=""></script>
   <script type="module" src="./js/main.js"></script>
+
+  <!-- Mapa Leaflet -->
+  <script>
+    window.addEventListener('load', function () {
+      var mapEl = document.getElementById('sobre-map');
+      if (!mapEl) return;
+
+      var lat = -27.6453, lng = -48.6701;
+
+      var map = L.map('sobre-map', {
+        center: [lat, lng],
+        zoom: 13,
+        zoomControl: true,
+        scrollWheelZoom: false,
+        attributionControl: true
+      });
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        subdomains: 'abc',
+        maxZoom: 19
+      }).addTo(map);
+
+      var markerIcon = L.divIcon({
+        className: '',
+        html: '<div class="map-pin"></div>',
+        iconSize: [12, 12],
+        iconAnchor: [6, 6]
+      });
+
+      L.marker([lat, lng], { icon: markerIcon })
+        .addTo(map)
+        .bindPopup(
+          '<strong style="font-family:monospace;font-size:11px;letter-spacing:.08em">MACHADO PLATAFORMAS</strong>' +
+          '<br><span style="font-family:monospace;font-size:10px;color:#888">Palhoça · SC · Brasil</span>'
+        );
+
+      map.invalidateSize(true);
+    });
+  </script>
 
 </body>
 </html>

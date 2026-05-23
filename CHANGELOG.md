@@ -6,6 +6,97 @@
 
 ---
 
+## [2026-05-23] CONTENT — Atualização completa de dados da empresa — Palhoça, SC
+
+**Agente:** Claude Code
+**Sessão:** Dados reais da empresa — endereço, telefone, coordenadas
+
+### Alterado
+- **Todos os HTMLs** — ticker: `MINAS GERAIS` → `PALHOÇA · SC`
+- **Todos os HTMLs** — hero coords: `−19.9167° S · −43.9345° O / ALT 896M · MG · BR` → `−27.6453° S · −48.6701° O / ALT 5M · SC · BR`
+- **Todos os HTMLs** — deco-label: `MG · BR` → `SC · BR`
+- **Todos os HTMLs** — footer address: `Minas Gerais, Brasil` → `Palhoça, SC` + telefone `(48) 3348-9982` adicionado
+- `sobre.html` — meta description, hero sub, eyebrow, sobre-coords: MG → SC
+- `sobre.html` — badge: `MG` → `SC`, `Fabricado em Minas Gerais` → `Fabricado em Santa Catarina`
+- `sobre.html` — loc endereço: `R. B, Qd. 01 Lt. 13 — Pacheco, Palhoça — SC, 88134-040`
+- `sobre.html` — loc: item de Telefone adicionado com `(48) 3348-9982`
+- `sobre.html` — Leaflet map center: `-19.9167, -43.9345` → `-27.6453, -48.6701`
+- `sobre.html` — popup do mapa: `Minas Gerais · Brasil` → `Palhoça · SC · Brasil`
+
+---
+
+## [2026-05-23] STYLE — sobre.html: fundo da seção unificada convertido para branco
+
+**Agente:** Claude Code
+**Sessão:** White background — sobre-unified
+
+### Alterado
+- `sobre.html` — `.sobre-unified` e todos os sub-componentes convertidos de fundo escuro (`#090b0e`) para fundo branco (`#ffffff`):
+  - `.sobre-stats` gap/border: rgba white → rgba dark
+  - `.sobre-stat` background: `#090b0e` → `#f7f8fa`
+  - `.sobre-stat__num`, `.sobre-stat__suffix`, `.sobre-stat__label`: cores white → dark
+  - `.sobre-loc__title`, `.sobre-loc__item`, `.sobre-loc__label`, `.sobre-loc__value`, `.sobre-loc__value a`: cores white → dark
+  - `.sobre-map-wrap` border: rgba white → rgba dark
+  - `.leaflet-container` background: `#111316` → `#e8ecf0`
+  - `.leaflet-control-attribution` invertido para fundo claro
+  - Tiles Leaflet: `dark_all` → `light_all` (CartoDB)
+
+---
+
+## [2026-05-23] FEAT — sobre.html: refatoração completa — história, MVV, mapa interativo
+
+**Agente:** Claude Code
+**Sessão:** Refatoração sobre.html (frontend-design + copywriting)
+
+### Alterado
+- `sobre.html` — página refatorada com 3 novas seções:
+  - **Nossa História**: nova copy com texto fornecido pelo cliente, stats com data-count, chips de infraestrutura (Corte a Laser, CNC, etc.), imagem com hover
+  - **Missão, Visão & Valores**: seção com fundo claro, 3 cards com ícones SVG inline, animações stagger, hover com elevação
+  - **Localização**: fundo escuro, informações de contato + mapa interativo Leaflet + tiles dark (CartoDB)
+- `sobre.html` — hero: subtitle atualizada com foco nos diferenciais (3.000m², laser, CNC)
+- `sobre.html` — CTA: botão atualizado com SVG WhatsApp + "Sem compromisso"
+- `sobre.html` — Leaflet.js adicionado (CDN, sem API key)
+
+---
+
+## [2026-05-23] CONTENT — page-cta: adicionado texto "Sem compromisso" abaixo do botão
+
+**Agente:** Claude Code
+**Sessão:** Animação loader + padronização footer + page-cta
+
+### Alterado
+- `css/components/subpages.css` — adicionada classe `.page-cta__note` (mono, xs, uppercase, opacidade 0.3)
+- `produtos.html` — `page-cta`: adicionado `<p class="page-cta__note">Sem compromisso</p>`
+- `sobre.html` — `page-cta`: adicionado `<p class="page-cta__note">Sem compromisso</p>`
+- `clientes.html` — `page-cta`: adicionado `<p class="page-cta__note">Sem compromisso</p>`
+- `credito.html` — `page-cta`: adicionado `<p class="page-cta__note">Sem compromisso</p>`
+
+---
+
+## [2026-05-23] STYLE — Footer: headline padronizada para "Machado" em todas as páginas
+
+**Agente:** Claude Code
+**Sessão:** Animação loader + padronização footer
+
+### Alterado
+- `sobre.html` — `footer-headline`: "Machado Plataformas" → "Machado"
+- `produtos.html` — `footer-headline`: "Machado Plataformas" → "Machado"
+- `clientes.html` — `footer-headline`: "Machado Plataformas" → "Machado"
+- `credito.html` — `footer-headline`: "Machado Plataformas" → "Machado"
+
+---
+
+## [2026-05-23] STYLE — Loader: saída trocada de wipe diagonal para scale + fade
+
+**Agente:** Claude Code
+**Sessão:** Animação de saída do loading screen
+
+### Alterado
+- `js/loader.js` — exit animation substituída: `clipPath` diagonal removido, substituído por `autoAlpha: 0` + `scale: 1.06` com ease `machado` (0.6s)
+- `css/animations.css` — `#loader`: removidos `clip-path` e `will-change: clip-path`; adicionado `will-change: opacity, transform`
+
+---
+
 ## [2026-05-22] FEAT — Clientes: galerias imersivas + seção Entregas Realizadas
 
 **Agente:** Claude Code

@@ -248,7 +248,7 @@ export function initProdutosTabs() {
       panels.forEach((panel) => {
         gsap.fromTo(
           panel.querySelectorAll('.produto-figure, .produto-panel__copy'),
-          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 0, y: 16 },
           {
             autoAlpha: 1,
             y: 0,
@@ -257,7 +257,7 @@ export function initProdutosTabs() {
             stagger: 0.08,
             scrollTrigger: {
               trigger: panel,
-              start: 'top 78%',
+              start: 'top bottom',
               once: true,
             },
           }

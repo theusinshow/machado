@@ -75,6 +75,13 @@ body {
     gap: 0;
   }
 
+  /* Conteúdo alinhado ao topo — evita o vazio acima do kicker causado por
+     align-content: center + hero-inner full-height no mobile */
+  .hero-content {
+    align-content: start;
+    align-self: start;
+  }
+
   /* "PLATAFORMAS" (11 chars) em 3.2rem = ~336px, padding 20px/side → overflow
      Reduzido para garantir encaixe em 375px sem nowrap quebrar */
   .hero-title {
@@ -414,6 +421,7 @@ body {
   .produtos-copy {
     padding-top: var(--space-4);
     gap: var(--space-3);
+    align-content: start;
   }
 
   .produtos-line-name {
@@ -546,6 +554,14 @@ body {
 ───────────────────────────────────────────────────── */
 
 @media (max-width: 767px) {
+  /* Horizon Bold a 3rem em 390px → caracteres cortados pelo overflow:hidden
+     pai (.section). Reduzir + overflow:visible garante texto visível */
+  .section-title {
+    font-size: clamp(1.65rem, 6.5vw, 2.35rem);
+    overflow: visible;
+    word-break: break-word;
+  }
+
   .section-heading__title {
     font-size: clamp(var(--text-2xl), 6.5vw, var(--text-4xl));
     line-height: 1.06;

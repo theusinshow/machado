@@ -6,6 +6,22 @@
 
 ---
 
+## [2026-05-24] FIX — 3 problemas mobile identificados em screenshots (390×844)
+
+**Agente:** Claude Code
+**Sessão:** Mobile layout fixes — hero, produtos, depoimentos
+
+### Alterado
+- `css/mobile.css`
+  - **Hero**: adicionado `.hero-content { align-content: start; align-self: start }` — elimina o vazio acima do kicker causado por `align-content: center` num contêiner full-height
+  - **Section-title**: adicionado `font-size: clamp(1.65rem, 6.5vw, 2.35rem); overflow: visible` — corrige corte de letras (Horizon Bold 3rem + `overflow: hidden` do pai)
+  - **Produtos**: adicionado `align-content: start` ao `.produtos-copy` — evita que `align-content: end` crie espaço acima do título de linha
+- `js/animations/produtos-tabs.js`
+  - ScrollTrigger mobile alterado de `start: 'top 78%'` → `start: 'top bottom'` — painéis 2 e 3 agora animam ao entrar no viewport (não mais visíveis como blocos pretos vazios antes do scroll)
+  - `y: 24` → `y: 16` no estado inicial do `fromTo`
+
+---
+
 ## [2026-05-24] FIX — Vídeo preview autoplay na seção Sobre (home)
 
 **Agente:** Claude Code

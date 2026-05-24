@@ -6,6 +6,19 @@
 
 ---
 
+## [2026-05-24] FIX — Vídeo preview autoplay na seção Sobre (home)
+
+**Agente:** Claude Code
+**Sessão:** Auditoria Playwright + fix vídeo 404
+
+### Criado
+- `assets/videos/preview-institucional.mp4` — vídeo de preview para autoplay no botão YouTube da seção Sobre (copiado de `assets/images/galeria/WhatsApp Video 2026-05-05 at 12.13.30.mp4`)
+
+### Motivo
+`<video autoplay muted loop playsinline>` na home apontava para arquivo inexistente → 404 → vídeo não tocava. Arquivo adicionado na pasta correta, atributos já estavam corretos.
+
+---
+
 ## [2026-05-23] FEAT — Responsividade mobile completa para todo o site
 
 **Agente:** Claude Code

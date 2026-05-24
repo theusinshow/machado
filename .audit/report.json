@@ -1,0 +1,389 @@
+[
+  {
+    "page": "Home (index.html)",
+    "slug": "home",
+    "breakpoints": [
+      {
+        "breakpoint": "375x667",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/home_375x667.png"
+      },
+      {
+        "breakpoint": "390x844",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/home_390x844.png"
+      },
+      {
+        "breakpoint": "430x932",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/home_430x932.png"
+      },
+      {
+        "breakpoint": "768x1024",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/home_768x1024.png"
+      },
+      {
+        "breakpoint": "1024x768",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/home_1024x768.png"
+      },
+      {
+        "breakpoint": "1440x900",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/home_1440x900.png"
+      },
+      {
+        "breakpoint": "1920x1080",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/home_1920x1080.png"
+      }
+    ]
+  },
+  {
+    "page": "Sobre",
+    "slug": "sobre",
+    "breakpoints": [
+      {
+        "breakpoint": "375x667",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/sobre_375x667.png"
+      },
+      {
+        "breakpoint": "390x844",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/sobre_390x844.png"
+      },
+      {
+        "breakpoint": "430x932",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/sobre_430x932.png"
+      },
+      {
+        "breakpoint": "768x1024",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1024x768",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1440x900",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1920x1080",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      }
+    ]
+  },
+  {
+    "page": "Produtos",
+    "slug": "produtos",
+    "breakpoints": [
+      {
+        "breakpoint": "375x667",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "",
+                "alt": ""
+              }
+            ]
+          }
+        ],
+        "screenshot": "screenshots/produtos_375x667.png"
+      },
+      {
+        "breakpoint": "390x844",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "",
+                "alt": ""
+              }
+            ]
+          }
+        ],
+        "screenshot": "screenshots/produtos_390x844.png"
+      },
+      {
+        "breakpoint": "430x932",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "",
+                "alt": ""
+              }
+            ]
+          }
+        ],
+        "screenshot": "screenshots/produtos_430x932.png"
+      },
+      {
+        "breakpoint": "768x1024",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "",
+                "alt": ""
+              }
+            ]
+          }
+        ],
+        "screenshot": "screenshots/produtos_768x1024.png"
+      },
+      {
+        "breakpoint": "1024x768",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "",
+                "alt": ""
+              }
+            ]
+          }
+        ],
+        "screenshot": "screenshots/produtos_1024x768.png"
+      },
+      {
+        "breakpoint": "1440x900",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "",
+                "alt": ""
+              }
+            ]
+          }
+        ],
+        "screenshot": "screenshots/produtos_1440x900.png"
+      },
+      {
+        "breakpoint": "1920x1080",
+        "issueCount": 1,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "",
+                "alt": ""
+              }
+            ]
+          }
+        ],
+        "screenshot": "screenshots/produtos_1920x1080.png"
+      }
+    ]
+  },
+  {
+    "page": "Clientes",
+    "slug": "clientes",
+    "breakpoints": [
+      {
+        "breakpoint": "375x667",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/clientes_375x667.png"
+      },
+      {
+        "breakpoint": "390x844",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/clientes_390x844.png"
+      },
+      {
+        "breakpoint": "430x932",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/clientes_430x932.png"
+      },
+      {
+        "breakpoint": "768x1024",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1024x768",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1440x900",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1920x1080",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      }
+    ]
+  },
+  {
+    "page": "Crédito",
+    "slug": "credito",
+    "breakpoints": [
+      {
+        "breakpoint": "375x667",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/credito_375x667.png"
+      },
+      {
+        "breakpoint": "390x844",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/credito_390x844.png"
+      },
+      {
+        "breakpoint": "430x932",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": "screenshots/credito_430x932.png"
+      },
+      {
+        "breakpoint": "768x1024",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1024x768",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1440x900",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      },
+      {
+        "breakpoint": "1920x1080",
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
+      }
+    ]
+  }
+]

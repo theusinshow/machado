@@ -10,6 +10,11 @@ desktop.ini
 
 # Claude Code interno
 .claude/
+.superpowers/
+
+# Dependências de ferramentas locais
+.audit/node_modules/
+node_modules/
 
 # Pasta de trabalho temporária
 imgs/

@@ -52,7 +52,15 @@
 
   <!-- ── Loading Screen ── -->
   <div id="loader" role="status" aria-live="polite" aria-label="Carregando">
-    <img src="./assets/images/logo/logo.svg" class="loader__logo" alt="Machado Plataformas" width="140" height="35" />
+    <div class="loader__inner">
+      <img src="./assets/images/logo/logo.svg" class="loader__logo" alt="Machado Plataformas" width="140" height="35" />
+      <div class="loader__squares" aria-hidden="true">
+        <span class="loader__square"></span>
+        <span class="loader__square"></span>
+        <span class="loader__square"></span>
+        <span class="loader__square"></span>
+      </div>
+    </div>
   </div>
 
   <!-- ── WhatsApp Flutuante ── -->

@@ -100,7 +100,9 @@
 
 .page-hero__title-line {
   display: block;
-  overflow: hidden;
+  overflow: clip;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
 }
 
 .page-hero__title-inner {
@@ -365,6 +367,15 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── PAGE CTA — Mobile ── */
+
+@media (max-width: 480px) {
+  .page-cta__title {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    letter-spacing: 0.02em;
+  }
 }
 
 /* ── REDUCED MOTION ── */

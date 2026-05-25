@@ -145,9 +145,9 @@
 }
 
 .financiamento-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
   margin-top: var(--space-8);
 }
 
@@ -268,7 +268,7 @@
 
 @media (min-width: 768px) {
   .financiamento-layout {
-    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.72fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.72fr);
   }
 
   .financiamento-panel__body {
@@ -279,34 +279,11 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .financiamento-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (min-width: 1024px) {
   .financiamento-layout {
     gap: var(--space-16);
-  }
-
-  .financiamento-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    margin-top: var(--space-10);
-  }
-
-  .financiamento-item {
-    min-height: calc(var(--space-20) + var(--space-12));
-    grid-template-columns: 1fr;
-    align-content: space-between;
-    align-items: start;
-  }
-
-  .financiamento-item__icon {
-    grid-row: auto;
-  }
-
-  .financiamento-item__hint {
-    grid-column: auto;
   }
 }
 
@@ -341,5 +318,236 @@
   .financiamento-item__square {
     transition: none;
     transform: none;
+  }
+}
+
+/* ===========================
+   TIER STRUCTURE: Featured + Standard
+=========================== */
+
+/* --- Featured Tier (BNDES + Financiamento) --- */
+
+.financiamento-featured {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.financiamento-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  overflow: hidden;
+  color: var(--color-white);
+  text-decoration: none;
+  background-color: var(--color-menu-bg);
+  border: 1px solid var(--color-border-light);
+  cursor: pointer;
+  transition:
+    border-color var(--dur-normal) var(--ease-premium),
+    background-color var(--dur-normal) var(--ease-premium),
+    transform var(--dur-normal) var(--ease-premium),
+    box-shadow var(--dur-normal) var(--ease-premium);
+}
+
+.financiamento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 3;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform var(--dur-normal) var(--ease-premium);
+}
+
+.financiamento-card:hover,
+.financiamento-card:focus-visible {
+  background-color: var(--color-navy);
+  border-color: var(--color-primary);
+  box-shadow: 0 18px 42px var(--color-navbar-shadow);
+  transform: translateY(-2px);
+  outline: 0;
+}
+
+.financiamento-card:hover::before,
+.financiamento-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.financiamento-card__square {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  width: var(--space-3);
+  height: var(--space-3);
+  background-color: var(--color-primary);
+  opacity: 0;
+  transform: rotate(-135deg) scale(0.4);
+  transition:
+    opacity var(--dur-normal) var(--ease-premium),
+    transform var(--dur-normal) var(--ease-premium);
+}
+
+.financiamento-card:hover .financiamento-card__square,
+.financiamento-card:focus-visible .financiamento-card__square {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.financiamento-card__icon-wrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--color-primary-light);
+  transition:
+    color var(--dur-normal) var(--ease-premium),
+    transform var(--dur-normal) var(--ease-premium);
+}
+
+.financiamento-card:hover .financiamento-card__icon-wrap,
+.financiamento-card:focus-visible .financiamento-card__icon-wrap {
+  color: var(--color-white);
+  transform: translateY(-2px) scale(1.06);
+}
+
+.financiamento-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.financiamento-card__tag {
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+.financiamento-card__title {
+  margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-titles);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.financiamento-card__desc {
+  max-width: 46ch;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.65;
+}
+
+.financiamento-card__footer {
+  padding-top: var(--space-4);
+  margin-top: auto;
+  border-top: 1px solid var(--color-border-light);
+  transition: border-color var(--dur-normal) var(--ease-premium);
+}
+
+.financiamento-card__cta {
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  transition: color var(--dur-normal) var(--ease-premium);
+}
+
+.financiamento-card:hover .financiamento-card__cta,
+.financiamento-card:focus-visible .financiamento-card__cta {
+  color: var(--color-white);
+}
+
+/* --- Tier Separator --- */
+
+.financiamento-tier-sep {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-ui-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.financiamento-tier-sep::before,
+.financiamento-tier-sep::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border-light);
+}
+
+/* --- Standard Tier (Entrada, Parcelamento, PIX, Cartão) --- */
+
+.financiamento-standard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+/* --- Responsive: Tablet (768px+) --- */
+
+@media (min-width: 768px) {
+  .financiamento-featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .financiamento-standard {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* --- Responsive: Desktop (1024px+) --- */
+
+@media (min-width: 1024px) {
+  .financiamento-featured {
+    gap: var(--space-5);
+  }
+
+  .financiamento-standard {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .financiamento-standard .financiamento-item {
+    min-height: calc(var(--space-20) + var(--space-8));
+    grid-template-columns: 1fr;
+    align-content: space-between;
+    align-items: start;
+  }
+
+  .financiamento-standard .financiamento-item .financiamento-item__icon {
+    grid-row: auto;
+  }
+
+  .financiamento-standard .financiamento-item .financiamento-item__hint {
+    grid-column: auto;
+  }
+}
+
+/* --- Motion reduction for new components --- */
+
+@media (prefers-reduced-motion: reduce) {
+  .financiamento-card,
+  .financiamento-card::before,
+  .financiamento-card__square,
+  .financiamento-card__icon-wrap,
+  .financiamento-card__footer,
+  .financiamento-card__cta {
+    transition: none;
+    transform: none;
+    animation: none;
   }
 }

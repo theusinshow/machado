@@ -291,7 +291,7 @@
       clamp(var(--space-10), 3.5vw, var(--space-14))
       clamp(var(--space-6), 2vw, var(--space-8))
       clamp(var(--space-10), 3.5vw, var(--space-14))
-      160px;
+      clamp(var(--space-10), 12vw, 160px);
   }
 
   /* Rail: vertical no desktop */

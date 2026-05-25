@@ -6,6 +6,84 @@
 
 ---
 
+## [2026-05-25] FIX — Correções de UX/design pós-critique (tipografia, links, acessibilidade)
+
+**Agente:** Claude Code
+**Sessão:** Critique pós-análise — aplicação de melhorias aprovadas
+
+### Alterado
+- `produtos.html` — typo "MEDIA" → "MÉDIA" na seção Arsenal Linha Média (h2.arsenal__name)
+- `produtos.html` — navbar CTA: substituído `<span>+</span>` pelo SVG de WhatsApp idêntico ao index.html
+- `produtos.html` — contraste `.arsenal__tagline`: `rgba(255,255,255,0.38)` → `rgba(255,255,255,0.60)` (pass WCAG AA 4.5:1)
+- `produtos.html` — contraste `.arsenal__spec__label`: `rgba(255,255,255,0.28)` → `rgba(255,255,255,0.50)`
+- `index.html` — todos os `href="#"` nos botões "Ver linha completa" → `./produtos.html` (4 botões: produtos-line-cta, produto-leve, produto-media, produto-pesada)
+- `index.html` — footer tagline genérica substituída por copy com voz de marca
+- `produtos.html` — footer tagline genérica substituída por copy com voz de marca
+- `credito.html` — footer tagline genérica substituída por copy com voz de marca
+- `sobre.html` — footer tagline genérica substituída por copy com voz de marca
+- `clientes.html` — footer tagline genérica substituída por copy com voz de marca
+- `css/components/sobre.css` — contraste `.sobre-kpi__unit`: `rgba(255,255,255,0.35)` → `rgba(255,255,255,0.55)`
+
+### Criado
+- `credito.html` — adicionado `og:image` meta tag (ausente)
+- `sobre.html` — adicionado `og:image` meta tag (ausente)
+- `clientes.html` — adicionado `og:image` meta tag (ausente)
+
+---
+
+## [2026-05-24] FIX — Auditoria de responsividade e espaçamento — site inteiro
+
+**Agente:** Claude Code
+**Sessão:** `/impeccable audit` + `/impeccable layout site inteiro` — correções P1/P2/P3
+
+### Alterado
+- `css/components/subpages.css`
+  - `.page-hero__title-line`: `overflow: hidden` → `overflow: clip` com `padding-bottom: 0.1em` e `margin-bottom: -0.1em` — previne clipping da animação de rise com `line-height: 0.9` (afeta clientes.html, sobre.html)
+  - Adicionado `@media (max-width: 480px) { .page-cta__title }` com `font-size: clamp(1.75rem, 8vw, 2.25rem)` e `letter-spacing: 0.02em` — título de CTA não extravasa em 360–430px (afeta todas as subpages)
+- `css/components/produtos.css`
+  - `.produtos-left` (desktop `min-width: 1024px`): `padding-left: 160px` → `clamp(var(--space-10), 12vw, 160px)` — padding responsivo; em 1024px libera ~37px de espaço; ≥1366px preserva 160px original
+- `css/components/financiamento.css`
+  - `.financiamento-layout` (768px): `minmax(320px, 0.72fr)` → `minmax(280px, 0.72fr)` — painel de imagem não excede a coluna de conteúdo em tablets estreitos
+- `sobre.html`
+  - `#sobre-map`: removido `style="width:100%;height:360px;"` inline — o CSS scoped `height: clamp(280px, 40vw, 440px)` já existe e é responsivo; o inline sobrescrevia o clamp
+- `produtos.html` (bloco `<style>` inline)
+  - `.arsenal--pesada { margin-top: 20px }` → `margin-top: var(--space-5)` — token padronizado
+  - `.arsenal__spec__val`: adicionado `white-space: nowrap; overflow: hidden; text-overflow: ellipsis` — valores de spec não quebram linha em 360px
+  - `.opc-card__body { padding: 2.5rem }` → `clamp(1.25rem, 4vw, 2.5rem)` — padding responsivo dos cards de opcionais
+  - Adicionado `@media (max-width: 1024px)` revertendo alinhamento direito do `.arsenal--alt` (Linha Média) para `flex-start` no mobile/tablet
+  - `.arsenal--alt { padding-block: var(--space-8) }` no mesmo breakpoint — espaçamento vertical suavizado na transição
+- `clientes.html` (bloco `<style>` inline)
+  - `.em-acao-swiper-wrap` e `.entregas-gallery-wrap`: `margin-inline: calc(-1 * var(--space-6))` → `calc(-1 * var(--container-padding))` — elimina overflow horizontal de 4px em 360–430px (onde `--container-padding` < `--space-6`)
+  - Adicionados dois blocos `@media (max-height: 600px) and (orientation: landscape)` com `height: 280px` para slides dos swipers Em Ação e Entregas — evita slides demasiado altos em landscape mobile
+  - `.entregas__subtitle`: adicionado `@media (max-width: 767px) { text-align: left; max-width: none }` — subtítulo alinhado à esquerda em mobile, consistente com demais seções
+  - `.entregas-kpi__val`: `font-size: clamp(2.5rem, 5vw, 4rem)` → `clamp(2rem, 5vw, 4rem)` — valores KPI não transbordam no grid 2 colunas em 360px
+
+### Breakpoints validados
+360px, 390px, 430px, 480px, 768px, 1024px, 1366px, 1440px
+
+---
+
+## [2026-05-24] STYLE — credito.html — variante light industrial (polimento visual)
+
+**Agente:** Claude Code
+**Sessão:** Polimento visual — paleta light para Linha de Crédito
+
+### Alterado
+- `credito.html` — adicionado bloco `<style>` inline (scoped à página) com light industrial theme: fundo off-white `#F7F8FA`, seção/CTA em cinza claro `#ECEEF2`, cards em branco `#FFFFFF` com bordas sutis, textos em grafite `#1A1F2A` e cinza médio `#596475`, azul `#1B4D84` preservado apenas como acento (ícones, tags, CTAs, bordas de hover). Grid texture removida do `.financiamento::before`. Painel de foto mantido escuro como âncora de contraste intencional.
+
+---
+
+## [2026-05-24] FEAT — Redesign credito.html — hierarquia de peso nas opções de pagamento
+
+**Agente:** Claude Code
+**Sessão:** Redesign Linha de Crédito — hierarquia featured/standard
+
+### Alterado
+- `credito.html` — substituído `financiamento-grid` de 6 cards iguais por estrutura em dois tiers: featured (BNDES + Financiamento com cards editoriais grandes, ícone de instituição, copy segura) e standard (Entrada/Parcelamento/PIX/Cartão compactos em linha)
+- `css/components/financiamento.css` — `.financiamento-grid` convertido de CSS grid para flex column; removidas regras de grid nas MQs; adicionadas classes `.financiamento-featured`, `.financiamento-card` (e variantes), `.financiamento-tier-sep`, `.financiamento-standard` com breakpoints 768px e 1024px; responsividade corrigida para desktop (4 cols standard), tablet (2+2), mobile (1 col)
+
+---
+
 ## [2026-05-24] FIX — 3 problemas mobile identificados em screenshots (390×844)
 
 **Agente:** Claude Code

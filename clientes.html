@@ -8,6 +8,7 @@
   <meta property="og:title" content="Clientes — Machado Plataformas" />
   <meta property="og:description" content="Veja o que dizem os clientes da Machado Plataformas sobre qualidade, durabilidade e atendimento." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/images/hero/plataforma-hero.png" />
 
   <link rel="icon" type="image/png" href="./assets/images/logo/Icon.png" />
   <title>Clientes — Machado Plataformas</title>
@@ -112,7 +113,7 @@
     /* ── Galeria Swiper imersiva ── */
     .em-acao-swiper-wrap {
       position: relative;
-      margin-inline: calc(-1 * var(--space-6));
+      margin-inline: calc(-1 * var(--container-padding));
     }
 
     @media (min-width: 1280px) {
@@ -243,6 +244,12 @@
       .em-acao-swiper .swiper-slide { transform: scale(1); opacity: 1; }
     }
 
+    @media (max-height: 600px) and (orientation: landscape) {
+      .em-acao-swiper .swiper-slide {
+        height: 280px;
+      }
+    }
+
     /* === ENTREGAS REALIZADAS === */
 
     .entregas {
@@ -323,6 +330,13 @@
       text-align: right;
     }
 
+    @media (max-width: 767px) {
+      .entregas__subtitle {
+        text-align: left;
+        max-width: none;
+      }
+    }
+
     /* Grid de KPIs */
     .entregas-grid {
       display: grid;
@@ -367,7 +381,7 @@
 
     .entregas-kpi__val {
       font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2rem, 5vw, 4rem);
       font-weight: 300;
       line-height: 1;
       letter-spacing: -0.04em;
@@ -394,7 +408,7 @@
     /* Galeria carrossel — mesma lógica do em-acao-swiper */
     .entregas-gallery-wrap {
       position: relative;
-      margin-inline: calc(-1 * var(--space-6));
+      margin-inline: calc(-1 * var(--container-padding));
       margin-bottom: clamp(2rem, 4vw, 3rem);
     }
 
@@ -517,6 +531,12 @@
       .entregas-gallery-swiper .swiper-slide,
       .entregas-gallery-swiper .swiper-slide img { transition: none; }
       .entregas-gallery-swiper .swiper-slide { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-height: 600px) and (orientation: landscape) {
+      .entregas-gallery-swiper .swiper-slide {
+        height: 280px;
+      }
     }
 
     /* Ticker de estados */
@@ -1185,7 +1205,7 @@
       <div class="footer-grid">
         <div class="footer-col footer-col--brand">
           <img src="./assets/images/logo/logo.svg" alt="Machado Plataformas" class="footer-logo" width="120" height="30" loading="lazy" />
-          <p class="footer-tagline">Soluções em plataformas veiculares com qualidade, segurança e confiança.</p>
+          <p class="footer-tagline">Fabricamos a plataforma que move o Brasil.</p>
           <div class="footer-status">
             <span>Atendimento nacional</span>
             <span>Fabricação sob demanda</span>

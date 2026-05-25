@@ -6,6 +6,18 @@
 
 ---
 
+## [2026-05-25] STYLE — Loading screen redesenhada — clean reveal + curtain exit
+
+**Agente:** Claude Code
+**Sessão:** Critique pós-análise — melhorias de UX
+
+### Alterado
+- `index.html` — loader simplificado: 4 quadrados + label "Loading" substituídos por logo.svg centralizada
+- `css/animations.css` — loader redesenhado: fundo #0F1823 (navy escuro), `.loader__logo` com estado inicial hidden; removidas classes `.loader__inner`, `.loader__squares`, `.loader__square`, `.loader__label`
+- `js/loader.js` — animação reescrita: logo sobe suavemente (0.55s), segura (0.65s) e a tela sobe como cortina (0.65s); `resolve()` dispara no início da saída para o hero começar a aparecer sob a cortina; total ~1.85s (era ~2.65s)
+
+---
+
 ## [2026-05-25] FIX — Correções de UX/design pós-critique (tipografia, links, acessibilidade)
 
 **Agente:** Claude Code

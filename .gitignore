@@ -11,6 +11,7 @@ desktop.ini
 # Claude Code interno
 .claude/
 .superpowers/
+.impeccable/
 
 # Dependências de ferramentas locais
 .audit/node_modules/

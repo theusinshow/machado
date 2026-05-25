@@ -4,6 +4,24 @@
 > Formato: `[AAAA-MM-DD] Tipo — Descrição breve` seguido de detalhes.
 > Tipos: `FEAT` (novo recurso), `FIX` (correção), `STYLE` (visual/CSS), `REFACTOR`, `CHORE` (estrutura/config), `CONTENT` (textos/imagens).
 
+## [2026-05-25] CHORE — Conversão de imagens para WebP + resize
+
+**Agente:** Claude Code
+**Sessão:** Otimização de imagens para entrega do site
+
+### Criado
+- `convert-images.js` — script Node.js/sharp que converte e redimensiona 19 imagens para WebP
+- `assets/images/hero/plataforma-hero.webp` — 900×1200, lossless (1418KB → 779KB, −45%)
+- `assets/images/produtos/LEVE.webp` — 900×1350, lossless (1666KB → 282KB, −83%)
+- `assets/images/produtos/MEDIA.webp` — 900×1350, lossless (770KB → 388KB, −50%)
+- `assets/images/produtos/pesada.webp` — 900×1350, lossless (1680KB → 282KB, −83%)
+- `assets/images/galeria/foto-01.webp` a `foto-10.webp` — 800×1067 / 800×800, q82
+- `assets/images/galeria/foto-03-nav.webp` — 400×533, versão reduzida para navbar card
+- `assets/images/sobre/fabrica-01.webp` a `fabrica-04.webp` — 800–1200px, q85
+
+### Alterado
+- `index.html` — todos os `src` de imagem atualizados para apontar aos novos `.webp` e `width`/`height` corrigidos
+
 ---
 
 ## [2026-05-25] STYLE — Loading screen redesenhada — clean reveal + curtain exit

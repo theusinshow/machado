@@ -214,7 +214,6 @@
   pointer-events: none;
   z-index: 1;
   transform: scale(1.04);
-  will-change: transform;
 }
 
 .hero.is-ready [data-hero-reveal],

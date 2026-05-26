@@ -18,12 +18,13 @@ export function initNavbar() {
 
   let menuOpen = false;
   let themeFrame = null;
+  let cachedNavHeight = navbar.offsetHeight;
 
   function syncNavbarTheme() {
     themeFrame = null;
     if (menuOpen) return;
 
-    const navProbe = navbar.getBoundingClientRect().bottom + 24;
+    const navProbe = cachedNavHeight + 24;
     let shouldUseLightTheme = false;
 
     lightSections.forEach((section) => {
@@ -171,6 +172,7 @@ export function initNavbar() {
 
   window.addEventListener('scroll', updateScrolledState, { passive: true });
   window.addEventListener('resize', () => {
+    cachedNavHeight = navbar.offsetHeight;
     scheduleNavbarTheme();
     if (menuOpen) moveIndicatorToActive();
   }, { passive: true });

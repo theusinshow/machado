@@ -28,6 +28,10 @@
   <link rel="preload" href="./css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="./css/bundle.css" /></noscript>
 
+  <!-- Fontes críticas — preload antes do parser chegar ao @font-face inline -->
+  <link rel="preload" href="./assets/fonts/Horizon-Font/Horizon.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/METAG___.TTF" as="font" type="font/truetype" crossorigin />
+
   <!-- Hero image — preload para antecipar download antes do parser chegar ao body -->
   <link rel="preload" as="image" href="./assets/images/hero/plataforma-hero-mobile.webp" media="(max-width: 767px)" fetchpriority="high" />
   <link rel="preload" as="image" href="./assets/images/hero/plataforma-hero-desktop.webp" media="(min-width: 768px)" fetchpriority="high" />

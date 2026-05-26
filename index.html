@@ -24,6 +24,10 @@
   <!-- CSS bundle — único request, não bloqueia render de forma fragmentada -->
   <link rel="stylesheet" href="./css/bundle.css" />
 
+  <!-- Hero image — preload para antecipar download antes do parser chegar ao body -->
+  <link rel="preload" as="image" href="./assets/images/hero/plataforma-hero-mobile.webp" media="(max-width: 767px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="./assets/images/hero/plataforma-hero-desktop.webp" media="(min-width: 768px)" fetchpriority="high" />
+
   <!-- Fontes externas — carregadas de forma não bloqueante -->
   <link rel="preconnect" href="https://use.typekit.net" />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />

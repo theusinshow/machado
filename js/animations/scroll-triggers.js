@@ -1,4 +1,7 @@
-import { splitTextByLines } from './text-split.js';
+function splitTextByLines(el) {
+  if (typeof SplitText === 'undefined') return null;
+  return new SplitText(el, { type: 'lines', linesClass: 'line-wrap' });
+}
 
 export function initScrollTriggers() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -11,12 +14,22 @@ export function initScrollTriggers() {
 
   if (!document.querySelector('[data-animate]')) return;
 
-  document.querySelectorAll('[data-animate="section-heading"]').forEach((el) => {
-    const meta = el.querySelector('.section-heading__meta');
-    const title = el.querySelector('.section-heading__title');
-    const subtitle = el.querySelector('.section-heading__subtitle');
+  // Batch all offsetWidth reads before any animations are created (avoids forced reflow)
+  const headingData = Array.from(document.querySelectorAll('[data-animate="section-heading"]')).map((el) => {
     const rule = el.querySelector('.section-heading__rule');
     const square = el.querySelector('.section-heading__square');
+    return {
+      el,
+      meta: el.querySelector('.section-heading__meta'),
+      title: el.querySelector('.section-heading__title'),
+      subtitle: el.querySelector('.section-heading__subtitle'),
+      rule,
+      square,
+      squareTravel: (rule && square) ? rule.offsetWidth - square.offsetWidth : 0,
+    };
+  });
+
+  headingData.forEach(({ el, meta, title, subtitle, rule, square, squareTravel }) => {
     const parts = [meta, title, subtitle].filter(Boolean);
 
     const tl = gsap.timeline({
@@ -32,7 +45,7 @@ export function initScrollTriggers() {
     if (square && rule) {
       tl.fromTo(square,
         { x: 0, rotate: 0, opacity: 0 },
-        { x: () => rule.offsetWidth - square.offsetWidth, rotate: 180, opacity: 1, duration: 0.9, ease: 'machado' },
+        { x: squareTravel, rotate: 180, opacity: 1, duration: 0.9, ease: 'machado' },
         0
       );
     }

@@ -68,9 +68,8 @@ export function initHero() {
   }
 
   if (heroMedia) {
-    tl.fromTo(heroMedia,
-      { opacity: 0, scale: 1.04 },
-      { opacity: 1, scale: 1, duration: 1.2, ease: 'machado' },
+    tl.to(heroMedia,
+      { scale: 1, duration: 1.2, ease: 'machado' },
       0.16
     );
   }

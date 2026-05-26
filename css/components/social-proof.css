@@ -100,7 +100,7 @@
   .social-proof-stat {
     flex: 1;
     padding-block: 0;
-    padding-inline: var(--space-6);
+    padding-inline: var(--space-3);
     border-bottom: none;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }

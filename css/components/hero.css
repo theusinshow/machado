@@ -123,6 +123,16 @@
   min-width: 15.5rem;
 }
 
+/* Mobile: ícone WhatsApp já coberto pelo botão flutuante */
+@media (max-width: 767px) {
+  .hero-cta-primary .btn__plus {
+    display: none;
+  }
+  .hero-cta-primary .btn__label {
+    flex: 1;
+  }
+}
+
 
 .hero-cta-primary .btn__label {
   overflow: hidden;
@@ -325,6 +335,7 @@
 
   .hero-content {
     max-width: 42rem;
+    align-content: start;
   }
 
   .hero-title {

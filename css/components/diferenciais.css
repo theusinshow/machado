@@ -150,6 +150,16 @@
   .diferenciais-timeline {
     gap: var(--space-8);
   }
+
+  .diferenciais-layout {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(var(--space-8), 4vw, var(--space-12));
+  }
+
+  .diferenciais-visual__sticky {
+    aspect-ratio: 3 / 4;
+  }
 }
 
 @media (min-width: 1024px) {

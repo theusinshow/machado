@@ -267,7 +267,7 @@
   }
 
   .depoimento-card--featured {
-    grid-column: span 2;
+    grid-column: auto;
   }
 }
 

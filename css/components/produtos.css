@@ -412,14 +412,15 @@
     visibility: visible;
   }
 
-  /* Figura: ligeiramente menor que o stage — borda preta absorve o recuo */
+  /* Figura extrapola o stage verticalmente — stage overflow:hidden faz o clip.
+     Isso permite que a imagem retrato preencha a largura sem ser recortada. */
   .produto-figure {
     position: absolute;
-    inset: 2% 9% 12% 9%;
+    inset: -20% 8% -20% 8%;
     width: auto;
     height: auto;
     aspect-ratio: unset;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;

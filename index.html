@@ -208,11 +208,13 @@
               media="(max-width: 767px)"
               srcset="./assets/images/hero/plataforma-hero-mobile.webp"
               width="400" height="533"
+              sizes="100vw"
             />
             <source
               media="(min-width: 768px)"
               srcset="./assets/images/hero/plataforma-hero-desktop.webp"
               width="900" height="1200"
+              sizes="50vw"
             />
             <img
               src="./assets/images/hero/plataforma-hero-desktop.webp"
@@ -375,7 +377,10 @@
 
         <article id="produto-leve" class="produto-panel is-active" data-slide="0">
           <figure class="produto-figure">
-            <img src="./assets/images/produtos/LEVE.webp" alt="Plataforma Machado Linha Leve" width="900" height="1350" loading="lazy" decoding="async" />
+            <picture>
+              <source media="(max-width: 1023px)" srcset="./assets/images/produtos/LEVE-mobile.webp" width="450" height="675" />
+              <img src="./assets/images/produtos/LEVE.webp" alt="Plataforma Machado Linha Leve" width="900" height="1350" loading="lazy" decoding="async" />
+            </picture>
           </figure>
           <div class="produto-panel__copy">
             <span class="produto-panel__kicker mono">Linha Leve</span>
@@ -393,7 +398,10 @@
 
         <article id="produto-media" class="produto-panel" data-slide="1">
           <figure class="produto-figure">
-            <img src="./assets/images/produtos/MEDIA.webp" alt="Plataforma Machado Linha Média" width="900" height="1350" loading="lazy" decoding="async" />
+            <picture>
+              <source media="(max-width: 1023px)" srcset="./assets/images/produtos/MEDIA-mobile.webp" width="450" height="675" />
+              <img src="./assets/images/produtos/MEDIA.webp" alt="Plataforma Machado Linha Média" width="900" height="1350" loading="lazy" decoding="async" />
+            </picture>
           </figure>
           <div class="produto-panel__copy">
             <span class="produto-panel__kicker mono">Linha Média</span>
@@ -411,7 +419,10 @@
 
         <article id="produto-pesada" class="produto-panel" data-slide="2">
           <figure class="produto-figure">
-            <img src="./assets/images/produtos/pesada.webp" alt="Plataforma Machado Linha Pesada" width="900" height="1350" loading="lazy" decoding="async" />
+            <picture>
+              <source media="(max-width: 1023px)" srcset="./assets/images/produtos/pesada-mobile.webp" width="450" height="675" />
+              <img src="./assets/images/produtos/pesada.webp" alt="Plataforma Machado Linha Pesada" width="900" height="1350" loading="lazy" decoding="async" />
+            </picture>
           </figure>
           <div class="produto-panel__copy">
             <span class="produto-panel__kicker mono">Linha Pesada</span>

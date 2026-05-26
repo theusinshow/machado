@@ -31,10 +31,21 @@
 
 .depoimentos-header__text {
   max-width: 440px;
-  margin: 0;
+  margin: 0 0 var(--space-3);
   color: #52606d;
   font-size: var(--text-base);
   line-height: 1.65;
+}
+
+.depoimentos-google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  color: #52606d;
+  text-transform: uppercase;
 }
 
 /* ── Trust strip ── */
@@ -88,7 +99,7 @@
 .depoimento-card {
   position: relative;
   display: flex;
-  min-height: 320px;
+  min-height: 260px;
   flex-direction: column;
   gap: var(--space-6);
   padding: var(--space-6);
@@ -278,7 +289,6 @@
 
   .depoimento-card--featured {
     grid-column: auto;
-    transform: translateY(-12px);
   }
 
   .depoimento-card__text {
@@ -288,7 +298,7 @@
 
 @media (min-width: 1280px) {
   .depoimento-card {
-    min-height: 360px;
+    min-height: 300px;
     padding: var(--space-10);
   }
 

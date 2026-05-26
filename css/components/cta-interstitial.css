@@ -7,7 +7,7 @@
   position: relative;
   padding-block: var(--section-sm);
   overflow: hidden;
-  background-color: #EEEEEE;
+  background-color: var(--color-stats-bg);
 }
 
 .cta-mid::before {

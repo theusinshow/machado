@@ -77,7 +77,7 @@ p {
 
 .section-title {
   font-family: 'Horizon', var(--font-heading);
-  font-size: 3rem;
+  font-size: var(--text-5xl);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -97,7 +97,7 @@ p {
 }
 
 .eyebrow::before {
-  content: '— ';
+  content: '/ ';
 }
 
 .lead {
@@ -121,7 +121,7 @@ p {
 
 /* ── Texto outline (stroke) — para efeito fill + outline nos H2 ── */
 .text-stroke {
-  color: #1B4D84;
+  color: var(--color-primary);
 }
 
 .uppercase { text-transform: uppercase; }

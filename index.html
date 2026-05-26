@@ -312,7 +312,6 @@
         <video
           class="sobre-yt__preview"
           src="./assets/videos/preview-institucional.mp4"
-          poster="https://i.ytimg.com/vi/i9T5rjnvAbk/maxresdefault.jpg"
           autoplay muted loop playsinline
           preload="none"
           aria-hidden="true"
@@ -612,13 +611,13 @@
 
   </footer>
 
-  <!-- ── Scripts CDN (ordem importa) ── -->
-  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
-  <script src="./js/gsap-setup.js"></script>
+  <!-- ── Scripts CDN — defer preserva ordem e libera main thread para pintar o hero antes ── -->
+  <script defer src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script defer src="./js/gsap-setup.js"></script>
   <script type="module" src="./js/main.js"></script>
 
 

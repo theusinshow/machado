@@ -23,23 +23,6 @@
   font-display: swap;
 }
 
-/* ── Eurostile Extended Black ── */
-@font-face {
-  font-family: 'Eurostile Extended';
-  src: url('../assets/fonts/EurostileExtendedBlack.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ── Chillax Variable ── */
-@font-face {
-  font-family: 'Chillax';
-  src: url('../assets/fonts/Chillax_Complete/Fonts/TTF/Chillax-Variable.ttf') format('truetype');
-  font-weight: 200 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ── Tags Base ── */
 body {

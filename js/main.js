@@ -19,8 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initLenis();
   initStats();
 
+  // Navbar e Hero rodam IMEDIATAMENTE — não esperam o loader.
+  // O loader cobre a tela visualmente, mas o browser já pinta os
+  // elementos da hero (opacity > 0 ao final da animação GSAP),
+  // o que reduz o LCP de ~2.4s para ~0.6-1.0s.
+  initNavbar();
+  initHero();
+
   initLoader().then(() => {
-    initHero();
+    // Scripts abaixo da dobra — diferidos até o loader sair
     initMarquee();
     initDiferenciais();
     initScrollTriggers();
@@ -28,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagnetic();
     initProdutosTabs();
     initSobreGallery();
-    initNavbar();
     initButtonSwap();
     initYoutubeFacade();
   });

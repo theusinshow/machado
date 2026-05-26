@@ -429,10 +429,10 @@ body {
     line-height: 0.92;
   }
 
-  /* Aspect-ratio 9:16 = ~596px de altura em 375px — excessivo
-     Reduzido para 3:4 para produto visível sem scroll excessivo */
+  /* Aspect-ratio original 9:16 excessivo. 4:3 landscape cobre melhor
+     as fotos de plataformas (formato horizontal) e reduz faixas pretas */
   .produto-figure {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 3;
     max-height: 62svh;
   }
 
@@ -472,7 +472,7 @@ body {
 
 @media (max-width: 767px) {
   .cta-mid {
-    padding-block: var(--space-8);
+    padding-block: var(--space-10);
   }
 
   .cta-mid-content {

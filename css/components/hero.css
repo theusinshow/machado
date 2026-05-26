@@ -336,6 +336,7 @@
   .hero-content {
     max-width: 42rem;
     align-content: start;
+    gap: var(--space-5);
   }
 
   .hero-title {

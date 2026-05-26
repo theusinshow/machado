@@ -420,12 +420,20 @@
     height: auto;
     aspect-ratio: unset;
     overflow: hidden;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Glow CSS desnecessário — spotlight já baked in nas imagens */
   .produto-figure::before {
     display: none;
+  }
+
+  /* picture precisa preencher o figure para img height:100% ter referência */
+  .produto-figure picture {
+    width: 100%;
+    height: 100%;
   }
 
   .produto-figure img {

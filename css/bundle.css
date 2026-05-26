@@ -4553,7 +4553,7 @@ p {
 }
 
 /* Estado inicial para animação GSAP — JS revela como marca d'água */
-.js-ready .footer-headline {
+.footer-headline {
   opacity: 0;
 }
 

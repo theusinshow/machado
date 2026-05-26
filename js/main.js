@@ -13,19 +13,28 @@ import { initButtonSwap }    from './animations/button-swap.js';
 import { initYoutubeFacade } from './animations/youtube-facade.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.classList.add('js-ready');
-
+  // Crítico: roda imediatamente (acima do fold)
   initLenis();
-  initStats();
   initNavbar();
   initHero();
-  initMarquee();
-  initDiferenciais();
-  initScrollTriggers();
-  initCounters();
-  initMagnetic();
-  initProdutosTabs();
-  initSobreGallery();
-  initButtonSwap();
-  initYoutubeFacade();
+  initStats();
+
+  // Não-crítico: adia para idle para liberar main thread antes do LCP decode
+  const deferredInit = () => {
+    initMarquee();
+    initDiferenciais();
+    initScrollTriggers();
+    initCounters();
+    initMagnetic();
+    initProdutosTabs();
+    initSobreGallery();
+    initButtonSwap();
+    initYoutubeFacade();
+  };
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(deferredInit, { timeout: 300 });
+  } else {
+    setTimeout(deferredInit, 50);
+  }
 });

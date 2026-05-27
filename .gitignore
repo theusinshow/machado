@@ -14,7 +14,7 @@ desktop.ini
 .impeccable/
 
 # Dependências de ferramentas locais
-.audit/node_modules/
+.audit/
 node_modules/
 
 # Pasta de trabalho temporária

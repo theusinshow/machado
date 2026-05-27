@@ -51,7 +51,8 @@
 /* Tema claro — navbar fechada sobre seções claras (ref good-fella claro) */
 .navbar--light .navbar-inner {
   background-color: var(--color-surface);
-  border-color: var(--color-surface);
+  border-color: var(--color-border-light);
+  box-shadow: 0 1px 16px rgba(28, 36, 48, 0.09);
   color: var(--color-text-dark);
 }
 

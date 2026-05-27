@@ -5,108 +5,45 @@
     "breakpoints": [
       {
         "breakpoint": "375x667",
-        "issueCount": 1,
-        "issues": [
-          {
-            "type": "JS_CONSOLE_ERROR",
-            "severity": "MEDIUM",
-            "detail": "1 JS console error(s)",
-            "elements": [
-              "Failed to load resource: the server responded with a status of 404 (Not Found)"
-            ]
-          }
-        ],
+        "issueCount": 0,
+        "issues": [],
         "screenshot": "screenshots/home_375x667.png"
       },
       {
         "breakpoint": "390x844",
-        "issueCount": 1,
-        "issues": [
-          {
-            "type": "JS_CONSOLE_ERROR",
-            "severity": "MEDIUM",
-            "detail": "1 JS console error(s)",
-            "elements": [
-              "Failed to load resource: the server responded with a status of 404 (Not Found)"
-            ]
-          }
-        ],
+        "issueCount": 0,
+        "issues": [],
         "screenshot": "screenshots/home_390x844.png"
       },
       {
         "breakpoint": "430x932",
-        "issueCount": 1,
-        "issues": [
-          {
-            "type": "JS_CONSOLE_ERROR",
-            "severity": "MEDIUM",
-            "detail": "1 JS console error(s)",
-            "elements": [
-              "Failed to load resource: the server responded with a status of 404 (Not Found)"
-            ]
-          }
-        ],
+        "issueCount": 0,
+        "issues": [],
         "screenshot": "screenshots/home_430x932.png"
       },
       {
         "breakpoint": "768x1024",
-        "issueCount": 1,
-        "issues": [
-          {
-            "type": "JS_CONSOLE_ERROR",
-            "severity": "MEDIUM",
-            "detail": "1 JS console error(s)",
-            "elements": [
-              "Failed to load resource: the server responded with a status of 404 (Not Found)"
-            ]
-          }
-        ],
-        "screenshot": "screenshots/home_768x1024.png"
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
       },
       {
         "breakpoint": "1024x768",
-        "issueCount": 1,
-        "issues": [
-          {
-            "type": "JS_CONSOLE_ERROR",
-            "severity": "MEDIUM",
-            "detail": "1 JS console error(s)",
-            "elements": [
-              "Failed to load resource: the server responded with a status of 404 (Not Found)"
-            ]
-          }
-        ],
-        "screenshot": "screenshots/home_1024x768.png"
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
       },
       {
         "breakpoint": "1440x900",
-        "issueCount": 1,
-        "issues": [
-          {
-            "type": "JS_CONSOLE_ERROR",
-            "severity": "MEDIUM",
-            "detail": "1 JS console error(s)",
-            "elements": [
-              "Failed to load resource: the server responded with a status of 404 (Not Found)"
-            ]
-          }
-        ],
-        "screenshot": "screenshots/home_1440x900.png"
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
       },
       {
         "breakpoint": "1920x1080",
-        "issueCount": 1,
-        "issues": [
-          {
-            "type": "JS_CONSOLE_ERROR",
-            "severity": "MEDIUM",
-            "detail": "1 JS console error(s)",
-            "elements": [
-              "Failed to load resource: the server responded with a status of 404 (Not Found)"
-            ]
-          }
-        ],
-        "screenshot": "screenshots/home_1920x1080.png"
+        "issueCount": 0,
+        "issues": [],
+        "screenshot": null
       }
     ]
   },
@@ -116,45 +53,201 @@
     "breakpoints": [
       {
         "breakpoint": "375x667",
-        "issueCount": 0,
-        "issues": [],
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
         "screenshot": "screenshots/sobre_375x667.png"
       },
       {
         "breakpoint": "390x844",
-        "issueCount": 0,
-        "issues": [],
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
         "screenshot": "screenshots/sobre_390x844.png"
       },
       {
         "breakpoint": "430x932",
-        "issueCount": 0,
-        "issues": [],
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
         "screenshot": "screenshots/sobre_430x932.png"
       },
       {
         "breakpoint": "768x1024",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "2 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/sobre_768x1024.png"
       },
       {
         "breakpoint": "1024x768",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "2 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/sobre_1024x768.png"
       },
       {
         "breakpoint": "1440x900",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "2 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/sobre_1440x900.png"
       },
       {
         "breakpoint": "1920x1080",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "2 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/sobre_1920x1080.png"
       }
     ]
   },
@@ -218,17 +311,29 @@
       },
       {
         "breakpoint": "768x1024",
-        "issueCount": 1,
+        "issueCount": 2,
         "issues": [
           {
             "type": "BROKEN_IMAGES",
             "severity": "MEDIUM",
-            "detail": "1 broken image(s)",
+            "detail": "2 broken image(s)",
             "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
               {
                 "src": "",
                 "alt": ""
               }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
             ]
           }
         ],
@@ -236,17 +341,29 @@
       },
       {
         "breakpoint": "1024x768",
-        "issueCount": 1,
+        "issueCount": 2,
         "issues": [
           {
             "type": "BROKEN_IMAGES",
             "severity": "MEDIUM",
-            "detail": "1 broken image(s)",
+            "detail": "2 broken image(s)",
             "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
               {
                 "src": "",
                 "alt": ""
               }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
             ]
           }
         ],
@@ -254,17 +371,29 @@
       },
       {
         "breakpoint": "1440x900",
-        "issueCount": 1,
+        "issueCount": 2,
         "issues": [
           {
             "type": "BROKEN_IMAGES",
             "severity": "MEDIUM",
-            "detail": "1 broken image(s)",
+            "detail": "2 broken image(s)",
             "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
               {
                 "src": "",
                 "alt": ""
               }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
             ]
           }
         ],
@@ -272,17 +401,29 @@
       },
       {
         "breakpoint": "1920x1080",
-        "issueCount": 1,
+        "issueCount": 2,
         "issues": [
           {
             "type": "BROKEN_IMAGES",
             "severity": "MEDIUM",
-            "detail": "1 broken image(s)",
+            "detail": "2 broken image(s)",
             "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
               {
                 "src": "",
                 "alt": ""
               }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
             ]
           }
         ],
@@ -296,45 +437,586 @@
     "breakpoints": [
       {
         "breakpoint": "375x667",
-        "issueCount": 0,
-        "issues": [],
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "15 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/2.jpeg",
+                "alt": "Plataforma Machado no campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg",
+                "alt": "Plataforma Machado em operação de guincho"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho equipado com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg",
+                "alt": "Plataforma Machado em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Operação com plataforma veicular Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg",
+                "alt": "Guincho trabalhando com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma em operação diária"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg",
+                "alt": "Plataforma Machado entregue em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Entrega de plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Plataforma Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho com plataforma Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "12 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
         "screenshot": "screenshots/clientes_375x667.png"
       },
       {
         "breakpoint": "390x844",
-        "issueCount": 0,
-        "issues": [],
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "15 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/2.jpeg",
+                "alt": "Plataforma Machado no campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg",
+                "alt": "Plataforma Machado em operação de guincho"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho equipado com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg",
+                "alt": "Plataforma Machado em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Operação com plataforma veicular Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg",
+                "alt": "Guincho trabalhando com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma em operação diária"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg",
+                "alt": "Plataforma Machado entregue em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Entrega de plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Plataforma Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho com plataforma Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "12 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
         "screenshot": "screenshots/clientes_390x844.png"
       },
       {
         "breakpoint": "430x932",
-        "issueCount": 0,
-        "issues": [],
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "15 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/2.jpeg",
+                "alt": "Plataforma Machado no campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg",
+                "alt": "Plataforma Machado em operação de guincho"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho equipado com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg",
+                "alt": "Plataforma Machado em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Operação com plataforma veicular Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg",
+                "alt": "Guincho trabalhando com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma em operação diária"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg",
+                "alt": "Plataforma Machado entregue em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Entrega de plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Plataforma Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho com plataforma Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "11 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
         "screenshot": "screenshots/clientes_430x932.png"
       },
       {
         "breakpoint": "768x1024",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "15 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
+              {
+                "src": "./assets/images/galeria/2.jpeg",
+                "alt": "Plataforma Machado no campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg",
+                "alt": "Plataforma Machado em operação de guincho"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho equipado com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg",
+                "alt": "Plataforma Machado em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Operação com plataforma veicular Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58.jpeg",
+                "alt": "Guincho trabalhando com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg",
+                "alt": "Plataforma Machado entregue em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Entrega de plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Plataforma Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho com plataforma Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "11 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/clientes_768x1024.png"
       },
       {
         "breakpoint": "1024x768",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "14 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
+              {
+                "src": "./assets/images/galeria/2.jpeg",
+                "alt": "Plataforma Machado no campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg",
+                "alt": "Plataforma Machado em operação de guincho"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho equipado com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg",
+                "alt": "Plataforma Machado em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Operação com plataforma veicular Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg",
+                "alt": "Plataforma Machado entregue em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Entrega de plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Plataforma Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho com plataforma Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "12 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/clientes_1024x768.png"
       },
       {
         "breakpoint": "1440x900",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "14 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
+              {
+                "src": "./assets/images/galeria/2.jpeg",
+                "alt": "Plataforma Machado no campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg",
+                "alt": "Plataforma Machado em operação de guincho"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho equipado com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg",
+                "alt": "Plataforma Machado em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Operação com plataforma veicular Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg",
+                "alt": "Plataforma Machado entregue em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Entrega de plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Plataforma Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho com plataforma Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "12 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/clientes_1440x900.png"
       },
       {
         "breakpoint": "1920x1080",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "14 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Equipe Machado"
+              },
+              {
+                "src": "./assets/images/galeria/2.jpeg",
+                "alt": "Plataforma Machado no campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.23.jpeg",
+                "alt": "Plataforma Machado em operação de guincho"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho equipado com plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41(1).jpeg",
+                "alt": "Plataforma Machado em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Operação com plataforma veicular Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(1).jpeg",
+                "alt": "Plataforma Machado em serviço"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-05-05 at 12.12.50 (1).jpeg",
+                "alt": "Cliente Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.58(2).jpeg",
+                "alt": "Plataforma Machado entregue em campo"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.57.jpeg",
+                "alt": "Entrega de plataforma Machado"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.46.jpeg",
+                "alt": "Plataforma Machado em operação"
+              },
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Guincho com plataforma Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "12 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)",
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/clientes_1920x1080.png"
       }
     ]
   },
@@ -362,27 +1044,107 @@
       },
       {
         "breakpoint": "768x1024",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/credito_768x1024.png"
       },
       {
         "breakpoint": "1024x768",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/credito_1024x768.png"
       },
       {
         "breakpoint": "1440x900",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/credito_1440x900.png"
       },
       {
         "breakpoint": "1920x1080",
-        "issueCount": 0,
-        "issues": [],
-        "screenshot": null
+        "issueCount": 2,
+        "issues": [
+          {
+            "type": "BROKEN_IMAGES",
+            "severity": "MEDIUM",
+            "detail": "1 broken image(s)",
+            "elements": [
+              {
+                "src": "./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg",
+                "alt": "Produtos Machado"
+              }
+            ]
+          },
+          {
+            "type": "JS_CONSOLE_ERROR",
+            "severity": "MEDIUM",
+            "detail": "1 JS console error(s)",
+            "elements": [
+              "Failed to load resource: the server responded with a status of 404 (Not Found)"
+            ]
+          }
+        ],
+        "screenshot": "screenshots/credito_1920x1080.png"
       }
     ]
   }

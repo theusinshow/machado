@@ -5219,11 +5219,12 @@ body {
     visibility: visible;
   }
 
-  /* Figura extrapola o stage verticalmente — stage overflow:hidden faz o clip.
-     Isso permite que a imagem retrato preencha a largura sem ser recortada. */
+  /* Imagens landscape — figure preenche o stage com margem vertical leve.
+     inset: 6% 0 6% 5% → 88px de respiro vertical, borda esquerda coberta pelo fade.
+     O clip do stage (overflow:hidden) cuida das bordas externas. */
   .produto-figure {
     position: absolute;
-    inset: -20% 8% -20% 8%;
+    inset: 6% 0 6% 5%;
     width: auto;
     height: auto;
     aspect-ratio: unset;
@@ -5244,9 +5245,10 @@ body {
     height: 100%;
   }
 
+  /* Cover: preenche o frame sem barras pretas; 40% vertical = produto acima do centro */
   .produto-figure img {
-    object-fit: contain;
-    object-position: center center;
+    object-fit: cover;
+    object-position: center 40%;
   }
 
   /* Copy mobile: oculto no desktop */
@@ -5305,10 +5307,10 @@ body {
   }
 
   /* Cover: preenche o espaço sem pillarboxing lateral.
-     object-position: center bottom → foca no produto (parte inferior da foto) */
+     object-position: center 45% → produto centralizado nas imagens recortadas */
   .produto-figure img {
     object-fit: cover;
-    object-position: center bottom;
+    object-position: center 45%;
   }
 
   /* Stage: no mobile não precisa de min-height artificial —

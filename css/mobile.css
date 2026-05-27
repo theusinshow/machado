@@ -402,6 +402,10 @@ body {
 
 /* ─────────────────────────────────────────────────────
    PRODUTOS
+   NOTA: overrides de .produto-figure e .produto-figure
+   picture/img foram movidos para produtos.css (ao final
+   do arquivo), pois precisam vir APÓS as regras base
+   para que o cascade funcione corretamente no bundle.
 ───────────────────────────────────────────────────── */
 
 @media (max-width: 1023px) {
@@ -429,13 +433,6 @@ body {
     line-height: 0.92;
   }
 
-  /* Aspect-ratio original 9:16 excessivo. 4:3 landscape cobre melhor
-     as fotos de plataformas (formato horizontal) e reduz faixas pretas */
-  .produto-figure {
-    aspect-ratio: 4 / 3;
-    max-height: 62svh;
-  }
-
   .produto-panel__copy {
     padding: var(--space-4) var(--space-4) var(--space-8);
     gap: var(--space-3);
@@ -452,11 +449,6 @@ body {
 }
 
 @media (max-width: 479px) {
-  .produto-figure {
-    aspect-ratio: 1 / 1;
-    max-height: 55svh;
-  }
-
   .produtos-line-name {
     font-size: clamp(var(--text-2xl), 8vw, var(--text-3xl));
   }

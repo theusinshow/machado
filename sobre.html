@@ -429,12 +429,12 @@
       text-transform: uppercase;
       color: var(--color-text-dark);
       line-height: 1;
-      margin: 0 0 var(--space-5);
+      margin: 0 0 var(--space-6);               /* ↑ 24px título→subtítulo (era 20px) */
     }
 
     .diferenciais__sub {
       font-size: clamp(1rem, 1.5vw, 1.15rem);
-      line-height: 1.7;
+      line-height: 1.72;
       color: rgba(28, 36, 48, 0.58);
       max-width: 56ch;
       margin: 0;
@@ -453,11 +453,11 @@
     /* ── Card ── */
 
     .dif-card {
-      padding-block: clamp(1.5rem, 2.5vw, 2rem);
+      padding-block: clamp(1.75rem, 2.5vw, 2.25rem); /* ↑ mínimo 28px (era 24px) */
       border-top: 1px solid rgba(28, 36, 48, 0.12);
       display: flex;
       flex-direction: column;
-      gap: var(--space-3);
+      gap: 0;                                         /* ← ritmo diferenciado via margins */
     }
 
     .dif-card__num {
@@ -466,6 +466,7 @@
       letter-spacing: 0.14em;
       color: var(--color-primary);
       line-height: 1;
+      margin-bottom: var(--space-2);                  /* 8px: número→título, unidade visual */
     }
 
     .dif-card__title {
@@ -476,7 +477,7 @@
       text-transform: uppercase;
       color: var(--color-text-dark);
       line-height: 1.1;
-      margin: 0;
+      margin: 0 0 var(--space-4);                     /* 16px: título→corpo, respiração */
     }
 
     .dif-card__body {
@@ -502,9 +503,13 @@
       }
 
       .dif-card {
-        padding-block: clamp(2rem, 3vw, 2.75rem);
+        padding-block: clamp(2.25rem, 3vw, 3rem);    /* ↑ mais generoso no desktop */
         padding-right: clamp(1.5rem, 2.5vw, 2.5rem);
         border-right: 1px solid rgba(28, 36, 48, 0.1);
+      }
+
+      .dif-card + .dif-card {
+        padding-left: clamp(1.5rem, 2.5vw, 2.5rem);  /* ← fix gutter simétrico */
       }
 
       .dif-card:last-child {

@@ -1510,6 +1510,9 @@ body {
 
 /* ─────────────────────────────────────────────────────
    PRODUTOS
+   NOTA: overrides de .produto-figure foram movidos para
+   produtos.css (ao final do arquivo), pois precisam vir
+   APÓS as regras base para o cascade correto no bundle.
 ───────────────────────────────────────────────────── */
 
 @media (max-width: 1023px) {
@@ -1537,13 +1540,6 @@ body {
     line-height: 0.92;
   }
 
-  /* Aspect-ratio original 9:16 excessivo. 4:3 landscape cobre melhor
-     as fotos de plataformas (formato horizontal) e reduz faixas pretas */
-  .produto-figure {
-    aspect-ratio: 4 / 3;
-    max-height: 62svh;
-  }
-
   .produto-panel__copy {
     padding: var(--space-4) var(--space-4) var(--space-8);
     gap: var(--space-3);
@@ -1560,11 +1556,6 @@ body {
 }
 
 @media (max-width: 479px) {
-  .produto-figure {
-    aspect-ratio: 1 / 1;
-    max-height: 55svh;
-  }
-
   .produtos-line-name {
     font-size: clamp(var(--text-2xl), 8vw, var(--text-3xl));
   }
@@ -5281,6 +5272,78 @@ body {
 
   .produtos-progress__sep {
     opacity: 0.5;
+  }
+
+}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE ≤1023px — overrides AQUI (após regras base)
+   ─────────────────────────────────────────────────────
+   ATENÇÃO: mobile.css é concatenado ANTES deste arquivo
+   no bundle. Portanto qualquer override de .produto-figure
+   em mobile.css é derrubado pelo aspect-ratio: 9/16 deste
+   arquivo. Estes blocos precisam ficar AQUI, depois das
+   regras base, para garantir o cascade correto.
+══════════════════════════════════════════════════════ */
+
+@media (max-width: 1023px) {
+
+  /* Figure: aspect-ratio landscape + picture contida */
+  .produto-figure {
+    aspect-ratio: 4 / 3;
+    max-height: 55svh;
+    overflow: hidden;      /* impede imagem de vazar acima via align-items:flex-end */
+    align-items: stretch;  /* picture preenche a figura sem deslocamento */
+  }
+
+  /* picture: deve preencher a figure no mobile também
+     (no desktop isso está dentro do @media min-1024px) */
+  .produto-figure picture {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Cover: preenche o espaço sem pillarboxing lateral.
+     object-position: center bottom → foca no produto (parte inferior da foto) */
+  .produto-figure img {
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  /* Stage: no mobile não precisa de min-height artificial —
+     os panels empilhados já definem a altura */
+  .produtos-stage {
+    min-height: 0;
+  }
+
+  /* Copy: no mobile ancora no topo (align-content: end é para o desktop)
+     Base tem: align-content:end; padding-top:space-6; gap:space-4
+     Estes overrides também precisam ficar AQUI por causa do cascade do bundle */
+  .produtos-copy {
+    align-content: start;
+    padding-top: var(--space-4);
+    gap: var(--space-3);
+  }
+
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+
+  /* Tablet: proporção mais cinematográfica — menos altura de frame */
+  .produto-figure {
+    aspect-ratio: 16 / 9;
+    max-height: 60svh;
+  }
+
+}
+
+@media (max-width: 479px) {
+
+  /* Em telas xs (≤479px) reduz a altura da figura */
+  .produto-figure {
+    aspect-ratio: 4 / 3;
+    max-height: 50svh;
   }
 
 }

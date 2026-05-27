@@ -48,25 +48,25 @@
   -webkit-backdrop-filter: none;
 }
 
-/* Tema claro — navbar fechada sobre seções claras (ref good-fella claro) */
+/* Tema claro — navbar fechada sobre seções claras: mesmo visual do estado aberto */
 .navbar--light .navbar-inner {
-  background-color: var(--color-surface);
-  border-color: var(--color-border-light);
-  box-shadow: 0 1px 16px rgba(28, 36, 48, 0.09);
-  color: var(--color-text-dark);
+  background-color: var(--color-menu-bg);
+  border-color: var(--color-menu-bg);
+  box-shadow: none;
+  color: var(--color-white);
 }
 
 .navbar--light .navbar-logo img {
-  filter: brightness(0) saturate(100%);
+  filter: none;
 }
 
 .navbar--light .navbar-toggle,
 .navbar--light .navbar-toggle__label {
-  color: var(--color-text-dark);
+  color: var(--color-white);
 }
 
 .navbar--light .navbar-toggle__line {
-  background-color: var(--color-text-dark);
+  background-color: var(--color-white);
 }
 
 .navbar:not(.navbar--light):not(.is-open) .navbar-logo img {

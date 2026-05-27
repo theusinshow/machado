@@ -394,6 +394,130 @@
       .sobre-image img { transition: none; }
     }
 
+    /* ═══════════════════════════════════════
+       DIFERENCIAIS DA MACHADO
+    ═══════════════════════════════════════ */
+
+    .diferenciais {
+      padding-block: clamp(4rem, 8vw, 7rem);
+      background: var(--color-surface);
+      border-top: 1px solid rgba(28, 36, 48, 0.07);
+      border-bottom: 1px solid rgba(28, 36, 48, 0.07);
+    }
+
+    /* ── Cabeçalho ── */
+
+    .diferenciais__head {
+      margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .diferenciais__eyebrow {
+      display: block;
+      font-family: var(--font-ui-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .diferenciais__title {
+      font-family: var(--font-titles);
+      font-size: clamp(1.9rem, 3.6vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-dark);
+      line-height: 1;
+      margin: 0 0 var(--space-5);
+    }
+
+    .diferenciais__sub {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      line-height: 1.7;
+      color: rgba(28, 36, 48, 0.58);
+      max-width: 56ch;
+      margin: 0;
+    }
+
+    /* ── Grid de cards ── */
+
+    .diferenciais__grid {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    /* ── Card ── */
+
+    .dif-card {
+      padding-block: clamp(1.5rem, 2.5vw, 2rem);
+      border-top: 1px solid rgba(28, 36, 48, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .dif-card__num {
+      font-family: var(--font-ui-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--color-primary);
+      line-height: 1;
+    }
+
+    .dif-card__title {
+      font-family: var(--font-titles);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-dark);
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .dif-card__body {
+      font-size: var(--text-sm);
+      line-height: 1.75;
+      color: rgba(28, 36, 48, 0.55);
+      margin: 0;
+    }
+
+    /* ── Tablet: 2 colunas ── */
+    @media (min-width: 600px) {
+      .diferenciais__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0 clamp(2rem, 4vw, 3.5rem);
+      }
+    }
+
+    /* ── Desktop: 4 colunas ── */
+    @media (min-width: 1024px) {
+      .diferenciais__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+      }
+
+      .dif-card {
+        padding-block: clamp(2rem, 3vw, 2.75rem);
+        padding-right: clamp(1.5rem, 2.5vw, 2.5rem);
+        border-right: 1px solid rgba(28, 36, 48, 0.1);
+      }
+
+      .dif-card:last-child {
+        padding-right: 0;
+        border-right: none;
+      }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .dif-card { transition: none; }
+    }
+
   </style>
 
   <!-- Mobile responsiveness — após o <style> inline para vencer na cascata -->
@@ -608,6 +732,42 @@
           </div>
 
         </div>
+
+      </div>
+    </section>
+
+    <!-- ── DIFERENCIAIS ── -->
+    <section class="diferenciais section--light" aria-labelledby="diferenciais-heading">
+      <div class="container">
+
+        <header class="diferenciais__head" data-animate="fade-up">
+          <span class="diferenciais__eyebrow">Nossos diferenciais · Palhoça · SC</span>
+          <h2 id="diferenciais-heading" class="diferenciais__title">Diferenciais<br>da Machado</h2>
+          <p class="diferenciais__sub">Mais do que fabricar plataformas, entregamos soluções robustas, bem acabadas e pensadas para quem depende do equipamento todos os dias.</p>
+        </header>
+
+        <ul class="diferenciais__grid" aria-label="Pilares da Machado Plataformas">
+          <li class="dif-card" data-animate="fade-up" data-delay="0.08">
+            <span class="dif-card__num" aria-hidden="true">01</span>
+            <h3 class="dif-card__title">Robustez</h3>
+            <p class="dif-card__body">Plataformas desenvolvidas para suportar o uso intenso, com estrutura reforçada e foco em durabilidade.</p>
+          </li>
+          <li class="dif-card" data-animate="fade-up" data-delay="0.16">
+            <span class="dif-card__num" aria-hidden="true">02</span>
+            <h3 class="dif-card__title">Experiência</h3>
+            <p class="dif-card__body">Conhecimento prático do mercado para entregar soluções que funcionam na rotina real do operador.</p>
+          </li>
+          <li class="dif-card" data-animate="fade-up" data-delay="0.24">
+            <span class="dif-card__num" aria-hidden="true">03</span>
+            <h3 class="dif-card__title">Personalização</h3>
+            <p class="dif-card__body">Configurações pensadas para diferentes tipos de veículos, cargas e necessidades de operação.</p>
+          </li>
+          <li class="dif-card" data-animate="fade-up" data-delay="0.32">
+            <span class="dif-card__num" aria-hidden="true">04</span>
+            <h3 class="dif-card__title">Confiança</h3>
+            <p class="dif-card__body">Uma marca consolidada, com milhares de plataformas entregues e clientes em diferentes regiões.</p>
+          </li>
+        </ul>
 
       </div>
     </section>

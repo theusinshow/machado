@@ -155,42 +155,49 @@
     .sobre-texto__body p {
       font-size: var(--text-base);
       line-height: 1.8;
-      color: rgba(28, 36, 48, 0.55);
+      color: rgba(28, 36, 48, 0.72);
       margin: 0;
     }
 
-    .sobre-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
+    /* Pull quote industrial */
+    .sobre-pull {
+      margin: 0 0 var(--space-8);
+      padding: var(--space-5) var(--space-6);
+      background: var(--color-text-dark);
     }
 
-    .sobre-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-2) var(--space-3);
-      border: 1px solid rgba(27, 77, 132, 0.18);
+    .sobre-pull__label {
+      display: block;
+      font-family: var(--font-ui-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--color-primary-light);
+      margin-bottom: var(--space-3);
+    }
+
+    .sobre-pull__text {
+      margin: 0;
+      font-family: var(--font-titles);
+      font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      line-height: 1.4;
+    }
+
+    /* Spec line (substitui chips) */
+    .sobre-specline {
+      margin: 0;
+      padding-top: var(--space-5);
+      border-top: 1px solid rgba(28, 36, 48, 0.08);
       font-family: var(--font-ui-mono);
       font-size: 0.6rem;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--color-primary);
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .sobre-chip:hover {
-      background: rgba(27, 77, 132, 0.04);
-      border-color: rgba(27, 77, 132, 0.35);
-    }
-
-    .sobre-chip::before {
-      content: '';
-      width: 4px;
-      height: 4px;
-      background: var(--color-primary);
-      flex-shrink: 0;
-      opacity: 0.5;
+      color: rgba(28, 36, 48, 0.65);
+      line-height: 1.8;
     }
 
     /* Coluna direita — visual */
@@ -198,12 +205,13 @@
       display: flex;
       flex-direction: column;
       gap: var(--space-6);
+      padding-bottom: clamp(var(--space-10), 8vw, var(--space-16));
     }
 
     .sobre-image {
       position: relative;
       overflow: hidden;
-      aspect-ratio: 3 / 2;
+      aspect-ratio: 3 / 4;
     }
 
     .sobre-image img {
@@ -247,50 +255,85 @@
       font-size: 0.58rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.68);
     }
 
-    /* Stats — grid 2×2 sob a imagem */
-    .sobre-stats {
+    /* Coluna visual — imagem com thumbnail secundário */
+    .sobre-image-stack {
+      position: relative;
+    }
+
+    .sobre-image-thumb {
+      position: absolute;
+      bottom: calc(-1 * var(--space-6));
+      right: calc(-1 * var(--space-4));
+      width: 44%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 3px solid #f2f4f5;
+      z-index: 2;
+      box-shadow: 0 8px 32px rgba(28, 36, 48, 0.18);
+    }
+
+    .sobre-image-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    /* Specbar — strip horizontal de stats */
+    .sobre-specbar {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: rgba(28, 36, 48, 0.09);
-      border: 1px solid rgba(28, 36, 48, 0.09);
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--color-text-dark);
+      margin-top: clamp(3.5rem, 7vw, 6rem);
     }
 
-    .sobre-stat {
-      background: #f7f8fa;
-      padding: var(--space-5) var(--space-5);
+    .sobre-specbar__item {
+      padding: var(--space-8) var(--space-6);
       display: flex;
       flex-direction: column;
-      gap: var(--space-1);
+      gap: var(--space-2);
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
     }
 
-    .sobre-stat__num {
+    .sobre-specbar__item:last-child { border-right: none; }
+
+    .sobre-specbar__num {
       font-family: var(--font-titles);
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-size: clamp(1.75rem, 2.6vw, 2.6rem);
       font-weight: 900;
       line-height: 1;
+      color: var(--color-white);
       letter-spacing: 0.02em;
-      color: var(--color-text-dark);
       font-variant-numeric: tabular-nums;
     }
 
-    .sobre-stat__suffix {
-      font-size: 0.55em;
-      color: var(--color-primary);
+    .sobre-specbar__suffix {
+      font-size: 0.52em;
+      color: var(--color-primary-light);
       vertical-align: super;
-      margin-left: 1px;
+      margin-left: 2px;
     }
 
-    .sobre-stat__label {
+    .sobre-specbar__label {
       font-family: var(--font-ui-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.18em;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(28, 36, 48, 0.42);
-      margin-top: var(--space-1);
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    @media (max-width: 767px) {
+      .sobre-specbar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .sobre-specbar__item:nth-child(2) { border-right: none; }
+      .sobre-specbar__item:nth-child(1),
+      .sobre-specbar__item:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
     }
 
     /* ── Localização ── */
@@ -317,6 +360,9 @@
       color: var(--color-text-dark);
       line-height: 1.1;
       margin: 0 0 var(--space-8);
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
     }
 
     .sobre-loc__items {
@@ -340,13 +386,13 @@
       font-size: 0.58rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(28, 36, 48, 0.32);
+      color: rgba(28, 36, 48, 0.58);
     }
 
     .sobre-loc__value {
       font-size: var(--text-sm);
       line-height: 1.55;
-      color: rgba(28, 36, 48, 0.62);
+      color: rgba(28, 36, 48, 0.78);
     }
 
     .sobre-loc__value a {
@@ -464,7 +510,7 @@
     .diferenciais__sub {
       font-size: clamp(1rem, 1.5vw, 1.15rem);
       line-height: 1.72;
-      color: rgba(28, 36, 48, 0.58);
+      color: rgba(28, 36, 48, 0.74);
       max-width: 52ch;
       margin: 0;
     }
@@ -528,7 +574,7 @@
       font-size: 0.58rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(28, 36, 48, 0.38);
+      color: rgba(28, 36, 48, 0.58);
     }
 
     .diferenciais__spec-line {
@@ -667,7 +713,7 @@
     .dif-card__body {
       font-size: var(--text-sm);
       line-height: 1.7;
-      color: rgba(28, 36, 48, 0.52);
+      color: rgba(28, 36, 48, 0.70);
       margin: 0;
       max-width: 30ch;
     }
@@ -771,7 +817,7 @@
           <span class="navbar-toggle__line"></span>
         </span>
       </button>
-      <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+      <a href="https://wa.me/554833489982?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
          class="btn btn--split btn--split-primary navbar-cta"
          target="_blank" rel="noopener noreferrer"
          data-magnetic>
@@ -792,8 +838,8 @@
         <div class="navbar-panel__meta">
           <div class="navbar-panel__contact">
             <span class="navbar-panel__label mono">Contato</span>
-            <a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a>
-            <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+            <a href="mailto:machadoplataformas@gmail.com">machadoplataformas@gmail.com</a>
+            <a href="https://wa.me/554833489982?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
             <span class="navbar-panel__note mono">Atendimento em todo o Brasil</span>
           </div>
           <div class="navbar-panel__status">
@@ -811,7 +857,7 @@
             <strong class="navbar-card__title">Ver clientes</strong>
           </a>
           <a href="./produtos.html" class="navbar-card">
-            <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg" alt="Produtos Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
+            <img src="./assets/images/galeria/foto-03-nav.webp" alt="Produtos Machado" class="navbar-card__image" width="320" height="224" loading="lazy" />
             <span class="navbar-card__eyebrow mono">Linha completa</span>
             <strong class="navbar-card__title">Ver modelos</strong>
           </a>
@@ -861,7 +907,7 @@
         <!-- Cabeçalho editorial -->
         <div class="sobre-head" data-animate="fade-in">
           <span class="sobre-eyebrow">A empresa · Palhoça · SC</span>
-          <span class="sobre-coords" aria-hidden="true">−27.6453° S · −48.6701° O</span>
+          <span class="sobre-coords" aria-hidden="true">EST. 2003 &nbsp;·&nbsp; −27.6453° S · −48.6701° O</span>
         </div>
 
         <h2 id="sobre-heading" class="sobre-title" data-animate="fade-up">
@@ -873,51 +919,58 @@
 
           <div data-animate="fade-up">
             <p class="sobre-texto__intro">A Machado Plataformas é especializada na fabricação de plataformas de auto socorro — soluções completas para quem precisa transportar veículos com segurança e agilidade.</p>
+            <div class="sobre-pull" aria-label="Método de fabricação">
+              <span class="sobre-pull__label">Método Machado</span>
+              <p class="sobre-pull__text">Do aço bruto ao acabamento.<br>Sem terceirizados. Feito aqui.</p>
+            </div>
             <div class="sobre-texto__body">
               <p>Com 3.000 m² de infraestrutura fabril moderna e maquinário avançado — corte a laser e CNC — garantimos precisão e durabilidade em cada peça produzida.</p>
               <p>Fabricamos tudo internamente, do corte do aço à pintura final. Sem terceirizados. Controle total sobre qualidade, prazo e custo — sem surpresas na entrega.</p>
               <p>Projetada para suportar diferentes tipos de carga, nossa linha de plataformas atende operadores de guincho, transportadoras e frotas dos clientes mais exigentes do mercado.</p>
             </div>
-            <div class="sobre-chips" aria-label="Diferenciais de fabricação">
-              <span class="sobre-chip">Corte a Laser</span>
-              <span class="sobre-chip">Usinagem CNC</span>
-              <span class="sobre-chip">Fabricação Própria</span>
-              <span class="sobre-chip">3.000 m²</span>
-              <span class="sobre-chip">Entrega Nacional</span>
-            </div>
+            <p class="sobre-specline" aria-label="Diferenciais de fabricação">Corte a Laser · CNC · Fabricação Própria · 3.000 m² · Entrega Nacional</p>
           </div>
 
           <div class="sobre-visual" data-animate="fade-up" data-delay="0.12">
-            <div class="sobre-image">
-              <img src="./assets/images/galeria/WhatsApp Image 2026-04-28 at 22.45.41.jpeg"
-                   alt="Infraestrutura fabril da Machado Plataformas em Palhoça, SC"
-                   width="800" height="600" loading="lazy" />
-              <div class="sobre-image__badge">
-                <span class="sobre-image__badge-num">SC</span>
-                <span class="sobre-image__badge-label">Fabricado em Santa Catarina</span>
+            <div class="sobre-image-stack">
+              <div class="sobre-image">
+                <img src="./assets/images/galeria/foto-01.webp"
+                     alt="Fachada da fábrica Machado Plataformas em Palhoça, SC"
+                     width="800" height="1067" loading="lazy"
+                     style="object-position: center 30%;" />
+                <div class="sobre-image__badge">
+                  <span class="sobre-image__badge-num">SC</span>
+                  <span class="sobre-image__badge-label">Fabricado em Santa Catarina</span>
+                </div>
               </div>
-            </div>
-
-            <div class="sobre-stats" aria-label="Números da empresa" data-animate="fade-up" data-delay="0.18">
-              <div class="sobre-stat">
-                <span class="sobre-stat__num"><span data-count="22">22</span><span class="sobre-stat__suffix">+</span></span>
-                <span class="sobre-stat__label">Anos de mercado</span>
-              </div>
-              <div class="sobre-stat">
-                <span class="sobre-stat__num"><span data-count="2000">2.000</span><span class="sobre-stat__suffix">+</span></span>
-                <span class="sobre-stat__label">Plataformas entregues</span>
-              </div>
-              <div class="sobre-stat">
-                <span class="sobre-stat__num"><span data-count="27">27</span><span class="sobre-stat__suffix">UF</span></span>
-                <span class="sobre-stat__label">Estados atendidos</span>
-              </div>
-              <div class="sobre-stat">
-                <span class="sobre-stat__num">3.000<span class="sobre-stat__suffix">m²</span></span>
-                <span class="sobre-stat__label">Área fabril</span>
+              <div class="sobre-image-thumb" aria-hidden="true">
+                <img src="./assets/images/galeria/foto-02.webp"
+                     alt=""
+                     width="480" height="640" loading="lazy" />
               </div>
             </div>
           </div>
 
+        </div>
+
+        <!-- Barra de números -->
+        <div class="sobre-specbar" aria-label="Números da empresa" data-animate="fade-up" data-delay="0.14">
+          <div class="sobre-specbar__item">
+            <span class="sobre-specbar__num"><span data-count="22">22</span><span class="sobre-specbar__suffix">+</span></span>
+            <span class="sobre-specbar__label">Anos de mercado</span>
+          </div>
+          <div class="sobre-specbar__item">
+            <span class="sobre-specbar__num"><span data-count="2000">2.000</span><span class="sobre-specbar__suffix">+</span></span>
+            <span class="sobre-specbar__label">Plataformas entregues</span>
+          </div>
+          <div class="sobre-specbar__item">
+            <span class="sobre-specbar__num"><span data-count="27">27</span><span class="sobre-specbar__suffix">UF</span></span>
+            <span class="sobre-specbar__label">Estados atendidos</span>
+          </div>
+          <div class="sobre-specbar__item">
+            <span class="sobre-specbar__num">3.000<span class="sobre-specbar__suffix">m²</span></span>
+            <span class="sobre-specbar__label">Área fabril</span>
+          </div>
         </div>
 
         <!-- Divisor interno -->
@@ -952,7 +1005,7 @@
               <div class="sobre-loc__item">
                 <span class="sobre-loc__label">WhatsApp</span>
                 <span class="sobre-loc__value">
-                  <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+                  <a href="https://wa.me/554833489982?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
                 </span>
               </div>
             </div>
@@ -978,17 +1031,6 @@
             <p class="diferenciais__sub" data-animate="fade-up" data-delay="0.16">Mais do que fabricar plataformas, entregamos soluções robustas, bem acabadas e pensadas para quem depende do equipamento todos os dias.</p>
           </div>
 
-          <div class="diferenciais__spec" data-animate="fade-in" data-delay="0.24" aria-hidden="true">
-            <div class="diferenciais__spec-corners">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <span class="diferenciais__spec-num">04</span>
-            <span class="diferenciais__spec-label">diferenciais essenciais</span>
-            <div class="diferenciais__spec-line"></div>
-            <div class="diferenciais__spec-dots">
-              <span></span><span></span><span></span>
-            </div>
-          </div>
         </div>
 
         <div class="diferenciais__rule" aria-hidden="true" data-animate="fade-in" data-delay="0.22"></div>
@@ -1034,20 +1076,14 @@
               <span class="dif-card__num" aria-hidden="true">03</span>
               <span class="dif-card__icon-box" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 21v-7"/>
-                  <path d="M4 10V3"/>
-                  <path d="M12 21v-9"/>
-                  <path d="M12 8V3"/>
-                  <path d="M20 21v-5"/>
-                  <path d="M20 12V3"/>
-                  <path d="M2 14h4"/>
-                  <path d="M10 10h4"/>
-                  <path d="M18 16h4"/>
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  <path d="M15 2s0 4 4 4"/>
+                  <path d="M19 2s0 4-4 4"/>
                 </svg>
               </span>
             </div>
-            <h3 class="dif-card__title">Personalização</h3>
-            <p class="dif-card__body">Configurações pensadas para diferentes tipos de veículos, cargas e necessidades de operação.</p>
+            <h3 class="dif-card__title">Suporte 24h no Pós-Venda</h3>
+            <p class="dif-card__body">Após a entrega, nossa equipe segue disponível para tirar dúvidas, orientar na instalação e resolver qualquer ponto com agilidade.</p>
           </li>
           <li class="dif-card" data-animate="fade-up" data-delay="0.30">
             <div class="dif-card__corners" aria-hidden="true">
@@ -1076,7 +1112,7 @@
         <p class="page-cta__eyebrow">Vamos trabalhar juntos</p>
         <h2 class="page-cta__title">Solicite seu<br />orçamento.</h2>
         <p class="page-cta__note">Sem compromisso</p>
-        <a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+        <a href="https://wa.me/554833489982?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
            class="btn btn--split btn--split-primary"
            target="_blank" rel="noopener noreferrer"
            data-magnetic>
@@ -1106,33 +1142,48 @@
             <span>Atendimento nacional</span>
             <span>Fabricação sob demanda</span>
           </div>
+          <nav class="footer-social" aria-label="Redes sociais">
+            <a href="https://instagram.com/machadoplataformas" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://youtube.com/@machadoplataformas" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://tiktok.com/@machadoplataformas" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.9a8.16 8.16 0 0 0 4.77 1.52V7.01a4.85 4.85 0 0 1-1-.32z"/></svg>
+            </a>
+          </nav>
         </div>
         <div class="footer-col">
-          <h3 class="footer-col__title">Navegação</h3>
+          <h3 class="footer-col__title">Empresa</h3>
+          <div class="footer-status" aria-label="Dados da empresa">
+            <span>22+ anos no mercado</span>
+            <span>4.000+ plataformas entregues</span>
+            <span>Fábrica própria · 3.000 m²</span>
+          </div>
           <ul class="footer-links">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./sobre.html">Empresa</a></li>
+            <li><a href="./sobre.html">Sobre a Machado</a></li>
             <li><a href="./produtos.html">Produtos</a></li>
             <li><a href="./clientes.html">Clientes</a></li>
-            <li><a href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">Contato</a></li>
           </ul>
         </div>
         <div class="footer-col footer-col--contact">
           <h3 class="footer-col__title">Contato</h3>
-          <a class="footer-cta" href="https://wa.me/5500000000000?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">
-            <span>Solicitar orçamento</span>
-            <span aria-hidden="true">+</span>
+          <a class="footer-cta" href="https://wa.me/554833489982?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">
+            <span>Solicite um orçamento sem compromisso</span>
+            <span aria-hidden="true">→</span>
           </a>
           <address class="footer-address">
             <p><a href="tel:+554833489982">(48) 3348-9982</a></p>
-            <p><a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a></p>
-            <p><a href="mailto:contato@machadoplataformas.com.br">contato@machadoplataformas.com.br</a></p>
+            <p><a href="https://wa.me/554833489982" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a></p>
+            <p><a href="mailto:machadoplataformas@gmail.com">machadoplataformas@gmail.com</a></p>
             <p>Palhoça, SC</p>
           </address>
         </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy mono">&copy; 2026 Machado Plataformas. Todos os direitos reservados.</p>
+        <p class="footer-copy mono">Fabricando desde 2003 · 4.000+ plataformas entregues</p>
       </div>
     </div>
   </footer>

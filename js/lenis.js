@@ -1,4 +1,6 @@
 export function initLenis() {
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+
   const lenis = new Lenis({
     duration: 1.2,
     smoothWheel: true,

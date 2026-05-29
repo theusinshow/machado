@@ -2,7 +2,25 @@ export function initYoutubeFacade() {
   const buttons = document.querySelectorAll('[data-yt]');
   if (!buttons.length) return;
 
+  // Lazy-load the muted preview video only when visible
   buttons.forEach((btn) => {
+    const video = btn.querySelector('video[data-src]');
+    if (video) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.src = video.dataset.src;
+              video.play().catch(() => {});
+              observer.disconnect();
+            }
+          });
+        },
+        { rootMargin: '200px' }
+      );
+      observer.observe(btn);
+    }
+
     btn.addEventListener('click', () => {
       const id = btn.dataset.yt;
       const iframe = document.createElement('iframe');

@@ -33,6 +33,13 @@ body {
    NAVBAR
 ───────────────────────────────────────────────────── */
 
+@media (max-width: 767px) {
+  /* Cards empilhados no mobile criam 1400px+ de altura — ocultar abaixo de tablet */
+  .navbar-panel__cards {
+    display: none;
+  }
+}
+
 @media (max-width: 479px) {
   .navbar-inner {
     min-height: 3.75rem;
@@ -57,11 +64,6 @@ body {
     left: -1.2rem;
     width: 0.72rem;
     height: 0.72rem;
-  }
-
-  /* Cards no panel ocupam muito espaço em xs */
-  .navbar-panel__cards {
-    display: none;
   }
 }
 
@@ -179,6 +181,18 @@ body {
   .hero-ctas .btn--split {
     max-width: none;
     width: 100%;
+  }
+}
+
+/* 320px — reduz padding do hero-inner para não ultrapassar 100svh */
+@media (max-width: 359px) {
+  .hero-inner {
+    padding-block: var(--space-4) var(--space-10);
+    gap: 0;
+  }
+
+  .hero-ctas {
+    margin-top: var(--space-3);
   }
 }
 

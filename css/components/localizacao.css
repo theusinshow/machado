@@ -1,4 +1,4 @@
-/* ===========================
+﻿/* ===========================
    COMPONENTE: Localização (MapLibre GL JS)
    Depende de: variables.css, buttons
 =========================== */
@@ -95,7 +95,7 @@
 .localizacao__address-value a:hover,
 .localizacao__address-value a:focus-visible {
   opacity: 0.72;
-  outline: 0;
+  /* outline removed — :focus-visible handled globally in reset.css */
 }
 
 /* ── Botões ── */

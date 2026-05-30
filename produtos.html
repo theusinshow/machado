@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Machado Plataformas — Linha completa de plataformas para guincho. Leve, Média e Pesada. Fabricação própria com qualidade certificada." />
+  <meta name="description" content="Machado Plataformas — Linha completa de plataformas para guincho. Leve, Média e Pesada. Fabricação própria em Palhoça, SC. Aço de alta resistência." />
 
   <meta property="og:title" content="Produtos | Machado Plataformas" />
   <meta property="og:description" content="Conheça a linha completa de plataformas Machado: Leve, Média e Pesada." />
@@ -132,19 +132,20 @@
     /* Specs — painel técnico */
     .arsenal__specs {
       display: flex;
-      gap: 0;
-      border: 1px solid rgba(255,255,255,0.07);
+      gap: 1px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.14);
+      overflow: hidden;
       max-width: 100%;
-      margin-bottom: var(--space-4);
+      margin-bottom: var(--space-6);
     }
 
     .arsenal__spec {
       flex: 1;
-      min-width: 0;
-      padding: var(--space-3) var(--space-3) var(--space-3);
-      border-right: 1px solid rgba(255,255,255,0.06);
+      min-width: max-content;
+      padding: var(--space-4) var(--space-5);
       position: relative;
-      background: rgba(255,255,255,0.02);
+      background: var(--color-black);
     }
 
     .arsenal__spec:last-child { border-right: none; }
@@ -155,7 +156,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: #333333;
+      background: var(--color-primary);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
@@ -171,20 +172,18 @@
       font-size: 0.58rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.50);
-      margin-bottom: var(--space-1);
+      color: rgba(255,255,255,0.38);
+      margin-bottom: var(--space-2);
     }
 
     .arsenal__spec__val {
-      font-size: clamp(0.9rem, 1.1vw, 1.25rem);
+      font-size: clamp(0.88rem, 1.05vw, 1.15rem);
       font-weight: 700;
       color: var(--color-text);
       font-variant-numeric: tabular-nums;
-      line-height: 1.15;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      white-space: normal;
-      word-break: break-word;
+      line-height: 1.1;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
     }
 
     /* Tagline — one-liner below title */
@@ -492,7 +491,8 @@
     @media (max-width: 600px) {
       .arsenal__inner { padding-inline: var(--space-5); }
       .arsenal__name { font-size: clamp(2.5rem, 14vw, 4rem); }
-      .arsenal__specs { max-width: 100%; }
+      .arsenal__specs { max-width: 100%; flex-direction: column; }
+      .arsenal__spec { padding: var(--space-4) var(--space-5); }
       .arsenal__desc { max-width: none; font-size: 1rem; }
       .arsenal__nav { right: var(--space-3); }
     }
@@ -1029,12 +1029,12 @@
         <div class="arsenal__content">
           <span class="arsenal__kicker">Linha Leve</span>
           <h2 class="arsenal__name">LEVE</h2>
-          <p class="arsenal__tagline">Solução compacta para passeio, SUVs e utilitários — ágil na cidade, robusta no serviço.</p>
+          <p class="arsenal__tagline">Solução compacta para passeio, SUVs e utilitários — ágil na cidade, resistente no serviço.</p>
 
           <div class="arsenal__specs" aria-label="Especificações técnicas">
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Capacidade</span>
-              <span class="arsenal__spec__val">3.500 kg</span>
+              <span class="arsenal__spec__val">4.000–7.000 kg</span>
             </div>
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Comprimento</span>
@@ -1042,7 +1042,7 @@
             </div>
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Aplicação</span>
-              <span class="arsenal__spec__val">Passeio / SUV</span>
+              <span class="arsenal__spec__val">PASSEIO / SUV</span>
             </div>
           </div>
 
@@ -1115,7 +1115,7 @@
           <div class="arsenal__specs" aria-label="Especificações técnicas">
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Capacidade</span>
-              <span class="arsenal__spec__val">6.000 kg</span>
+              <span class="arsenal__spec__val">7.000–12.000 kg</span>
             </div>
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Comprimento</span>
@@ -1123,7 +1123,7 @@
             </div>
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Aplicação</span>
-              <span class="arsenal__spec__val">Médio Porte</span>
+              <span class="arsenal__spec__val">MÉDIO PORTE</span>
             </div>
           </div>
 
@@ -1193,7 +1193,7 @@
           <div class="arsenal__specs" aria-label="Especificações técnicas">
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Capacidade</span>
-              <span class="arsenal__spec__val">8.000 kg+</span>
+              <span class="arsenal__spec__val">12.000–22.000 kg</span>
             </div>
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Comprimento</span>
@@ -1201,13 +1201,13 @@
             </div>
             <div class="arsenal__spec">
               <span class="arsenal__spec__label">Aplicação</span>
-              <span class="arsenal__spec__val">Grande Porte</span>
+              <span class="arsenal__spec__val">GRANDE PORTE</span>
             </div>
           </div>
 
           <p class="arsenal__features-label">Diferenciais</p>
           <ul class="arsenal__features">
-            <li>Capacidade acima de 8.000 kg</li>
+            <li>Capacidade de 12.000 a 22.000 kg</li>
             <li>Estrutura reforçada para operação contínua</li>
             <li>Compatível com caminhões de grande porte e frotas de resgate</li>
           </ul>

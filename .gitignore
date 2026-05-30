@@ -12,6 +12,7 @@ desktop.ini
 .claude/
 .superpowers/
 .impeccable/
+.codex/
 
 # Dependências de ferramentas locais
 .audit/
@@ -19,6 +20,9 @@ node_modules/
 
 # Pasta de trabalho temporária
 imgs/
+
+# Screenshots de QA — não fazem parte do deploy
+screenshots/
 
 # Logs
 *.log

@@ -1007,7 +1007,7 @@
           </button>
           <div class="entregas-gallery-controls">
             <span class="entregas-gallery-counter" aria-live="polite">
-              <strong>01</strong> — 09
+              <strong>01</strong> — 07
             </span>
           </div>
         </div>
@@ -1341,7 +1341,7 @@
       var total   = 7;
 
       var swiper = new Swiper('.entregas-gallery-swiper', {
-        initialSlide: 1,
+        initialSlide: 0,
         loop: true,
         slidesPerView: 1.08,
         spaceBetween: 12,
@@ -1360,10 +1360,10 @@
       });
 
       function update(sw) {
-        var idx = sw.activeIndex + 1;
+        var idx = sw.realIndex + 1;
         if (counter) counter.innerHTML = '<strong>' + String(idx).padStart(2, '0') + '</strong> — ' + String(total).padStart(2, '0');
-        if (prevBtn) prevBtn.disabled = sw.isBeginning;
-        if (nextBtn) nextBtn.disabled = sw.isEnd;
+        if (prevBtn) prevBtn.disabled = false;
+        if (nextBtn) nextBtn.disabled = false;
       }
 
       if (prevBtn) prevBtn.addEventListener('click', function () { swiper.slidePrev(); });
@@ -1378,7 +1378,7 @@
       var total    = 8;
 
       var swiper = new Swiper('.em-acao-swiper', {
-        initialSlide: 1,
+        initialSlide: 0,
         loop: true,
         slidesPerView: 1.08,
         spaceBetween: 12,
@@ -1397,12 +1397,12 @@
       });
 
       function update(sw) {
-        var idx = sw.activeIndex + 1;
+        var idx = sw.realIndex + 1;
         if (counter) {
           counter.innerHTML = '<strong>' + String(idx).padStart(2, '0') + '</strong> — ' + String(total).padStart(2, '0');
         }
-        if (prevBtn) prevBtn.disabled = sw.isBeginning;
-        if (nextBtn) nextBtn.disabled = sw.isEnd;
+        if (prevBtn) prevBtn.disabled = false;
+        if (nextBtn) nextBtn.disabled = false;
       }
 
       if (prevBtn) prevBtn.addEventListener('click', function () { swiper.slidePrev(); });

@@ -3690,9 +3690,6 @@ body {
 [data-hero-reveal] {
   position: relative;
   overflow: hidden;
-  opacity: 0;
-  clip-path: inset(0 0 100% 0);
-  transform: translateY(var(--space-5));
   will-change: opacity, transform, clip-path;
 }
 

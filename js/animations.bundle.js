@@ -51,6 +51,10 @@ export function initHero() {
     return;
   }
 
+  // Estado inicial via GSAP — CSS não esconde mais para não bloquear FCP
+  gsap.set(revealItems, { opacity: 0, y: 20, clipPath: 'inset(0 0 100% 0)' });
+  if (heroScroll) gsap.set(heroScroll, { opacity: 0, y: 10 });
+
   const revealBlocks = revealItems.map((item) => {
     const block = document.createElement('span');
     block.className = 'hero-reveal__block';

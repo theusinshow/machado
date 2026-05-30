@@ -3687,10 +3687,26 @@ body {
   flex-shrink: 0;
 }
 
+@keyframes heroRv {
+  from { opacity: 0; transform: translateY(20px); clip-path: inset(0 0 100% 0); }
+  to   { opacity: 1; transform: translateY(0);    clip-path: inset(0 0 0 0); }
+}
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 [data-hero-reveal] {
   position: relative;
   overflow: hidden;
-  will-change: opacity, transform, clip-path;
+  animation: heroRv .84s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-kicker[data-hero-reveal] { animation-delay: .05s; }
+.hero-title__line[data-hero-reveal] { animation-delay: .15s; }
+.hero-title__line:last-child[data-hero-reveal] { animation-delay: .25s; }
+.hero-subtitle[data-hero-reveal] { animation-delay: .3s; }
+.hero-ctas { animation: heroFade .6s cubic-bezier(0.16, 1, 0.3, 1) .45s both; }
+@media (prefers-reduced-motion: reduce) {
+  [data-hero-reveal], .hero-ctas { animation: none; }
 }
 
 .hero-reveal__block {

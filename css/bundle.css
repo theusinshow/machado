@@ -6381,7 +6381,7 @@ body {
   .hero-content {
     align-content: start;
     align-self: start;
-    padding-bottom: var(--space-4);
+    padding-bottom: 0;
   }
 
   .hero-title {
@@ -6435,15 +6435,15 @@ body {
     bottom: auto;
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 720 / 649;
     overflow: hidden;
   }
 
   .hero-stage::before {
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.6) 0%,
-      transparent 25%
+      rgba(0, 0, 0, 0.3) 0%,
+      transparent 15%
     );
     opacity: 1;
     mix-blend-mode: normal;
@@ -6460,8 +6460,8 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: right 65%;
+    object-fit: contain;
+    object-position: center center;
     transform: none;
     opacity: 1;
   }

@@ -79,13 +79,13 @@ body {
   .hero-inner {
     min-height: auto;
     padding-block: var(--space-6) 0;
-    gap: 0;
+    gap: var(--space-8);
   }
 
   .hero-content {
     align-content: start;
     align-self: start;
-    padding-bottom: var(--space-4);
+    padding-bottom: var(--space-10);
   }
 
   .hero-title {
@@ -139,7 +139,7 @@ body {
     bottom: auto;
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
   }
 
@@ -165,7 +165,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: right 65%;
+    object-position: center center;
     transform: none;
     opacity: 1;
   }

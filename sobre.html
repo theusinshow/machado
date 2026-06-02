@@ -805,6 +805,7 @@
 
     /* ═══════════════════════════════════════
        NOSSA ESSÊNCIA — Missão, Visão, Valores
+       Layout: coluna única fluida, sem cards uniformes
     ═══════════════════════════════════════ */
 
     .essencia {
@@ -830,8 +831,10 @@
       z-index: 1;
     }
 
+    /* ── Header ── */
+
     .essencia__header {
-      margin-bottom: clamp(3rem, 6vw, 5rem);
+      margin-bottom: clamp(3.5rem, 7vw, 6rem);
     }
 
     .essencia__eyebrow {
@@ -862,29 +865,51 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--color-white);
-      margin: 0 0 var(--space-4);
+      margin: 0 0 var(--space-5);
       line-height: 1;
+    }
+
+    .essencia__title em {
+      font-style: normal;
+      color: rgba(255,255,255,0.2);
     }
 
     .essencia__sub {
       font-size: clamp(0.92rem, 1.2vw, 1.05rem);
       line-height: 1.65;
-      color: rgba(255,255,255,0.32);
+      color: rgba(255,255,255,0.3);
       max-width: 48ch;
       margin: 0;
     }
 
-    /* ── Bloco genérico (Missão, Visão) ── */
+    /* ── 3 Blocos: Missão, Visão, Valores ── */
+
+    .essencia__blocks {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(1rem, 2vw, 1.25rem);
+    }
 
     .essencia__block {
       position: relative;
-      padding: clamp(2rem, 4vw, 3rem);
+      padding: clamp(2rem, 4vw, 2.75rem);
       background: #0f0f0f;
       border: 1px solid rgba(255,255,255,0.06);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
       transition:
         border-color 0.4s var(--ease-machado),
         transform 0.4s var(--ease-machado),
         box-shadow 0.4s var(--ease-machado);
+    }
+
+    @media (min-width: 768px) {
+      .essencia__block {
+        grid-template-columns: clamp(180px, 22%, 260px) 1fr;
+        gap: clamp(2rem, 4vw, 4rem);
+        align-items: start;
+      }
     }
 
     .essencia__block-corners {
@@ -895,8 +920,8 @@
 
     .essencia__block-corners span {
       position: absolute;
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-color: var(--color-primary-light);
       border-style: solid;
       opacity: 0;
@@ -910,106 +935,88 @@
 
     @media (hover: hover) and (pointer: fine) {
       .essencia__block:hover {
-        border-color: rgba(91, 155, 213, 0.15);
+        border-color: rgba(91, 155, 213, 0.14);
         transform: translateY(-3px);
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 14px 42px rgba(0, 0, 0, 0.4);
       }
 
       .essencia__block:hover .essencia__block-corners span {
-        opacity: 0.25;
+        opacity: 0.22;
       }
     }
 
-    .essencia__block-label {
+    .essencia__block-left {
       display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      font-family: var(--font-ui-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--color-primary-light);
-      margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+      flex-direction: column;
+      gap: var(--space-2);
     }
 
-    .essencia__block-label::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--color-primary-light);
-      flex-shrink: 0;
-      opacity: 0.7;
+    .essencia__block-label {
+      font-family: var(--font-ui-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      color: var(--color-primary-light);
+      opacity: 0.6;
+      margin: 0;
+    }
+
+    .essencia__block-heading {
+      font-family: var(--font-titles);
+      font-size: clamp(1.25rem, 2vw, 1.65rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      margin: 0;
+      line-height: 1.1;
     }
 
     .essencia__block-text {
-      font-size: clamp(1rem, 1.3vw, 1.1rem);
+      font-size: clamp(0.92rem, 1.2vw, 1.05rem);
       line-height: 1.8;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.5);
       margin: 0;
-      max-width: 72ch;
     }
 
-    /* ── Missão — destaque full-width ── */
+    /* Valores: grid horizontal 4 colunas */
 
-    .essencia__block--missao {
-      margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    }
-
-    .essencia__block--missao .essencia__block-text {
-      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-      color: rgba(255,255,255,0.68);
-      line-height: 1.85;
-    }
-
-    /* ── Grid: Visão + Valores ── */
-
-    .essencia__grid {
+    .essencia__valores-list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: clamp(1rem, 2vw, 1.5rem);
+      gap: clamp(1.25rem, 2vw, 1.5rem);
+      margin: 0;
     }
 
-    @media (min-width: 768px) {
-      .essencia__grid {
+    @media (min-width: 600px) {
+      .essencia__valores-list {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    /* ── Valores — itens visuais independentes ── */
-
-    .essencia__valores-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    @media (min-width: 1024px) {
+      .essencia__valores-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
-    .essencia__valor {
-      position: relative;
-      padding: clamp(1.25rem, 2vw, 1.5rem) clamp(1.25rem, 2.5vw, 1.75rem);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition:
-        background 0.35s var(--ease-machado),
-        border-color 0.35s var(--ease-machado);
+    .essencia__valor-item {
+      padding-right: clamp(0.75rem, 1.5vw, 1.25rem);
     }
 
-    .essencia__valor:last-child {
-      border-bottom: none;
+    @media (min-width: 1024px) {
+      .essencia__valor-item {
+        border-right: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .essencia__valor-item:last-child {
+        border-right: none;
+        padding-right: 0;
+      }
     }
 
-    .essencia__valor-num {
-      font-family: var(--font-ui-mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.14em;
-      color: var(--color-primary-light);
-      opacity: 0.5;
-      margin-bottom: var(--space-3);
-      display: block;
-      transition: opacity 0.35s ease;
-    }
-
-    .essencia__valor-title {
+    .essencia__valor-name {
       font-family: var(--font-titles);
-      font-size: clamp(0.88rem, 1.1vw, 1rem);
+      font-size: clamp(0.78rem, 0.95vw, 0.88rem);
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -1018,35 +1025,16 @@
       line-height: 1.2;
     }
 
-    .essencia__valor-text {
-      font-size: var(--text-sm);
-      line-height: 1.75;
-      color: rgba(255,255,255,0.45);
+    .essencia__valor-desc {
+      font-size: clamp(0.78rem, 0.9vw, 0.84rem);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.4);
       margin: 0;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .essencia__valor:hover {
-        background: rgba(255,255,255,0.02);
-        border-color: rgba(255,255,255,0.08);
-      }
-
-      .essencia__valor:hover .essencia__valor-num {
-        opacity: 1;
-      }
-    }
-
-    @media (max-width: 767px) {
-      .essencia__block {
-        padding: clamp(1.5rem, 5vw, 2rem);
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .essencia__block,
-      .essencia__block-corners span,
-      .essencia__valor,
-      .essencia__valor-num { transition: none; }
+      .essencia__block-corners span { transition: none; }
     }
 
   </style>
@@ -1330,54 +1318,57 @@
       <div class="container essencia__inner">
 
         <div class="essencia__header" data-animate="fade-up">
-          <p class="essencia__eyebrow">Princípios</p>
-          <h2 id="essencia-heading" class="essencia__title">Nossa Essência</h2>
-          <p class="essencia__sub">O que sustenta mais de duas décadas fabricando plataformas que não falham.</p>
+          <p class="essencia__eyebrow">DNA Machado</p>
+          <h2 id="essencia-heading" class="essencia__title">O que nos<br /><em>sustenta.</em></h2>
+          <p class="essencia__sub">Princípios que guiam cada plataforma que sai da nossa fábrica há mais de duas décadas.</p>
         </div>
 
-        <div class="essencia__block essencia__block--missao" data-animate="fade-up" data-delay="0.06">
-          <div class="essencia__block-corners" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          <p class="essencia__block-label">Missão</p>
-          <p class="essencia__block-text">Entregar a máxima qualidade e segurança para as operações diárias de quem escolhe a nossa marca, fornecendo plataformas de auto socorro que garantem robustez absoluta no transporte e um suporte técnico presente, de confiança e contínuo em cada etapa do caminho.</p>
-        </div>
+        <div class="essencia__blocks">
 
-        <div class="essencia__grid">
+          <!-- Bloco 1: Missão -->
+          <div class="essencia__block" data-animate="fade-up" data-delay="0.06">
+            <div class="essencia__block-corners" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="essencia__block-left">
+              <p class="essencia__block-label">01</p>
+              <h3 class="essencia__block-heading">Missão</h3>
+            </div>
+            <p class="essencia__block-text">Entregar a máxima qualidade e segurança para as operações diárias de quem escolhe a nossa marca, fornecendo plataformas de auto socorro que garantem robustez absoluta no transporte e um suporte técnico presente, de confiança e contínuo em cada etapa do caminho.</p>
+          </div>
 
+          <!-- Bloco 2: Visão -->
           <div class="essencia__block" data-animate="fade-up" data-delay="0.12">
             <div class="essencia__block-corners" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            <p class="essencia__block-label">Visão</p>
+            <div class="essencia__block-left">
+              <p class="essencia__block-label">02</p>
+              <h3 class="essencia__block-heading">Visão</h3>
+            </div>
             <p class="essencia__block-text">Ser referência nacional na fabricação de plataformas de auto socorro, consolidando nossa posição no país através da excelência de nossos produtos e do reconhecimento de nossa capacidade fabril e de atendimento.</p>
           </div>
 
+          <!-- Bloco 3: Valores -->
           <div class="essencia__block" data-animate="fade-up" data-delay="0.18">
             <div class="essencia__block-corners" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-            <p class="essencia__block-label">Valores</p>
+            <div class="essencia__block-left">
+              <p class="essencia__block-label">03</p>
+              <h3 class="essencia__block-heading">Valores</h3>
+            </div>
             <div class="essencia__valores-list">
-
-              <div class="essencia__valor">
-                <span class="essencia__valor-num">01</span>
-                <h3 class="essencia__valor-title">Qualidade</h3>
-                <p class="essencia__valor-text">O compromisso rigoroso com o padrão de acabamento e com a resistência do equipamento que entregamos ao mercado.</p>
+              <div class="essencia__valor-item">
+                <h4 class="essencia__valor-name">Qualidade</h4>
+                <p class="essencia__valor-desc">O compromisso rigoroso com o padrão de acabamento e com a resistência do equipamento que entregamos ao mercado.</p>
               </div>
-
-              <div class="essencia__valor">
-                <span class="essencia__valor-num">02</span>
-                <h3 class="essencia__valor-title">Segurança</h3>
-                <p class="essencia__valor-text">O foco total em desenvolver soluções estáveis que protegem a integridade da carga, do veículo e do operador durante todo o trabalho na pista.</p>
+              <div class="essencia__valor-item">
+                <h4 class="essencia__valor-name">Segurança</h4>
+                <p class="essencia__valor-desc">O foco total em desenvolver soluções estáveis que protegem a integridade da carga, do veículo e do operador durante todo o trabalho na pista.</p>
               </div>
-
-              <div class="essencia__valor">
-                <span class="essencia__valor-num">03</span>
-                <h3 class="essencia__valor-title">Estrutura</h3>
-                <p class="essencia__valor-text">Sustentar o cumprimento de prazos e a alta eficiência por meio de uma infraestrutura de fábrica sólida, organizada e pronta para atender grandes demandas.</p>
+              <div class="essencia__valor-item">
+                <h4 class="essencia__valor-name">Estrutura</h4>
+                <p class="essencia__valor-desc">Sustentar o cumprimento de prazos e a alta eficiência por meio de uma infraestrutura de fábrica sólida, organizada e pronta para atender grandes demandas.</p>
               </div>
-
-              <div class="essencia__valor">
-                <span class="essencia__valor-num">04</span>
-                <h3 class="essencia__valor-title">Confiança</h3>
-                <p class="essencia__valor-text">Construir parcerias transparentes e de longo prazo com nossos clientes, garantindo transparência comercial e um pós-venda que nunca deixa o transportador na mão.</p>
+              <div class="essencia__valor-item">
+                <h4 class="essencia__valor-name">Confiança</h4>
+                <p class="essencia__valor-desc">Construir parcerias transparentes e de longo prazo com nossos clientes, garantindo transparência comercial e um pós-venda que nunca deixa o transportador na mão.</p>
               </div>
-
             </div>
           </div>
 

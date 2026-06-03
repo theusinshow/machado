@@ -3441,6 +3441,41 @@ body {
   /* outline removed — :focus-visible handled globally in reset.css */
 }
 
+.footer-signature {
+  width: 100%;
+  text-align: center;
+  font-size: 0.65rem;
+  margin-top: 0.75rem;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.8) 40%,
+    #fff 50%,
+    rgba(255, 255, 255, 0.8) 60%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: footer-shimmer 4s ease-in-out infinite;
+}
+
+.footer-signature a {
+  text-decoration: none;
+  background: inherit;
+  background-size: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: inherit;
+}
+
+@keyframes footer-shimmer {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: -100% 50%; }
+}
+
 @media (min-width: 768px) {
   .footer {
     min-height: clamp(34rem, 55vw, 48rem);

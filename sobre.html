@@ -23,17 +23,26 @@
     window.scrollTo(0, 0);
   </script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://use.typekit.net" />
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
   <link rel="dns-prefetch" href="https://unpkg.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
-  <link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- MapLibre GL JS -->
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" />
+  <!-- Fontes locais -->
+  <link rel="preload" href="./assets/fonts/Horizon-Font/Horizon.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/Machado-Display.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Fonts externas — não-bloqueante -->
+  <link rel="preload" href="https://use.typekit.net/wfu4nak.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/wfu4nak.css" /></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- MapLibre GL CSS — não-bloqueante (mapa abaixo do fold) -->
+  <link rel="preload" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" /></noscript>
   <link rel="stylesheet" href="./css/components/localizacao.css" />
 
   <!-- CSS Base -->

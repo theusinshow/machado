@@ -6532,3 +6532,101 @@ body {
     margin-top: var(--space-3);
   }
 }
+
+/* ─────────────────────────────────────────────────────
+   DIFERENCIAIS HOME — grid da index
+───────────────────────────────────────────────────── */
+
+.diferenciais-home__head {
+  max-width: 52rem;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+.diferenciais-home .eyebrow {
+  margin-bottom: var(--space-5);
+}
+.diferenciais-home .section-title {
+  font-size: clamp(1.75rem, 5.5vw, 3rem);
+  line-height: 1;
+  color: var(--color-text-dark);
+}
+.diferenciais-home__sub {
+  font-size: clamp(0.975rem, 1.4vw, 1.08rem);
+  line-height: 1.75;
+  color: rgba(28, 36, 48, 0.56);
+  max-width: 58ch;
+  margin-top: var(--space-6);
+  font-weight: var(--weight-regular);
+}
+
+.diferenciais-home__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid rgba(28, 36, 48, 0.1);
+}
+@media (min-width: 600px) {
+  .diferenciais-home__grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+@media (min-width: 1024px) {
+  .diferenciais-home__grid {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0;
+  }
+}
+
+.dif-home-card {
+  padding-block: clamp(2rem, 3.5vw, 2.75rem);
+  border-bottom: 1px solid rgba(28, 36, 48, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+@media (min-width: 1024px) {
+  .dif-home-card {
+    padding-block: clamp(2.25rem, 3vw, 3.25rem);
+    padding-right: clamp(1.5rem, 2.5vw, 2.5rem);
+    border-bottom: none;
+    border-right: 1px solid rgba(28, 36, 48, 0.08);
+  }
+  .dif-home-card + .dif-home-card {
+    padding-left: clamp(1.5rem, 2.5vw, 2.5rem);
+  }
+  .dif-home-card:last-child {
+    padding-right: 0;
+    border-right: none;
+  }
+}
+
+.dif-home-card__num {
+  font-family: var(--font-ui-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.22em;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+.dif-home-card__title {
+  font-family: var(--font-titles);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+  line-height: 1.1;
+  margin: 0 0 var(--space-4);
+}
+.dif-home-card__body {
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  color: rgba(28, 36, 48, 0.54);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dif-home-card { transition: none; }
+}

@@ -236,36 +236,6 @@
       filter: brightness(0.95) contrast(1.05);
     }
 
-    .sobre-image__badge {
-      position: absolute;
-      bottom: var(--space-4);
-      left: var(--space-4);
-      background: rgba(0, 0, 0, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: var(--space-3) var(--space-4);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-1);
-      backdrop-filter: blur(6px);
-    }
-
-    .sobre-image__badge-num {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: normal;
-      line-height: 1;
-      color: var(--color-white);
-      letter-spacing: 0.06em;
-    }
-
-    .sobre-image__badge-label {
-      font-family: var(--font-ui-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.68);
-    }
-
     /* Coluna visual — imagem com thumbnail secundário */
     .sobre-image-stack {
       position: relative;
@@ -1194,7 +1164,7 @@
     </div>
 
     <!-- ── EMPRESA + LOCALIZAÇÃO ── -->
-    <section class="sobre-unified" aria-labelledby="sobre-heading">
+    <section class="sobre-unified section--light" aria-labelledby="sobre-heading">
       <div class="container">
 
         <!-- Cabeçalho editorial -->
@@ -1231,10 +1201,6 @@
                      alt="Fachada da fábrica Machado Plataformas em Palhoça, SC"
                      width="800" height="1067" loading="lazy"
                      style="object-position: center 30%;" />
-                <div class="sobre-image__badge">
-                  <span class="sobre-image__badge-num">SC</span>
-                  <span class="sobre-image__badge-label">Fabricado em Santa Catarina</span>
-                </div>
               </div>
               <div class="sobre-image-thumb" aria-hidden="true">
                 <img src="./assets/images/galeria/foto-02.webp"

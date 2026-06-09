@@ -70,14 +70,14 @@
 | "Falar com especialista" | Clientes, Sobre, Crédito | WhatsApp — mensagem padrão de orçamento | ✅ |
 | "Solicite um orçamento sem compromisso" (footer) | Todas | WhatsApp — mensagem padrão de orçamento | ✅ |
 
-**Total: 47 links de WhatsApp verificados.** Todos apontam para o número `(48) 9695-2440`, com a mensagem padrão pré-preenchida *"Olá! Gostaria de solicitar um orçamento."*.
+**Total: 47 links de WhatsApp verificados.** Todos apontam para o número `(48) 9695-2440`, com a mensagem padrão pré-preenchida *"Olá! Vim pelo site e gostaria de solicitar um orçamento."* (identifica que o lead veio pelo site).
 
 ---
 
 ## 5. WhatsApp Testado
 
 - **Número:** `+55 48 9695-2440` (`wa.me/554896952440`)
-- **Mensagem padrão pré-preenchida** em todos os 47 botões: *"Olá! Gostaria de solicitar um orçamento."*
+- **Mensagem padrão pré-preenchida** em todos os 47 botões: *"Olá! Vim pelo site e gostaria de solicitar um orçamento."* — identifica que o contato veio pelo site
 - **Botão flutuante:** visível em todas as páginas, mobile e desktop
 - **Comportamento mobile:** botão ampliado e acessível em telas pequenas
 - **Status:** ✅ Todos os links verificados e funcionais

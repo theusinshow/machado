@@ -1,7 +1,7 @@
 # Checklist de Entrega — Machado Plataformas
 
-**Data:** 30 de maio de 2026
-**Versão:** 1.0 — Entrega Final
+**Data:** 8 de junho de 2026
+**Versão:** 1.1 — Entrega Final (revisão de contato)
 **Responsável:** Equipe de desenvolvimento
 **Domínio de produção:** machadoplataformas.com.br
 
@@ -17,9 +17,9 @@
 | Auditoria de copy e conteúdo | ✅ Concluída |
 | Preparação para deploy | ✅ Concluída |
 | Pendências técnicas bloqueantes | ✅ Nenhuma |
-| Pendências de conteúdo bloqueantes | ⚠️ 3 itens para validação do cliente |
+| Pendências de conteúdo bloqueantes | ⚠️ 2 itens para validação do cliente |
 
-**Veredicto: pronto para publicação**, condicionado à validação dos 3 pontos de conteúdo listados na seção 13.
+**Veredicto: pronto para publicação**, condicionado à validação dos pontos de conteúdo listados na seção 13.
 
 ---
 
@@ -64,25 +64,25 @@
 |-----|---------|---------|--------|
 | "Faça seu Orçamento" (navbar) | Todas | WhatsApp orçamento geral | ✅ |
 | "Falar no WhatsApp" (botão flutuante) | Todas | WhatsApp orçamento de plataforma | ✅ |
-| "Solicitar Orçamento" (hero / produto) | Home, Produtos | WhatsApp por linha (Leve, Média, Pesada) | ✅ |
+| "Solicitar Orçamento" (hero / produto) | Home, Produtos | WhatsApp — mensagem padrão de orçamento | ✅ |
 | "Ver linha completa" | Home | Âncora para seção da linha em produtos.html | ✅ |
-| "Consultar Condições" | Crédito | WhatsApp para consulta de condições | ✅ |
-| "Falar com especialista" | Clientes, Sobre, Crédito | WhatsApp com contexto da página | ✅ |
-| "Solicite um orçamento sem compromisso" (footer) | Todas | WhatsApp orçamento | ✅ |
+| "Consultar Condições" | Crédito | WhatsApp — mensagem padrão de orçamento | ✅ |
+| "Falar com especialista" | Clientes, Sobre, Crédito | WhatsApp — mensagem padrão de orçamento | ✅ |
+| "Solicite um orçamento sem compromisso" (footer) | Todas | WhatsApp — mensagem padrão de orçamento | ✅ |
 
-**Total: 47 links de WhatsApp verificados.** Todos apontam para o número `(48) 3348-9982`.
+**Total: 47 links de WhatsApp verificados.** Todos apontam para o número `(48) 9695-2440`, com a mensagem padrão pré-preenchida *"Olá! Gostaria de solicitar um orçamento."*.
 
 ---
 
 ## 5. WhatsApp Testado
 
-- **Número:** `+55 48 3348-9982`
-- **Mensagens pré-preenchidas** por contexto de entrada (orçamento geral, Linha Leve, Linha Média, Linha Pesada, crédito, página de clientes)
+- **Número:** `+55 48 9695-2440` (`wa.me/554896952440`)
+- **Mensagem padrão pré-preenchida** em todos os 47 botões: *"Olá! Gostaria de solicitar um orçamento."*
 - **Botão flutuante:** visível em todas as páginas, mobile e desktop
 - **Comportamento mobile:** botão ampliado e acessível em telas pequenas
 - **Status:** ✅ Todos os links verificados e funcionais
 
-> **Ação do cliente:** confirmar com o responsável que o número `(48) 3348-9982` está ativo e configurado para receber mensagens do WhatsApp Business.
+> **Ação do cliente (crítica):** confirmar que o número `+55 48 9695-2440` está **correto e completo** (celular brasileiro tem 9 dígitos após o DDD — verificar se não falta o "9" inicial) e que está ativo no WhatsApp Business para receber mensagens. Se o número estiver incompleto, os botões não abrem a conversa.
 
 ---
 
@@ -189,7 +189,7 @@ Testado com Playwright headless (Chromium) em **10 tamanhos de tela**:
 
 | # | Item | Arquivo |
 |---|------|---------|
-| C1 | **Especificações técnicas das linhas** — a Home e a página de Produtos mostram capacidades diferentes para a mesma linha. Exemplo: Linha Leve aparece como "até 3.500 kg" na Home e "4.000–7.000 kg" em Produtos. | `index.html`, `produtos.html` |
+| ~~C1~~ | ~~**Especificações técnicas das linhas** — divergência de capacidades entre Home e Produtos.~~ ✅ **Resolvido** — Home e Produtos agora batem (Leve 4.000–7.000 kg / Média 7.000–12.000 kg / Pesada 12.000–22.000 kg). | `index.html`, `produtos.html` |
 | C2 | **"Suporte 24h"** — o diferencial de número 3 na Home diz "atendimento pós-venda disponível 24 horas". Confirmar se esse é o horário real de atendimento. | `index.html` |
 | C3 | **Depoimentos da página Clientes** — os 6 depoimentos desta página estão elaborados de forma diferente dos depoimentos reais do Google exibidos na Home. Confirmar origem e autenticidade. | `clientes.html` |
 
@@ -199,10 +199,10 @@ Testado com Playwright headless (Chromium) em **10 tamanhos de tela**:
 
 | # | Pergunta | Urgência |
 |---|----------|----------|
-| V1 | Qual é a capacidade correta de cada linha? (Leve: até 3.500 kg ou 4.000–7.000 kg?) | **Alta — afeta credibilidade** |
+| ~~V1~~ | ~~Qual é a capacidade correta de cada linha?~~ ✅ Resolvido — capacidades alinhadas entre Home e Produtos. | — |
 | V2 | A empresa realmente oferece atendimento pós-venda 24 horas? | **Alta — afeta reputação** |
 | V3 | Os depoimentos da página Clientes são de clientes reais? Se sim, há autorização de uso? | **Alta — aspecto jurídico** |
-| V4 | O número de WhatsApp `(48) 3348-9982` está configurado e ativo para receber leads? | **Crítica — sem isso o site não converte** |
+| V4 | O número de WhatsApp `+55 48 9695-2440` está **correto e completo** (verificar o "9" do celular), configurado e ativo para receber leads? | **Crítica — sem isso o site não converte** |
 | V5 | Existe rastreamento de conversões configurado (Google Analytics, Meta Pixel)? | Média |
 | V6 | Há um domínio contratado e hospedagem definida para o site? | **Crítica — necessário para publicar** |
 
@@ -236,8 +236,8 @@ Antes de qualquer campanha no Google Ads, Meta Ads ou TikTok Ads, confirmar cada
 - [ ] Google Analytics 4 instalado e verificado
 - [ ] Meta Pixel instalado (se campanhas no Instagram / Facebook)
 - [ ] Evento de clique no WhatsApp rastreado como conversão
-- [ ] WhatsApp ativo e respondendo em menos de 1 hora
-- [ ] Especificações técnicas das linhas corrigidas e alinhadas entre Home e Produtos
+- [ ] Número de WhatsApp confirmado (correto, completo e ativo), respondendo em menos de 1 hora
+- [x] Especificações técnicas das linhas corrigidas e alinhadas entre Home e Produtos
 - [ ] Teste Safari / iOS concluído sem erros
 - [ ] Página Home testada em iPhone físico 320px
 - [ ] Mapa da página Sobre testado no domínio de produção
@@ -249,4 +249,4 @@ Antes de qualquer campanha no Google Ads, Meta Ads ou TikTok Ads, confirmar cada
 
 ---
 
-*Documento gerado em 30/05/2026 com base em auditoria automatizada (Playwright + Node.js) e revisão manual. Válido para a versão atual do código.*
+*Documento gerado em 30/05/2026 e revisado em 08/06/2026 (atualização do número de contato e mensagem padrão de WhatsApp; pendência de capacidades resolvida). Baseado em auditoria automatizada (Playwright + Node.js) e revisão manual. Válido para a versão atual do código.*

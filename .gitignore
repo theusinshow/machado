@@ -24,5 +24,9 @@ imgs/
 # Screenshots de QA — não fazem parte do deploy
 screenshots/
 
+# Material de case/portfólio — não faz parte do deploy ("public" é reservado pela Vercel)
+public/
+capture.mjs
+
 # Logs
 *.log

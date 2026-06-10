@@ -7,12 +7,12 @@
 ## 🎨 Filosofia de Design
 
 **Referência estrutural:** good-fella.com
-**Estética própria:** Industrial premium. Navy escuro + aço metálico + azul elétrico de acento.
+**Estética própria:** Industrial premium "Concreto & Aço". Base clara (off-white de concreto) com navy escuro como tinta pesada, aço metálico e azul elétrico de acento.
 **Sensação:** Um fabricante que domina o mercado. Pesado, preciso, confiável — mas com presença.
 **Diferencial:** Não é uma página genérica de implemento. É a apresentação de um produto que carrega toneladas — o design precisa ter o mesmo peso visual.
 
 ### Princípios Visuais
-1. **Fundo escuro dominante** — O produto é fotografado em fundo preto. O site segue essa linguagem.
+1. **Base clara, âncoras escuras** (atualizado jun/2026): a home é majoritariamente clara (off-white de concreto), pontuada por seções escuras deliberadas (Produtos "arsenal" e Footer) que dão peso e ritmo. Claro intencional, nunca SaaS. Ver a seção **Tema Claro** ao final.
 2. **Tipografia como peça de metal** — Headlines grandes, condensadas, com peso máximo.
 3. **Azul elétrico como sinal de vida** — Em um mar de dark navy, o azul primário brilhante marca CTAs e destaques.
 4. **Grade rígida, imagens sem limites** — Layout em grid preciso, fotos do produto vazando pelas bordas.
@@ -363,7 +363,7 @@ gsap.fromTo(img,
 
 ### Hero Section
 - **Layout:** Split 50/50 (texto esquerda, produto direita) conforme mockup
-- **Fundo:** Preto puro (`#000`) — o produto em fundo preto domina
+- **Fundo (atual):** Claro. Gradiente de estúdio `#F8F9FB → #E2E5EA` que casa com a foto do caminhão (classe `.hero--light`). [Histórico: era preto puro `#000`.]
 - **Headline:** Fonte Machado, `--text-display`, `--leading-none`, `--tracking-tight`
 - **Subtítulo:** Barlow Regular, 16-18px, `--color-steel`
 - **Vídeo/Imagem:** Lado direito, sem border-radius, com leve glow azul no produto
@@ -480,3 +480,37 @@ Estilo:
 ---
 
 *Atualizar este arquivo quando paleta, tipografia ou especificações visuais mudarem. Todos os valores hexadecimais devem ser verificados com o cliente.*
+---
+
+## 🌤️ Tema Claro "Concreto & Aço" (home — direção atual, jun/2026)
+
+A pedido do cliente, a home migrou de *dark-dominante* para **claro com âncoras escuras**. Regra que governa tudo: **claro ≠ leve** — o fundo clareou, mas o peso migrou para a tipografia preta, a tinta navy, o aço e a fotografia real. Referência mental: fabricante de máquinas de alto padrão / materialidade arquitetônica de concreto e aço. **Não** SaaS branco, **não** catálogo cinza.
+
+### Ritmo das seções
+`Hero (claro) → Sobre (claro) → Diferenciais (claro) → Produtos (ESCURO) → Depoimentos (claro) → Footer (escuro)`
+
+Produtos ("arsenal", produto brilha no preto) e Footer são as **âncoras escuras intencionais**. O contraste é o que faz o claro parecer composto, não genérico.
+
+### Paleta no claro
+| Papel | Valor | Uso |
+|-------|-------|-----|
+| Base concreto | `#F8F9FB`–`#E2E5EA` (hero), `#F6F7F8` (Sobre), `#F2F4F6` (`.section--light`) | Fundos claros, levemente frios. Nunca `#fff` puro. |
+| Tinta navy | `--color-navy-dark #1A2E46` / `--color-text-dark #1C2430` | Títulos, números, estrutura. Carrega o "peso". |
+| Acento azul | `--color-primary #1A4B82` / `--color-primary-light #5B9BD5` | CTA, número-herói, hover. ≤15%. |
+| Aço | `--color-steel #A7B0BA` / navy em baixa opacidade | Texto secundário, captions, numerais ghost. |
+
+### Tratamento por seção
+- **Hero (`.hero--light`):** foto de estúdio do caminhão usada **inteira** (chão e sombra reais), sobre fundo gradiente que casa com a foto + fade no lado do texto. Sem recorte/sombra falsa. Título "MACHADO" em navy. Responsivo: tablet empilha; desktop capa a coluna de texto (`max-width: 44vw`) e mantém o caminhão à direita sem invadir.
+- **Sobre (`.sobre--light`):** painel claro com KPIs em navy pesado (número-herói azul); vídeo institucional como "tela" emoldurada em aço (borda + sombra). Sem `border-left`/side-stripe.
+- **Diferenciais (`.diferenciais-home`):** layout assimétrico — numerais de concreto gigantes (01–04, navy baixa opacidade, azul no hover), títulos navy uppercase (Horizon), fios grossos de 2px, coluna direita escalonada. Sem grid de cards idênticos.
+- **Produtos / Footer:** permanecem escuros (`--color-black` / `--color-footer-bg`). Âncoras.
+
+### Navbar sobre o claro
+`.navbar--light` = barra escura `#333` com texto branco, sobre seções claras (legibilidade garantida). Disparada por `.section--light, .hero--light, .sobre--light` no detector de tema do navbar.
+
+### Guardas anti-clichê
+- Nunca `#fff` puro; tingir neutros de navy (frio).
+- Sem cinza-claro + laranja/amarelo de catálogo.
+- Não repetir eyebrow mono minúsculo acima de toda seção (andaime de IA).
+- Sem grid de cards idênticos (ícone+título+texto).
+- Banidos: side-stripe (`border-left` colorido), gradient text, glassmorphism decorativo.

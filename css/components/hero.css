@@ -456,3 +456,68 @@
     display: none;
   }
 }
+
+/* ══════════════════════════════════════════════════════
+   HERO CLARO (home) — override escopado em .hero--light
+══════════════════════════════════════════════════════ */
+.hero--light {
+  background: radial-gradient(135% 118% at 70% 26%, #F8F9FB 0%, #ECEEF1 58%, #E2E5EA 100%);
+}
+.hero--light .hero-title__line:first-child { color: var(--color-text-dark); }
+.hero--light .hero-subtitle { color: var(--color-bg-light); }
+.hero--light .hero-kicker { color: var(--color-primary); }
+.hero--light .hero-kicker::before { background-color: var(--color-primary); }
+.hero--light .hero-link { color: var(--color-text-dark); text-decoration-color: var(--color-border-soft); }
+.hero--light .hero-link:hover { color: var(--color-primary); text-decoration-color: var(--color-primary); }
+.hero--light .hero-scroll__line { background: linear-gradient(to bottom, var(--color-primary), transparent); }
+
+.hero--light .hero-stage::after { display: none; }
+
+/* Foto de estúdio usada INTEIRA (sem recorte): chão e sombra reais da foto.
+   Fundo do hero casa com o cinza-claro da foto; fade no lado do texto funde
+   a imagem ao fundo sem costura. */
+.hero--light .hero-media__glow { display: none; }
+.hero--light .hero-floor { display: none; }
+.hero--light .hero-img {
+  filter: none;
+  object-fit: contain;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 100%);
+}
+
+/* Tablet (768–1023): empilha — texto em cima, imagem cheia embaixo. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero--light { min-height: auto; }
+  .hero--light .hero-inner { gap: var(--space-6); padding-block: var(--space-10) var(--space-12); }
+  .hero--light .hero-media { position: relative; inset: auto; width: 100%; transform: none; order: 2; }
+  .hero--light .hero-stage { position: relative; inset: auto; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .hero--light .hero-img {
+    position: relative; inset: auto; right: auto; bottom: auto;
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: center bottom;
+    -webkit-mask-image: none; mask-image: none;
+  }
+}
+
+/* Desktop: coluna de texto capada; caminhão na direita sem invadir. */
+@media (min-width: 1024px) {
+  .hero--light .hero-content { max-width: 44vw; }
+  .hero--light .hero-img { width: 52vw; right: -2%; bottom: 2%; }
+}
+
+@media (min-width: 1600px) {
+  .hero--light .hero-content { max-width: 40vw; }
+  .hero--light .hero-img { width: 56vw; }
+}
+
+@media (max-width: 767px) {
+  .hero--light .hero-stage { aspect-ratio: 16 / 11; }
+  .hero--light .hero-stage::before { display: none; }
+  .hero--light .hero-img {
+    object-fit: contain;
+    object-position: center bottom;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

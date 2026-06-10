@@ -521,3 +521,52 @@
     border-left-color: var(--color-primary-light);
   }
 }
+
+/* ══════════════════════════════════════════════════════
+   SOBRE — tema claro "Concreto & Aço" (home)
+   Painel claro + KPIs em navy; vídeo vira "tela" emoldurada.
+══════════════════════════════════════════════════════ */
+.sobre--light { background-color: #F6F7F8; color: var(--color-text-dark); }
+
+.sobre--light .sobre-spec::before {
+  background-image:
+    linear-gradient(rgba(28, 36, 48, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 36, 48, 0.04) 1px, transparent 1px);
+}
+
+.sobre--light .sobre-kicker,
+.sobre--light .sobre-spec__statement { color: var(--color-primary); }
+.sobre--light .sobre-kicker__rule { background: var(--color-primary); }
+.sobre--light .sobre-corners span,
+.sobre--light .sobre-video-corners span { border-color: var(--color-primary); }
+
+.sobre--light .sobre-title { color: var(--color-navy-dark); }
+.sobre--light .sobre-subtitle { color: var(--color-bg-light); }
+
+.sobre--light .sobre-spec__grid {
+  background: rgba(28, 36, 48, 0.12);
+  border-color: rgba(28, 36, 48, 0.12);
+}
+.sobre--light .sobre-kpi { background: #F6F7F8; }
+.sobre--light .sobre-kpi--hero { background: rgba(26, 75, 130, 0.05); }
+.sobre--light .sobre-kpi--hero::before { display: none; } /* remove side-stripe (ban impeccable) */
+
+.sobre--light .sobre-kpi__val { color: var(--color-navy-dark); font-weight: 500; }
+.sobre--light .sobre-kpi--hero .sobre-kpi__val { color: var(--color-primary); font-weight: 400; }
+.sobre--light .sobre-kpi__key,
+.sobre--light .sobre-kpi__unit { color: rgba(28, 36, 48, 0.55); }
+
+@media (hover: hover) {
+  .sobre--light .sobre-kpi:not(.sobre-kpi--hero):hover { background: rgba(28, 36, 48, 0.03); }
+  .sobre--light .sobre-kpi--hero:hover { background: rgba(26, 75, 130, 0.09); }
+}
+
+.sobre--light .sobre-spec__footer { border-top-color: rgba(28, 36, 48, 0.12); }
+.sobre--light .sobre-spec { border-right-color: rgba(28, 36, 48, 0.10); }
+
+/* Vídeo como "tela" emoldurada em aço sobre o claro */
+.sobre--light .sobre-media::after { background: linear-gradient(to right, #F6F7F8 0%, transparent 100%); }
+.sobre--light .sobre-yt {
+  border: 1px solid rgba(28, 36, 48, 0.18);
+  box-shadow: 0 18px 44px rgba(28, 36, 48, 0.14);
+}

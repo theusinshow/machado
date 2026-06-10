@@ -12,7 +12,7 @@ export function initNavbar() {
   const toggleLabel = toggle?.querySelector('.navbar-toggle__label');
   const panel = document.getElementById('navbar-panel');
   const panelInner = panel?.querySelector('.navbar-panel__inner');
-  const lightSections = document.querySelectorAll('.section--light');
+  const lightSections = document.querySelectorAll('.section--light, .hero--light, .sobre--light');
 
   if (!toggle || !toggleLabel || !panel || !panelInner) return;
 

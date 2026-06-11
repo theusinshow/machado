@@ -1,7 +1,7 @@
 # Checklist de Entrega — Machado Plataformas
 
-**Data:** 8 de junho de 2026
-**Versão:** 1.1 — Entrega Final (revisão de contato)
+**Data:** 11 de junho de 2026
+**Versão:** 1.2 — Entrega Final (redesign visual da home — tema claro "Concreto & Aço")
 **Responsável:** Equipe de desenvolvimento
 **Domínio de produção:** machadoplataformas.com.br
 
@@ -20,6 +20,24 @@
 | Pendências de conteúdo bloqueantes | ⚠️ 2 itens para validação do cliente |
 
 **Veredicto: pronto para publicação**, condicionado à validação dos pontos de conteúdo listados na seção 13.
+
+---
+
+## 1.A. Atualização: Redesign Visual da Home (11/jun/2026)
+
+A pedido do cliente ("deixar o fundo mais branco, menos preto"), a **home** migrou de *dark-dominante* para o tema claro **"Concreto & Aço"** (claro com âncoras escuras). As demais páginas seguem como antes.
+
+| Mudança | Detalhe |
+|---------|---------|
+| Ritmo de cores da home | Hero / Sobre / Diferenciais claros → **Produtos (escuro)** → Depoimentos claro → **Footer (escuro)**. Produtos e Footer são âncoras escuras de propósito (peso/contraste). |
+| Hero | Nova arte (`MAINHERO`, caminhão sobre branco), fundo `#FEFEFE` igual ao da foto (sem borda). Tamanho da imagem **validado anti-colisão com o texto via Playwright em 375 → 2560px (4K)**. Subtítulo visível no mobile. |
+| Sobre "Feito Aqui" | Convertida pro claro: KPIs em navy, vídeo institucional emoldurado em aço. |
+| Diferenciais | Layout assimétrico com numerais grandes (saiu do grid de 4 cards iguais). |
+| Depoimentos | Nota **5,0 do Google** em destaque (bloco grande); fundo no token do sistema pra os cards destacarem. **Avaliações inalteradas** (mesmas que já estavam configuradas). |
+| Performance | Hero em WebP otimizado: mobile ~28 KB, desktop 1500px retina. |
+| Documentação | Sistema visual atualizado no `Design.md` (seção "Tema Claro"). |
+
+> Detalhes completos no `Design.md` (fonte da verdade visual).
 
 ---
 
@@ -130,7 +148,7 @@
 | Textos alternativos em imagens | ✅ 44 imagens com alt descritivo |
 | Rótulos ARIA em elementos interativos | ✅ 150+ `aria-label` no total |
 | Suporte a `prefers-reduced-motion` | ✅ Todas as animações respeitam a preferência |
-| Contraste de texto | ✅ Fundo escuro com texto claro — acima de 4.5:1 |
+| Contraste de texto | ✅ Home (tema claro): texto navy/escuro sobre claro. Seções escuras (Produtos, Footer) e demais páginas: texto claro sobre escuro. Acima de 4.5:1. |
 | Navegação por teclado (foco visível) | ✅ Estilo de foco definido em CSS |
 | HTML semântico (`<header>`, `<main>`, `<footer>`, `<nav>`) | ✅ |
 | Hierarquia de títulos (h1 → h2 → h3) | ✅ Uma h1 por página |
@@ -192,6 +210,7 @@ Testado com Playwright headless (Chromium) em **10 tamanhos de tela**:
 | ~~C1~~ | ~~**Especificações técnicas das linhas** — divergência de capacidades entre Home e Produtos.~~ ✅ **Resolvido** — Home e Produtos agora batem (Leve 4.000–7.000 kg / Média 7.000–12.000 kg / Pesada 12.000–22.000 kg). | `index.html`, `produtos.html` |
 | C2 | **"Suporte 24h"** — o diferencial de número 3 na Home diz "atendimento pós-venda disponível 24 horas". Confirmar se esse é o horário real de atendimento. | `index.html` |
 | C3 | **Depoimentos da página Clientes** — os 6 depoimentos desta página estão elaborados de forma diferente dos depoimentos reais do Google exibidos na Home. Confirmar origem e autenticidade. | `clientes.html` |
+| C4 | **Imagem de compartilhamento (OG)** — a `og:image` ainda é o hero ESCURO antigo (`plataforma-hero.png`, 1,7 MB). Atualizar para uma imagem ~1200×630 com o design claro atual, para o preview no WhatsApp/redes refletir o site novo. | `index.html` + 4 páginas |
 
 ---
 
@@ -249,4 +268,4 @@ Antes de qualquer campanha no Google Ads, Meta Ads ou TikTok Ads, confirmar cada
 
 ---
 
-*Documento gerado em 30/05/2026 e revisado em 08/06/2026 (atualização do número de contato e mensagem padrão de WhatsApp; pendência de capacidades resolvida). Baseado em auditoria automatizada (Playwright + Node.js) e revisão manual. Válido para a versão atual do código.*
+*Documento gerado em 30/05/2026, revisado em 08/06/2026 (contato e mensagem padrão de WhatsApp; capacidades) e em 11/06/2026 (redesign visual da home — tema claro "Concreto & Aço"; anti-colisão do hero validada 375→2560px; otimização WebP; limpeza do repositório para entrega). Baseado em auditoria automatizada (Playwright + Node.js) e revisão manual. Válido para a versão atual do código.*

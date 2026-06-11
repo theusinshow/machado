@@ -2075,9 +2075,9 @@ body {
 =========================== */
 
 .depoimentos {
-  background: #ffffff;
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  background: var(--color-surface);
+  border-top: 1px solid rgba(28, 36, 48, 0.08);
+  border-bottom: 1px solid rgba(28, 36, 48, 0.08);
 }
 
 /* ── Título e eyebrow em fundo claro ── */
@@ -6745,4 +6745,38 @@ body {
 .sobre--light .sobre-yt {
   border: 1px solid rgba(28, 36, 48, 0.18);
   box-shadow: 0 18px 44px rgba(28, 36, 48, 0.14);
+}
+
+/* ── Bloco de nota Google (autoridade) — Depoimentos claro ── */
+.depoimentos-rating {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid rgba(28, 36, 48, 0.14);
+  background: #fff;
+  align-self: end;
+}
+.depoimentos-rating__score {
+  font-family: var(--font-titles);
+  font-size: clamp(3rem, 5vw, 4.25rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: var(--color-navy-dark);
+}
+.depoimentos-rating__body { display: grid; gap: var(--space-2); }
+.depoimentos-rating__stars { display: inline-flex; gap: 3px; color: var(--color-star); }
+.depoimentos-rating__stars svg { display: block; fill: currentColor; }
+.depoimentos-rating__label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+.depoimentos-rating__note {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: #52606d;
+  max-width: 30ch;
 }

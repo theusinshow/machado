@@ -461,7 +461,7 @@
    HERO CLARO (home) — override escopado em .hero--light
 ══════════════════════════════════════════════════════ */
 .hero--light {
-  background: radial-gradient(135% 118% at 70% 26%, #F8F9FB 0%, #ECEEF1 58%, #E2E5EA 100%);
+  background: #FEFEFE;
 }
 .hero--light .hero-title__line:first-child { color: var(--color-text-dark); }
 .hero--light .hero-subtitle { color: var(--color-bg-light); }
@@ -481,13 +481,11 @@
 .hero--light .hero-img {
   filter: none;
   object-fit: contain;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 100%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 100%);
 }
 
 /* Tablet (768–1023): empilha — texto em cima, imagem cheia embaixo. */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .hero--light { min-height: auto; background: #F3F4F6; }
+  .hero--light { min-height: auto; background: #FEFEFE; }
   .hero--light .hero-inner { gap: var(--space-6); padding-block: var(--space-10) var(--space-12); }
   .hero--light .hero-media { position: relative; inset: auto; width: 100%; transform: none; order: 2; }
   .hero--light .hero-stage { position: relative; inset: auto; width: 100%; height: auto; aspect-ratio: 16 / 9; }
@@ -495,26 +493,23 @@
     position: relative; inset: auto; right: auto; bottom: auto;
     width: 100%; height: 100%;
     object-fit: contain; object-position: center bottom;
-    /* fade nas bordas funde a imagem ao fundo */
-    -webkit-mask-image: radial-gradient(120% 116% at 50% 56%, #000 60%, transparent 90%);
-    mask-image: radial-gradient(120% 116% at 50% 56%, #000 60%, transparent 90%);
   }
 }
 
 /* Desktop: coluna de texto capada; caminhão na direita sem invadir. */
 @media (min-width: 1024px) {
-  .hero--light .hero-content { max-width: 44vw; }
-  .hero--light .hero-img { width: 52vw; right: -2%; bottom: 2%; }
+  .hero--light .hero-content { max-width: 41vw; }
+  .hero--light .hero-img { width: 53vw; right: -2%; bottom: 2%; }
 }
 
 @media (min-width: 1600px) {
   .hero--light .hero-content { max-width: 40vw; }
-  .hero--light .hero-img { width: 56vw; }
+  .hero--light .hero-img { width: 48vw; right: 0; }
 }
 
 @media (max-width: 767px) {
   /* fundo plano que casa com o cinza-claro da foto -> sem "caixa" */
-  .hero--light { background: #F3F4F6; }
+  .hero--light { background: #FEFEFE; }
   /* subtítulo de volta no mobile */
   .hero--light .hero-subtitle { display: block; margin-top: var(--space-2); }
   .hero--light .hero-stage { aspect-ratio: 16 / 10; }
@@ -523,7 +518,5 @@
     object-fit: contain;
     object-position: center bottom;
     transform: none;
-    -webkit-mask-image: radial-gradient(126% 112% at 50% 58%, #000 58%, transparent 90%);
-    mask-image: radial-gradient(126% 112% at 50% 58%, #000 58%, transparent 90%);
   }
 }

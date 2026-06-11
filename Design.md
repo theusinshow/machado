@@ -363,7 +363,7 @@ gsap.fromTo(img,
 
 ### Hero Section
 - **Layout:** Split 50/50 (texto esquerda, produto direita) conforme mockup
-- **Fundo (atual):** Claro. Gradiente de estúdio `#F8F9FB → #E2E5EA` que casa com a foto do caminhão (classe `.hero--light`). [Histórico: era preto puro `#000`.]
+- **Fundo (atual):** Branco `#FEFEFE` plano, igual ao fundo opaco da foto (classe `.hero--light`), pra não criar borda entre imagem e seção. [Histórico: preto puro `#000` → gradiente claro → branco plano.]
 - **Headline:** Fonte Machado, `--text-display`, `--leading-none`, `--tracking-tight`
 - **Subtítulo:** Barlow Regular, 16-18px, `--color-steel`
 - **Vídeo/Imagem:** Lado direito, sem border-radius, com leve glow azul no produto
@@ -494,13 +494,13 @@ Produtos ("arsenal", produto brilha no preto) e Footer são as **âncoras escura
 ### Paleta no claro
 | Papel | Valor | Uso |
 |-------|-------|-----|
-| Base concreto | `#F8F9FB`–`#E2E5EA` (hero), `#F6F7F8` (Sobre), `#F2F4F6` (`.section--light`) | Fundos claros, levemente frios. Nunca `#fff` puro. |
+| Base concreto | `#FEFEFE` (hero, = fundo da foto), `#F6F7F8` (Sobre), `#F2F4F6` (`.section--light`) | Fundos claros. O hero usa o branco exato da imagem (zero borda); demais seções levemente frias. |
 | Tinta navy | `--color-navy-dark #1A2E46` / `--color-text-dark #1C2430` | Títulos, números, estrutura. Carrega o "peso". |
 | Acento azul | `--color-primary #1A4B82` / `--color-primary-light #5B9BD5` | CTA, número-herói, hover. ≤15%. |
 | Aço | `--color-steel #A7B0BA` / navy em baixa opacidade | Texto secundário, captions, numerais ghost. |
 
 ### Tratamento por seção
-- **Hero (`.hero--light`):** foto de estúdio do caminhão usada **inteira** (chão e sombra reais), sobre fundo gradiente que casa com a foto + fade no lado do texto. Sem recorte/sombra falsa. Título "MACHADO" em navy. Responsivo: tablet empilha; desktop capa a coluna de texto (`max-width: 44vw`) e mantém o caminhão à direita sem invadir.
+- **Hero (`.hero--light`):** foto do caminhão (`MAINHERO.png`) sobre **fundo branco opaco**; a seção usa o mesmo branco (`#FEFEFE`) pra não gerar borda. Título "MACHADO" em navy. **Responsivo (anti-colisão validada via Playwright, 375→2560):** mobile/tablet empilham (imagem abaixo do texto); desktop texto `max-width:41vw` / caminhão `53vw`; ultra-wide (1600+) caminhão `48vw` ancorado `right:0` pra não invadir o container travado do texto. **Imagem webp:** mobile leve (~28KB, q78), desktop 1500px retina (q90).
 - **Sobre (`.sobre--light`):** painel claro com KPIs em navy pesado (número-herói azul); vídeo institucional como "tela" emoldurada em aço (borda + sombra). Sem `border-left`/side-stripe.
 - **Diferenciais (`.diferenciais-home`):** layout assimétrico — numerais de concreto gigantes (01–04, navy baixa opacidade, azul no hover), títulos navy uppercase (Horizon), fios grossos de 2px, coluna direita escalonada. Sem grid de cards idênticos.
 - **Produtos / Footer:** permanecem escuros (`--color-black` / `--color-footer-bg`). Âncoras.

@@ -208,9 +208,9 @@ Testado com Playwright headless (Chromium) em **10 tamanhos de tela**:
 | # | Item | Arquivo |
 |---|------|---------|
 | ~~C1~~ | ~~**Especificações técnicas das linhas** — divergência de capacidades entre Home e Produtos.~~ ✅ **Resolvido** — Home e Produtos agora batem (Leve 4.000–7.000 kg / Média 7.000–12.000 kg / Pesada 12.000–22.000 kg). | `index.html`, `produtos.html` |
-| C2 | **"Suporte 24h"** — o diferencial de número 3 na Home diz "atendimento pós-venda disponível 24 horas". Confirmar se esse é o horário real de atendimento. | `index.html` |
-| C3 | **Depoimentos da página Clientes** — os 6 depoimentos desta página estão elaborados de forma diferente dos depoimentos reais do Google exibidos na Home. Confirmar origem e autenticidade. | `clientes.html` |
-| C4 | **Imagem de compartilhamento (OG)** — a `og:image` ainda é o hero ESCURO antigo (`plataforma-hero.png`, 1,7 MB). Atualizar para uma imagem ~1200×630 com o design claro atual, para o preview no WhatsApp/redes refletir o site novo. | `index.html` + 4 páginas |
+| ~~C2~~ | ~~**"Suporte 24h"** — confirmar se o atendimento pós-venda 24 horas é real.~~ ✅ **Confirmado pelo cliente (11/jun)** — é real. | `index.html` |
+| ~~C3~~ | ~~**Depoimentos da página Clientes** — confirmar origem e autenticidade.~~ ✅ **Confirmado pelo cliente (11/jun)** — são reais. | `clientes.html` |
+| ~~C4~~ | ~~**Imagem de compartilhamento (OG)** — era o hero escuro antigo.~~ ✅ **Resolvido (11/jun)** — nova `og:image` `assets/images/og/machado-share.jpg` (1200×630, ~86 KB, design claro) nas 5 páginas + schema. | `index.html` + 4 páginas |
 
 ---
 
@@ -219,9 +219,9 @@ Testado com Playwright headless (Chromium) em **10 tamanhos de tela**:
 | # | Pergunta | Urgência |
 |---|----------|----------|
 | ~~V1~~ | ~~Qual é a capacidade correta de cada linha?~~ ✅ Resolvido — capacidades alinhadas entre Home e Produtos. | — |
-| V2 | A empresa realmente oferece atendimento pós-venda 24 horas? | **Alta — afeta reputação** |
-| V3 | Os depoimentos da página Clientes são de clientes reais? Se sim, há autorização de uso? | **Alta — aspecto jurídico** |
-| V4 | O número de WhatsApp `+55 48 9695-2440` está **correto e completo** (verificar o "9" do celular), configurado e ativo para receber leads? | **Crítica — sem isso o site não converte** |
+| ~~V2~~ | ~~A empresa oferece atendimento pós-venda 24 horas?~~ ✅ Confirmado pelo cliente — é real. | — |
+| ~~V3~~ | ~~Os depoimentos da página Clientes são reais e autorizados?~~ ✅ Confirmado pelo cliente — são reais. | — |
+| V4 | **WhatsApp `554896952440` parece estar INCOMPLETO** — tem só 8 dígitos após o DDD 48 (`9695-2440`); celular brasileiro tem 9 (provável correto: `5548996952440`). **Aguardando o número completo do cliente** para corrigir os 47 links. | **Crítica — sem isso o site não converte** |
 | V5 | Existe rastreamento de conversões configurado (Google Analytics, Meta Pixel)? | Média |
 | V6 | Há um domínio contratado e hospedagem definida para o site? | **Crítica — necessário para publicar** |
 

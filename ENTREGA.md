@@ -17,9 +17,9 @@
 | Auditoria de copy e conteúdo | ✅ Concluída |
 | Preparação para deploy | ✅ Concluída |
 | Pendências técnicas bloqueantes | ✅ Nenhuma |
-| Pendências de conteúdo bloqueantes | ⚠️ 2 itens para validação do cliente |
+| Pendências de conteúdo bloqueantes | ✅ Nenhuma — confirmadas pelo cliente (11/jun) |
 
-**Veredicto: pronto para publicação**, condicionado à validação dos pontos de conteúdo listados na seção 13.
+**Veredicto: pronto para publicação.** Pendências críticas e de conteúdo confirmadas pelo cliente em 11/jun (WhatsApp, suporte 24h, depoimentos). Restam apenas itens operacionais opcionais (analytics, domínio/hospedagem) na seção 13.
 
 ---
 
@@ -100,7 +100,7 @@ A pedido do cliente ("deixar o fundo mais branco, menos preto"), a **home** migr
 - **Comportamento mobile:** botão ampliado e acessível em telas pequenas
 - **Status:** ✅ Todos os links verificados e funcionais
 
-> **Ação do cliente (crítica):** confirmar que o número `+55 48 9695-2440` está **correto e completo** (celular brasileiro tem 9 dígitos após o DDD — verificar se não falta o "9" inicial) e que está ativo no WhatsApp Business para receber mensagens. Se o número estiver incompleto, os botões não abrem a conversa.
+> ✅ **Confirmado pelo cliente (11/jun):** o número `+55 48 9695-2440` (`wa.me/554896952440`) está **correto e funcional**, recebendo leads. Todos os 47 botões apontam para ele.
 
 ---
 
@@ -221,7 +221,7 @@ Testado com Playwright headless (Chromium) em **10 tamanhos de tela**:
 | ~~V1~~ | ~~Qual é a capacidade correta de cada linha?~~ ✅ Resolvido — capacidades alinhadas entre Home e Produtos. | — |
 | ~~V2~~ | ~~A empresa oferece atendimento pós-venda 24 horas?~~ ✅ Confirmado pelo cliente — é real. | — |
 | ~~V3~~ | ~~Os depoimentos da página Clientes são reais e autorizados?~~ ✅ Confirmado pelo cliente — são reais. | — |
-| V4 | **WhatsApp `554896952440` parece estar INCOMPLETO** — tem só 8 dígitos após o DDD 48 (`9695-2440`); celular brasileiro tem 9 (provável correto: `5548996952440`). **Aguardando o número completo do cliente** para corrigir os 47 links. | **Crítica — sem isso o site não converte** |
+| ~~V4~~ | ~~WhatsApp — verificar número.~~ ✅ **Confirmado pelo cliente (11/jun)** — `554896952440` está correto e funcional, recebendo leads. | — |
 | V5 | Existe rastreamento de conversões configurado (Google Analytics, Meta Pixel)? | Média |
 | V6 | Há um domínio contratado e hospedagem definida para o site? | **Crítica — necessário para publicar** |
 

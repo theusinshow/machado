@@ -316,9 +316,10 @@
   border-color: rgba(255, 255, 255, 0.28);
 }
 
+/* Redes sociais — mesmo estilo do footer (.footer-social) */
 .navbar-panel__social {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-3);
   margin-top: var(--space-3);
 }
@@ -327,8 +328,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: var(--space-10);
+  height: var(--space-10);
   flex-shrink: 0;
   color: var(--color-text-muted);
   background-color: var(--color-navbar-panel-card);
@@ -340,8 +341,8 @@
 }
 
 .navbar-panel__social a svg {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   display: block;
   flex-shrink: 0;
 }
@@ -351,7 +352,7 @@
   color: var(--color-primary-light);
   border-color: var(--color-primary-light);
   /* outline removed — :focus-visible handled globally in reset.css */
-  transform: translateY(-3px);
+  transform: translateY(calc(-1 * var(--space-1)));
 }
 
 .navbar-panel__wa-cta {
@@ -554,34 +555,9 @@
     height: 0.85rem;
   }
 
-  /* Redes sociais — UI refinada no mobile */
+  /* Redes sociais — respiro extra acima no mobile (igual footer) */
   .navbar-panel__social {
-    flex-wrap: wrap;
-    gap: var(--space-2);
     margin-top: var(--space-4);
-  }
-
-  .navbar-panel__social a {
-    width: 42px;
-    height: 42px;
-  }
-
-  .navbar-panel__social a svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* Telas estreitas — ícones distribuídos para preencher a linha */
-@media (max-width: 380px) {
-  .navbar-panel__social {
-    gap: 0.5rem;
-  }
-
-  .navbar-panel__social a {
-    flex: 1 1 0;
-    min-width: 42px;
-    max-width: 56px;
   }
 }
 
